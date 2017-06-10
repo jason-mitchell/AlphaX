@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<emIDE_project_file>
+	<FileVersion major="1" minor="7" />
+	<Project>
+		<Option title="HDM01" />
+		<Option pch_mode="2" />
+		<Option compiler="armelfgcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/HDM01" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-mthumb" />
+					<Add option="-g" />
+					<Add option="-mcpu=cortex-m0" />
+					<Add option="-DDEBUG=1" />
+					<Add option="-DUSE_STDPERIPH_DRIVER" />
+					<Add directory="Inc" />
+					<Add directory="Libraries" />
+					<Add directory="Libraries/STM32F0xx_StdPeriph_Driver" />
+					<Add directory="Libraries/STM32F0xx_StdPeriph_Driver/inc" />
+					<Add directory="Libraries/CMSIS/Device/ST/STM32F0xx/Include" />
+					<Add directory="Libraries/CMSIS/Include" />
+					<Add directory="Src" />
+				</Compiler>
+				<Linker>
+					<Add option="-Wl,-Map" />
+					<Add option="-Wl,${TARGET_OUTPUT_FILE}.map" />
+					<Add option="-Wl,--gc-sections" />
+					<Add option="-n" />
+					<Add option="-Wl,-cref" />
+					<Add option="-mcpu=cortex-m0" />
+					<Add option="-mthumb" />
+					<Add option="-TSetup/Flash.ld" />
+				</Linker>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="1" />
+					<ConvertedOutput PostOutputType="HEX" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/HDM01" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-mcpu=cortex-m0" />
+					<Add option="-mthumb" />
+					<Add option="-g" />
+					<Add option="-O2" />
+					<Add directory="Inc" />
+				</Compiler>
+				<Linker>
+					<Add option="-Wl,-Map" />
+					<Add option="-Wl,${TARGET_OUTPUT_FILE}.map" />
+					<Add option="-Wl,--gc-sections" />
+					<Add option="-n" />
+					<Add option="-Wl,-cref" />
+					<Add option="-mcpu=cortex-m0" />
+					<Add option="-mthumb" />
+					<Add option=" -TSetup/Flash.ld" />
+					<Add option="-s" />
+				</Linker>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="0" />
+					<ConvertedOutput PostOutputType="HEX" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+		</Build>
+		<PostOutput>
+			<ConvertedOutput PostOutputCreate="0" />
+			<ConvertedOutput PostOutputType="HEX" />
+			<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+		</PostOutput>
+		<Unit filename="Doc/README.txt" />
+		<Unit filename="Libraries/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h" />
+		<Unit filename="Libraries/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h" />
+		<Unit filename="Libraries/CMSIS/Include/arm_common_tables.h" />
+		<Unit filename="Libraries/CMSIS/Include/arm_math.h" />
+		<Unit filename="Libraries/CMSIS/Include/core_cm0.h" />
+		<Unit filename="Libraries/CMSIS/Include/core_cm0plus.h" />
+		<Unit filename="Libraries/CMSIS/Include/core_cm3.h" />
+		<Unit filename="Libraries/CMSIS/Include/core_cm4.h" />
+		<Unit filename="Libraries/CMSIS/Include/core_cm4_simd.h" />
+		<Unit filename="Libraries/CMSIS/Include/core_cmFunc.h" />
+		<Unit filename="Libraries/CMSIS/Include/core_cmInstr.h" />
+		<Unit filename="Libraries/CMSIS/Include/core_sc000.h" />
+		<Unit filename="Libraries/CMSIS/Include/core_sc300.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_adc.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_can.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_cec.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_comp.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_crc.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_crs.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_dac.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_dbgmcu.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_dma.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_exti.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_flash.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_gpio.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_i2c.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_iwdg.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_misc.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_pwr.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_rcc.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_rtc.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_spi.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_syscfg.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_tim.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_usart.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_wwdg.h" />
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_can.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_cec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_comp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_crc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_crs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_dac.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_dbgmcu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_dma.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_exti.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_flash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_gpio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_i2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_iwdg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_misc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_pwr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_rcc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_rtc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_spi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_syscfg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_tim.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_usart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/STM32F0xx_StdPeriph_Driver/src/stm32f0xx_wwdg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Setup/Flash.ld" />
+		<Unit filename="Setup/startup.S" />
+		<Unit filename="Src/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stm32f0xx_conf.h" />
+		<Unit filename="Src/stm32f0xx_it.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stm32f0xx_it.h" />
+		<Unit filename="Src/syscalls.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/system_stm32f0xx.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<projectwizard TargetDevice="STM32F052RB" />
+			<code_completion />
+			<debugger>
+				<remote_debugging>
+					<options conn_type="1806320574" Break_at_Main="0" />
+				</remote_debugging>
+				<remote_debugging target="Debug">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="4242" remote_server="Other (External tool)" Break_at_Main="1" Break_at_Main_Symbol="main" additional_cmds="monitor reset&#x0A;load" additional_cmds_before='shell start &quot;GDB Server&quot; &quot;C:\STLinkGDB\st-util.exe&quot;' />
+				</remote_debugging>
+			</debugger>
+			<J-Link>
+				<GDBServer TargetName="Debug">
+					<CmdOption UseGDBServer="0" />
+					<CmdOption TargetDevice="STM32F052RB" />
+					<CmdOption TargetInterface="0" />
+					<CmdOption InterfaceSpeed="4000" />
+					<CmdOption TargetEndian="0" />
+					<CmdOption OverrideExe="0" Filename="C:\STLinkGDB\JLinkGDBServer.exe" />
+					<CmdOption StartServer="1" />
+					<CmdOption CloseServer="1" />
+					<CmdOption ServerIP="localhost" />
+					<CmdOption ServerPort="2331" />
+					<CmdOption UseAdvancedOptions="0" />
+					<CmdOption SelectJLink="" />
+					<CmdOption InitRegs="1" />
+					<CmdOption LocalhostOnly="1" />
+					<CmdOption Log="0" Filename="" />
+					<CmdOption Silent="0" />
+					<CmdOption StayOnTop="0" />
+					<CmdOption VerifyDownload="0" />
+					<CmdOption NoTargetTimeout="0" />
+					<CmdOption JTAGConf="0" IRPre="0" DRPre="0" />
+					<CmdOption JLinkScript="0" Filename="" />
+					<CmdOption JLinkSettings="0" Filename="" />
+					<CmdOption GDBInit="0" Filename="" />
+					<CmdOption AdditionalOptions="" />
+				</GDBServer>
+			</J-Link>
+		</Extensions>
+	</Project>
+</emIDE_project_file>
