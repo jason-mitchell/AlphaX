@@ -5,7 +5,7 @@
 //                              Author: Sonic2k
 //                              Date: 28 February 2015
 //
-//                              Since we don't have a real OS, most of these are dummies to ensure the linker doesn't stop with errors.
+//                              Since we don't have a real OS, most of these are STUB function to ensure the linker doesn't stop with errors.
 //                              For redirection of streams stdin and stdout, this is the place to look where to put your code.
 //
 //

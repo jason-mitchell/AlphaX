@@ -196,10 +196,12 @@
 
 1425769297 source:c:\temp\work\alphax\hdm01\software\hdm01\setup\startup.s
 
-1497120327 source:c:\temp\work\alphax\hdm01\software\hdm01\src\main.c
+1497133202 source:c:\temp\work\alphax\hdm01\software\hdm01\src\main.c
 	<stdio.h>
 	"stm32f0xx_conf.h"
 	"stm32f0xx_usart.h"
+	"bsp.h"
+	"i2c.h"
 
 1425769297 source:c:\temp\work\alphax\hdm01\software\hdm01\src\stm32f0xx_it.c
 	"stm32f0xx_it.h"
@@ -207,7 +209,7 @@
 1375127873 c:\temp\work\alphax\hdm01\software\hdm01\src\stm32f0xx_it.h
 	"stm32f0xx.h"
 
-1425770292 source:c:\temp\work\alphax\hdm01\software\hdm01\src\syscalls.c
+1497122815 source:c:\temp\work\alphax\hdm01\software\hdm01\src\syscalls.c
 	<stdlib.h>
 	<errno.h>
 	<stdio.h>
@@ -216,4 +218,11 @@
 
 1375127873 source:c:\temp\work\alphax\hdm01\software\hdm01\src\system_stm32f0xx.c
 	"stm32f0xx.h"
+
+1497133249 c:\temp\work\alphax\hdm01\software\hdm01\include\bsp.h
+
+1497133040 source:c:\temp\work\alphax\hdm01\software\hdm01\src\i2c.c
+	"stm32f0xx_conf.h"
+
+1497133202 c:\temp\work\alphax\hdm01\software\hdm01\include\i2c.h
 

@@ -78,7 +78,9 @@ testvar             0x1               obj\Debug\Src\main.o
 USART_ClockInitStructure
                     0x10              obj\Debug\Src\main.o
 errno               0x4               c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
-GPIO_InitStructure  0x8               obj\Debug\Src\main.o
+I2C_InitStructure   0x1c              obj\Debug\Src\i2c.o
+TickFlagI2C         0x1               obj\Debug\Src\main.o
+GPIO_InitStructure  0x8               obj\Debug\Src\i2c.o
 USART_InitStructure
                     0x18              obj\Debug\Src\main.o
 rxchar              0x4               obj\Debug\Src\main.o
@@ -254,20 +256,8 @@ Discarded input sections
  .debug_frame   0x00000000      0x394 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.o
  .data          0x00000000        0x0 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .bss           0x00000000        0x0 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
- .text          0x00000000      0xa44 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .data          0x00000000        0x0 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .bss           0x00000000        0x0 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
- .debug_info    0x00000000      0xc9b obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
- .debug_abbrev  0x00000000      0x187 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
- .debug_loc     0x00000000      0x930 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
- .debug_aranges
-                0x00000000       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
- .debug_line    0x00000000      0x2dd obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
- .debug_str     0x00000000      0x627 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
- .comment       0x00000000       0x71 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
- .ARM.attributes
-                0x00000000       0x31 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
- .debug_frame   0x00000000      0x550 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .text          0x00000000       0xf4 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o
  .data          0x00000000        0x0 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o
  .bss           0x00000000        0x0 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o
@@ -374,6 +364,8 @@ Discarded input sections
  .text          0x00000000       0x14 obj\Debug\Setup\startup.o
  .data          0x00000000        0x0 obj\Debug\Setup\startup.o
  .bss           0x00000000        0x0 obj\Debug\Setup\startup.o
+ .data          0x00000000        0x0 obj\Debug\Src\i2c.o
+ .bss           0x00000000        0x0 obj\Debug\Src\i2c.o
  .data          0x00000000        0x0 obj\Debug\Src\main.o
  .data          0x00000000        0x0 obj\Debug\Src\stm32f0xx_it.o
  .bss           0x00000000        0x0 obj\Debug\Src\stm32f0xx_it.o
@@ -561,6 +553,7 @@ LOAD obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.o
 LOAD obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
 LOAD obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o
 LOAD obj\Debug\Setup\startup.o
+LOAD obj\Debug\Src\i2c.o
 LOAD obj\Debug\Src\main.o
 LOAD obj\Debug\Src\stm32f0xx_it.o
 LOAD obj\Debug\Src\syscalls.o
@@ -582,7 +575,7 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
                 0x08000000                g_pfnVectors
                 0x080000c4                . = ALIGN (0x4)
 
-.text           0x080000c4     0x4408
+.text           0x080000c4     0x4fa0
                 0x080000c4                . = ALIGN (0x4)
  *(.text)
  .text          0x080000c4       0x60 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
@@ -600,350 +593,397 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
                 0x080004b8                GPIO_WriteBit
                 0x080004e8                GPIO_Write
                 0x08000504                GPIO_PinAFConfig
- .text          0x080005a0      0x124 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
-                0x080005a0                NVIC_Init
-                0x0800064c                NVIC_SystemLPConfig
-                0x08000690                SysTick_CLKSourceConfig
- .text          0x080006c4      0xbd8 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
-                0x080006c4                RCC_DeInit
-                0x0800074c                RCC_HSEConfig
-                0x08000770                RCC_WaitForHSEStartUp
-                0x080007d0                RCC_AdjustHSICalibrationValue
-                0x0800080c                RCC_HSICmd
-                0x08000844                RCC_AdjustHSI14CalibrationValue
-                0x08000880                RCC_HSI14Cmd
-                0x080008b8                RCC_HSI14ADCRequestCmd
-                0x080008f0                RCC_LSEConfig
-                0x08000928                RCC_LSEDriveConfig
-                0x08000954                RCC_LSICmd
-                0x0800098c                RCC_PLLConfig
-                0x080009c0                RCC_PLLCmd
-                0x08000a00                RCC_HSI48Cmd
-                0x08000a40                RCC_PREDIV1Config
-                0x08000a74                RCC_ClockSecuritySystemCmd
-                0x08000ab4                RCC_MCOConfig
-                0x08000af8                RCC_SYSCLKConfig
-                0x08000b2c                RCC_GetSYSCLKSource
-                0x08000b48                RCC_HCLKConfig
-                0x08000b7c                RCC_PCLKConfig
-                0x08000bb4                RCC_ADCCLKConfig
-                0x08000c04                RCC_CECCLKConfig
-                0x08000c30                RCC_I2CCLKConfig
-                0x08000c5c                RCC_USARTCLKConfig
-                0x08000ca8                RCC_USBCLKConfig
-                0x08000cd4                RCC_GetClocksFreq
-                0x08000f34                RCC_RTCCLKConfig
-                0x08000f54                RCC_RTCCLKCmd
-                0x08000f94                RCC_BackupResetCmd
-                0x08000fd4                RCC_AHBPeriphClockCmd
-                0x08001010                RCC_APB2PeriphClockCmd
-                0x0800104c                RCC_APB1PeriphClockCmd
-                0x08001088                RCC_AHBPeriphResetCmd
-                0x080010c4                RCC_APB2PeriphResetCmd
-                0x08001100                RCC_APB1PeriphResetCmd
-                0x0800113c                RCC_ITConfig
-                0x0800118c                RCC_GetFlagStatus
-                0x0800121c                RCC_ClearFlag
-                0x08001238                RCC_GetITStatus
-                0x0800127c                RCC_ClearITPendingBit
- .text          0x0800129c      0xc84 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
-                0x0800129c                USART_DeInit
-                0x08001340                USART_Init
-                0x080014b4                USART_StructInit
-                0x080014e8                USART_ClockInit
-                0x08001530                USART_ClockStructInit
-                0x08001558                USART_Cmd
-                0x08001594                USART_DirectionModeCmd
-                0x080015cc                USART_OverSampling8Cmd
-                0x08001608                USART_OneBitMethodCmd
-                0x08001644                USART_MSBFirstCmd
-                0x08001680                USART_DataInvCmd
-                0x080016bc                USART_InvPinCmd
-                0x080016f4                USART_SWAPPinCmd
-                0x08001730                USART_ReceiverTimeOutCmd
-                0x0800176c                USART_SetReceiverTimeOut
-                0x08001794                USART_SetPrescaler
-                0x080017cc                USART_STOPModeCmd
-                0x08001808                USART_StopModeWakeUpSourceConfig
-                0x08001834                USART_AutoBaudRateCmd
-                0x08001870                USART_AutoBaudRateConfig
-                0x0800189c                USART_SendData
-                0x080018c0                USART_ReceiveData
-                0x080018dc                USART_SetAddress
-                0x0800190c                USART_MuteModeCmd
-                0x08001948                USART_MuteModeWakeUpConfig
-                0x08001974                USART_AddressDetectionConfig
-                0x080019a0                USART_LINBreakDetectLengthConfig
-                0x080019cc                USART_LINCmd
-                0x08001a08                USART_HalfDuplexCmd
-                0x08001a44                USART_SetGuardTime
-                0x08001a80                USART_SmartCardCmd
-                0x08001abc                USART_SmartCardNACKCmd
-                0x08001af8                USART_SetAutoRetryCount
-                0x08001b2c                USART_SetBlockLength
-                0x08001b5c                USART_IrDAConfig
-                0x08001b88                USART_IrDACmd
-                0x08001bc4                USART_DECmd
-                0x08001c00                USART_DEPolarityConfig
-                0x08001c2c                USART_SetDEAssertionTime
-                0x08001c5c                USART_SetDEDeassertionTime
-                0x08001c8c                USART_DMACmd
-                0x08001cc4                USART_DMAReceptionErrorConfig
-                0x08001cf0                USART_ITConfig
-                0x08001d74                USART_RequestCmd
-                0x08001dbc                USART_OverrunDetectionConfig
-                0x08001de8                USART_GetFlagStatus
-                0x08001e24                USART_ClearFlag
-                0x08001e3c                USART_GetITStatus
-                0x08001ef0                USART_ClearITPendingBit
- .text          0x08001f20      0x328 obj\Debug\Src\main.o
-                0x0800204c                Delay
-                0x08002070                SysTick_Handler
-                0x080020a4                USART1_IRQHandler
-                0x080020f4                main
- .text          0x08002248       0x20 obj\Debug\Src\stm32f0xx_it.o
-                0x08002248                NMI_Handler
-                0x08002250                HardFault_Handler
-                0x08002258                SVC_Handler
-                0x08002260                PendSV_Handler
- .text          0x08002268      0x168 obj\Debug\Src\syscalls.o
-                0x08002268                _kill
-                0x08002288                _exit
-                0x080022a0                _read
-                0x080022cc                _write
-                0x08002320                _sbrk_r
-                0x08002374                _close
-                0x08002388                _isatty
-                0x0800239c                _lseek
-                0x080023b4                _fstat
- .text          0x080023d0      0x23c obj\Debug\Src\system_stm32f0xx.o
-                0x080023d0                SystemInit
-                0x0800245c                SystemCoreClockUpdate
- .text          0x0800260c       0x9c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
-                0x0800260c                __aeabi_uidiv
-                0x0800260c                __udivsi3
-                0x08002694                __aeabi_uidivmod
- .text          0x080026a8        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
-                0x080026a8                __aeabi_idiv0
-                0x080026a8                __aeabi_ldiv0
+ .text          0x080005a0      0xa44 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+                0x080005a0                I2C_DeInit
+                0x080005ec                I2C_Init
+                0x080006bc                I2C_StructInit
+                0x080006f8                I2C_Cmd
+                0x08000734                I2C_SoftwareResetCmd
+                0x08000770                I2C_ITConfig
+                0x080007a8                I2C_StretchClockCmd
+                0x080007e4                I2C_StopModeCmd
+                0x08000820                I2C_DualAddressCmd
+                0x0800085c                I2C_OwnAddress2Config
+                0x080008ac                I2C_GeneralCallCmd
+                0x080008e8                I2C_SlaveByteControlCmd
+                0x08000924                I2C_SlaveAddressConfig
+                0x08000960                I2C_10BitAddressingModeCmd
+                0x0800099c                I2C_AutoEndCmd
+                0x080009d8                I2C_ReloadCmd
+                0x08000a14                I2C_NumberOfBytesConfig
+                0x08000a58                I2C_MasterRequestConfig
+                0x08000a94                I2C_GenerateSTART
+                0x08000ad0                I2C_GenerateSTOP
+                0x08000b0c                I2C_10BitAddressHeaderCmd
+                0x08000b48                I2C_AcknowledgeConfig
+                0x08000b84                I2C_GetAddressMatched
+                0x08000ba4                I2C_GetTransferDirection
+                0x08000bec                I2C_TransferHandling
+                0x08000c4c                I2C_SMBusAlertCmd
+                0x08000c88                I2C_ClockTimeoutCmd
+                0x08000cc4                I2C_ExtendedClockTimeoutCmd
+                0x08000cfc                I2C_IdleClockTimeoutCmd
+                0x08000d38                I2C_TimeoutAConfig
+                0x08000d74                I2C_TimeoutBConfig
+                0x08000db8                I2C_CalculatePEC
+                0x08000df4                I2C_PECRequestCmd
+                0x08000e30                I2C_GetPEC
+                0x08000e48                I2C_ReadRegister
+                0x08000e74                I2C_SendData
+                0x08000e90                I2C_ReceiveData
+                0x08000ea8                I2C_DMACmd
+                0x08000ee0                I2C_GetFlagStatus
+                0x08000f2c                I2C_ClearFlag
+                0x08000f44                I2C_GetITStatus
+                0x08000fcc                I2C_ClearITPendingBit
+ .text          0x08000fe4      0x124 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
+                0x08000fe4                NVIC_Init
+                0x08001090                NVIC_SystemLPConfig
+                0x080010d4                SysTick_CLKSourceConfig
+ .text          0x08001108      0xbd8 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+                0x08001108                RCC_DeInit
+                0x08001190                RCC_HSEConfig
+                0x080011b4                RCC_WaitForHSEStartUp
+                0x08001214                RCC_AdjustHSICalibrationValue
+                0x08001250                RCC_HSICmd
+                0x08001288                RCC_AdjustHSI14CalibrationValue
+                0x080012c4                RCC_HSI14Cmd
+                0x080012fc                RCC_HSI14ADCRequestCmd
+                0x08001334                RCC_LSEConfig
+                0x0800136c                RCC_LSEDriveConfig
+                0x08001398                RCC_LSICmd
+                0x080013d0                RCC_PLLConfig
+                0x08001404                RCC_PLLCmd
+                0x08001444                RCC_HSI48Cmd
+                0x08001484                RCC_PREDIV1Config
+                0x080014b8                RCC_ClockSecuritySystemCmd
+                0x080014f8                RCC_MCOConfig
+                0x0800153c                RCC_SYSCLKConfig
+                0x08001570                RCC_GetSYSCLKSource
+                0x0800158c                RCC_HCLKConfig
+                0x080015c0                RCC_PCLKConfig
+                0x080015f8                RCC_ADCCLKConfig
+                0x08001648                RCC_CECCLKConfig
+                0x08001674                RCC_I2CCLKConfig
+                0x080016a0                RCC_USARTCLKConfig
+                0x080016ec                RCC_USBCLKConfig
+                0x08001718                RCC_GetClocksFreq
+                0x08001978                RCC_RTCCLKConfig
+                0x08001998                RCC_RTCCLKCmd
+                0x080019d8                RCC_BackupResetCmd
+                0x08001a18                RCC_AHBPeriphClockCmd
+                0x08001a54                RCC_APB2PeriphClockCmd
+                0x08001a90                RCC_APB1PeriphClockCmd
+                0x08001acc                RCC_AHBPeriphResetCmd
+                0x08001b08                RCC_APB2PeriphResetCmd
+                0x08001b44                RCC_APB1PeriphResetCmd
+                0x08001b80                RCC_ITConfig
+                0x08001bd0                RCC_GetFlagStatus
+                0x08001c60                RCC_ClearFlag
+                0x08001c7c                RCC_GetITStatus
+                0x08001cc0                RCC_ClearITPendingBit
+ .text          0x08001ce0      0xc84 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+                0x08001ce0                USART_DeInit
+                0x08001d84                USART_Init
+                0x08001ef8                USART_StructInit
+                0x08001f2c                USART_ClockInit
+                0x08001f74                USART_ClockStructInit
+                0x08001f9c                USART_Cmd
+                0x08001fd8                USART_DirectionModeCmd
+                0x08002010                USART_OverSampling8Cmd
+                0x0800204c                USART_OneBitMethodCmd
+                0x08002088                USART_MSBFirstCmd
+                0x080020c4                USART_DataInvCmd
+                0x08002100                USART_InvPinCmd
+                0x08002138                USART_SWAPPinCmd
+                0x08002174                USART_ReceiverTimeOutCmd
+                0x080021b0                USART_SetReceiverTimeOut
+                0x080021d8                USART_SetPrescaler
+                0x08002210                USART_STOPModeCmd
+                0x0800224c                USART_StopModeWakeUpSourceConfig
+                0x08002278                USART_AutoBaudRateCmd
+                0x080022b4                USART_AutoBaudRateConfig
+                0x080022e0                USART_SendData
+                0x08002304                USART_ReceiveData
+                0x08002320                USART_SetAddress
+                0x08002350                USART_MuteModeCmd
+                0x0800238c                USART_MuteModeWakeUpConfig
+                0x080023b8                USART_AddressDetectionConfig
+                0x080023e4                USART_LINBreakDetectLengthConfig
+                0x08002410                USART_LINCmd
+                0x0800244c                USART_HalfDuplexCmd
+                0x08002488                USART_SetGuardTime
+                0x080024c4                USART_SmartCardCmd
+                0x08002500                USART_SmartCardNACKCmd
+                0x0800253c                USART_SetAutoRetryCount
+                0x08002570                USART_SetBlockLength
+                0x080025a0                USART_IrDAConfig
+                0x080025cc                USART_IrDACmd
+                0x08002608                USART_DECmd
+                0x08002644                USART_DEPolarityConfig
+                0x08002670                USART_SetDEAssertionTime
+                0x080026a0                USART_SetDEDeassertionTime
+                0x080026d0                USART_DMACmd
+                0x08002708                USART_DMAReceptionErrorConfig
+                0x08002734                USART_ITConfig
+                0x080027b8                USART_RequestCmd
+                0x08002800                USART_OverrunDetectionConfig
+                0x0800282c                USART_GetFlagStatus
+                0x08002868                USART_ClearFlag
+                0x08002880                USART_GetITStatus
+                0x08002934                USART_ClearITPendingBit
+ .text          0x08002964       0xac obj\Debug\Src\i2c.o
+                0x08002964                InitI2C
+ .text          0x08002a10      0x3d0 obj\Debug\Src\main.o
+                0x08002b3c                Delay
+                0x08002b60                GeneralDelay
+                0x08002b7c                SysTick_Handler
+                0x08002bb8                USART1_IRQHandler
+                0x08002c08                TestI2C
+                0x08002c6c                main
+ .text          0x08002de0       0x20 obj\Debug\Src\stm32f0xx_it.o
+                0x08002de0                NMI_Handler
+                0x08002de8                HardFault_Handler
+                0x08002df0                SVC_Handler
+                0x08002df8                PendSV_Handler
+ .text          0x08002e00      0x168 obj\Debug\Src\syscalls.o
+                0x08002e00                _kill
+                0x08002e20                _exit
+                0x08002e38                _read
+                0x08002e64                _write
+                0x08002eb8                _sbrk_r
+                0x08002f0c                _close
+                0x08002f20                _isatty
+                0x08002f34                _lseek
+                0x08002f4c                _fstat
+ .text          0x08002f68      0x23c obj\Debug\Src\system_stm32f0xx.o
+                0x08002f68                SystemInit
+                0x08002ff4                SystemCoreClockUpdate
+ .text          0x080031a4       0x9c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+                0x080031a4                __aeabi_uidiv
+                0x080031a4                __udivsi3
+                0x0800322c                __aeabi_uidivmod
+ .text          0x08003240        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x08003240                __aeabi_idiv0
+                0x08003240                __aeabi_ldiv0
  *(.text*)
  .text.Reset_Handler
-                0x080026ac       0x50 obj\Debug\Setup\startup.o
-                0x080026ac                Reset_Handler
+                0x08003244       0x50 obj\Debug\Setup\startup.o
+                0x08003244                Reset_Handler
  .text.Default_Handler
-                0x080026fc        0x2 obj\Debug\Setup\startup.o
-                0x080026fc                TIM1_CC_IRQHandler
-                0x080026fc                ADC1_COMP_IRQHandler
-                0x080026fc                PVD_IRQHandler
-                0x080026fc                I2C1_IRQHandler
-                0x080026fc                SPI1_IRQHandler
-                0x080026fc                TIM6_DAC_IRQHandler
-                0x080026fc                EXTI2_3_IRQHandler
-                0x080026fc                I2C2_IRQHandler
-                0x080026fc                TIM17_IRQHandler
-                0x080026fc                RTC_IRQHandler
-                0x080026fc                TIM16_IRQHandler
-                0x080026fc                TIM3_IRQHandler
-                0x080026fc                EXTI4_15_IRQHandler
-                0x080026fc                RCC_IRQHandler
-                0x080026fc                DMA1_Channel1_IRQHandler
-                0x080026fc                Default_Handler
-                0x080026fc                CEC_IRQHandler
-                0x080026fc                TIM14_IRQHandler
-                0x080026fc                DMA1_Channel4_5_IRQHandler
-                0x080026fc                TIM15_IRQHandler
-                0x080026fc                EXTI0_1_IRQHandler
-                0x080026fc                SPI2_IRQHandler
-                0x080026fc                TS_IRQHandler
-                0x080026fc                WWDG_IRQHandler
-                0x080026fc                TIM2_IRQHandler
-                0x080026fc                DMA1_Channel2_3_IRQHandler
-                0x080026fc                USART2_IRQHandler
-                0x080026fc                FLASH_IRQHandler
-                0x080026fc                TIM1_BRK_UP_TRG_COM_IRQHandler
- *fill*         0x080026fe        0x2 00
+                0x08003294        0x2 obj\Debug\Setup\startup.o
+                0x08003294                TIM1_CC_IRQHandler
+                0x08003294                ADC1_COMP_IRQHandler
+                0x08003294                PVD_IRQHandler
+                0x08003294                I2C1_IRQHandler
+                0x08003294                SPI1_IRQHandler
+                0x08003294                TIM6_DAC_IRQHandler
+                0x08003294                EXTI2_3_IRQHandler
+                0x08003294                I2C2_IRQHandler
+                0x08003294                TIM17_IRQHandler
+                0x08003294                RTC_IRQHandler
+                0x08003294                TIM16_IRQHandler
+                0x08003294                TIM3_IRQHandler
+                0x08003294                EXTI4_15_IRQHandler
+                0x08003294                RCC_IRQHandler
+                0x08003294                DMA1_Channel1_IRQHandler
+                0x08003294                Default_Handler
+                0x08003294                CEC_IRQHandler
+                0x08003294                TIM14_IRQHandler
+                0x08003294                DMA1_Channel4_5_IRQHandler
+                0x08003294                TIM15_IRQHandler
+                0x08003294                EXTI0_1_IRQHandler
+                0x08003294                SPI2_IRQHandler
+                0x08003294                TS_IRQHandler
+                0x08003294                WWDG_IRQHandler
+                0x08003294                TIM2_IRQHandler
+                0x08003294                DMA1_Channel2_3_IRQHandler
+                0x08003294                USART2_IRQHandler
+                0x08003294                FLASH_IRQHandler
+                0x08003294                TIM1_BRK_UP_TRG_COM_IRQHandler
+ *fill*         0x08003296        0x2 00
  .text.__register_exitproc
-                0x08002700       0xc4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
-                0x08002700                __register_exitproc
- .text.__errno  0x080027c4        0xc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
-                0x080027c4                __errno
+                0x08003298       0xc4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+                0x08003298                __register_exitproc
+ .text.__errno  0x0800335c        0xc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
+                0x0800335c                __errno
  .text._fflush_r
-                0x080027d0      0x15c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
-                0x080027d0                _fflush_r
- .text.fflush   0x0800292c       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
-                0x0800292c                fflush
+                0x08003368      0x15c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
+                0x08003368                _fflush_r
+ .text.fflush   0x080034c4       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
+                0x080034c4                fflush
  .text._cleanup_r
-                0x08002954       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
-                0x08002954                _cleanup_r
+                0x080034ec       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x080034ec                _cleanup_r
  .text.std.isra.0
-                0x08002964       0x48 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
- .text.__sinit  0x080029ac       0x50 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
-                0x080029ac                __sinit
+                0x080034fc       0x48 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+ .text.__sinit  0x08003544       0x50 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x08003544                __sinit
  .text.__sfp_lock_acquire
-                0x080029fc        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
-                0x080029fc                __sfp_lock_acquire
+                0x08003594        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x08003594                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x08002a00        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
-                0x08002a00                __sfp_lock_release
+                0x08003598        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x08003598                __sfp_lock_release
  .text.__libc_fini_array
-                0x08002a04       0x60 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
-                0x08002a04                __libc_fini_array
+                0x0800359c       0x60 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+                0x0800359c                __libc_fini_array
  .text._malloc_trim_r
-                0x08002a64       0xa0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
-                0x08002a64                _malloc_trim_r
- .text._free_r  0x08002b04      0x190 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
-                0x08002b04                _free_r
- .text._fwalk   0x08002c94       0xd8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
-                0x08002c94                _fwalk
+                0x080035fc       0xa0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
+                0x080035fc                _malloc_trim_r
+ .text._free_r  0x0800369c      0x190 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
+                0x0800369c                _free_r
+ .text._fwalk   0x0800382c       0xd8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
+                0x0800382c                _fwalk
  .text._fwalk_reent
-                0x08002d6c       0xe4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
-                0x08002d6c                _fwalk_reent
+                0x08003904       0xe4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
+                0x08003904                _fwalk_reent
  .text.__libc_init_array
-                0x08002e50       0x90 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
-                0x08002e50                __libc_init_array
+                0x080039e8       0x90 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+                0x080039e8                __libc_init_array
  .text._malloc_r
-                0x08002ee0      0x514 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
-                0x08002ee0                _malloc_r
- .text.memset   0x080033f4      0x118 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
-                0x080033f4                memset
+                0x08003a78      0x514 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
+                0x08003a78                _malloc_r
+ .text.memset   0x08003f8c      0x118 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+                0x08003f8c                memset
  .text.__malloc_lock
-                0x0800350c        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
-                0x0800350c                __malloc_lock
+                0x080040a4        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
+                0x080040a4                __malloc_lock
  .text.__malloc_unlock
-                0x08003510        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
-                0x08003510                __malloc_unlock
- .text._puts_r  0x08003514       0x68 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
-                0x08003514                _puts_r
- .text.puts     0x0800357c       0x14 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
-                0x0800357c                puts
- .text.__sread  0x08003590       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
-                0x08003590                __sread
+                0x080040a8        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
+                0x080040a8                __malloc_unlock
+ .text._puts_r  0x080040ac       0x68 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+                0x080040ac                _puts_r
+ .text.puts     0x08004114       0x14 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+                0x08004114                puts
+ .text.__sread  0x08004128       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x08004128                __sread
  .text.__swrite
-                0x080035b8       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
-                0x080035b8                __swrite
- .text.__sseek  0x080035f0       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
-                0x080035f0                __sseek
+                0x08004150       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x08004150                __swrite
+ .text.__sseek  0x08004188       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x08004188                __sseek
  .text.__sclose
-                0x0800361c        0xc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
-                0x0800361c                __sclose
- .text.strlen   0x08003628       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
-                0x08003628                strlen
+                0x080041b4        0xc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x080041b4                __sclose
+ .text.strlen   0x080041c0       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+                0x080041c0                strlen
  .text._write_r
-                0x08003638       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
-                0x08003638                _write_r
+                0x080041d0       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
+                0x080041d0                _write_r
  .text.startup.register_fini
-                0x08003660       0x18 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
- .text.atexit   0x08003678       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
-                0x08003678                atexit
+                0x080041f8       0x18 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x08004210       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+                0x08004210                atexit
  .text._close_r
-                0x08003688       0x24 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
-                0x08003688                _close_r
+                0x08004220       0x24 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
+                0x08004220                _close_r
  .text._fclose_r
-                0x080036ac       0xa0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
-                0x080036ac                _fclose_r
- .text.fclose   0x0800374c       0x14 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
-                0x0800374c                fclose
+                0x08004244       0xa0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
+                0x08004244                _fclose_r
+ .text.fclose   0x080042e4       0x14 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
+                0x080042e4                fclose
  .text.__sfvwrite_r
-                0x08003760      0x304 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
-                0x08003760                __sfvwrite_r
+                0x080042f8      0x304 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
+                0x080042f8                __sfvwrite_r
  .text._lseek_r
-                0x08003a64       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
-                0x08003a64                _lseek_r
- .text.memchr   0x08003a8c      0x120 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
-                0x08003a8c                memchr
- .text.memcpy   0x08003bac      0x144 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
-                0x08003bac                memcpy
- .text.memmove  0x08003cf0      0x19c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
-                0x08003cf0                memmove
- .text._read_r  0x08003e8c       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
-                0x08003e8c                _read_r
+                0x080045fc       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
+                0x080045fc                _lseek_r
+ .text.memchr   0x08004624      0x120 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
+                0x08004624                memchr
+ .text.memcpy   0x08004744      0x144 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
+                0x08004744                memcpy
+ .text.memmove  0x08004888      0x19c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+                0x08004888                memmove
+ .text._read_r  0x08004a24       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
+                0x08004a24                _read_r
  .text._realloc_r
-                0x08003eb4      0x3d4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
-                0x08003eb4                _realloc_r
+                0x08004a4c      0x3d4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
+                0x08004a4c                _realloc_r
  .text.__swsetup_r
-                0x08004288       0xbc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
-                0x08004288                __swsetup_r
+                0x08004e20       0xbc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
+                0x08004e20                __swsetup_r
  .text.__smakebuf_r
-                0x08004344       0xdc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
-                0x08004344                __smakebuf_r
+                0x08004edc       0xdc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
+                0x08004edc                __smakebuf_r
  .text._fstat_r
-                0x08004420       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
-                0x08004420                _fstat_r
+                0x08004fb8       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
+                0x08004fb8                _fstat_r
  .text._isatty_r
-                0x08004448       0x24 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
-                0x08004448                _isatty_r
+                0x08004fe0       0x24 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
+                0x08004fe0                _isatty_r
  *(.rodata)
- .rodata        0x0800446c       0x3c obj\Debug\Src\main.o
+ .rodata        0x08005004       0x3c obj\Debug\Src\main.o
  *(.rodata*)
  .rodata.str1.4
-                0x080044a8        0x2 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+                0x08005040        0x2 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
                                   0x4 (size before relaxing)
- *fill*         0x080044aa        0x2 00
+ *fill*         0x08005042        0x2 00
  .rodata._global_impure_ptr
-                0x080044ac        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
-                0x080044ac                _global_impure_ptr
+                0x08005044        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+                0x08005044                _global_impure_ptr
  .rodata.str1.4
-                0x080044b0        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+                0x08005048        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x080044b4        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
+ .eh_frame      0x0800504c        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
  *(.init)
- .init          0x080044b4        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crti.o
-                0x080044b4                _init
- .init          0x080044b8        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
+ .init          0x0800504c        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crti.o
+                0x0800504c                _init
+ .init          0x08005050        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
  *(.fini)
- .fini          0x080044c0        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crti.o
-                0x080044c0                _fini
- .fini          0x080044c4        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
-                0x080044cc                . = ALIGN (0x4)
-                0x080044cc                _etext = .
+ .fini          0x08005058        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crti.o
+                0x08005058                _fini
+ .fini          0x0800505c        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
+                0x08005064                . = ALIGN (0x4)
+                0x08005064                _etext = .
 
-.vfp11_veneer   0x080044cc        0x0
+.vfp11_veneer   0x08005064        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x080044cc        0x0
+.v4_bx          0x08005064        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x080044cc        0x0
+.iplt           0x08005064        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
 
-.rel.dyn        0x080044cc        0x0
+.rel.dyn        0x08005064        0x0
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x080044cc        0x0
-                0x080044cc                __exidx_start = .
+.ARM            0x08005064        0x0
+                0x08005064                __exidx_start = .
  *(.ARM.exidx*)
-                0x080044cc                __exidx_end = .
+                0x08005064                __exidx_end = .
 
-.preinit_array  0x080044cc        0x0
-                0x080044cc                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x08005064        0x0
+                0x08005064                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x080044cc                PROVIDE (__preinit_array_end, .)
+                0x08005064                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x080044cc        0x8
-                0x080044cc                PROVIDE (__init_array_start, .)
+.init_array     0x08005064        0x8
+                0x08005064                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  .init_array.00000
-                0x080044cc        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+                0x08005064        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x080044d0        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
-                0x080044d4                PROVIDE (__init_array_end, .)
+ .init_array    0x08005068        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
+                0x0800506c                PROVIDE (__init_array_end, .)
 
-.fini_array     0x080044d4        0x4
-                0x080044d4                PROVIDE (__fini_array_start, .)
+.fini_array     0x0800506c        0x4
+                0x0800506c                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080044d4        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
-                0x080044d8                PROVIDE (__fini_array_end, .)
-                0x080044d8                _sidata = LOADADDR (.data)
+ .fini_array    0x0800506c        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
+                0x08005070                PROVIDE (__fini_array_end, .)
+                0x08005070                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x864 load address 0x080044d8
+.data           0x20000000      0x864 load address 0x08005070
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -970,14 +1010,14 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
                 0x20000864                . = ALIGN (0x4)
                 0x20000864                _edata = .
 
-.jcr            0x20000864        0x0 load address 0x08004d3c
+.jcr            0x20000864        0x0 load address 0x080058d4
  .jcr           0x20000864        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
 
-.igot.plt       0x20000864        0x0 load address 0x08004d3c
+.igot.plt       0x20000864        0x0 load address 0x080058d4
  .igot.plt      0x00000000        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
                 0x20000864                . = ALIGN (0x4)
 
-.bss            0x20000864       0xa0 load address 0x08004d3c
+.bss            0x20000864       0xc0 load address 0x080058d4
                 0x20000864                _sbss = .
                 0x20000864                __bss_start__ = _sbss
  *(.bss)
@@ -1001,33 +1041,36 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
                 0x20000898       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
                 0x20000898                __malloc_current_mallinfo
  *(COMMON)
- COMMON         0x200008c0       0x3f obj\Debug\Src\main.o
-                0x200008c0                testvar
-                0x200008c4                USART_ClockInitStructure
-                0x200008d4                GPIO_InitStructure
-                0x200008dc                USART_InitStructure
-                0x200008f4                rxchar
-                0x200008f8                toggle
-                0x200008fc                NVIC_InitStructure
- *fill*         0x200008ff        0x1 00
- COMMON         0x20000900        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
-                0x20000900                errno
-                0x20000904                . = ALIGN (0x4)
-                0x20000904                _ebss = .
-                0x20000904                __bss_end__ = _ebss
+ COMMON         0x200008c0       0x24 obj\Debug\Src\i2c.o
+                0x200008c0                I2C_InitStructure
+                0x200008dc                GPIO_InitStructure
+ COMMON         0x200008e4       0x3b obj\Debug\Src\main.o
+                0x200008e4                testvar
+                0x200008e8                USART_ClockInitStructure
+                0x200008f8                TickFlagI2C
+                0x200008fc                USART_InitStructure
+                0x20000914                rxchar
+                0x20000918                toggle
+                0x2000091c                NVIC_InitStructure
+ *fill*         0x2000091f        0x1 00
+ COMMON         0x20000920        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
+                0x20000920                errno
+                0x20000924                . = ALIGN (0x4)
+                0x20000924                _ebss = .
+                0x20000924                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000904      0x880 load address 0x08004d3c
-                0x20000904                . = ALIGN (0x4)
-                0x20000904                __heap_start__ = .
-                0x20000904                PROVIDE (end, .)
-                0x20000904                PROVIDE (_end, .)
-                0x20001104                . = (. + _Min_Heap_Size)
- *fill*         0x20000904      0x800 00
-                0x20001104                __heap_end__ = .
-                0x20001184                . = (. + _Min_Stack_Size)
- *fill*         0x20001104       0x80 00
-                0x20001184                . = ALIGN (0x4)
+                0x20000924      0x880 load address 0x080058d4
+                0x20000924                . = ALIGN (0x4)
+                0x20000924                __heap_start__ = .
+                0x20000924                PROVIDE (end, .)
+                0x20000924                PROVIDE (_end, .)
+                0x20001124                . = (. + _Min_Heap_Size)
+ *fill*         0x20000924      0x800 00
+                0x20001124                __heap_end__ = .
+                0x200011a4                . = (. + _Min_Stack_Size)
+ *fill*         0x20001124       0x80 00
+                0x200011a4                . = ALIGN (0x4)
 
 .memory_b1_text
  *(.mb1text)
@@ -1050,226 +1093,250 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
  .ARM.attributes
                 0x0000004a       0x31 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .ARM.attributes
-                0x0000007b       0x31 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
+                0x0000007b       0x31 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .ARM.attributes
-                0x000000ac       0x31 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+                0x000000ac       0x31 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
  .ARM.attributes
-                0x000000dd       0x31 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+                0x000000dd       0x31 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .ARM.attributes
-                0x0000010e       0x21 obj\Debug\Setup\startup.o
+                0x0000010e       0x31 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
  .ARM.attributes
-                0x0000012f       0x31 obj\Debug\Src\main.o
+                0x0000013f       0x21 obj\Debug\Setup\startup.o
  .ARM.attributes
-                0x00000160       0x31 obj\Debug\Src\stm32f0xx_it.o
+                0x00000160       0x31 obj\Debug\Src\i2c.o
  .ARM.attributes
-                0x00000191       0x31 obj\Debug\Src\syscalls.o
+                0x00000191       0x31 obj\Debug\Src\main.o
  .ARM.attributes
-                0x000001c2       0x31 obj\Debug\Src\system_stm32f0xx.o
+                0x000001c2       0x31 obj\Debug\Src\stm32f0xx_it.o
  .ARM.attributes
-                0x000001f3       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+                0x000001f3       0x31 obj\Debug\Src\syscalls.o
  .ARM.attributes
-                0x00000211       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x00000224       0x31 obj\Debug\Src\system_stm32f0xx.o
  .ARM.attributes
-                0x0000022f       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+                0x00000255       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
  .ARM.attributes
-                0x0000025b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
+                0x00000273       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000287       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
+                0x00000291       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
  .ARM.attributes
-                0x000002b3       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x000002bd       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
  .ARM.attributes
-                0x000002df       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+                0x000002e9       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
  .ARM.attributes
-                0x0000030b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
+                0x00000315       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
  .ARM.attributes
-                0x00000337       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
+                0x00000341       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
  .ARM.attributes
-                0x00000363       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+                0x0000036d       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
  .ARM.attributes
-                0x0000038f       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+                0x00000399       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
  .ARM.attributes
-                0x000003bb       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
+                0x000003c5       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
  .ARM.attributes
-                0x000003e7       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+                0x000003f1       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
  .ARM.attributes
-                0x00000413       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
+                0x0000041d       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
  .ARM.attributes
-                0x0000043f       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+                0x00000449       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
  .ARM.attributes
-                0x0000046b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x00000475       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
  .ARM.attributes
-                0x00000497       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+                0x000004a1       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
  .ARM.attributes
-                0x000004c3       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
+                0x000004cd       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
  .ARM.attributes
-                0x000004ef       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+                0x000004f9       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
  .ARM.attributes
-                0x0000051b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+                0x00000525       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
  .ARM.attributes
-                0x00000547       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
+                0x00000551       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
  .ARM.attributes
-                0x00000573       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
+                0x0000057d       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
  .ARM.attributes
-                0x0000059f       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
+                0x000005a9       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
  .ARM.attributes
-                0x000005cb       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
+                0x000005d5       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
  .ARM.attributes
-                0x000005f7       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
+                0x00000601       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
  .ARM.attributes
-                0x00000623       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
+                0x0000062d       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
  .ARM.attributes
-                0x0000064f       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+                0x00000659       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
  .ARM.attributes
-                0x0000067b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
+                0x00000685       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
  .ARM.attributes
-                0x000006a7       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
+                0x000006b1       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
  .ARM.attributes
-                0x000006d3       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
+                0x000006dd       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
  .ARM.attributes
-                0x000006ff       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
+                0x00000709       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
  .ARM.attributes
-                0x0000072b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
+                0x00000735       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
  .ARM.attributes
-                0x00000757       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
+                0x00000761       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
  .ARM.attributes
-                0x00000783       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
+                0x0000078d       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
  .ARM.attributes
-                0x000007af       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
+                0x000007b9       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
+ .ARM.attributes
+                0x000007e5       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
+ .ARM.attributes
+                0x00000811       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
 OUTPUT(bin\Debug\HDM01.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x48f7
+.debug_info     0x00000000     0x5aaf
  .debug_info    0x00000000      0x619 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
- .debug_info    0x00000619      0x39d obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
- .debug_info    0x000009b6      0xb09 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
- .debug_info    0x000014bf      0xf64 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
- .debug_info    0x00002423       0x86 obj\Debug\Setup\startup.o
- .debug_info    0x000024a9     0x11e8 obj\Debug\Src\main.o
- .debug_info    0x00003691       0xcb obj\Debug\Src\stm32f0xx_it.o
- .debug_info    0x0000375c      0xe8b obj\Debug\Src\syscalls.o
- .debug_info    0x000045e7      0x310 obj\Debug\Src\system_stm32f0xx.o
+ .debug_info    0x00000619      0xc9b obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+ .debug_info    0x000012b4      0x39d obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
+ .debug_info    0x00001651      0xb09 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+ .debug_info    0x0000215a      0xf64 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+ .debug_info    0x000030be       0x86 obj\Debug\Setup\startup.o
+ .debug_info    0x00003144      0x40e obj\Debug\Src\i2c.o
+ .debug_info    0x00003552     0x12f7 obj\Debug\Src\main.o
+ .debug_info    0x00004849       0xcb obj\Debug\Src\stm32f0xx_it.o
+ .debug_info    0x00004914      0xe8b obj\Debug\Src\syscalls.o
+ .debug_info    0x0000579f      0x310 obj\Debug\Src\system_stm32f0xx.o
 
-.debug_abbrev   0x00000000      0xc27
+.debug_abbrev   0x00000000      0xea7
  .debug_abbrev  0x00000000      0x19d obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
- .debug_abbrev  0x0000019d      0x127 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
- .debug_abbrev  0x000002c4      0x1ee obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
- .debug_abbrev  0x000004b2      0x15e obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
- .debug_abbrev  0x00000610       0x12 obj\Debug\Setup\startup.o
- .debug_abbrev  0x00000622      0x271 obj\Debug\Src\main.o
- .debug_abbrev  0x00000893       0x42 obj\Debug\Src\stm32f0xx_it.o
- .debug_abbrev  0x000008d5      0x21c obj\Debug\Src\syscalls.o
- .debug_abbrev  0x00000af1      0x136 obj\Debug\Src\system_stm32f0xx.o
+ .debug_abbrev  0x0000019d      0x187 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+ .debug_abbrev  0x00000324      0x127 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
+ .debug_abbrev  0x0000044b      0x1ee obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+ .debug_abbrev  0x00000639      0x15e obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+ .debug_abbrev  0x00000797       0x12 obj\Debug\Setup\startup.o
+ .debug_abbrev  0x000007a9       0xf0 obj\Debug\Src\i2c.o
+ .debug_abbrev  0x00000899      0x27a obj\Debug\Src\main.o
+ .debug_abbrev  0x00000b13       0x42 obj\Debug\Src\stm32f0xx_it.o
+ .debug_abbrev  0x00000b55      0x21c obj\Debug\Src\syscalls.o
+ .debug_abbrev  0x00000d71      0x136 obj\Debug\Src\system_stm32f0xx.o
 
-.debug_loc      0x00000000     0x1b7e
+.debug_loc      0x00000000     0x253e
  .debug_loc     0x00000000      0x2d8 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
- .debug_loc     0x000002d8       0xa8 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
- .debug_loc     0x00000380      0x8d4 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
- .debug_loc     0x00000c54      0xaba obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
- .debug_loc     0x0000170e      0x12c obj\Debug\Src\main.o
- .debug_loc     0x0000183a       0xb0 obj\Debug\Src\stm32f0xx_it.o
- .debug_loc     0x000018ea      0x1f8 obj\Debug\Src\syscalls.o
- .debug_loc     0x00001ae2       0x9c obj\Debug\Src\system_stm32f0xx.o
+ .debug_loc     0x000002d8      0x930 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+ .debug_loc     0x00000c08       0xa8 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
+ .debug_loc     0x00000cb0      0x8d4 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+ .debug_loc     0x00001584      0xaba obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+ .debug_loc     0x0000203e       0x2c obj\Debug\Src\i2c.o
+ .debug_loc     0x0000206a      0x190 obj\Debug\Src\main.o
+ .debug_loc     0x000021fa       0xb0 obj\Debug\Src\stm32f0xx_it.o
+ .debug_loc     0x000022aa      0x1f8 obj\Debug\Src\syscalls.o
+ .debug_loc     0x000024a2       0x9c obj\Debug\Src\system_stm32f0xx.o
 
-.debug_aranges  0x00000000      0x128
+.debug_aranges  0x00000000      0x168
  .debug_aranges
                 0x00000000       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .debug_aranges
-                0x00000020       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
+                0x00000020       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .debug_aranges
-                0x00000040       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+                0x00000040       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
  .debug_aranges
-                0x00000060       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+                0x00000060       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .debug_aranges
-                0x00000080       0x28 obj\Debug\Setup\startup.o
+                0x00000080       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
  .debug_aranges
-                0x000000a8       0x20 obj\Debug\Src\main.o
+                0x000000a0       0x28 obj\Debug\Setup\startup.o
  .debug_aranges
-                0x000000c8       0x20 obj\Debug\Src\stm32f0xx_it.o
+                0x000000c8       0x20 obj\Debug\Src\i2c.o
  .debug_aranges
-                0x000000e8       0x20 obj\Debug\Src\syscalls.o
+                0x000000e8       0x20 obj\Debug\Src\main.o
  .debug_aranges
-                0x00000108       0x20 obj\Debug\Src\system_stm32f0xx.o
+                0x00000108       0x20 obj\Debug\Src\stm32f0xx_it.o
+ .debug_aranges
+                0x00000128       0x20 obj\Debug\Src\syscalls.o
+ .debug_aranges
+                0x00000148       0x20 obj\Debug\Src\system_stm32f0xx.o
 
-.debug_line     0x00000000     0x122b
+.debug_line     0x00000000     0x16b4
  .debug_line    0x00000000      0x210 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
- .debug_line    0x00000210      0x1c7 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
- .debug_line    0x000003d7      0x309 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
- .debug_line    0x000006e0      0x330 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
- .debug_line    0x00000a10       0x9b obj\Debug\Setup\startup.o
- .debug_line    0x00000aab      0x316 obj\Debug\Src\main.o
- .debug_line    0x00000dc1       0x78 obj\Debug\Src\stm32f0xx_it.o
- .debug_line    0x00000e39      0x275 obj\Debug\Src\syscalls.o
- .debug_line    0x000010ae      0x17d obj\Debug\Src\system_stm32f0xx.o
+ .debug_line    0x00000210      0x2dd obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+ .debug_line    0x000004ed      0x1c7 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
+ .debug_line    0x000006b4      0x309 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+ .debug_line    0x000009bd      0x330 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+ .debug_line    0x00000ced       0x9b obj\Debug\Setup\startup.o
+ .debug_line    0x00000d88      0x17e obj\Debug\Src\i2c.o
+ .debug_line    0x00000f06      0x344 obj\Debug\Src\main.o
+ .debug_line    0x0000124a       0x78 obj\Debug\Src\stm32f0xx_it.o
+ .debug_line    0x000012c2      0x275 obj\Debug\Src\syscalls.o
+ .debug_line    0x00001537      0x17d obj\Debug\Src\system_stm32f0xx.o
 
-.debug_str      0x00000000     0x1bff
+.debug_str      0x00000000     0x2115
  .debug_str     0x00000000      0x445 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
                                 0x479 (size before relaxing)
- .debug_str     0x00000445      0x1a7 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
+ .debug_str     0x00000445      0x4ce obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+                                0x627 (size before relaxing)
+ .debug_str     0x00000913      0x18e obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
                                 0x2ee (size before relaxing)
- .debug_str     0x000005ec      0x5db obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+ .debug_str     0x00000aa1      0x5d4 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
                                 0x771 (size before relaxing)
- .debug_str     0x00000bc7      0x718 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+ .debug_str     0x00001075      0x718 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
                                 0x965 (size before relaxing)
- .debug_str     0x000012df      0x695 obj\Debug\Src\main.o
-                                0xb2d (size before relaxing)
- .debug_str     0x00001974       0x75 obj\Debug\Src\stm32f0xx_it.o
+ .debug_str     0x0000178d       0x60 obj\Debug\Src\i2c.o
+                                0x3d0 (size before relaxing)
+ .debug_str     0x000017ed      0x69d obj\Debug\Src\main.o
+                                0xb8a (size before relaxing)
+ .debug_str     0x00001e8a       0x75 obj\Debug\Src\stm32f0xx_it.o
                                 0x174 (size before relaxing)
- .debug_str     0x000019e9      0x175 obj\Debug\Src\syscalls.o
+ .debug_str     0x00001eff      0x175 obj\Debug\Src\syscalls.o
                                 0x6b8 (size before relaxing)
- .debug_str     0x00001b5e       0xa1 obj\Debug\Src\system_stm32f0xx.o
+ .debug_str     0x00002074       0xa1 obj\Debug\Src\system_stm32f0xx.o
                                 0x25f (size before relaxing)
 
 .comment        0x00000000       0x70
  .comment       0x00000000       0x70 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
                                  0x71 (size before relaxing)
+ .comment       0x00000000       0x71 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .comment       0x00000000       0x71 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
  .comment       0x00000000       0x71 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .comment       0x00000000       0x71 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+ .comment       0x00000000       0x71 obj\Debug\Src\i2c.o
  .comment       0x00000000       0x71 obj\Debug\Src\main.o
  .comment       0x00000000       0x71 obj\Debug\Src\stm32f0xx_it.o
  .comment       0x00000000       0x71 obj\Debug\Src\syscalls.o
  .comment       0x00000000       0x71 obj\Debug\Src\system_stm32f0xx.o
 
-.debug_frame    0x00000000     0x18ac
+.debug_frame    0x00000000     0x1e64
  .debug_frame   0x00000000      0x1b0 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
- .debug_frame   0x000001b0       0x70 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
- .debug_frame   0x00000220      0x524 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
- .debug_frame   0x00000744      0x630 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
- .debug_frame   0x00000d74       0xc8 obj\Debug\Src\main.o
- .debug_frame   0x00000e3c       0x80 obj\Debug\Src\stm32f0xx_it.o
- .debug_frame   0x00000ebc      0x130 obj\Debug\Src\syscalls.o
- .debug_frame   0x00000fec       0x6c obj\Debug\Src\system_stm32f0xx.o
- .debug_frame   0x00001058       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
- .debug_frame   0x00001078       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
- .debug_frame   0x000010b0       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
- .debug_frame   0x000010d0       0x4c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
- .debug_frame   0x0000111c      0x138 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
- .debug_frame   0x00001254       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
- .debug_frame   0x00001288       0x54 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
- .debug_frame   0x000012dc       0x64 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
- .debug_frame   0x00001340       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
- .debug_frame   0x00001370       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
- .debug_frame   0x000013ac       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
- .debug_frame   0x000013dc       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
- .debug_frame   0x0000140c       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
- .debug_frame   0x00001450       0x90 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
- .debug_frame   0x000014e0       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
- .debug_frame   0x00001500       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
- .debug_frame   0x0000152c       0x54 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
- .debug_frame   0x00001580       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
- .debug_frame   0x000015a8       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
- .debug_frame   0x000015d4       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
- .debug_frame   0x00001618       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
- .debug_frame   0x00001654       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
- .debug_frame   0x00001680       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
- .debug_frame   0x000016b4       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
- .debug_frame   0x000016e8       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
- .debug_frame   0x00001720       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
- .debug_frame   0x0000174c       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
- .debug_frame   0x00001788       0x70 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
- .debug_frame   0x000017f8       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
- .debug_frame   0x00001824       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
- .debug_frame   0x00001854       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
- .debug_frame   0x00001880       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
+ .debug_frame   0x000001b0      0x550 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+ .debug_frame   0x00000700       0x70 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
+ .debug_frame   0x00000770      0x524 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+ .debug_frame   0x00000c94      0x630 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+ .debug_frame   0x000012c4       0x2c obj\Debug\Src\i2c.o
+ .debug_frame   0x000012f0      0x104 obj\Debug\Src\main.o
+ .debug_frame   0x000013f4       0x80 obj\Debug\Src\stm32f0xx_it.o
+ .debug_frame   0x00001474      0x130 obj\Debug\Src\syscalls.o
+ .debug_frame   0x000015a4       0x6c obj\Debug\Src\system_stm32f0xx.o
+ .debug_frame   0x00001610       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00001630       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+ .debug_frame   0x00001668       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
+ .debug_frame   0x00001688       0x4c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
+ .debug_frame   0x000016d4      0x138 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+ .debug_frame   0x0000180c       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+ .debug_frame   0x00001840       0x54 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
+ .debug_frame   0x00001894       0x64 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
+ .debug_frame   0x000018f8       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+ .debug_frame   0x00001928       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
+ .debug_frame   0x00001964       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+ .debug_frame   0x00001994       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
+ .debug_frame   0x000019c4       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+ .debug_frame   0x00001a08       0x90 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+ .debug_frame   0x00001a98       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+ .debug_frame   0x00001ab8       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
+ .debug_frame   0x00001ae4       0x54 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00001b38       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00001b60       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
+ .debug_frame   0x00001b8c       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
+ .debug_frame   0x00001bd0       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
+ .debug_frame   0x00001c0c       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
+ .debug_frame   0x00001c38       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
+ .debug_frame   0x00001c6c       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
+ .debug_frame   0x00001ca0       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+ .debug_frame   0x00001cd8       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
+ .debug_frame   0x00001d04       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
+ .debug_frame   0x00001d40       0x70 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
+ .debug_frame   0x00001db0       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
+ .debug_frame   0x00001ddc       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
+ .debug_frame   0x00001e0c       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
+ .debug_frame   0x00001e38       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
 
 .debug_ranges   0x00000000       0x20
  .debug_ranges  0x00000000       0x20 obj\Debug\Setup\startup.o
@@ -1472,8 +1539,12 @@ FLASH_WaitForLastOperation                        obj\Debug\Libraries\STM32F0xx_
 GPIO_DeInit                                       obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
 GPIO_Init                                         obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
                                                   obj\Debug\Src\main.o
+                                                  obj\Debug\Src\i2c.o
 GPIO_InitStructure                                obj\Debug\Src\main.o
+                                                  obj\Debug\Src\i2c.o
 GPIO_PinAFConfig                                  obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
+                                                  obj\Debug\Src\main.o
+                                                  obj\Debug\Src\i2c.o
 GPIO_PinLockConfig                                obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
 GPIO_ReadInputData                                obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
 GPIO_ReadInputDataBit                             obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
@@ -1486,6 +1557,7 @@ GPIO_SetBits                                      obj\Debug\Libraries\STM32F0xx_
 GPIO_StructInit                                   obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
 GPIO_Write                                        obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
 GPIO_WriteBit                                     obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
+GeneralDelay                                      obj\Debug\Src\main.o
 HardFault_Handler                                 obj\Debug\Src\stm32f0xx_it.o
                                                   obj\Debug\Setup\startup.o
 I2C1_IRQHandler                                   obj\Debug\Setup\startup.o
@@ -1499,6 +1571,7 @@ I2C_ClearFlag                                     obj\Debug\Libraries\STM32F0xx_
 I2C_ClearITPendingBit                             obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_ClockTimeoutCmd                               obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_Cmd                                           obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+                                                  obj\Debug\Src\i2c.o
 I2C_DMACmd                                        obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_DeInit                                        obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_DualAddressCmd                                obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
@@ -1508,12 +1581,15 @@ I2C_GenerateSTART                                 obj\Debug\Libraries\STM32F0xx_
 I2C_GenerateSTOP                                  obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_GetAddressMatched                             obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_GetFlagStatus                                 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+                                                  obj\Debug\Src\main.o
 I2C_GetITStatus                                   obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_GetPEC                                        obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_GetTransferDirection                          obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_ITConfig                                      obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_IdleClockTimeoutCmd                           obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_Init                                          obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+                                                  obj\Debug\Src\i2c.o
+I2C_InitStructure                                 obj\Debug\Src\i2c.o
 I2C_MasterRequestConfig                           obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_NumberOfBytesConfig                           obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_OwnAddress2Config                             obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
@@ -1532,6 +1608,7 @@ I2C_StructInit                                    obj\Debug\Libraries\STM32F0xx_
 I2C_TimeoutAConfig                                obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_TimeoutBConfig                                obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
 I2C_TransferHandling                              obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
+                                                  obj\Debug\Src\main.o
 I2S_Cmd                                           obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.o
 I2S_Init                                          obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.o
 I2S_StructInit                                    obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.o
@@ -1542,6 +1619,8 @@ IWDG_SetPrescaler                                 obj\Debug\Libraries\STM32F0xx_
 IWDG_SetReload                                    obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o
 IWDG_SetWindowValue                               obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o
 IWDG_WriteAccessCmd                               obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o
+InitI2C                                           obj\Debug\Src\i2c.o
+                                                  obj\Debug\Src\main.o
 NMI_Handler                                       obj\Debug\Src\stm32f0xx_it.o
                                                   obj\Debug\Setup\startup.o
 NVIC_Init                                         obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
@@ -1567,6 +1646,7 @@ RCC_AHBPeriphClockCmd                             obj\Debug\Libraries\STM32F0xx_
 RCC_AHBPeriphResetCmd                             obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
                                                   obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
 RCC_APB1PeriphClockCmd                            obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
+                                                  obj\Debug\Src\i2c.o
 RCC_APB1PeriphResetCmd                            obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
                                                   obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o
                                                   obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
@@ -1822,6 +1902,8 @@ TIM_TimeBaseStructInit                            obj\Debug\Libraries\STM32F0xx_
 TIM_UpdateDisableConfig                           obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.o
 TIM_UpdateRequestConfig                           obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.o
 TS_IRQHandler                                     obj\Debug\Setup\startup.o
+TestI2C                                           obj\Debug\Src\main.o
+TickFlagI2C                                       obj\Debug\Src\main.o
 USART1_IRQHandler                                 obj\Debug\Src\main.o
                                                   obj\Debug\Setup\startup.o
 USART2_IRQHandler                                 obj\Debug\Setup\startup.o

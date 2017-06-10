@@ -24,6 +24,7 @@
 					<Add directory="Libraries/CMSIS/Device/ST/STM32F0xx/Include" />
 					<Add directory="Libraries/CMSIS/Include" />
 					<Add directory="Src" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,-Map" />
@@ -184,6 +185,9 @@
 		</Unit>
 		<Unit filename="Setup/Flash.ld" />
 		<Unit filename="Setup/startup.S" />
+		<Unit filename="Src/i2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -198,12 +202,14 @@
 		<Unit filename="Src/system_stm32f0xx.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="include/bsp.h" />
+		<Unit filename="include/i2c.h" />
 		<Extensions>
 			<projectwizard TargetDevice="STM32F052RB" />
 			<code_completion />
 			<debugger>
 				<remote_debugging>
-					<options conn_type="1806320574" Break_at_Main="0" />
+					<options conn_type="1806320574" ip_address="localhost" ip_port="2331" remote_server="J-Link GDB Server" Break_at_Main="0" Break_at_Main_Symbol="main" />
 				</remote_debugging>
 				<remote_debugging target="Debug">
 					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="4242" remote_server="Other (External tool)" Break_at_Main="1" Break_at_Main_Symbol="main" additional_cmds="monitor reset&#x0A;load" additional_cmds_before='shell start &quot;GDB Server&quot; &quot;C:\STLinkGDB\st-util.exe&quot;' />
