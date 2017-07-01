@@ -7,7 +7,12 @@
 #define _BSP_H
 
 
+// VFD Display Port Pins PORTC
 
+#define SDATA GPIO_Pin_0
+#define SCLK GPIO_Pin_1
+#define RST GPIO_Pin_2
+#define BUSY GPIO_Pin_3
 
 
 

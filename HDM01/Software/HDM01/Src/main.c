@@ -7,15 +7,13 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Includes
-
-//#include <stddef.h>
-//#include "stm32f0xx_rcc.h"
-//#include "stm32f0xx.h"
 #include <stdio.h>
+#include <string.h>
 #include "stm32f0xx_conf.h"
 #include "stm32f0xx_usart.h"
 #include "bsp.h"
 #include "i2c.h"
+#include "display.h"
 
 
 // Private typedefs
@@ -28,6 +26,11 @@ NVIC_InitTypeDef        NVIC_InitStructure;
 
 // Macros, definitions, constants
 //--------------------------------
+/*
+#define SDATA GPIO_Pin_0
+#define SCLK GPIO_Pin_1
+#define RST GPIO_Pin_2
+#define BUSY GPIO_Pin_3 */
 
 // Private variables
 //--------------------
@@ -55,6 +58,8 @@ unsigned char toggle;
 unsigned char testvar;
 unsigned int rxchar;
 unsigned char TickFlagI2C;
+
+unsigned char arr[32];
 
 
 // Timer that derives from the system ticker...
@@ -95,6 +100,44 @@ void USART1_IRQHandler(void){
     fflush(stdout);
 }
 
+
+/*
+void ResetDisplay(void){
+
+      GPIO_ResetBits(GPIOC, RST);     // Reset is pulled low
+      ResetTimer();
+      GPIO_SetBits(GPIOC, RST);       // Reset is pulled high
+      ResetTimer();
+      ResetTimer();
+
+}
+*/
+
+/*
+void WriteByteSPI(unsigned char data){
+    int i;
+
+    // Wait for busy to clear
+    while(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_3) == 1){
+        ;
+    }
+    for (i = 0; i < 8; i++){
+        // Copy out a bit from the source
+        if ((data & 0x01) == 0x01){
+            GPIO_SetBits(GPIOC, SDATA);
+        } else {
+            GPIO_ResetBits(GPIOC, SDATA);
+        }
+        data = data >> 1;
+        BitTimer();
+        GPIO_SetBits(GPIOC, SCLK);      // Raise clock
+        BitTimer();
+        GPIO_ResetBits(GPIOC, SCLK);    // Lower clock
+        BitTimer();
+
+    }
+}
+*/
 
 // Test Stuff
 //------------
@@ -143,12 +186,21 @@ int main(void){
         //RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 
         // Configure I/O pins on GPIO PORT C
-        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15 | GPIO_Pin_14 | GPIO_Pin_13;          // PC15, PC14, PC13
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_2 | GPIO_Pin_1 | GPIO_Pin_0;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;                                   // Outputs
         GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                                  // Push pull
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;                                // 2MHz max speed
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;                                // No pull-ups or pull-downs
         GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+        GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+
+        // Initialise specific pins to levels
+        GPIO_SetBits(GPIOC, RST);                                                       // Display's RST pin is high
+
 
         // Configure I/O pins on PORTB
         // PB6 & PB7 -> UART1, PB8 & PB9 -> I2C1
@@ -191,13 +243,55 @@ int main(void){
         printf("HDM01 Debug Console Starting... \r\n");
         fflush(stdout);
 
- for(;;){
 
+        ResetDisplay();
+        InitDisplay();
+       /* WriteByteDisplay(0x1F);
+        WriteByteDisplay(0x28);
+        WriteByteDisplay(0x67);
+        WriteByteDisplay(0x40);
+        WriteByteDisplay(0x02);         // Big Font
+        WriteByteDisplay(0x02); */
+
+        PrintToDisplay("StartUp()...");
+
+        // Write some graphics
+        /* WriteByteDisplay(0x1F);
+        WriteByteDisplay(0x28);
+        WriteByteDisplay(0x66);
+        WriteByteDisplay(0x11);
+        WriteByteDisplay(0x04);         // xL
+        WriteByteDisplay(0x00);         // xH
+        WriteByteDisplay(0x01);         // yL (always starts at 1 (upper line)
+        WriteByteDisplay(0x00);         // yH
+        WriteByteDisplay(0x01);         // Fixed Value
+        WriteByteDisplay(0x55);         // Pattern we can recognize..
+        WriteByteDisplay(0xAA);
+        WriteByteDisplay(0x55);
+        WriteByteDisplay(0xAA);   */
+        memset(arr, 0x00, 32);
+        testvar = 0;
+
+ for(;;){
         TestI2C();
         GPIO_SetBits(GPIOC, GPIO_Pin_13);
+      //  GPIO_SetBits(GPIOC, GPIO_Pin_2);
+        //GPIO_SetBits(GPIOC, GPIO_Pin_3);
         Delay(0x3FFFFF);
-        //GeneralDelay();
+        OverWriteDisplay();
+        memset(arr, 0x00, 32);
+        sprintf(arr, "Counter: %d   ", testvar);
+        PrintToDisplay(arr);
+        NextLine();
+        memset(arr, 0x00, 32);
+        sprintf(arr, "Debug: %02xh   ", testvar);
+        PrintToDisplay(arr);
+
+        testvar++;
+
         GPIO_ResetBits(GPIOC, GPIO_Pin_13);
+      //  GPIO_ResetBits(GPIOC, GPIO_Pin_2);
+        //GPIO_ResetBits(GPIOC, GPIO_Pin_3);
         //GeneralDelay();
         Delay(0x3FFFFF);
 
