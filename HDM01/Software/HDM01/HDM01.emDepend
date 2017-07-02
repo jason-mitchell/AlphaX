@@ -196,7 +196,7 @@
 
 1425769297 source:c:\temp\work\alphax\hdm01\software\hdm01\setup\startup.s
 
-1498943652 source:c:\temp\work\alphax\hdm01\software\hdm01\src\main.c
+1499016862 source:c:\temp\work\alphax\hdm01\software\hdm01\src\main.c
 	<stdio.h>
 	<string.h>
 	"stm32f0xx_conf.h"
@@ -204,6 +204,7 @@
 	"bsp.h"
 	"i2c.h"
 	"display.h"
+	"graphic.h"
 
 1425769297 source:c:\temp\work\alphax\hdm01\software\hdm01\src\stm32f0xx_it.c
 	"stm32f0xx_it.h"
@@ -221,17 +222,20 @@
 1375127873 source:c:\temp\work\alphax\hdm01\software\hdm01\src\system_stm32f0xx.c
 	"stm32f0xx.h"
 
-1498940200 c:\temp\work\alphax\hdm01\software\hdm01\include\bsp.h
+1499016862 c:\temp\work\alphax\hdm01\software\hdm01\include\bsp.h
 
 1497133040 source:c:\temp\work\alphax\hdm01\software\hdm01\src\i2c.c
 	"stm32f0xx_conf.h"
 
-1498939623 c:\temp\work\alphax\hdm01\software\hdm01\include\i2c.h
+1499016874 c:\temp\work\alphax\hdm01\software\hdm01\include\i2c.h
 
-1498943926 source:c:\temp\work\alphax\hdm01\software\hdm01\src\display.c
+1499025448 source:c:\temp\work\alphax\hdm01\software\hdm01\src\display.c
 	"display.h"
 	"bsp.h"
 	"stm32f0xx_conf.h"
+	<string.h>
 
-1498943926 c:\temp\work\alphax\hdm01\software\hdm01\include\display.h
+1499016862 c:\temp\work\alphax\hdm01\software\hdm01\include\display.h
+
+1499027639 c:\temp\work\alphax\hdm01\software\hdm01\include\graphic.h
 

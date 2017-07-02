@@ -14,6 +14,7 @@
 #include "bsp.h"
 #include "i2c.h"
 #include "display.h"
+#include "graphic.h"
 
 
 // Private typedefs
@@ -189,7 +190,7 @@ int main(void){
         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_2 | GPIO_Pin_1 | GPIO_Pin_0;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;                                   // Outputs
         GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                                  // Push pull
-        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;                                // 2MHz max speed
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;                                // 10MHz since we have a display on this port
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;                                // No pull-ups or pull-downs
         GPIO_Init(GPIOC, &GPIO_InitStructure);
 
@@ -255,6 +256,7 @@ int main(void){
 
         PrintToDisplay("StartUp()...");
 
+
         // Write some graphics
         /* WriteByteDisplay(0x1F);
         WriteByteDisplay(0x28);
@@ -269,31 +271,31 @@ int main(void){
         WriteByteDisplay(0xAA);
         WriteByteDisplay(0x55);
         WriteByteDisplay(0xAA);   */
-        memset(arr, 0x00, 32);
-        testvar = 0;
+        Delay(0x3FFFFF);
+        PutGraphic(Graphic1);
+        GPIO_SetBits(GPIOC, GPIO_Pin_13);
 
  for(;;){
         TestI2C();
         GPIO_SetBits(GPIOC, GPIO_Pin_13);
-      //  GPIO_SetBits(GPIOC, GPIO_Pin_2);
-        //GPIO_SetBits(GPIOC, GPIO_Pin_3);
         Delay(0x3FFFFF);
-        OverWriteDisplay();
-        memset(arr, 0x00, 32);
-        sprintf(arr, "Counter: %d   ", testvar);
-        PrintToDisplay(arr);
-        NextLine();
-        memset(arr, 0x00, 32);
-        sprintf(arr, "Debug: %02xh   ", testvar);
-        PrintToDisplay(arr);
+ //       SetXY(GetX(), 0);
+ //       WriteDisplayData(0x55);
+ //       OverWriteDisplay();
+ //       memset(arr, 0x00, 32);
+ //       sprintf(arr, "Counter: %d   ", testvar);
+ //       PrintToDisplay(arr);
+ //       NextLine();
+ //       memset(arr, 0x00, 32);
+ //       sprintf(arr, "Debug: %02xh   ", testvar);
+ //       PrintToDisplay(arr);
 
-        testvar++;
+ //       testvar++;
 
         GPIO_ResetBits(GPIOC, GPIO_Pin_13);
-      //  GPIO_ResetBits(GPIOC, GPIO_Pin_2);
-        //GPIO_ResetBits(GPIOC, GPIO_Pin_3);
-        //GeneralDelay();
         Delay(0x3FFFFF);
+//        SetXY(GetX(), 1);
+//        WriteDisplayData(0xAA);
 
 
  }
