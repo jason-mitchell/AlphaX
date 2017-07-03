@@ -15,6 +15,8 @@
 #include "i2c.h"
 #include "display.h"
 #include "graphic.h"
+#include "graphlib.h"
+#include "stdfonts.h"
 
 
 // Private typedefs
@@ -238,64 +240,24 @@ int main(void){
         USART_Cmd(USART1, ENABLE);
 
         InitI2C();                                                  // Initialize and enable I2C module
-
         SysTick_Config(4800);
-
         printf("HDM01 Debug Console Starting... \r\n");
         fflush(stdout);
-
-
         ResetDisplay();
         InitDisplay();
-       /* WriteByteDisplay(0x1F);
-        WriteByteDisplay(0x28);
-        WriteByteDisplay(0x67);
-        WriteByteDisplay(0x40);
-        WriteByteDisplay(0x02);         // Big Font
-        WriteByteDisplay(0x02); */
-
-        PrintToDisplay("StartUp()...");
-
-
-        // Write some graphics
-        /* WriteByteDisplay(0x1F);
-        WriteByteDisplay(0x28);
-        WriteByteDisplay(0x66);
-        WriteByteDisplay(0x11);
-        WriteByteDisplay(0x04);         // xL
-        WriteByteDisplay(0x00);         // xH
-        WriteByteDisplay(0x01);         // yL (always starts at 1 (upper line)
-        WriteByteDisplay(0x00);         // yH
-        WriteByteDisplay(0x01);         // Fixed Value
-        WriteByteDisplay(0x55);         // Pattern we can recognize..
-        WriteByteDisplay(0xAA);
-        WriteByteDisplay(0x55);
-        WriteByteDisplay(0xAA);   */
         Delay(0x3FFFFF);
         PutGraphic(Graphic1);
-        GPIO_SetBits(GPIOC, GPIO_Pin_13);
+        Delay(0x3FFFFF);
+        SetXY(0, 0);
+        OutString(" Vol: -10dB", Font2);
+        UpdateFromFB();
 
  for(;;){
         TestI2C();
         GPIO_SetBits(GPIOC, GPIO_Pin_13);
         Delay(0x3FFFFF);
- //       SetXY(GetX(), 0);
- //       WriteDisplayData(0x55);
- //       OverWriteDisplay();
- //       memset(arr, 0x00, 32);
- //       sprintf(arr, "Counter: %d   ", testvar);
- //       PrintToDisplay(arr);
- //       NextLine();
- //       memset(arr, 0x00, 32);
- //       sprintf(arr, "Debug: %02xh   ", testvar);
- //       PrintToDisplay(arr);
-
- //       testvar++;
-
         GPIO_ResetBits(GPIOC, GPIO_Pin_13);
         Delay(0x3FFFFF);
-//        SetXY(GetX(), 1);
-//        WriteDisplayData(0xAA);
 
 
  }

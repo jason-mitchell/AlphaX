@@ -188,6 +188,9 @@
 		<Unit filename="Src/display.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Src/graphlib.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Src/i2c.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -207,7 +210,9 @@
 		</Unit>
 		<Unit filename="include/bsp.h" />
 		<Unit filename="include/display.h" />
+		<Unit filename="include/graphlib.h" />
 		<Unit filename="include/i2c.h" />
+		<Unit filename="include/stdfonts.h" />
 		<Extensions>
 			<projectwizard TargetDevice="STM32F052RB" />
 			<code_completion />

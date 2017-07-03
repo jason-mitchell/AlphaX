@@ -46,6 +46,8 @@ void PutGraphic(char *graphics){
     unsigned char bmp;
     unsigned int ptr = 0;
 
+    DISPLAY_COLUMN = 0;
+    DISPLAY_ROW = 0;
     // Update cursor
     WriteByteDisplay(0x1F);
     WriteByteDisplay(0x24);
@@ -95,6 +97,9 @@ void PutGraphic(char *graphics){
         WriteByteDisplay(bmp);
         ptr++;
     }
+
+    DISPLAY_COLUMN = 0;
+    DISPLAY_ROW = 0;
 }
 
 //----------------------------------------------------------
@@ -135,6 +140,33 @@ void InitDisplay(void){
 
         DISPLAY_ROW = 0;
         DISPLAY_COLUMN = 0;
+        memset(framebuffer, 0, 255); // Clear the framebuffer
+
+}
+
+//----------------------------------------------------------------------------
+// Name: eWriteDispData
+// Function: Write Display Data - emulation of WriteLCDData() in GraphLCD
+// Parameters: Bitmap pattern
+// Returns: void
+//----------------------------------------------------------------------------
+void eWriteDispData(unsigned char data){
+    unsigned int pr = 0;
+
+    pr = (DISPLAY_ROW * X_SIZE) + DISPLAY_COLUMN;
+    framebuffer[pr] = data;
+    DISPLAY_COLUMN++;
+}
+
+//---------------------------------------------------------------------------
+// Name: UpdateFromFB
+// Function: Refresh/update the display from the frame buffer
+// Parameters: void
+// Returns: void
+//---------------------------------------------------------------------------
+void UpdateFromFB(void){
+
+    PutGraphic(framebuffer);
 
 }
 
@@ -232,36 +264,6 @@ void WriteByteDisplay(unsigned char data){
         GPIO_ResetBits(GPIOC, SCLK);    // Lower clock
 
     }
-}
-
-//------------------------------------------------------------------------------------------
-// Name: WriteDisplayData
-// Function: Write graphics data to the display
-//           This writes one bitmap chunk at a time to create compatibility with upper layer code
-//           It also increments the internal counters
-//------------------------------------------------------------------------------------------
-void WriteDisplayData(unsigned char bmp){
-
-    // Update cursor
-    WriteByteDisplay(0x1F);
-    WriteByteDisplay(0x24);
-    WriteByteDisplay(DISPLAY_COLUMN);
-    WriteByteDisplay(0);
-    WriteByteDisplay(DISPLAY_ROW);
-    WriteByteDisplay(0);
-
-
-    WriteByteDisplay(0x1F);
-    WriteByteDisplay(0x28);
-    WriteByteDisplay(0x66);
-    WriteByteDisplay(0x11);
-    WriteByteDisplay(0x01);                     // xL
-    WriteByteDisplay(0x00);                     // xH
-    WriteByteDisplay(0x01);                     // yL   // In this command these values are used to dimension the data received, NOT the actual location
-    WriteByteDisplay(0x00);                     // yH
-    WriteByteDisplay(0x01);                     // Fixed Value
-    WriteByteDisplay(bmp);                      // Pattern we can recognize..
-    DISPLAY_COLUMN++;
 }
 
 //----------------------------------------------

@@ -3,8 +3,8 @@
 //                      Alpha-X HDM01
 //
 //-----------------------------------------------------------------------------------------------------
-#ifndef __BSP_H
-#define __BSP_H
+#ifndef __BSP_H_
+#define __BSP_H_
 
 
 // VFD Display Port Pins PORTC

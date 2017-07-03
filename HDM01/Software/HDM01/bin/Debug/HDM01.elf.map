@@ -382,6 +382,8 @@ Discarded input sections
  .bss           0x00000000        0x0 obj\Debug\Setup\startup.o
  .data          0x00000000        0x0 obj\Debug\Src\display.o
  .bss           0x00000000        0x0 obj\Debug\Src\display.o
+ .data          0x00000000        0x0 obj\Debug\Src\graphlib.o
+ .bss           0x00000000        0x0 obj\Debug\Src\graphlib.o
  .data          0x00000000        0x0 obj\Debug\Src\i2c.o
  .bss           0x00000000        0x0 obj\Debug\Src\i2c.o
  .data          0x00000000        0x0 obj\Debug\Src\main.o
@@ -586,6 +588,7 @@ LOAD obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
 LOAD obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o
 LOAD obj\Debug\Setup\startup.o
 LOAD obj\Debug\Src\display.o
+LOAD obj\Debug\Src\graphlib.o
 LOAD obj\Debug\Src\i2c.o
 LOAD obj\Debug\Src\main.o
 LOAD obj\Debug\Src\stm32f0xx_it.o
@@ -608,7 +611,7 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
                 0x08000000                g_pfnVectors
                 0x080000c4                . = ALIGN (0x4)
 
-.text           0x080000c8     0x5eb4
+.text           0x080000c8     0x777c
                 0x080000c8                . = ALIGN (0x4)
  *(.text)
  .text          0x080000c8       0x60 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
@@ -765,291 +768,652 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
                 0x0800286c                USART_ClearFlag
                 0x08002884                USART_GetITStatus
                 0x08002938                USART_ClearITPendingBit
- .text          0x08002968      0x538 obj\Debug\Src\display.o
+ .text          0x08002968      0x500 obj\Debug\Src\display.o
                 0x08002968                BitTimer
                 0x08002988                ResetTimer
                 0x080029ac                PutGraphic
-                0x08002be8                ResetDisplay
-                0x08002c14                InitDisplay
-                0x08002c60                ClearDisplay
-                0x08002c84                OverWriteDisplay
-                0x08002cb0                NextLine
-                0x08002cdc                PrintToDisplay
-                0x08002d3c                WriteByteDisplay
-                0x08002db4                WriteDisplayData
-                0x08002e48                SetXY
-                0x08002e78                GetX
-                0x08002e8c                GetY
- .text          0x08002ea0       0xac obj\Debug\Src\i2c.o
-                0x08002ea0                InitI2C
- .text          0x08002f4c      0x42c obj\Debug\Src\main.o
-                0x08003078                Delay
-                0x0800309c                GeneralDelay
-                0x080030b8                SysTick_Handler
-                0x080030f4                USART1_IRQHandler
-                0x08003144                TestI2C
-                0x080031a8                main
- .text          0x08003378       0x20 obj\Debug\Src\stm32f0xx_it.o
-                0x08003378                NMI_Handler
-                0x08003380                HardFault_Handler
-                0x08003388                SVC_Handler
-                0x08003390                PendSV_Handler
- .text          0x08003398      0x168 obj\Debug\Src\syscalls.o
-                0x08003398                _kill
-                0x080033b8                _exit
-                0x080033d0                _read
-                0x080033fc                _write
-                0x08003450                _sbrk_r
-                0x080034a4                _close
-                0x080034b8                _isatty
-                0x080034cc                _lseek
-                0x080034e4                _fstat
- .text          0x08003500      0x23c obj\Debug\Src\system_stm32f0xx.o
-                0x08003500                SystemInit
-                0x0800358c                SystemCoreClockUpdate
- .text          0x0800373c       0x9c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
-                0x0800373c                __aeabi_uidiv
-                0x0800373c                __udivsi3
-                0x080037c4                __aeabi_uidivmod
- .text          0x080037d8        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
-                0x080037d8                __aeabi_idiv0
-                0x080037d8                __aeabi_ldiv0
- .text          0x080037dc       0x40 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_aeabi_uldivmod.o)
-                0x080037dc                __aeabi_uldivmod
- .text          0x0800381c       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_muldi3.o)
-                0x0800381c                __muldi3
-                0x0800381c                __aeabi_lmul
- .text          0x08003860       0x74 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(bpabi.o)
-                0x08003860                __gnu_ldivmod_helper
-                0x0800389c                __gnu_uldivmod_helper
- .text          0x080038d4      0x3d0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_divdi3.o)
-                0x080038d4                __divdi3
- .text          0x08003ca4      0x38c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivdi3.o)
-                0x08003ca4                __udivdi3
- .text          0x08004030       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_clzsi2.o)
-                0x08004030                __clzsi2
+                0x08002bcc                ResetDisplay
+                0x08002bf8                InitDisplay
+                0x08002c54                eWriteDispData
+                0x08002ca8                UpdateFromFB
+                0x08002cbc                ClearDisplay
+                0x08002ce0                OverWriteDisplay
+                0x08002d0c                NextLine
+                0x08002d38                PrintToDisplay
+                0x08002d98                WriteByteDisplay
+                0x08002e10                SetXY
+                0x08002e40                GetX
+                0x08002e54                GetY
+ .text          0x08002e68      0x164 obj\Debug\Src\graphlib.o
+                0x08002e68                OutChar
+                0x08002f90                OutString
+ .text          0x08002fcc       0xac obj\Debug\Src\i2c.o
+                0x08002fcc                InitI2C
+ .text          0x08003078      0x438 obj\Debug\Src\main.o
+                0x080031a4                Delay
+                0x080031c8                GeneralDelay
+                0x080031e4                SysTick_Handler
+                0x08003220                USART1_IRQHandler
+                0x08003270                TestI2C
+                0x080032d4                main
+ .text          0x080034b0       0x20 obj\Debug\Src\stm32f0xx_it.o
+                0x080034b0                NMI_Handler
+                0x080034b8                HardFault_Handler
+                0x080034c0                SVC_Handler
+                0x080034c8                PendSV_Handler
+ .text          0x080034d0      0x168 obj\Debug\Src\syscalls.o
+                0x080034d0                _kill
+                0x080034f0                _exit
+                0x08003508                _read
+                0x08003534                _write
+                0x08003588                _sbrk_r
+                0x080035dc                _close
+                0x080035f0                _isatty
+                0x08003604                _lseek
+                0x0800361c                _fstat
+ .text          0x08003638      0x23c obj\Debug\Src\system_stm32f0xx.o
+                0x08003638                SystemInit
+                0x080036c4                SystemCoreClockUpdate
+ .text          0x08003874       0x9c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+                0x08003874                __aeabi_uidiv
+                0x08003874                __udivsi3
+                0x080038fc                __aeabi_uidivmod
+ .text          0x08003910        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x08003910                __aeabi_idiv0
+                0x08003910                __aeabi_ldiv0
+ .text          0x08003914       0x40 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_aeabi_uldivmod.o)
+                0x08003914                __aeabi_uldivmod
+ .text          0x08003954       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_muldi3.o)
+                0x08003954                __muldi3
+                0x08003954                __aeabi_lmul
+ .text          0x08003998       0x74 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(bpabi.o)
+                0x08003998                __gnu_ldivmod_helper
+                0x080039d4                __gnu_uldivmod_helper
+ .text          0x08003a0c      0x3d0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_divdi3.o)
+                0x08003a0c                __divdi3
+ .text          0x08003ddc      0x38c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivdi3.o)
+                0x08003ddc                __udivdi3
+ .text          0x08004168       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_clzsi2.o)
+                0x08004168                __clzsi2
  *(.text*)
  .text.Reset_Handler
-                0x0800406c       0x50 obj\Debug\Setup\startup.o
-                0x0800406c                Reset_Handler
+                0x080041a4       0x50 obj\Debug\Setup\startup.o
+                0x080041a4                Reset_Handler
  .text.Default_Handler
-                0x080040bc        0x2 obj\Debug\Setup\startup.o
-                0x080040bc                TIM1_CC_IRQHandler
-                0x080040bc                ADC1_COMP_IRQHandler
-                0x080040bc                PVD_IRQHandler
-                0x080040bc                I2C1_IRQHandler
-                0x080040bc                SPI1_IRQHandler
-                0x080040bc                TIM6_DAC_IRQHandler
-                0x080040bc                EXTI2_3_IRQHandler
-                0x080040bc                I2C2_IRQHandler
-                0x080040bc                TIM17_IRQHandler
-                0x080040bc                RTC_IRQHandler
-                0x080040bc                TIM16_IRQHandler
-                0x080040bc                TIM3_IRQHandler
-                0x080040bc                EXTI4_15_IRQHandler
-                0x080040bc                RCC_IRQHandler
-                0x080040bc                DMA1_Channel1_IRQHandler
-                0x080040bc                Default_Handler
-                0x080040bc                CEC_IRQHandler
-                0x080040bc                TIM14_IRQHandler
-                0x080040bc                DMA1_Channel4_5_IRQHandler
-                0x080040bc                TIM15_IRQHandler
-                0x080040bc                EXTI0_1_IRQHandler
-                0x080040bc                SPI2_IRQHandler
-                0x080040bc                TS_IRQHandler
-                0x080040bc                WWDG_IRQHandler
-                0x080040bc                TIM2_IRQHandler
-                0x080040bc                DMA1_Channel2_3_IRQHandler
-                0x080040bc                USART2_IRQHandler
-                0x080040bc                FLASH_IRQHandler
-                0x080040bc                TIM1_BRK_UP_TRG_COM_IRQHandler
- *fill*         0x080040be        0x2 00
+                0x080041f4        0x2 obj\Debug\Setup\startup.o
+                0x080041f4                TIM1_CC_IRQHandler
+                0x080041f4                ADC1_COMP_IRQHandler
+                0x080041f4                PVD_IRQHandler
+                0x080041f4                I2C1_IRQHandler
+                0x080041f4                SPI1_IRQHandler
+                0x080041f4                TIM6_DAC_IRQHandler
+                0x080041f4                EXTI2_3_IRQHandler
+                0x080041f4                I2C2_IRQHandler
+                0x080041f4                TIM17_IRQHandler
+                0x080041f4                RTC_IRQHandler
+                0x080041f4                TIM16_IRQHandler
+                0x080041f4                TIM3_IRQHandler
+                0x080041f4                EXTI4_15_IRQHandler
+                0x080041f4                RCC_IRQHandler
+                0x080041f4                DMA1_Channel1_IRQHandler
+                0x080041f4                Default_Handler
+                0x080041f4                CEC_IRQHandler
+                0x080041f4                TIM14_IRQHandler
+                0x080041f4                DMA1_Channel4_5_IRQHandler
+                0x080041f4                TIM15_IRQHandler
+                0x080041f4                EXTI0_1_IRQHandler
+                0x080041f4                SPI2_IRQHandler
+                0x080041f4                TS_IRQHandler
+                0x080041f4                WWDG_IRQHandler
+                0x080041f4                TIM2_IRQHandler
+                0x080041f4                DMA1_Channel2_3_IRQHandler
+                0x080041f4                USART2_IRQHandler
+                0x080041f4                FLASH_IRQHandler
+                0x080041f4                TIM1_BRK_UP_TRG_COM_IRQHandler
+ *fill*         0x080041f6        0x2 00
  .text.__register_exitproc
-                0x080040c0       0xc4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
-                0x080040c0                __register_exitproc
- .text.__errno  0x08004184        0xc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
-                0x08004184                __errno
+                0x080041f8       0xc4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+                0x080041f8                __register_exitproc
+ .text.__errno  0x080042bc        0xc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
+                0x080042bc                __errno
  .text._fflush_r
-                0x08004190      0x15c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
-                0x08004190                _fflush_r
- .text.fflush   0x080042ec       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
-                0x080042ec                fflush
+                0x080042c8      0x15c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
+                0x080042c8                _fflush_r
+ .text.fflush   0x08004424       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
+                0x08004424                fflush
  .text._cleanup_r
-                0x08004314       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
-                0x08004314                _cleanup_r
+                0x0800444c       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x0800444c                _cleanup_r
  .text.std.isra.0
-                0x08004324       0x48 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
- .text.__sinit  0x0800436c       0x50 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
-                0x0800436c                __sinit
+                0x0800445c       0x48 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+ .text.__sinit  0x080044a4       0x50 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x080044a4                __sinit
  .text.__sfp_lock_acquire
-                0x080043bc        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
-                0x080043bc                __sfp_lock_acquire
+                0x080044f4        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x080044f4                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x080043c0        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
-                0x080043c0                __sfp_lock_release
+                0x080044f8        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x080044f8                __sfp_lock_release
  .text.__libc_fini_array
-                0x080043c4       0x60 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
-                0x080043c4                __libc_fini_array
+                0x080044fc       0x60 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+                0x080044fc                __libc_fini_array
  .text._malloc_trim_r
-                0x08004424       0xa0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
-                0x08004424                _malloc_trim_r
- .text._free_r  0x080044c4      0x190 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
-                0x080044c4                _free_r
- .text._fwalk   0x08004654       0xd8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
-                0x08004654                _fwalk
+                0x0800455c       0xa0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
+                0x0800455c                _malloc_trim_r
+ .text._free_r  0x080045fc      0x190 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
+                0x080045fc                _free_r
+ .text._fwalk   0x0800478c       0xd8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
+                0x0800478c                _fwalk
  .text._fwalk_reent
-                0x0800472c       0xe4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
-                0x0800472c                _fwalk_reent
+                0x08004864       0xe4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
+                0x08004864                _fwalk_reent
  .text.__libc_init_array
-                0x08004810       0x90 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
-                0x08004810                __libc_init_array
+                0x08004948       0x90 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+                0x08004948                __libc_init_array
  .text._malloc_r
-                0x080048a0      0x514 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
-                0x080048a0                _malloc_r
- .text.memset   0x08004db4      0x118 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
-                0x08004db4                memset
+                0x080049d8      0x514 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
+                0x080049d8                _malloc_r
+ .text.memset   0x08004eec      0x118 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+                0x08004eec                memset
  .text.__malloc_lock
-                0x08004ecc        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
-                0x08004ecc                __malloc_lock
+                0x08005004        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
+                0x08005004                __malloc_lock
  .text.__malloc_unlock
-                0x08004ed0        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
-                0x08004ed0                __malloc_unlock
- .text._puts_r  0x08004ed4       0x68 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
-                0x08004ed4                _puts_r
- .text.puts     0x08004f3c       0x14 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
-                0x08004f3c                puts
- .text.__sread  0x08004f50       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
-                0x08004f50                __sread
+                0x08005008        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
+                0x08005008                __malloc_unlock
+ .text._puts_r  0x0800500c       0x68 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+                0x0800500c                _puts_r
+ .text.puts     0x08005074       0x14 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+                0x08005074                puts
+ .text.__sread  0x08005088       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x08005088                __sread
  .text.__swrite
-                0x08004f78       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
-                0x08004f78                __swrite
- .text.__sseek  0x08004fb0       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
-                0x08004fb0                __sseek
+                0x080050b0       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x080050b0                __swrite
+ .text.__sseek  0x080050e8       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x080050e8                __sseek
  .text.__sclose
-                0x08004fdc        0xc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
-                0x08004fdc                __sclose
- .text.strlen   0x08004fe8       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
-                0x08004fe8                strlen
+                0x08005114        0xc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x08005114                __sclose
+ .text.strlen   0x08005120       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+                0x08005120                strlen
  .text._write_r
-                0x08004ff8       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
-                0x08004ff8                _write_r
+                0x08005130       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
+                0x08005130                _write_r
  .text.startup.register_fini
-                0x08005020       0x18 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
- .text.atexit   0x08005038       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
-                0x08005038                atexit
+                0x08005158       0x18 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x08005170       0x10 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+                0x08005170                atexit
  .text._close_r
-                0x08005048       0x24 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
-                0x08005048                _close_r
+                0x08005180       0x24 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
+                0x08005180                _close_r
  .text._fclose_r
-                0x0800506c       0xa0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
-                0x0800506c                _fclose_r
- .text.fclose   0x0800510c       0x14 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
-                0x0800510c                fclose
+                0x080051a4       0xa0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
+                0x080051a4                _fclose_r
+ .text.fclose   0x08005244       0x14 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
+                0x08005244                fclose
  .text.__sfvwrite_r
-                0x08005120      0x304 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
-                0x08005120                __sfvwrite_r
+                0x08005258      0x304 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
+                0x08005258                __sfvwrite_r
  .text._lseek_r
-                0x08005424       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
-                0x08005424                _lseek_r
- .text.memchr   0x0800544c      0x120 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
-                0x0800544c                memchr
- .text.memcpy   0x0800556c      0x144 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
-                0x0800556c                memcpy
- .text.memmove  0x080056b0      0x19c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
-                0x080056b0                memmove
- .text._read_r  0x0800584c       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
-                0x0800584c                _read_r
+                0x0800555c       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
+                0x0800555c                _lseek_r
+ .text.memchr   0x08005584      0x120 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
+                0x08005584                memchr
+ .text.memcpy   0x080056a4      0x144 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
+                0x080056a4                memcpy
+ .text.memmove  0x080057e8      0x19c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+                0x080057e8                memmove
+ .text._read_r  0x08005984       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
+                0x08005984                _read_r
  .text._realloc_r
-                0x08005874      0x3d4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
-                0x08005874                _realloc_r
+                0x080059ac      0x3d4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
+                0x080059ac                _realloc_r
  .text.__swsetup_r
-                0x08005c48       0xbc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
-                0x08005c48                __swsetup_r
+                0x08005d80       0xbc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
+                0x08005d80                __swsetup_r
  .text.__smakebuf_r
-                0x08005d04       0xdc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
-                0x08005d04                __smakebuf_r
+                0x08005e3c       0xdc c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
+                0x08005e3c                __smakebuf_r
  .text._fstat_r
-                0x08005de0       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
-                0x08005de0                _fstat_r
+                0x08005f18       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
+                0x08005f18                _fstat_r
  .text._isatty_r
-                0x08005e08       0x24 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
-                0x08005e08                _isatty_r
+                0x08005f40       0x24 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
+                0x08005f40                _isatty_r
  *(.rodata)
- .rodata        0x08005e2c      0x12c obj\Debug\Src\main.o
-                0x08005e2c                Graphic1
+ .rodata        0x08005f64     0x18bc obj\Debug\Src\main.o
+                0x08005f64                Graphic1
+                0x08006044                f02_default
+                0x08006054                f02_29
+                0x08006068                f02_30
+                0x0800607c                f02_31
+                0x08006090                f02_32
+                0x080060a4                f02_33
+                0x080060ac                f02_34
+                0x080060b8                f02_35
+                0x080060d0                f02_36
+                0x080060e4                f02_37
+                0x08006104                f02_38
+                0x0800611c                f02_39
+                0x08006124                f02_40
+                0x08006130                f02_41
+                0x0800613c                f02_42
+                0x08006150                f02_43
+                0x08006160                f02_44
+                0x0800616c                f02_45
+                0x08006178                f02_46
+                0x08006184                f02_47
+                0x08006194                f02_48
+                0x080061a8                f02_49
+                0x080061b4                f02_50
+                0x080061c4                f02_51
+                0x080061d8                f02_52
+                0x080061ec                f02_53
+                0x08006200                f02_54
+                0x08006214                f02_55
+                0x08006228                f02_56
+                0x0800623c                f02_57
+                0x08006250                f02_58
+                0x08006258                f02_59
+                0x08006260                f02_60
+                0x08006274                f02_61
+                0x08006288                f02_62
+                0x0800629c                f02_63
+                0x080062b0                f02_64
+                0x080062cc                f02_65
+                0x080062e0                f02_66
+                0x080062f8                f02_67
+                0x08006310                f02_68
+                0x08006328                f02_69
+                0x0800633c                f02_70
+                0x08006350                f02_71
+                0x08006368                f02_72
+                0x08006380                f02_73
+                0x08006388                f02_74
+                0x08006394                f02_75
+                0x080063ac                f02_76
+                0x080063bc                f02_77
+                0x080063d8                f02_78
+                0x080063f0                f02_79
+                0x0800640c                f02_80
+                0x08006424                f02_81
+                0x08006440                f02_82
+                0x08006458                f02_83
+                0x0800646c                f02_84
+                0x08006480                f02_85
+                0x08006498                f02_86
+                0x080064ac                f02_87
+                0x080064cc                f02_88
+                0x080064e4                f02_89
+                0x080064fc                f02_90
+                0x08006514                f02_91
+                0x08006520                f02_92
+                0x08006530                f02_93
+                0x0800653c                f02_94
+                0x0800654c                f02_95
+                0x08006560                f02_96
+                0x0800656c                f02_97
+                0x08006580                f02_98
+                0x08006594                f02_99
+                0x080065a8                f02_100
+                0x080065bc                f02_101
+                0x080065d0                f02_102
+                0x080065e0                f02_103
+                0x080065f4                f02_104
+                0x08006608                f02_105
+                0x08006610                f02_106
+                0x0800661c                f02_107
+                0x08006630                f02_108
+                0x08006638                f02_109
+                0x08006654                f02_110
+                0x08006668                f02_111
+                0x0800667c                f02_112
+                0x08006690                f02_113
+                0x080066a4                f02_114
+                0x080066b8                f02_115
+                0x080066c8                f02_116
+                0x080066d4                f02_117
+                0x080066e8                f02_118
+                0x080066fc                f02_119
+                0x08006714                f02_120
+                0x08006724                f02_121
+                0x08006738                f02_122
+                0x0800674c                f02_123
+                0x0800675c                f02_124
+                0x08006764                f02_125
+                0x08006774                f02_126
+                0x08006788                Font2
+                0x08006b88                f01_00
+                0x08006b90                f01_01
+                0x08006b98                f01_02
+                0x08006ba0                f01_03
+                0x08006bb4                f01_04
+                0x08006bc4                f01_05
+                0x08006bd0                f01_06
+                0x08006be4                f01_07
+                0x08006bec                f01_08
+                0x08006bfc                f01_09
+                0x08006c04                f01_10
+                0x08006c0c                f01_11
+                0x08006c14                f01_12
+                0x08006c1c                f01_13
+                0x08006c30                f01_14
+                0x08006c44                f01_15
+                0x08006c58                f01_16
+                0x08006c60                f01_17
+                0x08006c68                f01_18
+                0x08006c70                f01_19
+                0x08006c78                f01_20
+                0x08006c80                f01_21
+                0x08006c88                f01_22
+                0x08006c90                f01_23
+                0x08006c98                f01_24
+                0x08006ca0                f01_25
+                0x08006ca8                f01_26
+                0x08006cb0                f01_27
+                0x08006cb8                f01_28
+                0x08006cc0                f01_29
+                0x08006cc8                f01_30
+                0x08006cd0                f01_31
+                0x08006cd8                f01_32
+                0x08006ce0                f01_33
+                0x08006ce8                f01_34
+                0x08006cf0                f01_35
+                0x08006cf8                f01_36
+                0x08006d00                f01_37
+                0x08006d08                f01_38
+                0x08006d10                f01_39
+                0x08006d18                f01_40
+                0x08006d20                f01_41
+                0x08006d28                f01_42
+                0x08006d30                f01_43
+                0x08006d38                f01_44
+                0x08006d40                f01_45
+                0x08006d48                f01_46
+                0x08006d50                f01_47
+                0x08006d58                f01_48
+                0x08006d60                f01_49
+                0x08006d68                f01_50
+                0x08006d70                f01_51
+                0x08006d78                f01_52
+                0x08006d80                f01_53
+                0x08006d88                f01_54
+                0x08006d90                f01_55
+                0x08006d98                f01_56
+                0x08006da0                f01_57
+                0x08006da8                f01_58
+                0x08006db0                f01_59
+                0x08006db8                f01_60
+                0x08006dc0                f01_61
+                0x08006dc8                f01_62
+                0x08006dd0                f01_63
+                0x08006dd8                f01_64
+                0x08006de0                f01_65
+                0x08006de8                f01_66
+                0x08006df0                f01_67
+                0x08006df8                f01_68
+                0x08006e00                f01_69
+                0x08006e08                f01_70
+                0x08006e10                f01_71
+                0x08006e18                f01_72
+                0x08006e20                f01_73
+                0x08006e28                f01_74
+                0x08006e30                f01_75
+                0x08006e38                f01_76
+                0x08006e40                f01_77
+                0x08006e48                f01_78
+                0x08006e50                f01_79
+                0x08006e58                f01_80
+                0x08006e60                f01_81
+                0x08006e68                f01_82
+                0x08006e70                f01_83
+                0x08006e78                f01_84
+                0x08006e80                f01_85
+                0x08006e88                f01_86
+                0x08006e90                f01_87
+                0x08006e98                f01_88
+                0x08006ea0                f01_89
+                0x08006ea8                f01_90
+                0x08006eb0                f01_91
+                0x08006eb8                f01_92
+                0x08006ec0                f01_93
+                0x08006ec8                f01_94
+                0x08006ed0                f01_95
+                0x08006ed8                f01_96
+                0x08006ee0                f01_97
+                0x08006ee8                f01_98
+                0x08006ef0                f01_99
+                0x08006ef8                f01_100
+                0x08006f00                f01_101
+                0x08006f08                f01_102
+                0x08006f10                f01_103
+                0x08006f18                f01_104
+                0x08006f20                f01_105
+                0x08006f28                f01_106
+                0x08006f30                f01_107
+                0x08006f38                f01_108
+                0x08006f40                f01_109
+                0x08006f48                f01_110
+                0x08006f50                f01_111
+                0x08006f58                f01_112
+                0x08006f60                f01_113
+                0x08006f68                f01_114
+                0x08006f70                f01_115
+                0x08006f78                f01_116
+                0x08006f80                f01_117
+                0x08006f88                f01_118
+                0x08006f90                f01_119
+                0x08006f98                f01_120
+                0x08006fa0                f01_121
+                0x08006fa8                f01_122
+                0x08006fb0                f01_123
+                0x08006fb8                f01_124
+                0x08006fc0                f01_125
+                0x08006fc8                f01_126
+                0x08006fd0                f01_127
+                0x08006fd8                f01_128
+                0x08006fe0                f01_129
+                0x08006fe8                f01_130
+                0x08006ff0                f01_131
+                0x08006ff8                f01_132
+                0x08007000                f01_133
+                0x08007008                f01_134
+                0x08007010                f01_135
+                0x08007018                f01_136
+                0x08007020                f01_137
+                0x08007028                f01_138
+                0x08007030                f01_139
+                0x08007038                f01_140
+                0x08007040                f01_141
+                0x08007048                f01_142
+                0x08007050                f01_143
+                0x08007058                f01_144
+                0x08007060                f01_145
+                0x08007068                f01_146
+                0x08007070                f01_147
+                0x08007078                f01_148
+                0x08007080                f01_149
+                0x08007088                f01_150
+                0x08007090                f01_151
+                0x08007098                f01_152
+                0x080070a0                f01_153
+                0x080070a8                f01_154
+                0x080070b0                f01_155
+                0x080070b8                f01_156
+                0x080070c0                f01_157
+                0x080070c8                f01_158
+                0x080070d0                f01_159
+                0x080070d8                f01_160
+                0x080070e0                f01_161
+                0x080070e8                f01_162
+                0x080070f0                f01_163
+                0x080070f8                f01_164
+                0x08007100                f01_165
+                0x08007108                f01_166
+                0x08007110                f01_167
+                0x08007118                f01_168
+                0x08007120                f01_169
+                0x08007128                f01_170
+                0x08007130                f01_171
+                0x08007138                f01_172
+                0x08007140                f01_173
+                0x08007148                f01_174
+                0x08007150                f01_175
+                0x08007158                f01_176
+                0x08007160                f01_177
+                0x08007168                f01_178
+                0x08007170                f01_179
+                0x08007178                f01_180
+                0x08007180                f01_181
+                0x08007188                f01_182
+                0x08007190                f01_183
+                0x08007198                f01_184
+                0x080071a0                f01_185
+                0x080071a8                f01_186
+                0x080071b0                f01_187
+                0x080071b8                f01_188
+                0x080071c0                f01_189
+                0x080071c8                f01_190
+                0x080071d0                f01_191
+                0x080071d8                f01_192
+                0x080071e0                f01_193
+                0x080071e8                f01_194
+                0x080071f0                f01_195
+                0x080071f8                f01_196
+                0x08007200                f01_197
+                0x08007208                f01_198
+                0x08007210                f01_199
+                0x08007218                f01_200
+                0x08007220                f01_201
+                0x08007228                f01_202
+                0x08007230                f01_203
+                0x08007238                f01_204
+                0x08007240                f01_205
+                0x08007248                f01_206
+                0x08007250                f01_207
+                0x08007258                f01_208
+                0x08007260                f01_209
+                0x08007268                f01_210
+                0x08007270                f01_211
+                0x08007278                f01_212
+                0x08007280                f01_213
+                0x08007288                f01_214
+                0x08007290                f01_215
+                0x08007298                f01_216
+                0x080072a0                f01_217
+                0x080072a8                f01_218
+                0x080072b0                f01_219
+                0x080072b8                f01_220
+                0x080072c0                f01_221
+                0x080072c8                f01_222
+                0x080072d0                f01_223
+                0x080072d8                f01_224
+                0x080072e0                f01_225
+                0x080072e8                f01_226
+                0x080072f0                f01_227
+                0x080072f8                f01_228
+                0x08007300                f01_229
+                0x08007308                f01_230
+                0x08007310                f01_231
+                0x08007318                f01_232
+                0x08007320                f01_233
+                0x08007328                f01_234
+                0x08007330                f01_235
+                0x08007338                f01_236
+                0x08007340                f01_237
+                0x08007348                f01_238
+                0x08007350                f01_239
+                0x08007358                f01_240
+                0x08007360                f01_241
+                0x08007368                f01_242
+                0x08007370                f01_243
+                0x08007378                f01_244
+                0x08007380                f01_245
+                0x08007388                f01_246
+                0x08007390                f01_247
+                0x08007398                f01_248
+                0x080073a0                f01_249
+                0x080073a8                f01_250
+                0x080073b0                f01_251
+                0x080073b8                f01_252
+                0x080073c0                f01_253
+                0x080073c8                f01_254
+                0x080073d0                f01_255
+                0x080073d8                Font1
  *(.rodata*)
  .rodata.str1.4
-                0x08005f58        0x2 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+                0x08007820        0x2 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
                                   0x4 (size before relaxing)
- *fill*         0x08005f5a        0x2 00
+ *fill*         0x08007822        0x2 00
  .rodata._global_impure_ptr
-                0x08005f5c        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
-                0x08005f5c                _global_impure_ptr
+                0x08007824        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+                0x08007824                _global_impure_ptr
  .rodata.str1.4
-                0x08005f60        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+                0x08007828        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08005f64        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
+ .eh_frame      0x0800782c        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
  *(.init)
- .init          0x08005f64        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crti.o
-                0x08005f64                _init
- .init          0x08005f68        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
+ .init          0x0800782c        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crti.o
+                0x0800782c                _init
+ .init          0x08007830        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
  *(.fini)
- .fini          0x08005f70        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crti.o
-                0x08005f70                _fini
- .fini          0x08005f74        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
-                0x08005f7c                . = ALIGN (0x4)
-                0x08005f7c                _etext = .
+ .fini          0x08007838        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crti.o
+                0x08007838                _fini
+ .fini          0x0800783c        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
+                0x08007844                . = ALIGN (0x4)
+                0x08007844                _etext = .
 
-.vfp11_veneer   0x08005f7c        0x0
+.vfp11_veneer   0x08007844        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x08005f7c        0x0
+.v4_bx          0x08007844        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x08005f7c        0x0
+.iplt           0x08007844        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x08005f7c        0x8
-                0x08005f7c                __exidx_start = .
+.ARM            0x08007844        0x8
+                0x08007844                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x08005f7c        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_divdi3.o)
- .ARM.exidx     0x08005f84        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x08007844        0x8 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0800784c        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivdi3.o)
                                   0x8 (size before relaxing)
-                0x08005f84                __exidx_end = .
+                0x0800784c                __exidx_end = .
 
-.rel.dyn        0x08005f84        0x0
+.rel.dyn        0x0800784c        0x0
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
 
-.preinit_array  0x08005f84        0x0
-                0x08005f84                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x0800784c        0x0
+                0x0800784c                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x08005f84                PROVIDE (__preinit_array_end, .)
+                0x0800784c                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x08005f84        0x8
-                0x08005f84                PROVIDE (__init_array_start, .)
+.init_array     0x0800784c        0x8
+                0x0800784c                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  .init_array.00000
-                0x08005f84        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+                0x0800784c        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x08005f88        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
-                0x08005f8c                PROVIDE (__init_array_end, .)
+ .init_array    0x08007850        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
+                0x08007854                PROVIDE (__init_array_end, .)
 
-.fini_array     0x08005f8c        0x4
-                0x08005f8c                PROVIDE (__fini_array_start, .)
+.fini_array     0x08007854        0x4
+                0x08007854                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08005f8c        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
-                0x08005f90                PROVIDE (__fini_array_end, .)
-                0x08005f90                _sidata = LOADADDR (.data)
+ .fini_array    0x08007854        0x4 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
+                0x08007858                PROVIDE (__fini_array_end, .)
+                0x08007858                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x864 load address 0x08005f90
+.data           0x20000000      0x864 load address 0x08007858
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -1076,14 +1440,14 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
                 0x20000864                . = ALIGN (0x4)
                 0x20000864                _edata = .
 
-.jcr            0x20000864        0x0 load address 0x080067f4
+.jcr            0x20000864        0x0 load address 0x080080bc
  .jcr           0x20000864        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
 
-.igot.plt       0x20000864        0x0 load address 0x080067f4
+.igot.plt       0x20000864        0x0 load address 0x080080bc
  .igot.plt      0x00000000        0x0 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
                 0x20000864                . = ALIGN (0x4)
 
-.bss            0x20000864      0x1e4 load address 0x080067f4
+.bss            0x20000864      0x1e4 load address 0x080080bc
                 0x20000864                _sbss = .
                 0x20000864                __bss_start__ = _sbss
  *(.bss)
@@ -1132,7 +1496,7 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
                 0x20000a48                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000a48      0x880 load address 0x080067f4
+                0x20000a48      0x880 load address 0x080080bc
                 0x20000a48                . = ALIGN (0x4)
                 0x20000a48                __heap_start__ = .
                 0x20000a48                PROVIDE (end, .)
@@ -1177,141 +1541,146 @@ LOAD c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4
  .ARM.attributes
                 0x00000160       0x31 obj\Debug\Src\display.o
  .ARM.attributes
-                0x00000191       0x31 obj\Debug\Src\i2c.o
+                0x00000191       0x31 obj\Debug\Src\graphlib.o
  .ARM.attributes
-                0x000001c2       0x31 obj\Debug\Src\main.o
+                0x000001c2       0x31 obj\Debug\Src\i2c.o
  .ARM.attributes
-                0x000001f3       0x31 obj\Debug\Src\stm32f0xx_it.o
+                0x000001f3       0x31 obj\Debug\Src\main.o
  .ARM.attributes
-                0x00000224       0x31 obj\Debug\Src\syscalls.o
+                0x00000224       0x31 obj\Debug\Src\stm32f0xx_it.o
  .ARM.attributes
-                0x00000255       0x31 obj\Debug\Src\system_stm32f0xx.o
+                0x00000255       0x31 obj\Debug\Src\syscalls.o
  .ARM.attributes
-                0x00000286       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+                0x00000286       0x31 obj\Debug\Src\system_stm32f0xx.o
  .ARM.attributes
-                0x000002a4       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x000002b7       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
  .ARM.attributes
-                0x000002c2       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_aeabi_uldivmod.o)
+                0x000002d5       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x000002e0       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_muldi3.o)
+                0x000002f3       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x0000030c       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(bpabi.o)
+                0x00000311       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_muldi3.o)
  .ARM.attributes
-                0x00000338       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_divdi3.o)
+                0x0000033d       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(bpabi.o)
  .ARM.attributes
-                0x00000364       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivdi3.o)
+                0x00000369       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_divdi3.o)
  .ARM.attributes
-                0x00000390       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_clzsi2.o)
+                0x00000395       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivdi3.o)
  .ARM.attributes
-                0x000003ae       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+                0x000003c1       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_clzsi2.o)
  .ARM.attributes
-                0x000003da       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
+                0x000003df       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
  .ARM.attributes
-                0x00000406       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
+                0x0000040b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
  .ARM.attributes
-                0x00000432       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+                0x00000437       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
  .ARM.attributes
-                0x0000045e       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+                0x00000463       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
  .ARM.attributes
-                0x0000048a       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
+                0x0000048f       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
  .ARM.attributes
-                0x000004b6       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
+                0x000004bb       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
  .ARM.attributes
-                0x000004e2       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+                0x000004e7       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
  .ARM.attributes
-                0x0000050e       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+                0x00000513       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
  .ARM.attributes
-                0x0000053a       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
+                0x0000053f       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
  .ARM.attributes
-                0x00000566       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+                0x0000056b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
  .ARM.attributes
-                0x00000592       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
+                0x00000597       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
  .ARM.attributes
-                0x000005be       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+                0x000005c3       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
  .ARM.attributes
-                0x000005ea       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+                0x000005ef       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
  .ARM.attributes
-                0x00000616       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+                0x0000061b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
  .ARM.attributes
-                0x00000642       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
+                0x00000647       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
  .ARM.attributes
-                0x0000066e       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+                0x00000673       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
  .ARM.attributes
-                0x0000069a       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+                0x0000069f       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
  .ARM.attributes
-                0x000006c6       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
+                0x000006cb       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
  .ARM.attributes
-                0x000006f2       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
+                0x000006f7       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
  .ARM.attributes
-                0x0000071e       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
+                0x00000723       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
  .ARM.attributes
-                0x0000074a       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
+                0x0000074f       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
  .ARM.attributes
-                0x00000776       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
+                0x0000077b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
  .ARM.attributes
-                0x000007a2       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
+                0x000007a7       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
  .ARM.attributes
-                0x000007ce       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+                0x000007d3       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
  .ARM.attributes
-                0x000007fa       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
+                0x000007ff       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
  .ARM.attributes
-                0x00000826       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
+                0x0000082b       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
  .ARM.attributes
-                0x00000852       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
+                0x00000857       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
  .ARM.attributes
-                0x0000087e       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
+                0x00000883       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
  .ARM.attributes
-                0x000008aa       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
+                0x000008af       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
  .ARM.attributes
-                0x000008d6       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
+                0x000008db       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
  .ARM.attributes
-                0x00000902       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
+                0x00000907       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
  .ARM.attributes
-                0x0000092e       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
+                0x00000933       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
+ .ARM.attributes
+                0x0000095f       0x1e c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtn.o
 OUTPUT(bin\Debug\HDM01.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x5f04
+.debug_info     0x00000000     0x82c2
  .debug_info    0x00000000      0x619 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .debug_info    0x00000619      0xc9b obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .debug_info    0x000012b4      0x39d obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
  .debug_info    0x00001651      0xb09 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .debug_info    0x0000215a      0xf64 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
  .debug_info    0x000030be       0x86 obj\Debug\Setup\startup.o
- .debug_info    0x00003144      0x3f7 obj\Debug\Src\display.o
- .debug_info    0x0000353b      0x40e obj\Debug\Src\i2c.o
- .debug_info    0x00003949     0x1355 obj\Debug\Src\main.o
- .debug_info    0x00004c9e       0xcb obj\Debug\Src\stm32f0xx_it.o
- .debug_info    0x00004d69      0xe8b obj\Debug\Src\syscalls.o
- .debug_info    0x00005bf4      0x310 obj\Debug\Src\system_stm32f0xx.o
+ .debug_info    0x00003144      0x418 obj\Debug\Src\display.o
+ .debug_info    0x0000355c      0x155 obj\Debug\Src\graphlib.o
+ .debug_info    0x000036b1      0x40e obj\Debug\Src\i2c.o
+ .debug_info    0x00003abf     0x359d obj\Debug\Src\main.o
+ .debug_info    0x0000705c       0xcb obj\Debug\Src\stm32f0xx_it.o
+ .debug_info    0x00007127      0xe8b obj\Debug\Src\syscalls.o
+ .debug_info    0x00007fb2      0x310 obj\Debug\Src\system_stm32f0xx.o
 
-.debug_abbrev   0x00000000     0x1048
+.debug_abbrev   0x00000000     0x10d1
  .debug_abbrev  0x00000000      0x19d obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .debug_abbrev  0x0000019d      0x187 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .debug_abbrev  0x00000324      0x127 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
  .debug_abbrev  0x0000044b      0x1ee obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .debug_abbrev  0x00000639      0x15e obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
  .debug_abbrev  0x00000797       0x12 obj\Debug\Setup\startup.o
- .debug_abbrev  0x000007a9      0x178 obj\Debug\Src\display.o
- .debug_abbrev  0x00000921       0xf0 obj\Debug\Src\i2c.o
- .debug_abbrev  0x00000a11      0x2a3 obj\Debug\Src\main.o
- .debug_abbrev  0x00000cb4       0x42 obj\Debug\Src\stm32f0xx_it.o
- .debug_abbrev  0x00000cf6      0x21c obj\Debug\Src\syscalls.o
- .debug_abbrev  0x00000f12      0x136 obj\Debug\Src\system_stm32f0xx.o
+ .debug_abbrev  0x000007a9      0x15e obj\Debug\Src\display.o
+ .debug_abbrev  0x00000907       0x92 obj\Debug\Src\graphlib.o
+ .debug_abbrev  0x00000999       0xf0 obj\Debug\Src\i2c.o
+ .debug_abbrev  0x00000a89      0x2b4 obj\Debug\Src\main.o
+ .debug_abbrev  0x00000d3d       0x42 obj\Debug\Src\stm32f0xx_it.o
+ .debug_abbrev  0x00000d7f      0x21c obj\Debug\Src\syscalls.o
+ .debug_abbrev  0x00000f9b      0x136 obj\Debug\Src\system_stm32f0xx.o
 
-.debug_loc      0x00000000     0x27fc
+.debug_loc      0x00000000     0x2898
  .debug_loc     0x00000000      0x2d8 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .debug_loc     0x000002d8      0x930 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .debug_loc     0x00000c08       0xa8 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
  .debug_loc     0x00000cb0      0x8d4 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .debug_loc     0x00001584      0xaba obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
- .debug_loc     0x0000203e      0x2be obj\Debug\Src\display.o
- .debug_loc     0x000022fc       0x2c obj\Debug\Src\i2c.o
- .debug_loc     0x00002328      0x190 obj\Debug\Src\main.o
- .debug_loc     0x000024b8       0xb0 obj\Debug\Src\stm32f0xx_it.o
- .debug_loc     0x00002568      0x1f8 obj\Debug\Src\syscalls.o
- .debug_loc     0x00002760       0x9c obj\Debug\Src\system_stm32f0xx.o
+ .debug_loc     0x0000203e      0x2ea obj\Debug\Src\display.o
+ .debug_loc     0x00002328       0x70 obj\Debug\Src\graphlib.o
+ .debug_loc     0x00002398       0x2c obj\Debug\Src\i2c.o
+ .debug_loc     0x000023c4      0x190 obj\Debug\Src\main.o
+ .debug_loc     0x00002554       0xb0 obj\Debug\Src\stm32f0xx_it.o
+ .debug_loc     0x00002604      0x1f8 obj\Debug\Src\syscalls.o
+ .debug_loc     0x000027fc       0x9c obj\Debug\Src\system_stm32f0xx.o
 
-.debug_aranges  0x00000000      0x188
+.debug_aranges  0x00000000      0x1a8
  .debug_aranges
                 0x00000000       0x20 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .debug_aranges
@@ -1327,31 +1696,34 @@ OUTPUT(bin\Debug\HDM01.elf elf32-littlearm)
  .debug_aranges
                 0x000000c8       0x20 obj\Debug\Src\display.o
  .debug_aranges
-                0x000000e8       0x20 obj\Debug\Src\i2c.o
+                0x000000e8       0x20 obj\Debug\Src\graphlib.o
  .debug_aranges
-                0x00000108       0x20 obj\Debug\Src\main.o
+                0x00000108       0x20 obj\Debug\Src\i2c.o
  .debug_aranges
-                0x00000128       0x20 obj\Debug\Src\stm32f0xx_it.o
+                0x00000128       0x20 obj\Debug\Src\main.o
  .debug_aranges
-                0x00000148       0x20 obj\Debug\Src\syscalls.o
+                0x00000148       0x20 obj\Debug\Src\stm32f0xx_it.o
  .debug_aranges
-                0x00000168       0x20 obj\Debug\Src\system_stm32f0xx.o
+                0x00000168       0x20 obj\Debug\Src\syscalls.o
+ .debug_aranges
+                0x00000188       0x20 obj\Debug\Src\system_stm32f0xx.o
 
-.debug_line     0x00000000     0x18fd
+.debug_line     0x00000000     0x19b3
  .debug_line    0x00000000      0x210 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .debug_line    0x00000210      0x2dd obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .debug_line    0x000004ed      0x1c7 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
  .debug_line    0x000006b4      0x309 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .debug_line    0x000009bd      0x330 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
  .debug_line    0x00000ced       0x9b obj\Debug\Setup\startup.o
- .debug_line    0x00000d88      0x228 obj\Debug\Src\display.o
- .debug_line    0x00000fb0      0x17e obj\Debug\Src\i2c.o
- .debug_line    0x0000112e      0x365 obj\Debug\Src\main.o
- .debug_line    0x00001493       0x78 obj\Debug\Src\stm32f0xx_it.o
- .debug_line    0x0000150b      0x275 obj\Debug\Src\syscalls.o
- .debug_line    0x00001780      0x17d obj\Debug\Src\system_stm32f0xx.o
+ .debug_line    0x00000d88      0x21b obj\Debug\Src\display.o
+ .debug_line    0x00000fa3       0xb7 obj\Debug\Src\graphlib.o
+ .debug_line    0x0000105a      0x17e obj\Debug\Src\i2c.o
+ .debug_line    0x000011d8      0x371 obj\Debug\Src\main.o
+ .debug_line    0x00001549       0x78 obj\Debug\Src\stm32f0xx_it.o
+ .debug_line    0x000015c1      0x275 obj\Debug\Src\syscalls.o
+ .debug_line    0x00001836      0x17d obj\Debug\Src\system_stm32f0xx.o
 
-.debug_str      0x00000000     0x2225
+.debug_str      0x00000000     0x2d5f
  .debug_str     0x00000000      0x445 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
                                 0x479 (size before relaxing)
  .debug_str     0x00000445      0x4ce obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
@@ -1362,17 +1734,19 @@ OUTPUT(bin\Debug\HDM01.elf elf32-littlearm)
                                 0x771 (size before relaxing)
  .debug_str     0x00001075      0x718 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
                                 0x965 (size before relaxing)
- .debug_str     0x0000178d      0x107 obj\Debug\Src\display.o
-                                0x27c (size before relaxing)
- .debug_str     0x00001894       0x60 obj\Debug\Src\i2c.o
+ .debug_str     0x0000178d      0x112 obj\Debug\Src\display.o
+                                0x287 (size before relaxing)
+ .debug_str     0x0000189f       0xb2 obj\Debug\Src\graphlib.o
+                                0x15f (size before relaxing)
+ .debug_str     0x00001951       0x60 obj\Debug\Src\i2c.o
                                 0x3d0 (size before relaxing)
- .debug_str     0x000018f4      0x6a6 obj\Debug\Src\main.o
-                                0xb9e (size before relaxing)
- .debug_str     0x00001f9a       0x75 obj\Debug\Src\stm32f0xx_it.o
+ .debug_str     0x000019b1     0x1123 obj\Debug\Src\main.o
+                               0x161b (size before relaxing)
+ .debug_str     0x00002ad4       0x75 obj\Debug\Src\stm32f0xx_it.o
                                 0x174 (size before relaxing)
- .debug_str     0x0000200f      0x175 obj\Debug\Src\syscalls.o
+ .debug_str     0x00002b49      0x175 obj\Debug\Src\syscalls.o
                                 0x6b8 (size before relaxing)
- .debug_str     0x00002184       0xa1 obj\Debug\Src\system_stm32f0xx.o
+ .debug_str     0x00002cbe       0xa1 obj\Debug\Src\system_stm32f0xx.o
                                 0x25f (size before relaxing)
 
 .comment        0x00000000       0x70
@@ -1383,60 +1757,62 @@ OUTPUT(bin\Debug\HDM01.elf elf32-littlearm)
  .comment       0x00000000       0x71 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .comment       0x00000000       0x71 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
  .comment       0x00000000       0x71 obj\Debug\Src\display.o
+ .comment       0x00000000       0x71 obj\Debug\Src\graphlib.o
  .comment       0x00000000       0x71 obj\Debug\Src\i2c.o
  .comment       0x00000000       0x71 obj\Debug\Src\main.o
  .comment       0x00000000       0x71 obj\Debug\Src\stm32f0xx_it.o
  .comment       0x00000000       0x71 obj\Debug\Src\syscalls.o
  .comment       0x00000000       0x71 obj\Debug\Src\system_stm32f0xx.o
 
-.debug_frame    0x00000000     0x2124
+.debug_frame    0x00000000     0x2190
  .debug_frame   0x00000000      0x1b0 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .debug_frame   0x000001b0      0x550 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o
  .debug_frame   0x00000700       0x70 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
  .debug_frame   0x00000770      0x524 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .debug_frame   0x00000c94      0x630 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
- .debug_frame   0x000012c4      0x1b8 obj\Debug\Src\display.o
- .debug_frame   0x0000147c       0x2c obj\Debug\Src\i2c.o
- .debug_frame   0x000014a8      0x104 obj\Debug\Src\main.o
- .debug_frame   0x000015ac       0x80 obj\Debug\Src\stm32f0xx_it.o
- .debug_frame   0x0000162c      0x130 obj\Debug\Src\syscalls.o
- .debug_frame   0x0000175c       0x6c obj\Debug\Src\system_stm32f0xx.o
- .debug_frame   0x000017c8       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
- .debug_frame   0x000017e8       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_muldi3.o)
- .debug_frame   0x00001818       0x60 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(bpabi.o)
- .debug_frame   0x00001878       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_divdi3.o)
- .debug_frame   0x000018b4       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivdi3.o)
- .debug_frame   0x000018f0       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
- .debug_frame   0x00001928       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
- .debug_frame   0x00001948       0x4c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
- .debug_frame   0x00001994      0x138 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
- .debug_frame   0x00001acc       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
- .debug_frame   0x00001b00       0x54 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
- .debug_frame   0x00001b54       0x64 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
- .debug_frame   0x00001bb8       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
- .debug_frame   0x00001be8       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
- .debug_frame   0x00001c24       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
- .debug_frame   0x00001c54       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
- .debug_frame   0x00001c84       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
- .debug_frame   0x00001cc8       0x90 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
- .debug_frame   0x00001d58       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
- .debug_frame   0x00001d78       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
- .debug_frame   0x00001da4       0x54 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
- .debug_frame   0x00001df8       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
- .debug_frame   0x00001e20       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
- .debug_frame   0x00001e4c       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
- .debug_frame   0x00001e90       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
- .debug_frame   0x00001ecc       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
- .debug_frame   0x00001ef8       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
- .debug_frame   0x00001f2c       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
- .debug_frame   0x00001f60       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
- .debug_frame   0x00001f98       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
- .debug_frame   0x00001fc4       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
- .debug_frame   0x00002000       0x70 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
- .debug_frame   0x00002070       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
- .debug_frame   0x0000209c       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
- .debug_frame   0x000020cc       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
- .debug_frame   0x000020f8       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
+ .debug_frame   0x000012c4      0x1d4 obj\Debug\Src\display.o
+ .debug_frame   0x00001498       0x50 obj\Debug\Src\graphlib.o
+ .debug_frame   0x000014e8       0x2c obj\Debug\Src\i2c.o
+ .debug_frame   0x00001514      0x104 obj\Debug\Src\main.o
+ .debug_frame   0x00001618       0x80 obj\Debug\Src\stm32f0xx_it.o
+ .debug_frame   0x00001698      0x130 obj\Debug\Src\syscalls.o
+ .debug_frame   0x000017c8       0x6c obj\Debug\Src\system_stm32f0xx.o
+ .debug_frame   0x00001834       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00001854       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_muldi3.o)
+ .debug_frame   0x00001884       0x60 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(bpabi.o)
+ .debug_frame   0x000018e4       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_divdi3.o)
+ .debug_frame   0x00001920       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivdi3.o)
+ .debug_frame   0x0000195c       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+ .debug_frame   0x00001994       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-errno.o)
+ .debug_frame   0x000019b4       0x4c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
+ .debug_frame   0x00001a00      0x138 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
+ .debug_frame   0x00001b38       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+ .debug_frame   0x00001b6c       0x54 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-freer.o)
+ .debug_frame   0x00001bc0       0x64 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fwalk.o)
+ .debug_frame   0x00001c24       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+ .debug_frame   0x00001c54       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mallocr.o)
+ .debug_frame   0x00001c90       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+ .debug_frame   0x00001cc0       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-mlock.o)
+ .debug_frame   0x00001cf0       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-puts.o)
+ .debug_frame   0x00001d34       0x90 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-stdio.o)
+ .debug_frame   0x00001dc4       0x20 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+ .debug_frame   0x00001de4       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
+ .debug_frame   0x00001e10       0x54 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00001e64       0x28 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00001e8c       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-closer.o)
+ .debug_frame   0x00001eb8       0x44 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
+ .debug_frame   0x00001efc       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fvwrite.o)
+ .debug_frame   0x00001f38       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-lseekr.o)
+ .debug_frame   0x00001f64       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memchr.o)
+ .debug_frame   0x00001f98       0x34 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy.o)
+ .debug_frame   0x00001fcc       0x38 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+ .debug_frame   0x00002004       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-readr.o)
+ .debug_frame   0x00002030       0x3c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reallocr.o)
+ .debug_frame   0x0000206c       0x70 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
+ .debug_frame   0x000020dc       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-wsetup.o)
+ .debug_frame   0x00002108       0x30 c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-makebuf.o)
+ .debug_frame   0x00002138       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
+ .debug_frame   0x00002164       0x2c c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
 
 .debug_ranges   0x00000000       0x20
  .debug_ranges  0x00000000       0x20 obj\Debug\Setup\startup.o
@@ -1581,8 +1957,10 @@ DBGMCU_APB2PeriphConfig                           obj\Debug\Libraries\STM32F0xx_
 DBGMCU_Config                                     obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.o
 DBGMCU_GetDEVID                                   obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.o
 DBGMCU_GetREVID                                   obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.o
-DISPLAY_COLUMN                                    obj\Debug\Src\display.o
-DISPLAY_ROW                                       obj\Debug\Src\display.o
+DISPLAY_COLUMN                                    obj\Debug\Src\graphlib.o
+                                                  obj\Debug\Src\display.o
+DISPLAY_ROW                                       obj\Debug\Src\graphlib.o
+                                                  obj\Debug\Src\display.o
 DMA1_Channel1_IRQHandler                          obj\Debug\Setup\startup.o
 DMA1_Channel2_3_IRQHandler                        obj\Debug\Setup\startup.o
 DMA1_Channel4_5_IRQHandler                        obj\Debug\Setup\startup.o
@@ -1640,6 +2018,8 @@ FLASH_ProgramWord                                 obj\Debug\Libraries\STM32F0xx_
 FLASH_SetLatency                                  obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.o
 FLASH_Unlock                                      obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.o
 FLASH_WaitForLastOperation                        obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.o
+Font1                                             obj\Debug\Src\main.o
+Font2                                             obj\Debug\Src\main.o
 GPIO_DeInit                                       obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
 GPIO_Init                                         obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
                                                   obj\Debug\Src\main.o
@@ -1740,6 +2120,9 @@ NVIC_Init                                         obj\Debug\Libraries\STM32F0xx_
 NVIC_InitStructure                                obj\Debug\Src\main.o
 NVIC_SystemLPConfig                               obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
 NextLine                                          obj\Debug\Src\display.o
+OutChar                                           obj\Debug\Src\graphlib.o
+OutString                                         obj\Debug\Src\graphlib.o
+                                                  obj\Debug\Src\main.o
 OverWriteDisplay                                  obj\Debug\Src\display.o
 PVD_IRQHandler                                    obj\Debug\Setup\startup.o
 PWR_BackupAccessCmd                               obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_pwr.o
@@ -1755,7 +2138,6 @@ PWR_WakeUpPinCmd                                  obj\Debug\Libraries\STM32F0xx_
 PendSV_Handler                                    obj\Debug\Src\stm32f0xx_it.o
                                                   obj\Debug\Setup\startup.o
 PrintToDisplay                                    obj\Debug\Src\display.o
-                                                  obj\Debug\Src\main.o
 PutGraphic                                        obj\Debug\Src\display.o
                                                   obj\Debug\Src\main.o
 RCC_ADCCLKConfig                                  obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
@@ -1917,6 +2299,7 @@ SYSCFG_GetFlagStatus                              obj\Debug\Libraries\STM32F0xx_
 SYSCFG_I2CFastModePlusConfig                      obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.o
 SYSCFG_MemoryRemapConfig                          obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.o
 SetXY                                             obj\Debug\Src\display.o
+                                                  obj\Debug\Src\main.o
 SysTick_CLKSourceConfig                           obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o
 SysTick_Handler                                   obj\Debug\Src\main.o
                                                   obj\Debug\Setup\startup.o
@@ -2086,6 +2469,8 @@ USART_SmartCardCmd                                obj\Debug\Libraries\STM32F0xx_
 USART_SmartCardNACKCmd                            obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
 USART_StopModeWakeUpSourceConfig                  obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
 USART_StructInit                                  obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o
+UpdateFromFB                                      obj\Debug\Src\display.o
+                                                  obj\Debug\Src\main.o
 WWDG_ClearFlag                                    obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o
 WWDG_DeInit                                       obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o
 WWDG_Enable                                       obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o
@@ -2096,7 +2481,6 @@ WWDG_SetCounter                                   obj\Debug\Libraries\STM32F0xx_
 WWDG_SetPrescaler                                 obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o
 WWDG_SetWindowValue                               obj\Debug\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o
 WriteByteDisplay                                  obj\Debug\Src\display.o
-WriteDisplayData                                  obj\Debug\Src\display.o
 _Jv_RegisterClasses                               c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m/crtbegin.o
 __aeabi_idiv0                                     c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_dvmd_tls.o)
                                                   c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/armv6-m\libgcc.a(_udivsi3.o)
@@ -2302,6 +2686,8 @@ arr                                               obj\Debug\Src\main.o
 atexit                                            c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
                                                   c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
 cleanup_glue                                      c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
+eWriteDispData                                    obj\Debug\Src\display.o
+                                                  obj\Debug\Src\graphlib.o
 errno                                             c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-isattyr.o)
                                                   c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fstatr.o)
                                                   c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-reent.o)
@@ -2311,6 +2697,361 @@ errno                                             c:/program files (x86)/emide/e
                                                   c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-writer.o)
 exit                                              c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o)
                                                   c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+f01_00                                            obj\Debug\Src\main.o
+f01_01                                            obj\Debug\Src\main.o
+f01_02                                            obj\Debug\Src\main.o
+f01_03                                            obj\Debug\Src\main.o
+f01_04                                            obj\Debug\Src\main.o
+f01_05                                            obj\Debug\Src\main.o
+f01_06                                            obj\Debug\Src\main.o
+f01_07                                            obj\Debug\Src\main.o
+f01_08                                            obj\Debug\Src\main.o
+f01_09                                            obj\Debug\Src\main.o
+f01_10                                            obj\Debug\Src\main.o
+f01_100                                           obj\Debug\Src\main.o
+f01_101                                           obj\Debug\Src\main.o
+f01_102                                           obj\Debug\Src\main.o
+f01_103                                           obj\Debug\Src\main.o
+f01_104                                           obj\Debug\Src\main.o
+f01_105                                           obj\Debug\Src\main.o
+f01_106                                           obj\Debug\Src\main.o
+f01_107                                           obj\Debug\Src\main.o
+f01_108                                           obj\Debug\Src\main.o
+f01_109                                           obj\Debug\Src\main.o
+f01_11                                            obj\Debug\Src\main.o
+f01_110                                           obj\Debug\Src\main.o
+f01_111                                           obj\Debug\Src\main.o
+f01_112                                           obj\Debug\Src\main.o
+f01_113                                           obj\Debug\Src\main.o
+f01_114                                           obj\Debug\Src\main.o
+f01_115                                           obj\Debug\Src\main.o
+f01_116                                           obj\Debug\Src\main.o
+f01_117                                           obj\Debug\Src\main.o
+f01_118                                           obj\Debug\Src\main.o
+f01_119                                           obj\Debug\Src\main.o
+f01_12                                            obj\Debug\Src\main.o
+f01_120                                           obj\Debug\Src\main.o
+f01_121                                           obj\Debug\Src\main.o
+f01_122                                           obj\Debug\Src\main.o
+f01_123                                           obj\Debug\Src\main.o
+f01_124                                           obj\Debug\Src\main.o
+f01_125                                           obj\Debug\Src\main.o
+f01_126                                           obj\Debug\Src\main.o
+f01_127                                           obj\Debug\Src\main.o
+f01_128                                           obj\Debug\Src\main.o
+f01_129                                           obj\Debug\Src\main.o
+f01_13                                            obj\Debug\Src\main.o
+f01_130                                           obj\Debug\Src\main.o
+f01_131                                           obj\Debug\Src\main.o
+f01_132                                           obj\Debug\Src\main.o
+f01_133                                           obj\Debug\Src\main.o
+f01_134                                           obj\Debug\Src\main.o
+f01_135                                           obj\Debug\Src\main.o
+f01_136                                           obj\Debug\Src\main.o
+f01_137                                           obj\Debug\Src\main.o
+f01_138                                           obj\Debug\Src\main.o
+f01_139                                           obj\Debug\Src\main.o
+f01_14                                            obj\Debug\Src\main.o
+f01_140                                           obj\Debug\Src\main.o
+f01_141                                           obj\Debug\Src\main.o
+f01_142                                           obj\Debug\Src\main.o
+f01_143                                           obj\Debug\Src\main.o
+f01_144                                           obj\Debug\Src\main.o
+f01_145                                           obj\Debug\Src\main.o
+f01_146                                           obj\Debug\Src\main.o
+f01_147                                           obj\Debug\Src\main.o
+f01_148                                           obj\Debug\Src\main.o
+f01_149                                           obj\Debug\Src\main.o
+f01_15                                            obj\Debug\Src\main.o
+f01_150                                           obj\Debug\Src\main.o
+f01_151                                           obj\Debug\Src\main.o
+f01_152                                           obj\Debug\Src\main.o
+f01_153                                           obj\Debug\Src\main.o
+f01_154                                           obj\Debug\Src\main.o
+f01_155                                           obj\Debug\Src\main.o
+f01_156                                           obj\Debug\Src\main.o
+f01_157                                           obj\Debug\Src\main.o
+f01_158                                           obj\Debug\Src\main.o
+f01_159                                           obj\Debug\Src\main.o
+f01_16                                            obj\Debug\Src\main.o
+f01_160                                           obj\Debug\Src\main.o
+f01_161                                           obj\Debug\Src\main.o
+f01_162                                           obj\Debug\Src\main.o
+f01_163                                           obj\Debug\Src\main.o
+f01_164                                           obj\Debug\Src\main.o
+f01_165                                           obj\Debug\Src\main.o
+f01_166                                           obj\Debug\Src\main.o
+f01_167                                           obj\Debug\Src\main.o
+f01_168                                           obj\Debug\Src\main.o
+f01_169                                           obj\Debug\Src\main.o
+f01_17                                            obj\Debug\Src\main.o
+f01_170                                           obj\Debug\Src\main.o
+f01_171                                           obj\Debug\Src\main.o
+f01_172                                           obj\Debug\Src\main.o
+f01_173                                           obj\Debug\Src\main.o
+f01_174                                           obj\Debug\Src\main.o
+f01_175                                           obj\Debug\Src\main.o
+f01_176                                           obj\Debug\Src\main.o
+f01_177                                           obj\Debug\Src\main.o
+f01_178                                           obj\Debug\Src\main.o
+f01_179                                           obj\Debug\Src\main.o
+f01_18                                            obj\Debug\Src\main.o
+f01_180                                           obj\Debug\Src\main.o
+f01_181                                           obj\Debug\Src\main.o
+f01_182                                           obj\Debug\Src\main.o
+f01_183                                           obj\Debug\Src\main.o
+f01_184                                           obj\Debug\Src\main.o
+f01_185                                           obj\Debug\Src\main.o
+f01_186                                           obj\Debug\Src\main.o
+f01_187                                           obj\Debug\Src\main.o
+f01_188                                           obj\Debug\Src\main.o
+f01_189                                           obj\Debug\Src\main.o
+f01_19                                            obj\Debug\Src\main.o
+f01_190                                           obj\Debug\Src\main.o
+f01_191                                           obj\Debug\Src\main.o
+f01_192                                           obj\Debug\Src\main.o
+f01_193                                           obj\Debug\Src\main.o
+f01_194                                           obj\Debug\Src\main.o
+f01_195                                           obj\Debug\Src\main.o
+f01_196                                           obj\Debug\Src\main.o
+f01_197                                           obj\Debug\Src\main.o
+f01_198                                           obj\Debug\Src\main.o
+f01_199                                           obj\Debug\Src\main.o
+f01_20                                            obj\Debug\Src\main.o
+f01_200                                           obj\Debug\Src\main.o
+f01_201                                           obj\Debug\Src\main.o
+f01_202                                           obj\Debug\Src\main.o
+f01_203                                           obj\Debug\Src\main.o
+f01_204                                           obj\Debug\Src\main.o
+f01_205                                           obj\Debug\Src\main.o
+f01_206                                           obj\Debug\Src\main.o
+f01_207                                           obj\Debug\Src\main.o
+f01_208                                           obj\Debug\Src\main.o
+f01_209                                           obj\Debug\Src\main.o
+f01_21                                            obj\Debug\Src\main.o
+f01_210                                           obj\Debug\Src\main.o
+f01_211                                           obj\Debug\Src\main.o
+f01_212                                           obj\Debug\Src\main.o
+f01_213                                           obj\Debug\Src\main.o
+f01_214                                           obj\Debug\Src\main.o
+f01_215                                           obj\Debug\Src\main.o
+f01_216                                           obj\Debug\Src\main.o
+f01_217                                           obj\Debug\Src\main.o
+f01_218                                           obj\Debug\Src\main.o
+f01_219                                           obj\Debug\Src\main.o
+f01_22                                            obj\Debug\Src\main.o
+f01_220                                           obj\Debug\Src\main.o
+f01_221                                           obj\Debug\Src\main.o
+f01_222                                           obj\Debug\Src\main.o
+f01_223                                           obj\Debug\Src\main.o
+f01_224                                           obj\Debug\Src\main.o
+f01_225                                           obj\Debug\Src\main.o
+f01_226                                           obj\Debug\Src\main.o
+f01_227                                           obj\Debug\Src\main.o
+f01_228                                           obj\Debug\Src\main.o
+f01_229                                           obj\Debug\Src\main.o
+f01_23                                            obj\Debug\Src\main.o
+f01_230                                           obj\Debug\Src\main.o
+f01_231                                           obj\Debug\Src\main.o
+f01_232                                           obj\Debug\Src\main.o
+f01_233                                           obj\Debug\Src\main.o
+f01_234                                           obj\Debug\Src\main.o
+f01_235                                           obj\Debug\Src\main.o
+f01_236                                           obj\Debug\Src\main.o
+f01_237                                           obj\Debug\Src\main.o
+f01_238                                           obj\Debug\Src\main.o
+f01_239                                           obj\Debug\Src\main.o
+f01_24                                            obj\Debug\Src\main.o
+f01_240                                           obj\Debug\Src\main.o
+f01_241                                           obj\Debug\Src\main.o
+f01_242                                           obj\Debug\Src\main.o
+f01_243                                           obj\Debug\Src\main.o
+f01_244                                           obj\Debug\Src\main.o
+f01_245                                           obj\Debug\Src\main.o
+f01_246                                           obj\Debug\Src\main.o
+f01_247                                           obj\Debug\Src\main.o
+f01_248                                           obj\Debug\Src\main.o
+f01_249                                           obj\Debug\Src\main.o
+f01_25                                            obj\Debug\Src\main.o
+f01_250                                           obj\Debug\Src\main.o
+f01_251                                           obj\Debug\Src\main.o
+f01_252                                           obj\Debug\Src\main.o
+f01_253                                           obj\Debug\Src\main.o
+f01_254                                           obj\Debug\Src\main.o
+f01_255                                           obj\Debug\Src\main.o
+f01_26                                            obj\Debug\Src\main.o
+f01_27                                            obj\Debug\Src\main.o
+f01_28                                            obj\Debug\Src\main.o
+f01_29                                            obj\Debug\Src\main.o
+f01_30                                            obj\Debug\Src\main.o
+f01_31                                            obj\Debug\Src\main.o
+f01_32                                            obj\Debug\Src\main.o
+f01_33                                            obj\Debug\Src\main.o
+f01_34                                            obj\Debug\Src\main.o
+f01_35                                            obj\Debug\Src\main.o
+f01_36                                            obj\Debug\Src\main.o
+f01_37                                            obj\Debug\Src\main.o
+f01_38                                            obj\Debug\Src\main.o
+f01_39                                            obj\Debug\Src\main.o
+f01_40                                            obj\Debug\Src\main.o
+f01_41                                            obj\Debug\Src\main.o
+f01_42                                            obj\Debug\Src\main.o
+f01_43                                            obj\Debug\Src\main.o
+f01_44                                            obj\Debug\Src\main.o
+f01_45                                            obj\Debug\Src\main.o
+f01_46                                            obj\Debug\Src\main.o
+f01_47                                            obj\Debug\Src\main.o
+f01_48                                            obj\Debug\Src\main.o
+f01_49                                            obj\Debug\Src\main.o
+f01_50                                            obj\Debug\Src\main.o
+f01_51                                            obj\Debug\Src\main.o
+f01_52                                            obj\Debug\Src\main.o
+f01_53                                            obj\Debug\Src\main.o
+f01_54                                            obj\Debug\Src\main.o
+f01_55                                            obj\Debug\Src\main.o
+f01_56                                            obj\Debug\Src\main.o
+f01_57                                            obj\Debug\Src\main.o
+f01_58                                            obj\Debug\Src\main.o
+f01_59                                            obj\Debug\Src\main.o
+f01_60                                            obj\Debug\Src\main.o
+f01_61                                            obj\Debug\Src\main.o
+f01_62                                            obj\Debug\Src\main.o
+f01_63                                            obj\Debug\Src\main.o
+f01_64                                            obj\Debug\Src\main.o
+f01_65                                            obj\Debug\Src\main.o
+f01_66                                            obj\Debug\Src\main.o
+f01_67                                            obj\Debug\Src\main.o
+f01_68                                            obj\Debug\Src\main.o
+f01_69                                            obj\Debug\Src\main.o
+f01_70                                            obj\Debug\Src\main.o
+f01_71                                            obj\Debug\Src\main.o
+f01_72                                            obj\Debug\Src\main.o
+f01_73                                            obj\Debug\Src\main.o
+f01_74                                            obj\Debug\Src\main.o
+f01_75                                            obj\Debug\Src\main.o
+f01_76                                            obj\Debug\Src\main.o
+f01_77                                            obj\Debug\Src\main.o
+f01_78                                            obj\Debug\Src\main.o
+f01_79                                            obj\Debug\Src\main.o
+f01_80                                            obj\Debug\Src\main.o
+f01_81                                            obj\Debug\Src\main.o
+f01_82                                            obj\Debug\Src\main.o
+f01_83                                            obj\Debug\Src\main.o
+f01_84                                            obj\Debug\Src\main.o
+f01_85                                            obj\Debug\Src\main.o
+f01_86                                            obj\Debug\Src\main.o
+f01_87                                            obj\Debug\Src\main.o
+f01_88                                            obj\Debug\Src\main.o
+f01_89                                            obj\Debug\Src\main.o
+f01_90                                            obj\Debug\Src\main.o
+f01_91                                            obj\Debug\Src\main.o
+f01_92                                            obj\Debug\Src\main.o
+f01_93                                            obj\Debug\Src\main.o
+f01_94                                            obj\Debug\Src\main.o
+f01_95                                            obj\Debug\Src\main.o
+f01_96                                            obj\Debug\Src\main.o
+f01_97                                            obj\Debug\Src\main.o
+f01_98                                            obj\Debug\Src\main.o
+f01_99                                            obj\Debug\Src\main.o
+f02_100                                           obj\Debug\Src\main.o
+f02_101                                           obj\Debug\Src\main.o
+f02_102                                           obj\Debug\Src\main.o
+f02_103                                           obj\Debug\Src\main.o
+f02_104                                           obj\Debug\Src\main.o
+f02_105                                           obj\Debug\Src\main.o
+f02_106                                           obj\Debug\Src\main.o
+f02_107                                           obj\Debug\Src\main.o
+f02_108                                           obj\Debug\Src\main.o
+f02_109                                           obj\Debug\Src\main.o
+f02_110                                           obj\Debug\Src\main.o
+f02_111                                           obj\Debug\Src\main.o
+f02_112                                           obj\Debug\Src\main.o
+f02_113                                           obj\Debug\Src\main.o
+f02_114                                           obj\Debug\Src\main.o
+f02_115                                           obj\Debug\Src\main.o
+f02_116                                           obj\Debug\Src\main.o
+f02_117                                           obj\Debug\Src\main.o
+f02_118                                           obj\Debug\Src\main.o
+f02_119                                           obj\Debug\Src\main.o
+f02_120                                           obj\Debug\Src\main.o
+f02_121                                           obj\Debug\Src\main.o
+f02_122                                           obj\Debug\Src\main.o
+f02_123                                           obj\Debug\Src\main.o
+f02_124                                           obj\Debug\Src\main.o
+f02_125                                           obj\Debug\Src\main.o
+f02_126                                           obj\Debug\Src\main.o
+f02_29                                            obj\Debug\Src\main.o
+f02_30                                            obj\Debug\Src\main.o
+f02_31                                            obj\Debug\Src\main.o
+f02_32                                            obj\Debug\Src\main.o
+f02_33                                            obj\Debug\Src\main.o
+f02_34                                            obj\Debug\Src\main.o
+f02_35                                            obj\Debug\Src\main.o
+f02_36                                            obj\Debug\Src\main.o
+f02_37                                            obj\Debug\Src\main.o
+f02_38                                            obj\Debug\Src\main.o
+f02_39                                            obj\Debug\Src\main.o
+f02_40                                            obj\Debug\Src\main.o
+f02_41                                            obj\Debug\Src\main.o
+f02_42                                            obj\Debug\Src\main.o
+f02_43                                            obj\Debug\Src\main.o
+f02_44                                            obj\Debug\Src\main.o
+f02_45                                            obj\Debug\Src\main.o
+f02_46                                            obj\Debug\Src\main.o
+f02_47                                            obj\Debug\Src\main.o
+f02_48                                            obj\Debug\Src\main.o
+f02_49                                            obj\Debug\Src\main.o
+f02_50                                            obj\Debug\Src\main.o
+f02_51                                            obj\Debug\Src\main.o
+f02_52                                            obj\Debug\Src\main.o
+f02_53                                            obj\Debug\Src\main.o
+f02_54                                            obj\Debug\Src\main.o
+f02_55                                            obj\Debug\Src\main.o
+f02_56                                            obj\Debug\Src\main.o
+f02_57                                            obj\Debug\Src\main.o
+f02_58                                            obj\Debug\Src\main.o
+f02_59                                            obj\Debug\Src\main.o
+f02_60                                            obj\Debug\Src\main.o
+f02_61                                            obj\Debug\Src\main.o
+f02_62                                            obj\Debug\Src\main.o
+f02_63                                            obj\Debug\Src\main.o
+f02_64                                            obj\Debug\Src\main.o
+f02_65                                            obj\Debug\Src\main.o
+f02_66                                            obj\Debug\Src\main.o
+f02_67                                            obj\Debug\Src\main.o
+f02_68                                            obj\Debug\Src\main.o
+f02_69                                            obj\Debug\Src\main.o
+f02_70                                            obj\Debug\Src\main.o
+f02_71                                            obj\Debug\Src\main.o
+f02_72                                            obj\Debug\Src\main.o
+f02_73                                            obj\Debug\Src\main.o
+f02_74                                            obj\Debug\Src\main.o
+f02_75                                            obj\Debug\Src\main.o
+f02_76                                            obj\Debug\Src\main.o
+f02_77                                            obj\Debug\Src\main.o
+f02_78                                            obj\Debug\Src\main.o
+f02_79                                            obj\Debug\Src\main.o
+f02_80                                            obj\Debug\Src\main.o
+f02_81                                            obj\Debug\Src\main.o
+f02_82                                            obj\Debug\Src\main.o
+f02_83                                            obj\Debug\Src\main.o
+f02_84                                            obj\Debug\Src\main.o
+f02_85                                            obj\Debug\Src\main.o
+f02_86                                            obj\Debug\Src\main.o
+f02_87                                            obj\Debug\Src\main.o
+f02_88                                            obj\Debug\Src\main.o
+f02_89                                            obj\Debug\Src\main.o
+f02_90                                            obj\Debug\Src\main.o
+f02_91                                            obj\Debug\Src\main.o
+f02_92                                            obj\Debug\Src\main.o
+f02_93                                            obj\Debug\Src\main.o
+f02_94                                            obj\Debug\Src\main.o
+f02_95                                            obj\Debug\Src\main.o
+f02_96                                            obj\Debug\Src\main.o
+f02_97                                            obj\Debug\Src\main.o
+f02_98                                            obj\Debug\Src\main.o
+f02_99                                            obj\Debug\Src\main.o
+f02_default                                       obj\Debug\Src\main.o
 fclose                                            c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fclose.o)
                                                   c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-findfp.o)
 fflush                                            c:/program files (x86)/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv6-m\libc.a(lib_a-fflush.o)
