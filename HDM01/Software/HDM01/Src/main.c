@@ -249,8 +249,8 @@ int main(void){
         PutGraphic(Graphic1);
         Delay(0x3FFFFF);
         SetXY(0, 0);
-        OutString(" Vol: -10dB", Font2);
-        UpdateFromFB();
+        OutString("Input 2: 44.1", Font4);
+        UpdateFromFB();  // pretty much a fflush(stdout) to a piece of hardware
 
  for(;;){
         TestI2C();
