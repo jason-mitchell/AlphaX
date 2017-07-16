@@ -185,6 +185,9 @@
 		</Unit>
 		<Unit filename="Setup/Flash.ld" />
 		<Unit filename="Setup/startup.S" />
+		<Unit filename="Src/clock.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Src/display.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -209,6 +212,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="include/bsp.h" />
+		<Unit filename="include/clock.h" />
 		<Unit filename="include/display.h" />
 		<Unit filename="include/graphlib.h" />
 		<Unit filename="include/i2c.h" />

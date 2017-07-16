@@ -13,5 +13,6 @@
 // Function Prototypes
 //------------------------
 void InitClockHW(void);
+uint32_t CheckClock(void);
 
 #endif // __CLOCK_H_

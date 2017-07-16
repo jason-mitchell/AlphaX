@@ -33,5 +33,6 @@ unsigned char GetY(void);
 void eWriteDispData(unsigned char data);
 void UpdateFromFB(void);
 void ClearFB(void);
+void SetDispIntensity(unsigned char brightness);
 
 #endif

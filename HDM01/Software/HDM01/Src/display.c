@@ -145,6 +145,19 @@ void InitDisplay(void){
 }
 
 //----------------------------------------------------------------------------
+// Name: SetDispIntensity
+// Function: Program display brightness
+// Parameter: Brightness value
+// Returns: void
+//----------------------------------------------------------------------------
+void SetDispIntensity(unsigned char brightness){
+        WriteByteDisplay(0x1F);
+        WriteByteDisplay(0x58);
+        WriteByteDisplay(brightness);
+
+}
+
+//----------------------------------------------------------------------------
 // Name: eWriteDispData
 // Function: Write Display Data - emulation of WriteLCDData() in GraphLCD
 // Parameters: Bitmap pattern

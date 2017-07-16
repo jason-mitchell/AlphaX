@@ -193,7 +193,7 @@ int main(void){
         //RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 
         // Configure I/O pins on GPIO PORT C
-        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_2 | GPIO_Pin_1 | GPIO_Pin_0 | GPIO_Pin_6 | GPIO_Pin_7;
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15 | GPIO_Pin_2 | GPIO_Pin_1 | GPIO_Pin_0 | GPIO_Pin_6 | GPIO_Pin_7;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;                                   // Outputs
         GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                                  // Push pull
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;                                // 10MHz since we have a display on this port
@@ -250,9 +250,15 @@ int main(void){
         NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;		    // we want to configure the USART1 interrupts
         NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			    // the USART1 interrupts are globally enabled
         NVIC_Init(&NVIC_InitStructure);
-
-        InitClockHW();
         USART_Cmd(USART1, ENABLE);
+
+
+
+        printf("\r\nHDM01 Boot...");
+        fflush(stdout);
+        InitClockHW();
+
+
 
         InitI2C();                                                  // Initialize and enable I2C module
         SysTick_Config(4800);
@@ -269,11 +275,18 @@ int main(void){
         // Standby mode
         for(;;){
 
+            SetDispIntensity(1);
             while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
-                ;
+                SetXY(0, 0);
+                ClearFB();
+                sprintf(arr, "%2d:%02d:%02d", ReadClkA(), ReadClkB(), ReadClkC());
+                OutString(arr, Font1);
+                UpdateFromFB();
+                Delay(0x2FFFFF);
             }
 
             // Button was pressed, power the system on
+            SetDispIntensity(4);
             PutGraphic(Graphic1);
             GPIO_SetBits(GPIOC, POWER_RELAY);
             Delay(0x3FFFFF);
@@ -285,13 +298,7 @@ int main(void){
 
              while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
                 // Idle loop
-                SetXY(0, 0);
-                ClearFB();
-                sprintf(arr, "Val: %d", cnt);
-                OutString(arr, Font1);
-                UpdateFromFB();
-                Delay(0x3FFFFF);
-                cnt++;
+
             }
             GPIO_ResetBits(GPIOC, HEADPHONE_RELAY);
             SetXY(0, 0);
