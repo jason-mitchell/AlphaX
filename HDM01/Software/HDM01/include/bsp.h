@@ -14,6 +14,9 @@
 #define RST GPIO_Pin_2
 #define BUSY GPIO_Pin_3
 
+// Control Signals
+#define POWER_RELAY GPIO_Pin_6
+#define HEADPHONE_RELAY GPIO_Pin_7
 
 
 #endif

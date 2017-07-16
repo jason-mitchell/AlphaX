@@ -4005,4 +4005,333 @@ const int Font4 [] = {
 
 };
 
+/*
+// Font 5 - Micro 5 var
+//-------------------------------------------------
+const char f05_DEFAULT [] = {
+                              0x03,
+                              0x1F, 0x11, 0x1F
+};
+const char f05_sym1 [] = {
+                              0x03,
+                              0x1F, 0x11, 0x1F
+};
+
+const char f05_32 [] = {
+                              0x02,
+                              0x00, 0x00
+};
+
+const char f05_33 [] = {
+                              0x02,
+                              0x00, 0x17
+};
+
+const char f05_34 [] = {
+                              0x04,
+                              0x00, 0x03, 0x00, 0x03
+};
+
+const char f05_35 [] = {
+                              0x05,
+                              0x0A, 0x1F, 0x0A, 0x1F, 0x0A
+};
+
+const char f05_36 [] = {
+                              0x05,
+                              0x24, 0x2A, 0x3F, 0x2A, 0x12
+};
+
+const char f05_37 [] = {
+                              0x04,
+                              0x09, 0x04, 0x02, 0x09
+};
+
+const char f05_38 [] = {
+                              0x05,
+                              0x0A, 0x15, 0x1D, 0x14, 0x10
+};
+
+const char f05_39 [] = {
+                              0x01,
+                              0x03
+};
+
+const char f05_40 [] = {
+                              0x03,
+                              0x0C, 0x12, 0x21
+};
+
+const char f05_41 [] = {
+                              0x03,
+                              0x21, 0x12, 0x0C
+};
+
+const char f05_42 [] = {
+                              0x04,
+                              0x00, 0x0A, 0x04, 0x0A
+};
+
+// Font Indexing Table
+const int Font5 [] = {
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_sym1,
+          (int) &f05_DEFAULT,
+          (int) &f05_32,
+          (int) &f05_33,
+          (int) &f05_34,
+          (int) &f05_35,
+          (int) &f05_36,
+          (int) &f05_37,
+          (int) &f05_38,
+          (int) &f05_39,
+          (int) &f05_40,
+          (int) &f05_41,
+          /*(int) &f05_42,
+          (int) &f05_43,
+          (int) &f05_44,
+          (int) &f05_45,
+          (int) &f05_46,
+          (int) &f05_47,
+          (int) &f05_48,
+          (int) &f05_49,
+          (int) &f05_50,
+          (int) &f05_51,
+          (int) &f05_52,
+          (int) &f05_53,
+          (int) &f05_54,
+          (int) &f05_55,
+          (int) &f05_56,
+          (int) &f05_57,
+          (int) &f05_58,
+          (int) &f05_59,
+          (int) &f05_60,
+          (int) &f05_61,
+          (int) &f05_62,
+          (int) &f05_63,
+          (int) &f05_64,
+          (int) &f05_65,
+          (int) &f05_66,
+          (int) &f05_67,
+          (int) &f05_68,
+          (int) &f05_69,
+          (int) &f05_70,
+          (int) &f05_71,
+          (int) &f05_72,
+          (int) &f05_73,
+          (int) &f05_74,
+          (int) &f05_75,
+          (int) &f05_76,
+          (int) &f05_77,
+          (int) &f05_78,
+          (int) &f05_79,
+          (int) &f05_80,
+          (int) &f05_81,
+          (int) &f05_82,
+          (int) &f05_83,
+          (int) &f05_84,
+          (int) &f05_85,
+          (int) &f05_86,
+          (int) &f05_87,
+          (int) &f05_88,
+          (int) &f05_89,
+          (int) &f05_90,
+          (int) &f05_91,
+          (int) &f05_92,
+          (int) &f05_93,
+          (int) &f05_94,
+          (int) &f05_95,
+          (int) &f05_96,
+          (int) &f05_97,
+          (int) &f05_98,
+          (int) &f05_99,
+          (int) &f05_100,
+          (int) &f05_101,
+          (int) &f05_102,
+          (int) &f05_103,
+          (int) &f05_104,
+          (int) &f05_105,
+          (int) &f05_106,
+          (int) &f05_107,
+          (int) &f05_108,
+          (int) &f05_109,
+          (int) &f05_110,
+          (int) &f05_111,
+          (int) &f05_112,
+          (int) &f05_113,
+          (int) &f05_114,
+          (int) &f05_115,
+          (int) &f05_116,
+          (int) &f05_117,
+          (int) &f05_118,
+          (int) &f05_119,
+          (int) &f05_120,
+          (int) &f05_121,
+          (int) &f05_122,
+          (int) &f05_123,
+          (int) &f05_124,
+          (int) &f05_125,
+          (int) &f05_126,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT,
+          (int) &f05_DEFAULT
+
+};
+
+*/
 #endif // __STDFONTS_H_

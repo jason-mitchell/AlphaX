@@ -3,8 +3,8 @@
 **
 **  File        : stm32_flash.ld
 **
-**  Abstract    : Linker script for STM32F051R8 Device with
-**                64KByte FLASH, 8KByte RAM
+**  Abstract    : Linker script for STM32F052RBT8 Device derived from old Atollic TrueStudio Sample
+**                128KByte FLASH, 16KByte RAM
 **
 **                Set heap size, stack size and stack location according
 **                to application requirements.
@@ -15,17 +15,8 @@
 **
 **  Environment : Atollic TrueSTUDIO(R)
 **
-**  Distribution: The file is distributed “as is,” without any warranty
-**                of any kind.
+**  Distribution: GNU General Public License (fuck Atollic)
 **
-**  (c)Copyright Atollic AB.
-**  You may use this file as-is or modify it according to the needs of your
-**  project. Distribution of this file (unmodified or modified) is not
-**  permitted. Atollic AB permit registered Atollic TrueSTUDIO(R) users the
-**  rights to distribute the assembled, compiled & linked contents of this
-**  file as part of an application binary file, provided that it is built
-**  using the Atollic TrueSTUDIO(R) toolchain.
-** Ah fuck you Attolic... its compiling on GCC
 **
 *****************************************************************************
 */
@@ -34,7 +25,7 @@
 ENTRY(Reset_Handler)
 
 /* Highest address of the user mode stack */
-_estack = 0x20002000;    /* end of 8K RAM */
+_estack = 0x20004000;    /* end of 16K RAM */
 
 /* Generate a link error if heap and stack don't fit into RAM */
 _Min_Heap_Size = 2048;      /* required amount of heap  */
@@ -43,8 +34,8 @@ _Min_Stack_Size = 0x80; /* required amount of stack */
 /* Specify the memory areas */
 MEMORY
 {
-  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 64K
-  RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 8K
+  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 128K  /* Size specified in super confidential datasheet */
+  RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 16K   /* Size specified in super confidential datasheet */
   MEMORY_B1 (rx)  : ORIGIN = 0x60000000, LENGTH = 0K
 }
 

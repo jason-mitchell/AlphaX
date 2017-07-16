@@ -32,5 +32,6 @@ unsigned char GetX(void);
 unsigned char GetY(void);
 void eWriteDispData(unsigned char data);
 void UpdateFromFB(void);
+void ClearFB(void);
 
 #endif

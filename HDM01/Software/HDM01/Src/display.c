@@ -171,6 +171,15 @@ void UpdateFromFB(void){
 }
 
 //---------------------------------------------------------------------------
+// Name: ClearFB
+// Function: Clears the framebuffer
+// Parameters: void
+// Returns: void
+//---------------------------------------------------------------------------
+void ClearFB(void){
+    memset(framebuffer, 0, 255); // Clear the framebuffer
+}
+//---------------------------------------------------------------------------
 // Name: ClearDisplay
 // Function: Clears the display in all modes
 // Parameters: void

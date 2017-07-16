@@ -17,6 +17,7 @@
 #include "graphic.h"
 #include "graphlib.h"
 #include "stdfonts.h"
+#include "clock.h"
 
 
 // Private typedefs
@@ -63,6 +64,7 @@ unsigned int rxchar;
 unsigned char TickFlagI2C;
 
 unsigned char arr[32];
+unsigned int cnt;
 
 
 // Timer that derives from the system ticker...
@@ -182,14 +184,16 @@ int main(void){
         SystemCoreClockUpdate();
 
         // Enable clocks to peripherals we use
-        RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);				                // enable clock to GPIOC
-        RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);                             // Enable clock to GPIOB
+        RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);				                // Port C
+        RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);                             // Port B
+        RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);                             // Port A
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);                          // Enable clock to USART 1
+
 //        RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);                            // Enable clock to I2C 1
         //RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 
         // Configure I/O pins on GPIO PORT C
-        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_2 | GPIO_Pin_1 | GPIO_Pin_0;
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_2 | GPIO_Pin_1 | GPIO_Pin_0 | GPIO_Pin_6 | GPIO_Pin_7;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;                                   // Outputs
         GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                                  // Push pull
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;                                // 10MHz since we have a display on this port
@@ -203,6 +207,8 @@ int main(void){
 
         // Initialise specific pins to levels
         GPIO_SetBits(GPIOC, RST);                                                       // Display's RST pin is high
+        GPIO_ResetBits(GPIOC, POWER_RELAY);
+        GPIO_ResetBits(GPIOC, HEADPHONE_RELAY);
 
 
         // Configure I/O pins on PORTB
@@ -217,6 +223,15 @@ int main(void){
 
         GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_0);
         GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_0);                        // Pin 6 and 7 are AF0
+
+
+        // Configure PORT A
+        //--------------------------------------------------
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+        GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+        GPIO_Init(GPIOA, &GPIO_InitStructure);
 
 
 
@@ -236,12 +251,64 @@ int main(void){
         NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			    // the USART1 interrupts are globally enabled
         NVIC_Init(&NVIC_InitStructure);
 
-
+        InitClockHW();
         USART_Cmd(USART1, ENABLE);
 
         InitI2C();                                                  // Initialize and enable I2C module
         SysTick_Config(4800);
-        printf("HDM01 Debug Console Starting... \r\n");
+
+
+        // System Startup begins here...
+        ResetDisplay();
+        InitDisplay();
+        PutGraphic(Graphic1);
+        Delay(0x3FFFFF);
+        ClearDisplay();
+        cnt = 0;
+
+        // Standby mode
+        for(;;){
+
+            while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
+                ;
+            }
+
+            // Button was pressed, power the system on
+            PutGraphic(Graphic1);
+            GPIO_SetBits(GPIOC, POWER_RELAY);
+            Delay(0x3FFFFF);
+            GPIO_SetBits(GPIOC, HEADPHONE_RELAY);
+            SetXY(0, 0);
+            OutString("Welcome", Font2);
+            UpdateFromFB();
+            Delay(0x3FFFFF);
+
+             while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
+                // Idle loop
+                SetXY(0, 0);
+                ClearFB();
+                sprintf(arr, "Val: %d", cnt);
+                OutString(arr, Font1);
+                UpdateFromFB();
+                Delay(0x3FFFFF);
+                cnt++;
+            }
+            GPIO_ResetBits(GPIOC, HEADPHONE_RELAY);
+            SetXY(0, 0);
+            ClearFB();
+            OutString("Bye", Font2);
+            UpdateFromFB();
+            Delay(0x3FFFFF);
+            GPIO_ResetBits(GPIOC, POWER_RELAY);
+            ClearDisplay();
+            while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
+                ;
+            }
+
+        }
+
+
+ /*       printf("HDM01 Debug Console Starting... \r\n");
         fflush(stdout);
         ResetDisplay();
         InitDisplay();
@@ -249,7 +316,11 @@ int main(void){
         PutGraphic(Graphic1);
         Delay(0x3FFFFF);
         SetXY(0, 0);
-        OutString("Input 2: 44.1", Font4);
+        if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
+            OutString("\x21\x22\x23\x24\x25\x26\x27\x28\x29", Font5);
+        } else {
+            OutString("ek is koos", Font1);
+        }
         UpdateFromFB();  // pretty much a fflush(stdout) to a piece of hardware
 
  for(;;){
@@ -260,5 +331,5 @@ int main(void){
         Delay(0x3FFFFF);
 
 
- }
+ } */
 }

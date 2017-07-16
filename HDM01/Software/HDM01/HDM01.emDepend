@@ -196,7 +196,7 @@
 
 1425769297 source:c:\temp\work\alphax\hdm01\software\hdm01\setup\startup.s
 
-1499541415 source:c:\temp\work\alphax\hdm01\software\hdm01\src\main.c
+1500217769 source:c:\temp\work\alphax\hdm01\software\hdm01\src\main.c
 	<stdio.h>
 	<string.h>
 	"stm32f0xx_conf.h"
@@ -207,6 +207,7 @@
 	"graphic.h"
 	"graphlib.h"
 	"stdfonts.h"
+	"clock.h"
 
 1425769297 source:c:\temp\work\alphax\hdm01\software\hdm01\src\stm32f0xx_it.c
 	"stm32f0xx_it.h"
@@ -224,27 +225,33 @@
 1375127873 source:c:\temp\work\alphax\hdm01\software\hdm01\src\system_stm32f0xx.c
 	"stm32f0xx.h"
 
-1499109601 c:\temp\work\alphax\hdm01\software\hdm01\include\bsp.h
+1500160507 c:\temp\work\alphax\hdm01\software\hdm01\include\bsp.h
 
 1497133040 source:c:\temp\work\alphax\hdm01\software\hdm01\src\i2c.c
 	"stm32f0xx_conf.h"
 
 1499109601 c:\temp\work\alphax\hdm01\software\hdm01\include\i2c.h
 
-1499108903 source:c:\temp\work\alphax\hdm01\software\hdm01\src\display.c
+1500159644 source:c:\temp\work\alphax\hdm01\software\hdm01\src\display.c
 	"display.h"
 	"bsp.h"
 	"stm32f0xx_conf.h"
 	<string.h>
 
-1499109919 c:\temp\work\alphax\hdm01\software\hdm01\include\display.h
+1500159644 c:\temp\work\alphax\hdm01\software\hdm01\include\display.h
 
 1499027639 c:\temp\work\alphax\hdm01\software\hdm01\include\graphic.h
 
 1499111242 source:c:\temp\work\alphax\hdm01\software\hdm01\src\graphlib.c
 	"display.h"
 
-1499546978 c:\temp\work\alphax\hdm01\software\hdm01\include\stdfonts.h
+1500218727 c:\temp\work\alphax\hdm01\software\hdm01\include\stdfonts.h
 
 1499111183 c:\temp\work\alphax\hdm01\software\hdm01\include\graphlib.h
+
+1500217738 c:\temp\work\alphax\hdm01\software\hdm01\include\clock.h
+
+1500218865 source:c:\temp\work\alphax\hdm01\software\hdm01\src\clock.c
+	"stm32f0xx_conf.h"
+	"clock.h"
 
