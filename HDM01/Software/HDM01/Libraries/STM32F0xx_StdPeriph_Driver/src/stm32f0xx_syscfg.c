@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f0xx_syscfg.c
   * @author  MCD Application Team
-  * @version V1.2.0RC2
-  * @date    10-April-2013
+  * @version V1.3.0
+  * @date    16-January-2014
   * @brief   This file provides firmware functions to manage the following 
   *          functionalities of the SYSCFG peripheral:
   *           + Remapping the memory mapped at 0x00000000  
@@ -27,7 +27,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -170,19 +170,22 @@ void SYSCFG_DMAChannelRemapConfig(uint32_t SYSCFG_DMARemap, FunctionalState NewS
 }
 
 /**
-  * @brief  Configures the I2C fast mode plus driving capability.
+  * @brief  Configure the I2C fast mode plus driving capability.
   * @param  SYSCFG_I2CFastModePlus: selects the pin.
-  *   This parameter can be one of the following values:
-  *     @arg SYSCFG_I2CFastModePlus_PB6: Configure fast mode plus driving capability for PB6
-  *     @arg SYSCFG_I2CFastModePlus_PB7: Configure fast mode plus driving capability for PB7
-  *     @arg SYSCFG_I2CFastModePlus_PB8: Configure fast mode plus driving capability for PB8
-  *     @arg SYSCFG_I2CFastModePlus_PB9: Configure fast mode plus driving capability for PB9
-  *     @arg SYSCFG_I2CFastModePlus_I2C1: Configure fast mode plus driving capability for I2C1 pins
-  *     @arg SYSCFG_I2CFastModePlus_I2C2: Configure fast mode plus driving capability for I2C2 pins
+  *          This parameter can be one of the following values:
+  *            @arg SYSCFG_I2CFastModePlus_PB6: Configure fast mode plus driving capability for PB6
+  *            @arg SYSCFG_I2CFastModePlus_PB7: Configure fast mode plus driving capability for PB7
+  *            @arg SYSCFG_I2CFastModePlus_PB8: Configure fast mode plus driving capability for PB8
+  *            @arg SYSCFG_I2CFastModePlus_PB9: Configure fast mode plus driving capability for PB9
+  *            @arg SYSCFG_I2CFastModePlus_PA9: Configure fast mode plus driving capability for PA9 (only for STM32F031 and STM32F030 devices)
+  *            @arg SYSCFG_I2CFastModePlus_PA10: Configure fast mode plus driving capability for PA10 (only for STM32F031 and STM32F030 devices)
+  *            @arg SYSCFG_I2CFastModePlus_I2C1: Configure fast mode plus driving capability for PB10, PB11, PF6 and PF7(only for STM32F031 and STM32F030 devices)
+  *            @arg SYSCFG_I2CFastModePlus_I2C2: Configure fast mode plus driving capability for I2C2 pins, available only for STM32F072 devices
+  *                
   * @param  NewState: new state of the DMA channel remapping. 
-  *         This parameter can be:
-  *     @arg ENABLE: Enable fast mode plus driving capability for selected I2C pin
-  *     @arg DISABLE: Disable fast mode plus driving capability for selected I2C pin
+  *         This parameter can be:  ENABLE or DISABLE.
+  * @note   ENABLE: Enable fast mode plus driving capability for selected I2C pin
+  * @note   DISABLE: Disable fast mode plus driving capability for selected I2C pin
   * @note  For I2C1, fast mode plus driving capability can be enabled on all selected
   *        I2C1 pins using SYSCFG_I2CFastModePlus_I2C1 parameter or independently
   *        on each one of the following pins PB6, PB7, PB8 and PB9.
@@ -214,8 +217,13 @@ void SYSCFG_I2CFastModePlusConfig(uint32_t SYSCFG_I2CFastModePlus, FunctionalSta
   * @brief  Selects the GPIO pin used as EXTI Line.
   * @param  EXTI_PortSourceGPIOx: selects the GPIO port to be used as source 
   *                               for EXTI lines where x can be (A, B, C, D, E or F).
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.    
   * @param  EXTI_PinSourcex: specifies the EXTI line to be configured.
-  *         This parameter can be EXTI_PinSourcex where x can be (0..15)
+  * @note   This parameter can be EXTI_PinSourcex where x can be:
+  *         For STM32F051 and STM32F030: (0..15) for GPIOA, GPIOB, GPIOC, (2) for GPIOD and (0..1, 4..7) for GIIOF.
+  *         For STM32F072: (0..15) for GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, (0..10) for GPIOF.
+  *         For STM32F031: (0..15) for GPIOA, GPIOB, (13..15) for GPIOC and (0..1, 6..7) for GPIOF.
   * @retval None
   */
 void SYSCFG_EXTILineConfig(uint8_t EXTI_PortSourceGPIOx, uint8_t EXTI_PinSourcex)
@@ -237,7 +245,7 @@ void SYSCFG_EXTILineConfig(uint8_t EXTI_PortSourceGPIOx, uint8_t EXTI_PinSourcex
   * @param  SYSCFG_Break: selects the configuration to be connected to break
   *         input of TIM1
   *          This parameter can be any combination of the following values:
-  *            @arg SYSCFG_Break_PVD: Connects the PVD event to the Break Input of TIM1.
+  *            @arg SYSCFG_Break_PVD: Connects the PVD event to the Break Input of TIM1,, not avaailable for  STM32F030 devices.
   *            @arg SYSCFG_Break_SRAMParity: Connects the SRAM_PARITY error signal to the Break Input of TIM1 .
   *            @arg SYSCFG_Break_Lockup: Connects Lockup output of CortexM0 to the break input of TIM1.
   * @retval None

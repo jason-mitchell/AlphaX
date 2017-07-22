@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32f0xx_dma.h
   * @author  MCD Application Team
-  * @version V1.2.0RC2
-  * @date    10-April-2013
+  * @version V1.3.0
+  * @date    16-January-2014
   * @brief   This file contains all the functions prototypes for the DMA firmware
   *          library.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -241,14 +241,14 @@ typedef struct
 #define DMA1_IT_TC5                        DMA_ISR_TCIF5
 #define DMA1_IT_HT5                        DMA_ISR_HTIF5
 #define DMA1_IT_TE5                        DMA_ISR_TEIF5
-#define DMA1_IT_GL6                        DMA_ISR_GIF6
-#define DMA1_IT_TC6                        DMA_ISR_TCIF6
-#define DMA1_IT_HT6                        DMA_ISR_HTIF6
-#define DMA1_IT_TE6                        DMA_ISR_TEIF6
-#define DMA1_IT_GL7                        DMA_ISR_GIF7
-#define DMA1_IT_TC7                        DMA_ISR_TCIF7
-#define DMA1_IT_HT7                        DMA_ISR_HTIF7
-#define DMA1_IT_TE7                        DMA_ISR_TEIF7
+#define DMA1_IT_GL6                        DMA_ISR_GIF6   /*!< Only applicable for STM32F072 devices */
+#define DMA1_IT_TC6                        DMA_ISR_TCIF6  /*!< Only applicable for STM32F072 devices */
+#define DMA1_IT_HT6                        DMA_ISR_HTIF6  /*!< Only applicable for STM32F072 devices */
+#define DMA1_IT_TE6                        DMA_ISR_TEIF6  /*!< Only applicable for STM32F072 devices */
+#define DMA1_IT_GL7                        DMA_ISR_GIF7   /*!< Only applicable for STM32F072 devices */
+#define DMA1_IT_TC7                        DMA_ISR_TCIF7  /*!< Only applicable for STM32F072 devices */
+#define DMA1_IT_HT7                        DMA_ISR_HTIF7  /*!< Only applicable for STM32F072 devices */
+#define DMA1_IT_TE7                        DMA_ISR_TEIF7  /*!< Only applicable for STM32F072 devices */
 
 #define IS_DMA_CLEAR_IT(IT) ((((IT) & 0xF0000000) == 0x00) && ((IT) != 0x00))
 
@@ -294,14 +294,14 @@ typedef struct
 #define DMA1_FLAG_TC5                      DMA_ISR_TCIF5
 #define DMA1_FLAG_HT5                      DMA_ISR_HTIF5
 #define DMA1_FLAG_TE5                      DMA_ISR_TEIF5
-#define DMA1_FLAG_GL6                      DMA_ISR_GIF6
-#define DMA1_FLAG_TC6                      DMA_ISR_TCIF6
-#define DMA1_FLAG_HT6                      DMA_ISR_HTIF6
-#define DMA1_FLAG_TE6                      DMA_ISR_TEIF6
-#define DMA1_FLAG_GL7                      DMA_ISR_GIF7
-#define DMA1_FLAG_TC7                      DMA_ISR_TCIF7
-#define DMA1_FLAG_HT7                      DMA_ISR_HTIF7
-#define DMA1_FLAG_TE7                      DMA_ISR_TEIF7
+#define DMA1_FLAG_GL6                      DMA_ISR_GIF6   /*!< Only applicable for STM32F072 devices */
+#define DMA1_FLAG_TC6                      DMA_ISR_TCIF6  /*!< Only applicable for STM32F072 devices */
+#define DMA1_FLAG_HT6                      DMA_ISR_HTIF6  /*!< Only applicable for STM32F072 devices */
+#define DMA1_FLAG_TE6                      DMA_ISR_TEIF6  /*!< Only applicable for STM32F072 devices */
+#define DMA1_FLAG_GL7                      DMA_ISR_GIF7   /*!< Only applicable for STM32F072 devices */
+#define DMA1_FLAG_TC7                      DMA_ISR_TCIF7  /*!< Only applicable for STM32F072 devices */
+#define DMA1_FLAG_HT7                      DMA_ISR_HTIF7  /*!< Only applicable for STM32F072 devices */
+#define DMA1_FLAG_TE7                      DMA_ISR_TEIF7  /*!< Only applicable for STM32F072 devices */
 
 #define IS_DMA_CLEAR_FLAG(FLAG) ((((FLAG) & 0xF0000000) == 0x00) && ((FLAG) != 0x00))
 

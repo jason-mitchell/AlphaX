@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f0xx_gpio.c
   * @author  MCD Application Team
-  * @version V1.2.0RC2
-  * @date    10-April-2013
+  * @version V1.3.0
+  * @date    16-January-2014
   * @brief   This file provides firmware functions to manage the following 
   *          functionalities of the GPIO peripheral:
   *           + Initialization and Configuration functions
@@ -55,7 +55,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -112,6 +112,8 @@
   * @brief  Deinitializes the GPIOx peripheral registers to their default reset 
   *         values.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.    
   * @retval None
   */
 void GPIO_DeInit(GPIO_TypeDef* GPIOx)
@@ -141,8 +143,8 @@ void GPIO_DeInit(GPIO_TypeDef* GPIOx)
   }
   else if(GPIOx == GPIOE)
   {
-    RCC_AHBPeriphResetCmd(RCC_AHBPeriph_GPIOD, ENABLE);
-    RCC_AHBPeriphResetCmd(RCC_AHBPeriph_GPIOD, DISABLE);
+    RCC_AHBPeriphResetCmd(RCC_AHBPeriph_GPIOE, ENABLE);
+    RCC_AHBPeriphResetCmd(RCC_AHBPeriph_GPIOE, DISABLE);
   }
   else
   {
@@ -158,10 +160,10 @@ void GPIO_DeInit(GPIO_TypeDef* GPIOx)
   * @brief  Initializes the GPIOx peripheral according to the specified 
   *         parameters in the GPIO_InitStruct.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.   
   * @param  GPIO_InitStruct: pointer to a GPIO_InitTypeDef structure that contains
   *         the configuration information for the specified GPIO peripheral.
-  * @note   The configured pins can be: GPIO_Pin_0 to GPIO_Pin_15 for GPIOA, GPIOB and GPIOC,
-  *         GPIO_Pin_0 to GPIO_Pin_2 for GPIOD, GPIO_Pin_0 to GPIO_Pin_3 for GPIOF.
   * @retval None
   */
 void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)
@@ -280,9 +282,13 @@ void GPIO_PinLockConfig(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 /**
   * @brief  Reads the specified input port pin.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.   
   * @param  GPIO_Pin: specifies the port bit to read.
-  * @note   This parameter can be GPIO_Pin_x where x can be:(0..15) for GPIOA, 
-  *         GPIOB or GPIOC, GPIOD, GPIOE and(0..10) for GPIOF.
+  * @note   This parameter can be GPIO_Pin_x where x can be:
+  *         For STM32F051 and STM32F030: (0..15) for GPIOA, GPIOB, GPIOC, (2) for GPIOD and (0..1, 4..7) for GIIOF.
+  *         For STM32F072: (0..15) for GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, (0..10) for GPIOF.
+  *         For STM32F031: (0..15) for GPIOA, GPIOB, (13..15) for GPIOC and (0..1, 6..7) for GPIOF.  
   * @retval The input port pin value.
   */
 uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
@@ -307,6 +313,8 @@ uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 /**
   * @brief  Reads the specified input port pin.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.   
   * @retval The input port pin value.
   */
 uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx)
@@ -320,9 +328,13 @@ uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx)
 /**
   * @brief  Reads the specified output data port bit.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.   
   * @param  GPIO_Pin: Specifies the port bit to read.
-  * @note   This parameter can be GPIO_Pin_x where x can be:(0..15) for GPIOA, 
-  *         GPIOB or GPIOC, GPIOD, GPIOE and(0..10) for GPIOF.
+  * @note   This parameter can be GPIO_Pin_x where x can be:
+  *         For STM32F051 and STM32F030: (0..15) for GPIOA, GPIOB, GPIOC, (2) for GPIOD and (0..1, 4..7) for GIIOF.
+  *         For STM32F072: (0..15) for GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, (0..10) for GPIOF.
+  *         For STM32F031: (0..15) for GPIOA, GPIOB, (13..15) for GPIOC and (0..1, 6..7) for GPIOF. 
   * @retval The output port pin value.
   */
 uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
@@ -347,6 +359,8 @@ uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 /**
   * @brief  Reads the specified GPIO output data port.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.    
   * @retval GPIO output data port value.
   */
 uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx)
@@ -360,9 +374,13 @@ uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx)
 /**
   * @brief  Sets the selected data port bits.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.    
   * @param  GPIO_Pin: specifies the port bits to be written.
-  * @note   This parameter can be GPIO_Pin_x where x can be:(0..15) for GPIOA, 
-  *         GPIOB or GPIOC, GPIOD, GPIOE and(0..10) for GPIOF.
+  * @note   This parameter can be GPIO_Pin_x where x can be:
+  *         For STM32F051 and STM32F030: (0..15) for GPIOA, GPIOB, GPIOC, (2) for GPIOD and (0..1, 4..7) for GIIOF.
+  *         For STM32F072: (0..15) for GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, (0..10) for GPIOF.
+  *         For STM32F031: (0..15) for GPIOA, GPIOB, (13..15) for GPIOC and (0..1, 6..7) for GPIOF. 
   * @retval None
   */
 void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
@@ -377,9 +395,13 @@ void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 /**
   * @brief  Clears the selected data port bits.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.
   * @param  GPIO_Pin: specifies the port bits to be written.
-  * @note   This parameter can be GPIO_Pin_x where x can be:(0..15) for GPIOA, 
-  *         GPIOB or GPIOC, GPIOD, GPIOE and(0..10) for GPIOF.
+  * @note   This parameter can be GPIO_Pin_x where x can be:
+  *         For STM32F051 and STM32F030: (0..15) for GPIOA, GPIOB, GPIOC, (2) for GPIOD and (0..1, 4..7) for GIIOF.
+  *         For STM32F072: (0..15) for GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, (0..10) for GPIOF.
+  *         For STM32F031: (0..15) for GPIOA, GPIOB, (13..15) for GPIOC and (0..1, 6..7) for GPIOF. 
   * @retval None
   */
 void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
@@ -394,13 +416,17 @@ void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 /**
   * @brief  Sets or clears the selected data port bit.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.  
   * @param  GPIO_Pin: specifies the port bit to be written.
   * @param  BitVal: specifies the value to be written to the selected bit.
   *          This parameter can be one of the BitAction enumeration values:
   *            @arg Bit_RESET: to clear the port pin
   *            @arg Bit_SET: to set the port pin
-  * @note   This parameter can be GPIO_Pin_x where x can be:(0..15) for GPIOA, 
-  *         GPIOB or GPIOC, GPIOD, GPIOE and(0..10) for GPIOF.
+  * @note   This parameter can be GPIO_Pin_x where x can be:
+  *         For STM32F051 and STM32F030: (0..15) for GPIOA, GPIOB, GPIOC, (2) for GPIOD and (0..1, 4..7) for GIIOF.
+  *         For STM32F072: (0..15) for GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, (0..10) for GPIOF.
+  *         For STM32F031: (0..15) for GPIOA, GPIOB, (13..15) for GPIOC and (0..1, 6..7) for GPIOF.
   * @retval None
   */
 void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal)
@@ -423,6 +449,8 @@ void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal)
 /**
   * @brief  Writes data to the specified GPIO data port.
   * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOE is available only for STM32F072.
+  * @note   GPIOD is not available for STM32F031.  
   * @param  PortVal: specifies the value to be written to the port output data register.
   * @retval None
   */
@@ -452,9 +480,11 @@ void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal)
 
 /**
   * @brief  Writes data to the specified GPIO data port.
-  * @param  GPIOx: where x can be (A or B) to select the GPIO peripheral.
+  * @param  GPIOx: where x can be (A, B, C, D, E or F) to select the GPIO peripheral.
+  * @note   GPIOC, GPIOD, GPIOE and GPIOF  are available only for STM32F072. 
   * @param  GPIO_PinSource: specifies the pin for the Alternate function.
-  *          This parameter can be GPIO_PinSourcex where x can be (0..15).
+  *          This parameter can be GPIO_PinSourcex where x can be (0..15) for GPIOA, GPIOB, GPIOD, GPIOE
+  *          and (0..12) for GPIOC and (0, 2..5, 9..10) for GPIOF.    
   * @param  GPIO_AF: selects the pin to used as Alternate function.
   *          This parameter can be one of the following value:
   *            @arg GPIO_AF_0:  WKUP, EVENTOUT, TIM15, SPI1, TIM17, MCO, SWDAT, SWCLK,

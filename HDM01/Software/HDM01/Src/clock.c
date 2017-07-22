@@ -42,10 +42,11 @@ unsigned char ReadClkC(void){
     RTC_GetTime(RTC_Format_BIN, &RTC_TimeStructure);
     return RTC_TimeStructure.RTC_Seconds;
 }
-//--------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//	Name: InitClockHW
+// 	Function: Initialise the RTC using the registers to determine whether its uninitialized or not
 //
-//
-//--------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 void InitClockHW(void){
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE);
     PWR_BackupAccessCmd(ENABLE);
@@ -80,6 +81,19 @@ void InitClockHW(void){
     }
 }
 
+//-------------------------------------------------------------------------------
+// Name: GetTimeNow
+// Function: Get the time at this instant and store the values in the struct
+// Parameter: Pointer to struct object used to store time/date
+//------------------------------------------------------------------------------
+void GetTimeNow(CurrentTime* TimeStruct){
+
+	RTC_GetTime(RTC_Format_BIN, &RTC_TimeStructure);		// Read entire RTC
+	TimeStruct->hour = RTC_TimeStructure.RTC_Hours;
+	TimeStruct->minute = RTC_TimeStructure.RTC_Minutes;
+	TimeStruct->second = RTC_TimeStructure.RTC_Seconds;
+
+}
 
 
 

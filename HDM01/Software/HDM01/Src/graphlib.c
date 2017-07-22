@@ -15,11 +15,11 @@
 // Parameters: character (ASCII), Font Type (int)
 // Effects: DISP_COLUMN is updated
 // Returns: void
+// Updated: 22/7/17 - Removed a variable that is not used (font-header)- it is instead accessed directly
 //-----------------------------------------------------------------------------------------------------------------------
 void OutChar(unsigned char ascii_char, const int *fonttype){
                     unsigned char *px;                      /* Declare pointer variable */
                     unsigned int font_ptr;                  /* Font array address storage */
-                    unsigned char font_header;
                     unsigned char rcnt;
                     unsigned char run_length;
                     unsigned char char_height;
@@ -29,7 +29,6 @@ void OutChar(unsigned char ascii_char, const int *fonttype){
                     px = (px + (font_ptr));                 /* Set pointer to point to font data */
 
  /* Process character's header information */
-                    font_header = *px;                      /* Retrieve font header (info) */
                     run_length = (*px & 0x1F);              /* Extract run-length value */
                     char_height = (*px & 0xC0);             /* Extract cell height bits */
                     char_height = ((char_height >> 6) & 0x03);

@@ -3,14 +3,16 @@
 //                  Alpha-X HDM01 Control Processor Firmware using STM32F052RBT8
 //                  (c) 2017 That Blue Hedgehog
 //
+//					22/7/17 - Project moved to Atollic TrueStudio- Gain in performance apparent (code size down to 17k)
 //
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Includes
+//-----------
 #include <stdio.h>
 #include <string.h>
-#include "stm32f0xx_conf.h"
-#include "stm32f0xx_usart.h"
+#include "stm32f0xx_rcc.h"
+#include "stm32f0xx_gpio.h"
 #include "bsp.h"
 #include "i2c.h"
 #include "display.h"
@@ -19,22 +21,17 @@
 #include "stdfonts.h"
 #include "clock.h"
 
-
-// Private typedefs
+// Structs
 //----------------------
 
 GPIO_InitTypeDef        GPIO_InitStructure;
 USART_InitTypeDef       USART_InitStructure;
 USART_ClockInitTypeDef  USART_ClockInitStructure;
 NVIC_InitTypeDef        NVIC_InitStructure;
+CurrentTime				TimeOfDay;
 
 // Macros, definitions, constants
 //--------------------------------
-/*
-#define SDATA GPIO_Pin_0
-#define SCLK GPIO_Pin_1
-#define RST GPIO_Pin_2
-#define BUSY GPIO_Pin_3 */
 
 // Private variables
 //--------------------
@@ -63,7 +60,7 @@ unsigned char testvar;
 unsigned int rxchar;
 unsigned char TickFlagI2C;
 
-unsigned char arr[32];
+char arr[32];
 unsigned int cnt;
 
 
@@ -101,48 +98,9 @@ void USART1_IRQHandler(void){
             rxchar = USART1->RDR;       // Always use the provided typedefs to get the correct read type (no need then for casting)
     }
 
-    printf("Character received.\r\n");
-    fflush(stdout);
 }
 
 
-/*
-void ResetDisplay(void){
-
-      GPIO_ResetBits(GPIOC, RST);     // Reset is pulled low
-      ResetTimer();
-      GPIO_SetBits(GPIOC, RST);       // Reset is pulled high
-      ResetTimer();
-      ResetTimer();
-
-}
-*/
-
-/*
-void WriteByteSPI(unsigned char data){
-    int i;
-
-    // Wait for busy to clear
-    while(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_3) == 1){
-        ;
-    }
-    for (i = 0; i < 8; i++){
-        // Copy out a bit from the source
-        if ((data & 0x01) == 0x01){
-            GPIO_SetBits(GPIOC, SDATA);
-        } else {
-            GPIO_ResetBits(GPIOC, SDATA);
-        }
-        data = data >> 1;
-        BitTimer();
-        GPIO_SetBits(GPIOC, SCLK);      // Raise clock
-        BitTimer();
-        GPIO_ResetBits(GPIOC, SCLK);    // Lower clock
-        BitTimer();
-
-    }
-}
-*/
 
 // Test Stuff
 //------------
@@ -189,14 +147,13 @@ int main(void){
         RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);                             // Port A
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);                          // Enable clock to USART 1
 
-//        RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);                            // Enable clock to I2C 1
-        //RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
+
 
         // Configure I/O pins on GPIO PORT C
         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15 | GPIO_Pin_2 | GPIO_Pin_1 | GPIO_Pin_0 | GPIO_Pin_6 | GPIO_Pin_7;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;                                   // Outputs
         GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                                  // Push pull
-        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;                                // 10MHz since we have a display on this port
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;                               // 10MHz since we have a display on this port
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;                                // No pull-ups or pull-downs
         GPIO_Init(GPIOC, &GPIO_InitStructure);
 
@@ -254,8 +211,8 @@ int main(void){
 
 
 
-        printf("\r\nHDM01 Boot...");
-        fflush(stdout);
+       // printf("\r\nHDM01 Boot...");
+       // fflush(stdout);
         InitClockHW();
 
 
@@ -279,7 +236,8 @@ int main(void){
             while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
                 SetXY(0, 0);
                 ClearFB();
-                sprintf(arr, "%2d:%02d:%02d", ReadClkA(), ReadClkB(), ReadClkC());
+                GetTimeNow(&TimeOfDay);
+                sprintf(arr, "%2d:%02d:%02d", TimeOfDay.hour, TimeOfDay.minute, TimeOfDay.second);
                 OutString(arr, Font1);
                 UpdateFromFB();
                 Delay(0x2FFFFF);

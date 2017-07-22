@@ -2,10 +2,11 @@
   ******************************************************************************
   * @file    stm32f0xx_dac.c
   * @author  MCD Application Team
-  * @version V1.2.0RC2
-  * @date    10-April-2013
+  * @version V1.3.0
+  * @date    16-January-2014
   * @brief   This file provides firmware functions to manage the following 
-  *          functionalities of the Digital-to-Analog Converter (DAC) peripheral:
+  *          functionalities of the Digital-to-Analog Converter (DAC) peripheral
+  *          applicable only on STM32F051 and STM32F072 devices:
   *           + DAC channel configuration: trigger, output buffer, data format
   *           + DMA management
   *           + Interrupts and flags management
@@ -15,24 +16,24 @@
  ===============================================================================
                         ##### DAC Peripheral features #####
  ===============================================================================
-    [..] The device integrates one 12-bit Digital Analog Converters refered as
-         DAC channel1 with DAC_OUT1 (PA4) as output
+    [..] The device integrates two 12-bit Digital Analog Converters refered as
+         DAC channel1 with DAC_OUT1 (PA4) and DAC_OUT2 (PA5) as outputs.
   
     [..] Digital to Analog conversion can be non-triggered using DAC_Trigger_None
-         and DAC_OUT1 is available once writing to DHRx register using 
-         DAC_SetChannel1Data().
+         and DAC_OUTx is available once writing to DHRx register using 
+         DAC_SetChannel1Data() or DAC_SetChannel2Data() 
   
     [..] Digital to Analog conversion can be triggered by:
          (#) External event: EXTI Line 9 (any GPIOx_Pin9) using DAC_Trigger_Ext_IT9.
              The used pin (GPIOx_Pin9) must be configured in input mode.
   
-         (#) Timers TRGO: TIM2, TIM3, TIM6 and TIM15 
+         (#) Timers TRGO: TIM2, TIM3,TIM7, TIM6 and TIM15 
              (DAC_Trigger_T2_TRGO, DAC_Trigger_T3_TRGO...)
              The timer TRGO event should be selected using TIM_SelectOutputTrigger()
   
          (#) Software using DAC_Trigger_Software
   
-    [..] The DAC channel 1 integrates an output buffer that can be used to 
+    [..] Each DAC integrates an output buffer that can be used to 
          reduce the output impedance, and to drive external loads directly
          without having to add an external operational amplifier.
          To enable the output buffer use  
@@ -40,6 +41,11 @@
   
     [..] Refer to the device datasheet for more details about output impedance
          value with and without output buffer.
+         
+    [..] DAC wave generation feature
+         Both DAC channels can be used to generate
+             1- Noise wave using DAC_WaveGeneration_Noise
+             2- Triangle wave using DAC_WaveGeneration_Triangle
   
     [..] The DAC data format can be:
          (#) 8-bit right alignment using DAC_Align_8b_R
@@ -60,6 +66,8 @@
          DMA1 requests are mapped as following:
          (+) DAC channel1 is mapped on DMA1 channel3 which must be already 
              configured
+         (+) DAC channel2 is mapped on DMA1 channel4 which must be already 
+             configured
     
                       ##### How to use this driver #####
  ===============================================================================
@@ -67,7 +75,7 @@
          (+) Enable DAC APB1 clock to get write access to DAC registers
              using RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE)
               
-         (+) Configure DAC_OUT1 (DAC_OUT1: PA4) in analog mode
+         (+) Configure DAC_OUTx (DAC_OUT1: PA4, DAC_OUT2: PA5) in analog mode
              using GPIO_Init() function  
               
          (+) Configure the DAC channel using DAC_Init()
@@ -79,7 +87,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -111,16 +119,16 @@
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* CR register Mask */
-#define CR_CLEAR_MASK              ((uint32_t)0x00000FFE)
+#define CR_CLEAR_MASK              ((uint32_t)0x00000FFE) /* check the value of the mask */
 
 /* DAC Dual Channels SWTRIG masks */
-#define DUAL_SWTRIG_SET            ((uint32_t)0x00000003)
-#define DUAL_SWTRIG_RESET          ((uint32_t)0xFFFFFFFC)
+#define DUAL_SWTRIG_SET            ((uint32_t)0x00000003) /*!< Only applicable for STM32F072 devices */
+#define DUAL_SWTRIG_RESET          ((uint32_t)0xFFFFFFFC) /*!< Only applicable for STM32F072 devices */
 
 /* DHR registers offsets */
 #define DHR12R1_OFFSET             ((uint32_t)0x00000008)
-#define DHR12R2_OFFSET             ((uint32_t)0x00000014)
-#define DHR12RD_OFFSET             ((uint32_t)0x00000020)
+#define DHR12R2_OFFSET             ((uint32_t)0x00000014) /*!< Only applicable for STM32F072 devices */
+#define DHR12RD_OFFSET             ((uint32_t)0x00000020) /*!< Only applicable for STM32F072 devices */
 
 /* DOR register offset */
 #define DOR_OFFSET                 ((uint32_t)0x0000002C)
@@ -165,7 +173,7 @@ void DAC_DeInit(void)
   * @param  DAC_Channel: the selected DAC channel. 
   *          This parameter can be:
   *            @arg DAC_Channel_1: DAC Channel1 selected
-  *            @arg DAC_Channel_2: DAC Channel2 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @param  DAC_InitStruct: pointer to a DAC_InitTypeDef structure that contains
   *         the configuration information for the  specified DAC channel.
   * @retval None
@@ -227,7 +235,7 @@ void DAC_StructInit(DAC_InitTypeDef* DAC_InitStruct)
   * @param  DAC_Channel: The selected DAC channel. 
   *          This parameter can be one of the following values:
   *            @arg DAC_Channel_1: DAC Channel1 selected
-  *            @arg DAC_Channel_2: DAC Channel2 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @param  NewState: new state of the DAC channel. 
   *          This parameter can be: ENABLE or DISABLE.
   * @note   When the DAC channel is enabled the trigger source can no more be modified.
@@ -256,7 +264,7 @@ void DAC_Cmd(uint32_t DAC_Channel, FunctionalState NewState)
   * @param  DAC_Channel: The selected DAC channel. 
   *          This parameter can be one of the following values:
   *            @arg DAC_Channel_1: DAC Channel1 selected
-  *            @arg DAC_Channel_2: DAC Channel2 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @param  NewState: new state of the selected DAC channel software trigger.
   *          This parameter can be: ENABLE or DISABLE.
   * @retval None
@@ -281,6 +289,7 @@ void DAC_SoftwareTriggerCmd(uint32_t DAC_Channel, FunctionalState NewState)
 
 /**
   * @brief  Enables or disables simultaneously the two DAC channels software triggers.
+  *         This function is applicable only for STM32F072 devices.  
   * @param  NewState: new state of the DAC channels software triggers.
   *          This parameter can be: ENABLE or DISABLE.
   * @retval None
@@ -304,6 +313,7 @@ void DAC_DualSoftwareTriggerCmd(FunctionalState NewState)
 
 /**
   * @brief  Enables or disables the selected DAC channel wave generation.
+  *         This function is applicable only for STM32F072 devices.  
   * @param  DAC_Channel: The selected DAC channel. 
   *          This parameter can be:
   *            @arg DAC_Channel_1: DAC Channel1 selected
@@ -362,6 +372,7 @@ void DAC_SetChannel1Data(uint32_t DAC_Align, uint16_t Data)
 
 /**
   * @brief  Sets the specified data holding register value for DAC channel2.
+  *         This function is applicable only for STM32F072 devices.  
   * @param  DAC_Align: Specifies the data alignment for DAC channel2.
   *          This parameter can be:
   *            @arg DAC_Align_8b_R: 8bit right data alignment selected
@@ -387,6 +398,7 @@ void DAC_SetChannel2Data(uint32_t DAC_Align, uint16_t Data)
 
 /**
   * @brief  Sets the specified data holding register value for dual channel DAC.
+  *         This function is applicable only for STM32F072 devices.  
   * @param  DAC_Align: Specifies the data alignment for dual channel DAC.
   *          This parameter can be:
   *            @arg DAC_Align_8b_R: 8bit right data alignment selected
@@ -429,7 +441,7 @@ void DAC_SetDualChannelData(uint32_t DAC_Align, uint16_t Data2, uint16_t Data1)
   * @param  DAC_Channel: The selected DAC channel. 
   *          This parameter can be one of the following values:
   *            @arg DAC_Channel_1: DAC Channel1 selected
-  *            @arg DAC_Channel_2: DAC Channel2 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @retval The selected DAC channel data output value.
   */
 uint16_t DAC_GetDataOutputValue(uint32_t DAC_Channel)
@@ -469,9 +481,11 @@ uint16_t DAC_GetDataOutputValue(uint32_t DAC_Channel)
   * @param  DAC_Channel: the selected DAC channel.
   *          This parameter can be one of the following values:
   *            @arg DAC_Channel_1: DAC Channel1 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @param  NewState: new state of the selected DAC channel DMA request.
   *          This parameter can be: ENABLE or DISABLE.
   * @note   The DAC channel1 is mapped on DMA1 channel3 which must be already configured. 
+  * @note   The DAC channel2 is mapped on DMA1 channel4 which must be already configured.  
   * @retval None
   */
 void DAC_DMACmd(uint32_t DAC_Channel, FunctionalState NewState)
@@ -513,7 +527,7 @@ void DAC_DMACmd(uint32_t DAC_Channel, FunctionalState NewState)
   * @param  DAC_Channel: The selected DAC channel. 
   *          This parameter can be:
   *            @arg DAC_Channel_1: DAC Channel1 selected
-  *            @arg DAC_Channel_2: DAC Channel2 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @param  DAC_IT: specifies the DAC interrupt sources to be enabled or disabled. 
   *          This parameter can be the following values:
   *            @arg DAC_IT_DMAUDR: DMA underrun interrupt mask
@@ -547,7 +561,7 @@ void DAC_ITConfig(uint32_t DAC_Channel, uint32_t DAC_IT, FunctionalState NewStat
   * @param  DAC_Channel: The selected DAC channel. 
   *          This parameter can be one of the following values:
   *            @arg DAC_Channel_1: DAC Channel1 selected
-  *            @arg DAC_Channel_2: DAC Channel2 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @param  DAC_FLAG: specifies the flag to check. 
   *          This parameter can be only of the following value:
   *            @arg DAC_FLAG_DMAUDR: DMA underrun flag
@@ -582,7 +596,7 @@ FlagStatus DAC_GetFlagStatus(uint32_t DAC_Channel, uint32_t DAC_FLAG)
   * @param  DAC_Channel: The selected DAC channel. 
   *          This parameter can be one of the following values:
   *            @arg DAC_Channel_1: DAC Channel1 selected
-  *            @arg DAC_Channel_2: DAC Channel2 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @param  DAC_FLAG: specifies the flag to clear. 
   *          This parameter can be of the following value:
   *            @arg DAC_FLAG_DMAUDR: DMA underrun flag                           
@@ -603,7 +617,7 @@ void DAC_ClearFlag(uint32_t DAC_Channel, uint32_t DAC_FLAG)
   * @param  DAC_Channel: The selected DAC channel. 
   *          This parameter can be one of the following values:
   *            @arg DAC_Channel_1: DAC Channel1 selected
-  *            @arg DAC_Channel_2: DAC Channel2 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @param  DAC_IT: specifies the DAC interrupt source to check. 
   *          This parameter can be the following values:
   *            @arg DAC_IT_DMAUDR: DMA underrun interrupt mask
@@ -643,7 +657,7 @@ ITStatus DAC_GetITStatus(uint32_t DAC_Channel, uint32_t DAC_IT)
   * @param  DAC_Channel: The selected DAC channel. 
   *          This parameter can be one of the following values:
   *            @arg DAC_Channel_1: DAC Channel1 selected
-  *            @arg DAC_Channel_2: DAC Channel2 selected
+  *            @arg DAC_Channel_2: DAC Channel2 selected, applicable only for STM32F072 devices
   * @param  DAC_IT: specifies the DAC interrupt pending bit to clear.
   *          This parameter can be the following values:
   *            @arg DAC_IT_DMAUDR: DMA underrun interrupt mask                                                    

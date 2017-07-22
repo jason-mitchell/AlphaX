@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f0xx_rcc.c
   * @author  MCD Application Team
-  * @version V1.2.0RC2
-  * @date    10-April-2013
+  * @version V1.3.0
+  * @date    16-January-2014
   * @brief   This file provides firmware functions to manage the following 
   *          functionalities of the Reset and clock control (RCC) peripheral:
   *           + Internal/external clocks, PLL, CSS and MCO configuration
@@ -37,7 +37,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -148,8 +148,13 @@ void RCC_DeInit(void)
   /* Set HSION bit */
   RCC->CR |= (uint32_t)0x00000001;
 
-  /* Reset SW[1:0], HPRE[3:0], PPRE[2:0], ADCPRE and MCOSEL[2:0] bits */
+#if defined (STM32F051)
+  /* Reset SW[1:0], HPRE[3:0], PPRE[2:0] and MCOSEL[2:0] bits */
   RCC->CFGR &= (uint32_t)0xF8FFB80C;
+#else
+  /* Reset SW[1:0], HPRE[3:0], PPRE[2:0], ADCPRE, MCOSEL[2:0], MCOPRE[2:0] and PLLNODIV bits */
+  RCC->CFGR &= (uint32_t)0x08FFB80C;
+#endif /* STM32F051 */
   
   /* Reset HSEON, CSSON and PLLON bits */
   RCC->CR &= (uint32_t)0xFEF6FFFF;
@@ -470,8 +475,8 @@ void RCC_LSICmd(FunctionalState NewState)
   *          This parameter can be one of the following values:
   *            @arg RCC_PLLSource_HSI_Div2: HSI oscillator clock selected as PLL clock source
   *            @arg RCC_PLLSource_PREDIV1: PREDIV1 clock selected as PLL clock entry
-  *            @arg RCC_PLLSource_HSI48 HSI48 oscillator clock selected as PLL clock source
-  *            @arg RCC_PLLSource_HSI: HSI clock selected as PLL clock entry
+  *            @arg RCC_PLLSource_HSI48 HSI48 oscillator clock selected as PLL clock source, applicable only for STM32F072 devices
+  *            @arg RCC_PLLSource_HSI: HSI clock selected as PLL clock entry, applicable only for STM32F072 devices
   * @note   The minimum input clock frequency for PLL is 2 MHz (when using HSE as
   *         PLL source).
   *
@@ -521,6 +526,7 @@ void RCC_PLLCmd(FunctionalState NewState)
 
 /**
   * @brief  Enables or disables the Internal High Speed oscillator for USB (HSI48).
+  *         This function is only applicable for STM32F072 devices.  
   * @note   After enabling the HSI48, the application software should wait on 
   *         HSI48RDY flag to be set indicating that HSI48 clock is stable and can
   *         be used to clock the USB.
@@ -593,7 +599,7 @@ void RCC_ClockSecuritySystemCmd(FunctionalState NewState)
   }
 }
 
-#ifndef STM32F0XX_HD
+#ifdef STM32F051
 /**
   * @brief  Selects the clock source to output on MCO pin (PA8).
   * @note   PA8 should be configured in alternate function mode.
@@ -607,25 +613,15 @@ void RCC_ClockSecuritySystemCmd(FunctionalState NewState)
   *            @arg RCC_MCOSource_HSI: HSI oscillator clock selected.
   *            @arg RCC_MCOSource_HSE: HSE oscillator clock selected.
   *            @arg RCC_MCOSource_PLLCLK_Div2: PLL clock divided by 2 selected.
-  *            @arg RCC_MCOSource_PLLCLK: PLL clock selected.
-  *            @arg RCC_MCOSource_HSI48: HSI48 clock selected.  
   * @retval None
   */
 void RCC_MCOConfig(uint8_t RCC_MCOSource)
 {
-  uint32_t tmpreg = 0;
-  
   /* Check the parameters */
   assert_param(IS_RCC_MCO_SOURCE(RCC_MCOSource));
 
-  /* Get CFGR value */  
-  tmpreg = RCC->CFGR;
-  /* Clear MCO[3:0] bits */
-  tmpreg &= ~(RCC_CFGR_MCO | RCC_CFGR_PLLNODIV);
-  /* Set the RCC_MCOSource */
-  tmpreg |= RCC_MCOSource<<24;
-  /* Store the new value */
-  RCC->CFGR = tmpreg;
+  /* Select MCO clock source and prescaler */
+  *(__IO uint8_t *) CFGR_BYTE3_ADDRESS =  RCC_MCOSource;
 }
 #else
 
@@ -670,11 +666,11 @@ void RCC_MCOConfig(uint8_t RCC_MCOSource, uint32_t RCC_MCOPrescaler)
   /* Clear MCOPRE[2:0] bits */
   tmpreg &= ~(RCC_CFGR_MCO_PRE | RCC_CFGR_MCO | RCC_CFGR_PLLNODIV);
   /* Set the RCC_MCOSource and RCC_MCOPrescaler */
-  tmpreg |= (RCC_MCOPrescaler | RCC_MCOSource<<24);
+  tmpreg |= (RCC_MCOPrescaler | ((uint32_t)RCC_MCOSource<<24));
   /* Store the new value */
   RCC->CFGR = tmpreg;
 }
-#endif /* STM32F0XX_HD */
+#endif /* STM32F072 */
 
 /**
   * @}
@@ -770,7 +766,7 @@ void RCC_MCOConfig(uint8_t RCC_MCOSource, uint32_t RCC_MCOPrescaler)
   *            @arg RCC_SYSCLKSource_HSI:    HSI selected as system clock source
   *            @arg RCC_SYSCLKSource_HSE:    HSE selected as system clock source
   *            @arg RCC_SYSCLKSource_PLLCLK: PLL selected as system clock source
-  *            @arg RCC_SYSCLKSource_HSI48:  HSI48 selected as system clock source  
+  *            @arg RCC_SYSCLKSource_HSI48:  HSI48 selected as system clock source, applicable only for STM32F072 devices  
   * @retval None
   */
 void RCC_SYSCLKConfig(uint32_t RCC_SYSCLKSource)
@@ -800,7 +796,7 @@ void RCC_SYSCLKConfig(uint32_t RCC_SYSCLKSource)
   *           - 0x00: HSI used as system clock
   *           - 0x04: HSE used as system clock  
   *           - 0x08: PLL used as system clock
-  *           - 0x0C: HSI48 used as system clock  
+  *           - 0x0C: HSI48 used as system clock, applicable only for STM32F072 devices  
   */
 uint8_t RCC_GetSYSCLKSource(void)
 {
@@ -875,6 +871,8 @@ void RCC_PCLKConfig(uint32_t RCC_HCLK)
 
 /**
   * @brief  Configures the ADC clock (ADCCLK).
+  * @note   This function is obsolete.
+  *         For proper ADC clock selection, refer to ADC_ClockModeConfig() in the ADC driver
   * @param  RCC_ADCCLK: defines the ADC clock source. This clock is derived 
   *         from the HSI14 or APB clock (PCLK).
   *          This parameter can be one of the following values:
@@ -948,10 +946,10 @@ void RCC_I2CCLKConfig(uint32_t RCC_I2CCLK)
   *             @arg RCC_USART1CLK_SYSCLK: USART1 clock = System Clock
   *             @arg RCC_USART1CLK_LSE: USART1 clock = LSE Clock
   *             @arg RCC_USART1CLK_HSI: USART1 clock = HSI Clock
-  *             @arg RCC_USART2CLK_PCLK: USART2 clock = APB Clock (PCLK)
-  *             @arg RCC_USART2CLK_SYSCLK: USART2 clock = System Clock
-  *             @arg RCC_USART2CLK_LSE: USART2 clock = LSE Clock
-  *             @arg RCC_USART2CLK_HSI: USART2 clock = HSI Clock  
+  *             @arg RCC_USART2CLK_PCLK: USART2 clock = APB Clock (PCLK), applicable only for STM32F072 devices
+  *             @arg RCC_USART2CLK_SYSCLK: USART2 clock = System Clock, applicable only for STM32F072 devices
+  *             @arg RCC_USART2CLK_LSE: USART2 clock = LSE Clock, applicable only for STM32F072 devices
+  *             @arg RCC_USART2CLK_HSI: USART2 clock = HSI Clock, applicable only for STM32F072 devices  
   * @retval None
   */
 void RCC_USARTCLKConfig(uint32_t RCC_USARTCLK)
@@ -982,11 +980,12 @@ void RCC_USARTCLKConfig(uint32_t RCC_USARTCLK)
 
 /**
   * @brief  Configures the USB clock (USBCLK).
+  *         This function is only applicable for STM32F072 devices.  
   * @param  RCC_USBCLK: defines the USB clock source. This clock is derived 
   *         from the HSI48 or system clock.
   *          This parameter can be one of the following values:
   *             @arg RCC_USBCLK_HSI48: USB clock = HSI48
-  *             @arg RCC_USBCLK_SYSCLK: USB clock = SYSCLK
+  *             @arg RCC_USBCLK_PLLCLK: USB clock = PLL clock
   * @retval None
   */
 void RCC_USBCLKConfig(uint32_t RCC_USBCLK)
@@ -1044,7 +1043,7 @@ void RCC_USBCLKConfig(uint32_t RCC_USBCLK)
   */
 void RCC_GetClocksFreq(RCC_ClocksTypeDef* RCC_Clocks)
 {
-  uint32_t tmp = 0, pllmull = 0, pllsource = 0, prediv1factor = 0, presc = 0;
+  uint32_t tmp = 0, pllmull = 0, pllsource = 0, prediv1factor = 0, presc = 0, pllclk = 0;
 
   /* Get SYSCLK source -------------------------------------------------------*/
   tmp = RCC->CFGR & RCC_CFGR_SWS;
@@ -1066,14 +1065,15 @@ void RCC_GetClocksFreq(RCC_ClocksTypeDef* RCC_Clocks)
       if (pllsource == 0x00)
       {
         /* HSI oscillator clock divided by 2 selected as PLL clock entry */
-        RCC_Clocks->SYSCLK_Frequency = (HSI_VALUE >> 1) * pllmull;
+        pllclk = (HSI_VALUE >> 1) * pllmull;
       }
       else
       {
         prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1;
         /* HSE oscillator clock selected as PREDIV1 clock entry */
-        RCC_Clocks->SYSCLK_Frequency = (HSE_VALUE / prediv1factor) * pllmull; 
-      }      
+        pllclk = (HSE_VALUE / prediv1factor) * pllmull; 
+      }
+      RCC_Clocks->SYSCLK_Frequency = pllclk;      
       break;
     case 0x0C:  /* HSI48 used as system clock */
       RCC_Clocks->SYSCLK_Frequency = HSI48_VALUE;
@@ -1194,8 +1194,8 @@ void RCC_GetClocksFreq(RCC_ClocksTypeDef* RCC_Clocks)
   }
   else
   {
-    /* USB Clock is system clock */
-    RCC_Clocks->USBCLK_Frequency = RCC_Clocks->SYSCLK_Frequency;
+    /* USB Clock is PLL clock */
+    RCC_Clocks->USBCLK_Frequency = pllclk;
   }   
 }
 
@@ -1317,7 +1317,7 @@ void RCC_BackupResetCmd(FunctionalState NewState)
   *             @arg RCC_AHBPeriph_GPIOB: GPIOB clock
   *             @arg RCC_AHBPeriph_GPIOC: GPIOC clock
   *             @arg RCC_AHBPeriph_GPIOD: GPIOD clock
-  *             @arg RCC_AHBPeriph_GPIOE: GPIOE clock  
+  *             @arg RCC_AHBPeriph_GPIOE: GPIOE clock, applicable only for STM32F072 devices  
   *             @arg RCC_AHBPeriph_GPIOF: GPIOF clock
   *             @arg RCC_AHBPeriph_TS:    TS clock
   *             @arg RCC_AHBPeriph_CRC:   CRC clock
@@ -1387,24 +1387,24 @@ void RCC_APB2PeriphClockCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)
   *         using it.
   * @param  RCC_APB1Periph: specifies the APB1 peripheral to gates its clock.
   *          This parameter can be any combination of the following values:
-  *           @arg RCC_APB1Periph_TIM2:   TIM2 clock
+  *           @arg RCC_APB1Periph_TIM2:   TIM2 clock, applicable only for STM32F051 and STM32F072 devices
   *           @arg RCC_APB1Periph_TIM3:   TIM3 clock
   *           @arg RCC_APB1Periph_TIM6:   TIM6 clock
-  *           @arg RCC_APB1Periph_TIM7:   TIM7 clock  
+  *           @arg RCC_APB1Periph_TIM7:   TIM7 clock, applicable only for STM32F072 devices   
   *           @arg RCC_APB1Periph_TIM14:  TIM14 clock
   *           @arg RCC_APB1Periph_WWDG:   WWDG clock
   *           @arg RCC_APB1Periph_SPI2:   SPI2 clock
   *           @arg RCC_APB1Periph_USART2: USART2 clock
-  *           @arg RCC_APB1Periph_USART3: USART3 clock
-  *           @arg RCC_APB1Periph_USART4: USART4 clock    
+  *           @arg RCC_APB1Periph_USART3: USART3 clock, applicable only for STM32F072 devices 
+  *           @arg RCC_APB1Periph_USART4: USART4 clock, applicable only for STM32F072 devices     
   *           @arg RCC_APB1Periph_I2C1:   I2C1 clock
   *           @arg RCC_APB1Periph_I2C2:   I2C2 clock
-  *           @arg RCC_APB1Periph_USB:    USB clock
-  *           @arg RCC_APB1Periph_CAN1:   CAN1 clock
-  *           @arg RCC_APB1Periph_CRS:    CRS clock      
+  *           @arg RCC_APB1Periph_USB:    USB clock, applicable only for STM32F042 and STM32F072 devices 
+  *           @arg RCC_APB1Periph_CAN:    CAN clock, applicable only for STM32F042 and STM32F072 devices 
+  *           @arg RCC_APB1Periph_CRS:    CRS clock , applicable only for STM32F042 and STM32F072 devices      
   *           @arg RCC_APB1Periph_PWR:    PWR clock
-  *           @arg RCC_APB1Periph_DAC:    DAC clock
-  *           @arg RCC_APB1Periph_CEC:    CEC clock                               
+  *           @arg RCC_APB1Periph_DAC:    DAC clock, applicable only for STM32F051 and STM32F072 devices 
+  *           @arg RCC_APB1Periph_CEC:    CEC clock, applicable only for STM32F051, STM32F042 and STM32F072 devices                               
   * @param  NewState: new state of the specified peripheral clock.
   *          This parameter can be: ENABLE or DISABLE.
   * @retval None
@@ -1433,7 +1433,7 @@ void RCC_APB1PeriphClockCmd(uint32_t RCC_APB1Periph, FunctionalState NewState)
   *             @arg RCC_AHBPeriph_GPIOB: GPIOB clock
   *             @arg RCC_AHBPeriph_GPIOC: GPIOC clock
   *             @arg RCC_AHBPeriph_GPIOD: GPIOD clock
-  *             @arg RCC_AHBPeriph_GPIOE: GPIOE clock  
+  *             @arg RCC_AHBPeriph_GPIOE: GPIOE clock, applicable only for STM32F072 devices  
   *             @arg RCC_AHBPeriph_GPIOF: GPIOF clock
   *             @arg RCC_AHBPeriph_TS:    TS clock
   * @param  NewState: new state of the specified peripheral reset.
@@ -1493,10 +1493,10 @@ void RCC_APB2PeriphResetCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)
   * @brief  Forces or releases Low Speed APB (APB1) peripheral reset.
   * @param  RCC_APB1Periph: specifies the APB1 peripheral to reset.
   *          This parameter can be any combination of the following values:
-  *           @arg RCC_APB1Periph_TIM2:   TIM2 clock
+  *           @arg RCC_APB1Periph_TIM2:   TIM2 clock, applicable only for STM32F051 and STM32F072 devices
   *           @arg RCC_APB1Periph_TIM3:   TIM3 clock
   *           @arg RCC_APB1Periph_TIM6:   TIM6 clock
-  *           @arg RCC_APB1Periph_TIM7:   TIM7 clock  
+  *           @arg RCC_APB1Periph_TIM7:   TIM7 clock, applicable only for STM32F072 devices  
   *           @arg RCC_APB1Periph_TIM14:  TIM14 clock
   *           @arg RCC_APB1Periph_WWDG:   WWDG clock
   *           @arg RCC_APB1Periph_SPI2:   SPI2 clock
@@ -1505,12 +1505,12 @@ void RCC_APB2PeriphResetCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)
   *           @arg RCC_APB1Periph_USART4: USART4 clock    
   *           @arg RCC_APB1Periph_I2C1:   I2C1 clock
   *           @arg RCC_APB1Periph_I2C2:   I2C2 clock
-  *           @arg RCC_APB1Periph_USB:    USB clock
-  *           @arg RCC_APB1Periph_CAN1:   CAN1 clock
-  *           @arg RCC_APB1Periph_CRS:    CRS clock      
+  *           @arg RCC_APB1Periph_USB:    USB clock, applicable only for STM32F072 devices
+  *           @arg RCC_APB1Periph_CAN:    CAN clock, applicable only for STM32F072 devices
+  *           @arg RCC_APB1Periph_CRS:    CRS clock, applicable only for STM32F072 devices      
   *           @arg RCC_APB1Periph_PWR:    PWR clock
-  *           @arg RCC_APB1Periph_DAC:    DAC clock
-  *           @arg RCC_APB1Periph_CEC:    CEC clock  
+  *           @arg RCC_APB1Periph_DAC:    DAC clock, applicable only for STM32F051 and STM32F072 devices
+  *           @arg RCC_APB1Periph_CEC:    CEC clock, applicable only for STM32F051 and STM32F072 devices  
   * @param  NewState: new state of the specified peripheral clock.
   *          This parameter can be: ENABLE or DISABLE.
   * @retval None
@@ -1562,7 +1562,7 @@ void RCC_APB1PeriphResetCmd(uint32_t RCC_APB1Periph, FunctionalState NewState)
   *              @arg RCC_IT_HSERDY: HSE ready interrupt
   *              @arg RCC_IT_PLLRDY: PLL ready interrupt
   *              @arg RCC_IT_HSI14RDY: HSI14 ready interrupt
-  *              @arg RCC_IT_HSI48RDY: HSI48 ready interrupt  
+  *              @arg RCC_IT_HSI48RDY: HSI48 ready interrupt, applicable only for STM32F072 devices  
   * @param  NewState: new state of the specified RCC interrupts.
   *          This parameter can be: ENABLE or DISABLE.
   * @retval None
@@ -1603,7 +1603,7 @@ void RCC_ITConfig(uint8_t RCC_IT, FunctionalState NewState)
   *             @arg RCC_FLAG_WWDGRST: Window Watchdog reset
   *             @arg RCC_FLAG_LPWRRST: Low Power reset
   *             @arg RCC_FLAG_HSI14RDY: HSI14 oscillator clock ready
-  *             @arg RCC_FLAG_HSI48RDY: HSI48 oscillator clock ready    
+  *             @arg RCC_FLAG_HSI48RDY: HSI48 oscillator clock ready, applicable only for STM32F072 devices    
   * @retval The new state of RCC_FLAG (SET or RESET).
   */
 FlagStatus RCC_GetFlagStatus(uint8_t RCC_FLAG)
@@ -1674,7 +1674,7 @@ void RCC_ClearFlag(void)
   *             @arg RCC_IT_HSERDY: HSE ready interrupt
   *             @arg RCC_IT_PLLRDY: PLL ready interrupt
   *             @arg RCC_IT_HSI14RDY: HSI14 ready interrupt
-  *             @arg RCC_IT_HSI48RDY: HSI48 ready interrupt    
+  *             @arg RCC_IT_HSI48RDY: HSI48 ready interrupt, applicable only for STM32F072 devices    
   *             @arg RCC_IT_CSS: Clock Security System interrupt
   * @retval The new state of RCC_IT (SET or RESET).
   */
@@ -1707,7 +1707,7 @@ ITStatus RCC_GetITStatus(uint8_t RCC_IT)
   *             @arg RCC_IT_HSIRDY: HSI ready interrupt
   *             @arg RCC_IT_HSERDY: HSE ready interrupt
   *             @arg RCC_IT_PLLRDY: PLL ready interrupt
-  *             @arg RCC_IT_HSI48RDY: HSI48 ready interrupt  
+  *             @arg RCC_IT_HSI48RDY: HSI48 ready interrupt, applicable only for STM32F072 devices 
   *             @arg RCC_IT_HSI14RDY: HSI14 ready interrupt
   *             @arg RCC_IT_CSS: Clock Security System interrupt
   * @retval None

@@ -15,7 +15,7 @@
 unsigned char DISPLAY_COLUMN;
 unsigned char DISPLAY_ROW;
 
-unsigned char framebuffer[255];
+char framebuffer[255];
 
 // Functions
 //-------------

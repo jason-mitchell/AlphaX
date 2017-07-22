@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32f0xx_gpio.h
   * @author  MCD Application Team
-  * @version V1.2.0RC2
-  * @date    10-April-2013
+  * @version V1.3.0
+  * @date    16-January-2014
   * @brief   This file contains all the functions prototypes for the GPIO 
   *          firmware library. 
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -93,9 +93,9 @@ typedef enum
   */
 typedef enum
 {
-  GPIO_Speed_Level_1  = 0x01, /*!< Medium Speed */
-  GPIO_Speed_Level_2  = 0x02, /*!< Fast Speed   */
-  GPIO_Speed_Level_3  = 0x03  /*!< High Speed   */
+  GPIO_Speed_Level_1  = 0x00, /*!< I/O output speed: Low 2 MHz */
+  GPIO_Speed_Level_2  = 0x01, /*!< I/O output speed: Medium 10 MHz */
+  GPIO_Speed_Level_3  = 0x03  /*!< I/O output speed: High 50 MHz */
 }GPIOSpeed_TypeDef;
 
 #define IS_GPIO_SPEED(SPEED) (((SPEED) == GPIO_Speed_Level_1) || ((SPEED) == GPIO_Speed_Level_2) || \
@@ -276,12 +276,14 @@ typedef struct
 /** 
   * @brief  AF 4 selection
   */
-#define GPIO_AF_4            ((uint8_t)0x04) /* TIM14, USART4, USART3, CRS, CAN */
+#define GPIO_AF_4            ((uint8_t)0x04) /* TIM14, USART4, USART3, CRS, CAN,
+                                                I2C1 */
 
 /** 
   * @brief  AF 5 selection
   */
-#define GPIO_AF_5            ((uint8_t)0x05) /* TIM16, TIM17, TIM15, SPI2, I2C2 */
+#define GPIO_AF_5            ((uint8_t)0x05) /* TIM16, TIM17, TIM15, SPI2, I2C2, 
+                                                MCO, I2C1, USB */
 
 /** 
   * @brief  AF 6 selection
@@ -305,10 +307,10 @@ typedef struct
   * @{
   */
 
-#define GPIO_Speed_10MHz GPIO_Speed_Level_1   /*!< Fast Speed:10MHz   */
-#define GPIO_Speed_2MHz  GPIO_Speed_Level_2   /*!< Medium Speed:2MHz  */
-#define GPIO_Speed_50MHz GPIO_Speed_Level_3   /*!< High Speed:50MHz   */
-
+#define GPIO_Speed_2MHz  GPIO_Speed_Level_1   /*!< I/O output speed: Low 2 MHz  */
+#define GPIO_Speed_10MHz GPIO_Speed_Level_2   /*!< I/O output speed: Medium 10 MHz */
+#define GPIO_Speed_50MHz GPIO_Speed_Level_3   /*!< I/O output speed: High 50 MHz */
+  
 /**
   * @}
   */

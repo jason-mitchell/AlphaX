@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32f0xx_can.h
   * @author  MCD Application Team
-  * @version V1.2.0RC2
-  * @date    10-April-2013
+  * @version V1.3.0
+  * @date    16-January-2014
   * @brief   This file contains all the functions prototypes for the CAN firmware 
-  *          library, applicable only for STM32F0xx High density devices.
+  *          library, applicable only for STM32F072 devices.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@
 
 /* Exported types ------------------------------------------------------------*/
 
-#define IS_CAN_ALL_PERIPH(PERIPH) (((PERIPH) == CAN1))
+#define IS_CAN_ALL_PERIPH(PERIPH) (((PERIPH) == CAN))
 
 /** 
   * @brief  CAN init structure definition

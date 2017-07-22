@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f0xx_crc.c
   * @author  MCD Application Team
-  * @version V1.2.0RC2
-  * @date    10-April-2013
+  * @version V1.3.0
+  * @date    16-January-2014
   * @brief   This file provides firmware functions to manage the following 
   *          functionalities of CRC computation unit peripheral:
   *            + Configuration of the CRC computation unit
@@ -34,7 +34,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -121,7 +121,8 @@ void CRC_ResetDR(void)
 }
 
 /**
-  * @brief  Selects the polynomial size.
+  * @brief  Selects the polynomial size. This function is only applicable for 
+  *         STM32F072 devices.
   * @param  CRC_PolSize: Specifies the polynomial size.
   *         This parameter can be:
   *          @arg CRC_PolSize_7: 7-bit polynomial for CRC calculation
@@ -214,7 +215,8 @@ void CRC_SetInitRegister(uint32_t CRC_InitValue)
 }
 
 /**
-  * @brief  Initializes the polynomail coefficients.
+  * @brief  Initializes the polynomail coefficients. This function is only 
+  *         applicable for STM32F072 devices.
   * @param  CRC_Pol: Polynomial to be used for CRC calculation.
   * @retval None
   */
@@ -252,7 +254,8 @@ uint32_t CRC_CalcCRC(uint32_t CRC_Data)
 }
 
 /**
-  * @brief  Computes the 16-bit CRC of a given 16-bit data.
+  * @brief  Computes the 16-bit CRC of a given 16-bit data. This function is only 
+  *         applicable for STM32F072 devices.
   * @param  CRC_Data: data half-word(16-bit) to compute its CRC
   * @retval 16-bit CRC
   */
@@ -264,7 +267,8 @@ uint32_t CRC_CalcCRC16bits(uint16_t CRC_Data)
 }
 
 /**
-  * @brief  Computes the 8-bit CRC of a given 8-bit data.
+  * @brief  Computes the 8-bit CRC of a given 8-bit data. This function is only 
+  *         applicable for STM32F072 devices.
   * @param  CRC_Data: 8-bit data to compute its CRC
   * @retval 8-bit CRC
   */
