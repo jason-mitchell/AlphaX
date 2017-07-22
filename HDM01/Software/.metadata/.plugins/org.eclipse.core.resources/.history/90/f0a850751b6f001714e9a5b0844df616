@@ -1,0 +1,101 @@
+//
+//							Author: Sonikku
+//
+//                              ______
+//	                      _.-*'"      "`*-._
+//	                _.-*'                  `*-._
+//	             .-'                            `-.
+//	  /`-.    .-'                  _.              `-.
+//	 :    `..'                  .-'_ .                `.
+//	 |    .'                 .-'_.' \ .                 \
+//	 |   /                 .' .*     ;               .-'"
+//	 :   L                    `.     | ;          .-'
+//	  \.' `*.          .-*"*-.  `.   ; |        .'
+//	  /      \        '       `.  `-'  ;      .'
+//	 : .'"`.  .       .-*'`*-.  \     .      (_
+//	 |              .'        \  .             `*-.
+//	 |.     .      /           ;                   `-.
+//	 :    db      '       d$b  |                      `-.
+//	 .   :PT;.   '       :P"T; :                         `.
+//	 :   :bd;   '        :b_d; :                           \
+//	 |   :$$; `'         :$$$; |                            \
+//	 |    TP              T$P  '                             ;
+//	 :                        /.-*'"`.                       |
+//	.sdP^T$bs.               /'       \
+//	$$$._.$$$$b.--._      _.'   .--.   ;
+//	`*$$$$$$P*'     `*--*'     '  / \  :
+//	   \                        .'   ; ;
+//	    `.                  _.-'    ' /
+//	      `*-.                      .'
+//	          `*-._            _.-*'
+//	               `*=--..--=*'
+//
+//
+//					FILENAME: timers.c
+//					Purpose: General-purpose timer functions using a timer interrupt
+//
+//
+//
+//-------------------------------------------------------------------------------------------------------------------------
+
+// Includes
+//----------
+
+#include "timers.h"
+
+// Local Variables
+//----------------
+
+unsigned int TimerVar;
+timerCB tcb;
+
+
+
+//----------------------------------------------------------------------------
+// Name: CreateTimer
+// Function: Create a Timer with the given name
+// Parameters: Delay required, name
+// Returns: Result
+//----------------------------------------------------------------------------
+int CreateTimer(unsigned int delay, char *name){
+	int result = -1;
+	int r;
+
+	// Run a search for available timer resources...
+	for (r = 0; r < 8; r++){
+		if (tcb.timerobj[r].state == 2){
+			// Resource is available here, we can allocate to it.
+		}
+	}
+
+
+	return result;
+}
+//----------------------------------------------------------------------------
+// Name: TimerSvc
+// Function: Timer Servicing routine - called in your timer interrupt handler
+// Parameters: void
+// Returns: void
+//-----------------------------------------------------------------------------
+void TimerSvc(void){
+	unsigned int r;
+	unsigned char state_test;
+
+	// This routine is based on the assumption that it shall be called exactly at 1.00mS intervals
+
+	// Here we go thru a list of timers that might, or might not be active
+	for(r = 0; r < 8; r++){
+		state_test = tcb.timerobj[r].state;
+		if(state_test == 1){
+			// This timer is running... we can work with it!
+			if(tcb.timerobj[r].timervar > 0){
+				tcb.timerobj[r].timervar--;				// Decrement the timer
+				if (tcb.timerobj[r].timervar == 0){
+					tcb.timerobj[r].state = 0;			// Timer is now zero, change state...
+				}
+			}
+		}
+	}
+
+}
+

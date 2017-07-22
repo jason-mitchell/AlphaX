@@ -2,6 +2,34 @@
 //                  Author: Sonikku
 //                  Alpha-X HDM01 Control Processor Firmware using STM32F052RBT8
 //                  (c) 2017 That Blue Hedgehog
+//                              ______
+//	                      _.-*'"      "`*-._
+//	                _.-*'                  `*-._
+//	             .-'                            `-.
+//	  /`-.    .-'                  _.              `-.
+//	 :    `..'                  .-'_ .                `.
+//	 |    .'                 .-'_.' \ .                 \
+//	 |   /                 .' .*     ;               .-'"
+//	 :   L                    `.     | ;          .-'
+//	  \.' `*.          .-*"*-.  `.   ; |        .'
+//	  /      \        '       `.  `-'  ;      .'
+//	 : .'"`.  .       .-*'`*-.  \     .      (_
+//	 |              .'        \  .             `*-.
+//	 |.     .      /           ;                   `-.
+//	 :    db      '       d$b  |                      `-.
+//	 .   :PT;.   '       :P"T; :                         `.
+//	 :   :bd;   '        :b_d; :                           \
+//	 |   :$$; `'         :$$$; |                            \
+//	 |    TP              T$P  '                             ;
+//	 :                        /.-*'"`.                       |
+//	.sdP^T$bs.               /'       \
+//	$$$._.$$$$b.--._      _.'   .--.   ;
+//	`*$$$$$$P*'     `*--*'     '  / \  :
+//	   \                        .'   ; ;
+//	    `.                  _.-'    ' /
+//	      `*-.                      .'
+//	          `*-._            _.-*'
+//	               `*=--..--=*'
 //
 //					22/7/17 - Project moved to Atollic TrueStudio- Gain in performance apparent (code size down to 17k)
 //
@@ -20,6 +48,8 @@
 #include "graphlib.h"
 #include "stdfonts.h"
 #include "clock.h"
+#include "timers.h"
+#include "serial.h"
 
 // Structs
 //----------------------
@@ -32,6 +62,8 @@ CurrentTime				TimeOfDay;
 
 // Macros, definitions, constants
 //--------------------------------
+#define SysTickInterval 1000				// Interval in uS 1000uS = 1mS
+#define TickerRate SysTickInterval * 48
 
 // Private variables
 //--------------------
@@ -62,6 +94,7 @@ unsigned char TickFlagI2C;
 
 char arr[32];
 unsigned int cnt;
+unsigned char Delta;
 
 
 // Timer that derives from the system ticker...
@@ -78,9 +111,15 @@ void GeneralDelay(void){
 
 // System Ticker Interrupt
 //---------------------------
-void SysTick_Handler(void)
-{
+void SysTick_Handler(void){
+
+	TimerSvc();
   timer++;
+  if ((timer & 0x01) == 0x01){
+	  GPIO_SetBits(GPIOA, GPIO_Pin_4);
+  } else {
+	  GPIO_ResetBits(GPIOA, GPIO_Pin_4);
+  }
   if  (timer>500)
   {
     timerFlag = 1;
@@ -92,11 +131,11 @@ void SysTick_Handler(void)
 // USART 1 Interrupts
 //---------------------
 void USART1_IRQHandler(void){
-
-    if (USART_GetITStatus(USART1, USART_IT_RXNE)){
+	RxIRQHandler();
+ /*   if (USART_GetITStatus(USART1, USART_IT_RXNE)){
 
             rxchar = USART1->RDR;       // Always use the provided typedefs to get the correct read type (no need then for casting)
-    }
+    } */
 
 }
 
@@ -190,7 +229,11 @@ int main(void){
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
         GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+        GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+        GPIO_Init(GPIOA, &GPIO_InitStructure);
 
         // Configure UART 1
 
@@ -210,15 +253,16 @@ int main(void){
         USART_Cmd(USART1, ENABLE);
 
 
-
        // printf("\r\nHDM01 Boot...");
        // fflush(stdout);
         InitClockHW();
+        InitTimers();
+
 
 
 
         InitI2C();                                                  // Initialize and enable I2C module
-        SysTick_Config(4800);
+        SysTick_Config(TickerRate);									// Initialize the System Tick
 
 
         // System Startup begins here...
@@ -228,6 +272,23 @@ int main(void){
         Delay(0x3FFFFF);
         ClearDisplay();
         cnt = 0;
+        TxData("\r\n Testing Timer code: ");
+        TxData("\r\n    Creating a timer object...");
+        if(CreateTimer(3000, "Timer1") == 0){
+        	TxData("SUCCESS!");
+        } else {
+        	TxData("FAILED!");
+        }
+        ControlTimer("Timer1", 1);
+        while(IsTimerExpired("Timer1") != 1){
+
+        }
+        TxData("\r\nTimer has expired!");
+        if(ReleaseTimer("Timer1") == 0){
+        	TxData("\r\nTimer object destroyed!");
+        } else {
+        	TxData("\r\nError destroying timer object!");
+        }
 
         // Standby mode
         for(;;){
@@ -237,10 +298,13 @@ int main(void){
                 SetXY(0, 0);
                 ClearFB();
                 GetTimeNow(&TimeOfDay);
+                if (Delta != TimeOfDay.second){
+                	Delta = TimeOfDay.second;
+                }
                 sprintf(arr, "%2d:%02d:%02d", TimeOfDay.hour, TimeOfDay.minute, TimeOfDay.second);
                 OutString(arr, Font1);
                 UpdateFromFB();
-                Delay(0x2FFFFF);
+
             }
 
             // Button was pressed, power the system on
