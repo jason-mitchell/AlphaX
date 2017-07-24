@@ -1,0 +1,5 @@
+set -tmpdir "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/xst/projnav.tmp"
+set -xsthdpdir "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/xst"
+elaborate
+-ifn encoder.prj
+-ifmt mixed

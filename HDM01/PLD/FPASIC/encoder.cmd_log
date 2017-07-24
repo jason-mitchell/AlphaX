@@ -1,0 +1,2 @@
+vhdtdtfi -lib work encoder.vhd -prj FPASIC -o encoder.spl -module encoder -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl encoder.spl C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/encoder.sym 

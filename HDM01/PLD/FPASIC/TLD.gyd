@@ -1,0 +1,20 @@
+Pin Freeze File:  version P.20131013
+
+9536XL44VQ XC9536XL-10-VQ44
+clock S:PIN1
+pha S:PIN2
+phb S:PIN3
+DATA S:PIN7
+direction S:PIN5
+ticks S:PIN6
+
+
+;The remaining section of the .gyd file is for documentation purposes only.
+;It shows where your internal equations were placed in the last successful fit.
+
+PARTITION FB1_9 direction_OBUF ticks_OBUF DATA_OBUF
+PARTITION FB1_13 XLXI_1/rotary_event XLXI_1/internal_detent XLXI_1/delay_rotary_q1 XLXI_1/rotary_q2
+		 XLXI_1/rotary_q1 XLXI_1/rotary_left
+PARTITION FB2_15 XLXI_1/rotary_in<1> XLXI_1/rotary_in<0> XLXI_1/rotary_b_in XLXI_1/rotary_a_in
+		
+
