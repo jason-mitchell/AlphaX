@@ -5,6 +5,12 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="Xst" num="753" delta="new" >&quot;<arg fmt="%s" index="1">C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/TLD.vhf</arg>&quot; line <arg fmt="%d" index="2">493</arg>: Unconnected output port &apos;<arg fmt="%s" index="3">CEO</arg>&apos; of component &apos;<arg fmt="%s" index="4">CB4CE_MXILINX_TLD</arg>&apos;.
+</msg>
+
+<msg type="warning" file="Xst" num="753" delta="new" >&quot;<arg fmt="%s" index="1">C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/TLD.vhf</arg>&quot; line <arg fmt="%d" index="2">493</arg>: Unconnected output port &apos;<arg fmt="%s" index="3">TC</arg>&apos; of component &apos;<arg fmt="%s" index="4">CB4CE_MXILINX_TLD</arg>&apos;.
+</msg>
+
 <msg type="info" file="Xst" num="1561" delta="old" >&quot;<arg fmt="%s" index="1">C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/encoder.vhd</arg>&quot; line <arg fmt="%d" index="2">89</arg>: Mux is complete : default of case is discarded
 </msg>
 

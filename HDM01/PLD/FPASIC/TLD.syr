@@ -78,8 +78,14 @@ wysiwyg                            : NO
 Compiling vhdl file "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/encoder.vhd" in Library work.
 Architecture behavioral of Entity encoder is up to date.
 Compiling vhdl file "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/TLD.vhf" in Library work.
-Entity <FD_MXILINX_TLD> compiled.
-Entity <FD_MXILINX_TLD> (Architecture <BEHAVIORAL>) compiled.
+Entity <comp4_mxilinx_tld> compiled.
+Entity <comp4_mxilinx_tld> (Architecture <behavioral>) compiled.
+Entity <fd_mxilinx_tld> compiled.
+Entity <fd_mxilinx_tld> (Architecture <behavioral>) compiled.
+Entity <ftce_mxilinx_tld> compiled.
+Entity <ftce_mxilinx_tld> (Architecture <behavioral>) compiled.
+Entity <cb4ce_mxilinx_tld> compiled.
+Entity <cb4ce_mxilinx_tld> (Architecture <behavioral>) compiled.
 Entity <tld> compiled.
 Entity <tld> (Architecture <behavioral>) compiled.
 
@@ -90,7 +96,14 @@ Analyzing hierarchy for entity <TLD> in library <work> (architecture <behavioral
 
 Analyzing hierarchy for entity <encoder> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <FD_MXILINX_TLD> in library <work> (architecture <BEHAVIORAL>) with generics.
+Analyzing hierarchy for entity <CB4CE_MXILINX_TLD> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <COMP4_MXILINX_TLD> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <FD_MXILINX_TLD> in library <work> (architecture <behavioral>) with generics.
+	INIT = '0'
+
+Analyzing hierarchy for entity <FTCE_MXILINX_TLD> in library <work> (architecture <behavioral>) with generics.
 	INIT = '0'
 
 
@@ -98,14 +111,38 @@ Analyzing hierarchy for entity <FD_MXILINX_TLD> in library <work> (architecture 
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <TLD> in library <work> (Architecture <behavioral>).
-    Set user-defined property "HU_SET =  XLXI_2_0" for instance <XLXI_2> in unit <TLD>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_8> in unit <TLD>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_9> in unit <TLD>.
+WARNING:Xst:753 - "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/TLD.vhf" line 493: Unconnected output port 'CEO' of component 'CB4CE_MXILINX_TLD'.
+WARNING:Xst:753 - "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/TLD.vhf" line 493: Unconnected output port 'TC' of component 'CB4CE_MXILINX_TLD'.
+    Set user-defined property "HU_SET =  XLXI_13_4" for instance <XLXI_13> in unit <TLD>.
+    Set user-defined property "HU_SET =  XLXI_16_5" for instance <XLXI_16> in unit <TLD>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_21> in unit <TLD>.
+    Set user-defined property "HU_SET =  XLXI_29_6" for instance <XLXI_29> in unit <TLD>.
+    Set user-defined property "HU_SET =  XLXI_31_7" for instance <XLXI_31> in unit <TLD>.
+    Set user-defined property "HU_SET =  XLXI_37_8" for instance <XLXI_37> in unit <TLD>.
 Entity <TLD> analyzed. Unit <TLD> generated.
 
 Analyzing Entity <encoder> in library <work> (Architecture <behavioral>).
 INFO:Xst:1561 - "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/encoder.vhd" line 89: Mux is complete : default of case is discarded
 Entity <encoder> analyzed. Unit <encoder> generated.
 
-Analyzing generic Entity <FD_MXILINX_TLD> in library <work> (Architecture <BEHAVIORAL>).
+Analyzing Entity <CB4CE_MXILINX_TLD> in library <work> (Architecture <behavioral>).
+    Set user-defined property "HU_SET =  U0_0" for instance <U0> in unit <CB4CE_MXILINX_TLD>.
+    Set user-defined property "HU_SET =  U1_1" for instance <U1> in unit <CB4CE_MXILINX_TLD>.
+    Set user-defined property "HU_SET =  U2_2" for instance <U2> in unit <CB4CE_MXILINX_TLD>.
+    Set user-defined property "HU_SET =  U3_3" for instance <U3> in unit <CB4CE_MXILINX_TLD>.
+Entity <CB4CE_MXILINX_TLD> analyzed. Unit <CB4CE_MXILINX_TLD> generated.
+
+Analyzing generic Entity <FTCE_MXILINX_TLD> in library <work> (Architecture <behavioral>).
+	INIT = '0'
+    Set user-defined property "INIT =  0" for instance <I_36_35> in unit <FTCE_MXILINX_TLD>.
+Entity <FTCE_MXILINX_TLD> analyzed. Unit <FTCE_MXILINX_TLD> generated.
+
+Analyzing Entity <COMP4_MXILINX_TLD> in library <work> (Architecture <behavioral>).
+Entity <COMP4_MXILINX_TLD> analyzed. Unit <COMP4_MXILINX_TLD> generated.
+
+Analyzing generic Entity <FD_MXILINX_TLD> in library <work> (Architecture <behavioral>).
 	INIT = '0'
     Set user-defined property "INIT =  0" for instance <U0> in unit <FD_MXILINX_TLD>.
 Entity <FD_MXILINX_TLD> analyzed. Unit <FD_MXILINX_TLD> generated.
@@ -135,9 +172,24 @@ Synthesizing Unit <encoder>.
 Unit <encoder> synthesized.
 
 
+Synthesizing Unit <COMP4_MXILINX_TLD>.
+    Related source file is "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/TLD.vhf".
+Unit <COMP4_MXILINX_TLD> synthesized.
+
+
 Synthesizing Unit <FD_MXILINX_TLD>.
     Related source file is "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/TLD.vhf".
 Unit <FD_MXILINX_TLD> synthesized.
+
+
+Synthesizing Unit <FTCE_MXILINX_TLD>.
+    Related source file is "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/TLD.vhf".
+Unit <FTCE_MXILINX_TLD> synthesized.
+
+
+Synthesizing Unit <CB4CE_MXILINX_TLD>.
+    Related source file is "C:/Temp/Work/AlphaX/HDM01/PLD/FPASIC/TLD.vhf".
+Unit <CB4CE_MXILINX_TLD> synthesized.
 
 
 Synthesizing Unit <TLD>.
@@ -164,8 +216,8 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 9
- Flip-Flops                                            : 9
+# Registers                                            : 13
+ Flip-Flops                                            : 13
 
 =========================================================================
 
@@ -175,10 +227,17 @@ Macro Statistics
 
 Optimizing unit <TLD> ...
 
+Optimizing unit <COMP4_MXILINX_TLD> ...
+
 Optimizing unit <FD_MXILINX_TLD> ...
   implementation constraint: INIT=0	 : U0
 
+Optimizing unit <FTCE_MXILINX_TLD> ...
+  implementation constraint: INIT=0	 : I_36_35
+
 Optimizing unit <encoder> ...
+
+Optimizing unit <CB4CE_MXILINX_TLD> ...
 
 =========================================================================
 *                           Partition Report                            *
@@ -207,33 +266,38 @@ Clock Enable                       : YES
 wysiwyg                            : NO
 
 Design Statistics
-# IOs                              : 6
+# IOs                              : 10
 
 Cell Usage :
-# BELS                             : 15
-#      AND2                        : 5
-#      BUF                         : 1
-#      GND                         : 2
-#      INV                         : 3
+# BELS                             : 42
+#      AND2                        : 8
+#      AND3                        : 1
+#      AND4                        : 4
+#      GND                         : 3
+#      INV                         : 2
 #      OR2                         : 4
-# FlipFlops/Latches                : 13
+#      OR4                         : 1
+#      VCC                         : 2
+#      XNOR2                       : 12
+#      XOR2                        : 5
+# FlipFlops/Latches                : 17
 #      FD                          : 10
-#      FDCE                        : 2
+#      FDCE                        : 6
 #      FDCP                        : 1
-# IO Buffers                       : 6
-#      IBUF                        : 3
+# IO Buffers                       : 10
+#      IBUF                        : 7
 #      OBUF                        : 3
 =========================================================================
 
 
 Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 3.68 secs
+Total CPU time to Xst completion: 3.78 secs
  
 --> 
 
-Total memory usage is 259516 kilobytes
+Total memory usage is 260732 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
 Number of infos    :    1 (   0 filtered)
 

@@ -1,0 +1,3 @@
+MODULE FrontPanel
+	SUBMODULE rotary_decoder
+		INSTANCE XLXI_2

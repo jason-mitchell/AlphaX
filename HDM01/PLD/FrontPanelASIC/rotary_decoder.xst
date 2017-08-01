@@ -1,0 +1,5 @@
+set -tmpdir "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/xst/projnav.tmp"
+set -xsthdpdir "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/xst"
+elaborate
+-ifn rotary_decoder.prj
+-ifmt mixed

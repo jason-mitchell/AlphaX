@@ -1,0 +1,17 @@
+V3 12
+FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf 2017/08/01.22:28:23 P.20131013
+EN work/FrontPanel 1501619451 \
+      FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 LB UNISIM \
+      PH unisim/VCOMPONENTS 1381692182
+AR work/FrontPanel/BEHAVIORAL 1501619452 \
+      FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf \
+      EN work/FrontPanel 1501619451 CP rotary_decoder CP IBUF CP OBUF
+FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd 2017/08/01.22:24:31 P.20131013
+EN work/rotary_decoder 1501619449 \
+      FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/rotary_decoder/Behavioral 1501619450 \
+      FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd \
+      EN work/rotary_decoder 1501619449

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="FrontPanelASIC.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name=".lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="FrontPanel.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="FrontPanel.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_GYD" xil_pn:name="FrontPanel.gyd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_JEDEC" xil_pn:name="FrontPanel.jed"/>
+    <file xil_pn:fileType="FILE_JHD" xil_pn:name="FrontPanel.jhd"/>
+    <file xil_pn:fileType="FILE_LFP" xil_pn:name="FrontPanel.lfp"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="FrontPanel.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MFD" xil_pn:name="FrontPanel.mfd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGA" xil_pn:name="FrontPanel.nga"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="FrontPanel.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="FrontPanel.ngd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="FrontPanel.ngr"/>
+    <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="FrontPanel.pad"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PNX" xil_pn:name="FrontPanel.pnx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="FrontPanel.prj"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="FrontPanel.rpt"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="FrontPanel.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="FrontPanel.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="FrontPanel.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VM6" xil_pn:name="FrontPanel.vm6"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="FrontPanel.xml"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="FrontPanel.xst"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="FrontPanel_build.xml"/>
+    <file xil_pn:fileType="FILE_VHDL" xil_pn:name="FrontPanel_drc.vhf"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="FrontPanel_html"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="FrontPanel_ngdbuild.xrpt"/>
+    <file xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="FrontPanel_pad.csv"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="FrontPanel_summary.html"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="FrontPanel_vhdl.prj"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="FrontPanel_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="encoder.prj"/>
+    <file xil_pn:fileType="FILE_SPL" xil_pn:name="encoder.spl"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="encoder.stx"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="encoder.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="encoder.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="rotary_decoder.prj"/>
+    <file xil_pn:fileType="FILE_SPL" xil_pn:name="rotary_decoder.spl"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="rotary_decoder.stx"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="rotary_decoder.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="rotary_decoder.xst"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1501619302" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1501619302">
+      <status xil_pn:value="SuccessfullyRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1501619304" xil_pn:in_ck="8911380140059574693" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="2176671825549097263" xil_pn:start_ts="1501619302">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="FrontPanel.vhf"/>
+    </transform>
+    <transform xil_pn:end_ts="1501619454" xil_pn:in_ck="-3009973015583150703" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="1317927381811776566" xil_pn:start_ts="1501619448">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name=".lso"/>
+      <outfile xil_pn:name="FrontPanel.jhd"/>
+      <outfile xil_pn:name="FrontPanel.lso"/>
+      <outfile xil_pn:name="FrontPanel.ngc"/>
+      <outfile xil_pn:name="FrontPanel.ngr"/>
+      <outfile xil_pn:name="FrontPanel.prj"/>
+      <outfile xil_pn:name="FrontPanel.stx"/>
+      <outfile xil_pn:name="FrontPanel.syr"/>
+      <outfile xil_pn:name="FrontPanel.xst"/>
+      <outfile xil_pn:name="FrontPanel_vhdl.prj"/>
+      <outfile xil_pn:name="FrontPanel_xst.xrpt"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1501619454" xil_pn:in_ck="8911380140059576869" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="8765859524598681435" xil_pn:start_ts="1501619454">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1501619459" xil_pn:in_ck="2527927712080138564" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="-736101761533034375" xil_pn:start_ts="1501619454">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="FrontPanel.bld"/>
+      <outfile xil_pn:name="FrontPanel.ngd"/>
+      <outfile xil_pn:name="FrontPanel_ngdbuild.xrpt"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1501619470" xil_pn:in_ck="8911380140059569376" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-5154573852531712527" xil_pn:start_ts="1501619459">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="FrontPanel.gyd"/>
+      <outfile xil_pn:name="FrontPanel.mfd"/>
+      <outfile xil_pn:name="FrontPanel.nga"/>
+      <outfile xil_pn:name="FrontPanel.pad"/>
+      <outfile xil_pn:name="FrontPanel.pnx"/>
+      <outfile xil_pn:name="FrontPanel.rpt"/>
+      <outfile xil_pn:name="FrontPanel.vm6"/>
+      <outfile xil_pn:name="FrontPanel.xml"/>
+      <outfile xil_pn:name="FrontPanel_build.xml"/>
+      <outfile xil_pn:name="FrontPanel_html"/>
+      <outfile xil_pn:name="FrontPanel_pad.csv"/>
+    </transform>
+    <transform xil_pn:end_ts="1501619472" xil_pn:in_ck="8911380140059578240" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1501619470">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="FrontPanel.jed"/>
+    </transform>
+    <transform xil_pn:end_ts="1501619671" xil_pn:in_ck="8911380140059564954" xil_pn:name="TRAN_configureTargetDevice_CPLD" xil_pn:prop_ck="-4971510443586489938" xil_pn:start_ts="1501619669">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1501619470" xil_pn:in_ck="8911380140059578240" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1501619468">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+  </transforms>
+
+</generated_project>

@@ -5,7 +5,27 @@
 </td></tr><tr><td>
 ********** Mapped Logic **********
 </td></tr><tr><td>
-FTCPE_DATA: FTCPE port map (DATA,'1',ticks,'0','0');
+</td></tr><tr><td>
+$OpTx$INV$64__$INT <= ((NOT pwm3 AND XLXN_93 AND XLXN_83)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT pwm3 AND NOT XLXN_94 AND XLXN_83)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT pwm3 AND XLXN_95 AND XLXN_83)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT pwm1 AND XLXN_93 AND XLXN_94)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT pwm1 AND XLXN_94 AND XLXN_95)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXN_83.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (pwm2 AND XLXN_93 AND NOT XLXN_95)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (pwm2 AND NOT XLXN_94 AND NOT XLXN_95)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (pwm2 AND NOT XLXN_95 AND NOT XLXN_83)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (pwm0 AND NOT XLXN_93 AND NOT XLXN_94)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (pwm0 AND NOT XLXN_93 AND NOT XLXN_83)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (pwm3 AND NOT XLXN_83)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT pwm2 AND XLXN_95)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (pwm1 AND NOT XLXN_94)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT pwm0 AND XLXN_93)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (pwm0 AND NOT XLXN_93 AND XLXN_95));
+</td></tr><tr><td>
+</td></tr><tr><td>
+</td></tr><tr><td>
+</td></tr><tr><td>
 </td></tr><tr><td>
 FDCPE_XLXI_1/delay_rotary_q1: FDCPE port map (XLXI_1/delay_rotary_q1,XLXI_1/rotary_q1,clock,'0','0');
 </td></tr><tr><td>
@@ -37,7 +57,24 @@ FTCPE_XLXI_1/rotary_q2: FTCPE port map (XLXI_1/rotary_q2,XLXI_1/rotary_q2_T,cloc
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_1/rotary_in(1) AND XLXI_1/rotary_q2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_1/rotary_in(0)));
 </td></tr><tr><td>
+FTCPE_XLXN_83: FTCPE port map (XLXN_83,XLXN_83_T,clock,XLXN_83_CLR,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_83_T <= (XLXN_93 AND XLXN_94 AND XLXN_95);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_83_CLR <= (XLXN_93 AND XLXN_94 AND NOT XLXN_95 AND XLXN_83);
+</td></tr><tr><td>
+FTCPE_XLXN_93: FTCPE port map (XLXN_93,'1',clock,XLXN_93_CLR,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_93_CLR <= (XLXN_93 AND XLXN_94 AND NOT XLXN_95 AND XLXN_83);
+</td></tr><tr><td>
+FTCPE_XLXN_94: FTCPE port map (XLXN_94,XLXN_93,clock,XLXN_94_CLR,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_94_CLR <= (XLXN_93 AND XLXN_94 AND NOT XLXN_95 AND XLXN_83);
+</td></tr><tr><td>
+FTCPE_XLXN_95: FTCPE port map (XLXN_95,XLXN_95_T,clock,XLXN_95_CLR,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_95_T <= (XLXN_93 AND XLXN_94);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_95_CLR <= (XLXN_93 AND XLXN_94 AND NOT XLXN_95 AND XLXN_83);
+</td></tr><tr><td>
 FDCPE_direction: FDCPE port map (direction,XLXI_1/rotary_left,clock,'0','0',XLXI_1/rotary_event);
+</td></tr><tr><td>
+FDCPE_muxout: FDCPE port map (muxout,muxout_D,NOT $OpTx$INV$64__$INT,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muxout_D <= (NOT XLXN_93 AND XLXN_94 AND NOT XLXN_95 AND XLXN_83);
 </td></tr><tr><td>
 FDCPE_ticks: FDCPE port map (ticks,XLXI_1/internal_detent,clock,'0','0');
 </td></tr><tr><td>

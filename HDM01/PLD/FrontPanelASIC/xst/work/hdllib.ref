@@ -1,0 +1,6 @@
+AR encoder behavioral C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd sub00/vhpl01 1501618579
+EN rotary_decoder NULL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd sub00/vhpl02 1501619449
+AR frontpanel behavioral C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf sub00/vhpl05 1501619452
+EN encoder NULL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd sub00/vhpl00 1501618578
+AR rotary_decoder behavioral C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd sub00/vhpl03 1501619450
+EN frontpanel NULL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf sub00/vhpl04 1501619451

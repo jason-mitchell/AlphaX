@@ -1,0 +1,53 @@
+<html><head><link type='text/css' href='style.css' rel='stylesheet'></head><body class='pgBgnd'>
+<h3 align='center'>Equations</h3>
+<table width='90%' align='center' border='1' cellpadding='0' cellspacing='0'>
+<tr><td>
+</td></tr><tr><td>
+********** Mapped Logic **********
+</td></tr><tr><td>
+FDCPE_DIR: FDCPE port map (DIR,XLXI_2/rotary_left,ECLK,'0','0',XLXI_2/rotary_event);
+</td></tr><tr><td>
+FDCPE_IRQ: FDCPE port map (IRQ,XLXI_2/internal_detent,ECLK,'0','0');
+</td></tr><tr><td>
+FDCPE_XLXI_2/delay_rotary_q1: FDCPE port map (XLXI_2/delay_rotary_q1,XLXI_2/rotary_q1,ECLK,'0','0');
+</td></tr><tr><td>
+FDCPE_XLXI_2/internal_detent: FDCPE port map (XLXI_2/internal_detent,XLXI_2/rotary_event,ECLK,'0','0');
+</td></tr><tr><td>
+FDCPE_XLXI_2/rotary_a_in: FDCPE port map (XLXI_2/rotary_a_in,PHA,ECLK,'0','0');
+</td></tr><tr><td>
+FDCPE_XLXI_2/rotary_b_in: FDCPE port map (XLXI_2/rotary_b_in,PHB,ECLK,'0','0');
+</td></tr><tr><td>
+FDCPE_XLXI_2/rotary_event: FDCPE port map (XLXI_2/rotary_event,XLXI_2/rotary_event_D,ECLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/rotary_event_D <= (XLXI_2/rotary_q1 AND NOT XLXI_2/delay_rotary_q1);
+</td></tr><tr><td>
+FDCPE_XLXI_2/rotary_in0: FDCPE port map (XLXI_2/rotary_in(0),XLXI_2/rotary_a_in,ECLK,'0','0');
+</td></tr><tr><td>
+FDCPE_XLXI_2/rotary_in1: FDCPE port map (XLXI_2/rotary_in(1),XLXI_2/rotary_b_in,ECLK,'0','0');
+</td></tr><tr><td>
+FDCPE_XLXI_2/rotary_left: FDCPE port map (XLXI_2/rotary_left,XLXI_2/rotary_q2,ECLK,'0','0',XLXI_2/rotary_left_CE);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/rotary_left_CE <= (XLXI_2/rotary_q1 AND NOT XLXI_2/delay_rotary_q1);
+</td></tr><tr><td>
+FTCPE_XLXI_2/rotary_q1: FTCPE port map (XLXI_2/rotary_q1,XLXI_2/rotary_q1_T,ECLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/rotary_q1_T <= ((XLXI_2/rotary_in(1) AND NOT XLXI_2/rotary_q1 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/rotary_in(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_2/rotary_in(1) AND XLXI_2/rotary_q1 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_2/rotary_in(0)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/rotary_q2: FTCPE port map (XLXI_2/rotary_q2,XLXI_2/rotary_q2_T,ECLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/rotary_q2_T <= ((XLXI_2/rotary_in(1) AND NOT XLXI_2/rotary_q2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_2/rotary_in(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_2/rotary_in(1) AND XLXI_2/rotary_q2 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/rotary_in(0)));
+</td></tr><tr><td>
+Register Legend:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FTCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LDCP  (Q,D,G,CLR,PRE); 
+</td></tr><tr><td>
+</td></tr>
+</table>
+<form><span class="pgRef"><table width="90%" align="center"><tr>
+<td align="left"><input type="button" onclick="javascript:parent.leftnav.showTop()" onmouseover="window.status='goto top of page'; return true;" onmouseout="window.status=''" value="back to top"></td>
+<td align="right"><input type="button" onclick="window.print()" onmouseover="window.status='print page'; return true;" onmouseout="window.status=''" value="print page"></td>
+</tr></table></span></form>
+</body></html>

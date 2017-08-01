@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.20131013
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 7-24-2017  8:27PM
+ 7-31-2017  0:12AM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The comma ','
@@ -18,20 +18,20 @@ Pinout by Pin Number:
 
 -----,-----,-----,-----,-----,-----,-----,-----,-----,-----,
 Pin Number,Signal Name,Pin Usage,Pin Name,Direction,IO Standard,IO Bank Number,{blank},Slew Rate,Termination,{blank},Voltage,Constraint,
-P1,clock,GCK,I/O/GCK3,,,,,,,,,,
+P1,TIE,,I/O/GCK3,,,,,,,,,,
 P2,pha,I,I/O,INPUT,,,,,,,,,
 P3,phb,I,I/O,INPUT,,,,,,,,,
 P4,GND,,GND,,,,,,,,,,
 P5,direction,O,I/O,OUTPUT,,,,,,,,,
 P6,ticks,O,I/O,OUTPUT,,,,,,,,,
-P7,DATA,O,I/O,OUTPUT,,,,,,,,,
-P8,TIE,,I/O,,,,,,,,,,
+P7,pwm0,I,I/O,INPUT,,,,,,,,,
+P8,pwm1,I,I/O,INPUT,,,,,,,,,
 P9,TDI,,TDI,,,,,,,,,,
 P10,TMS,,TMS,,,,,,,,,,
 P11,TCK,,TCK,,,,,,,,,,
-P12,TIE,,I/O,,,,,,,,,,
-P13,TIE,,I/O,,,,,,,,,,
-P14,TIE,,I/O,,,,,,,,,,
+P12,muxout,O,I/O,OUTPUT,,,,,,,,,
+P13,pwm2,I,I/O,INPUT,,,,,,,,,
+P14,pwm3,I,I/O,INPUT,,,,,,,,,
 P15,VCC,,VCCINT,,,,,,,,,,
 P16,TIE,,I/O,,,,,,,,,,
 P17,GND,,GND,,,,,,,,,,
@@ -60,7 +60,7 @@ P39,TIE,,I/O,,,,,,,,,,
 P40,TIE,,I/O,,,,,,,,,,
 P41,TIE,,I/O,,,,,,,,,,
 P42,TIE,,I/O,,,,,,,,,,
-P43,TIE,,I/O/GCK1,,,,,,,,,,
+P43,clock,GCK,I/O/GCK1,,,,,,,,,,
 P44,TIE,,I/O/GCK2,,,,,,,,,,
 
 To preserve the pinout above for future design iterations in

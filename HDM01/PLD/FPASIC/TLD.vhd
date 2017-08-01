@@ -7,7 +7,7 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : sch2hdl
 --  /   /         Filename : TLD.vhf
--- /___/   /\     Timestamp : 07/24/2017 20:26:46
+-- /___/   /\     Timestamp : 07/30/2017 15:04:59
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -86,6 +86,9 @@ architecture BEHAVIORAL of TLD is
    attribute BOX_TYPE   : string ;
    signal XLXN_1      : std_logic;
    signal XLXN_3      : std_logic;
+   signal XLXN_14     : std_logic;
+   signal XLXN_15     : std_logic;
+   signal XLXN_16     : std_logic;
    signal ticks_DUMMY : std_logic;
    component encoder
       port ( rotary_a : in    std_logic; 
@@ -118,9 +121,9 @@ architecture BEHAVIORAL of TLD is
 begin
    ticks <= ticks_DUMMY;
    XLXI_1 : encoder
-      port map (clk=>clock,
-                rotary_a=>pha,
-                rotary_b=>phb,
+      port map (clk=>XLXN_16,
+                rotary_a=>XLXN_14,
+                rotary_b=>XLXN_15,
                 detent=>ticks_DUMMY,
                 dir=>direction);
    
@@ -136,6 +139,18 @@ begin
    XLXI_4 : BUF
       port map (I=>XLXN_1,
                 O=>DATA);
+   
+   XLXI_5 : BUF
+      port map (I=>pha,
+                O=>XLXN_14);
+   
+   XLXI_6 : BUF
+      port map (I=>phb,
+                O=>XLXN_15);
+   
+   XLXI_7 : BUF
+      port map (I=>clock,
+                O=>XLXN_16);
    
 end BEHAVIORAL;
 

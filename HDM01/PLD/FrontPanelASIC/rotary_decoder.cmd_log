@@ -1,0 +1,2 @@
+vhdtdtfi -lib work rotary_decoder.vhd -prj FrontPanelASIC -o rotary_decoder.spl -module rotary_decoder -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl rotary_decoder.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.sym 
