@@ -7,7 +7,7 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : sch2hdl
 --  /   /         Filename : FrontPanel.vhf
--- /___/   /\     Timestamp : 08/01/2017 22:28:23
+-- /___/   /\     Timestamp : 08/09/2017 17:24:24
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -27,8 +27,11 @@ use UNISIM.Vcomponents.ALL;
 
 entity FrontPanel is
    port ( ECLK : in    std_logic; 
+          MOSI : in    std_logic; 
           PHA  : in    std_logic; 
           PHB  : in    std_logic; 
+          SCLK : in    std_logic; 
+          DB   : out   std_logic_vector (7 downto 0); 
           DIR  : out   std_logic; 
           IRQ  : out   std_logic);
 end FrontPanel;
@@ -36,11 +39,11 @@ end FrontPanel;
 architecture BEHAVIORAL of FrontPanel is
    attribute BOX_TYPE   : string ;
    attribute SLEW       : string ;
-   signal XLXN_1 : std_logic;
-   signal XLXN_2 : std_logic;
-   signal XLXN_3 : std_logic;
-   signal XLXN_4 : std_logic;
-   signal XLXN_5 : std_logic;
+   signal XLXN_1  : std_logic;
+   signal XLXN_2  : std_logic;
+   signal XLXN_4  : std_logic;
+   signal XLXN_5  : std_logic;
+   signal XLXN_15 : std_logic;
    component rotary_decoder
       port ( rotary_a : in    std_logic; 
              rotary_b : in    std_logic; 
@@ -62,9 +65,15 @@ architecture BEHAVIORAL of FrontPanel is
    attribute SLEW of OBUF : component is "SLOW";
    attribute BOX_TYPE of OBUF : component is "BLACK_BOX";
    
+   component spi
+      port ( SCLK  : in    std_logic; 
+             MOSI  : in    std_logic; 
+             PDOUT : out   std_logic_vector (7 downto 0));
+   end component;
+   
 begin
    XLXI_2 : rotary_decoder
-      port map (clk=>XLXN_3,
+      port map (clk=>XLXN_15,
                 rotary_a=>XLXN_1,
                 rotary_b=>XLXN_2,
                 detent=>XLXN_4,
@@ -80,7 +89,7 @@ begin
    
    XLXI_5 : IBUF
       port map (I=>ECLK,
-                O=>XLXN_3);
+                O=>XLXN_15);
    
    XLXI_6 : OBUF
       port map (I=>XLXN_4,
@@ -89,6 +98,11 @@ begin
    XLXI_7 : OBUF
       port map (I=>XLXN_5,
                 O=>DIR);
+   
+   XLXI_14 : spi
+      port map (MOSI=>MOSI,
+                SCLK=>SCLK,
+                PDOUT(7 downto 0)=>DB(7 downto 0));
    
 end BEHAVIORAL;
 

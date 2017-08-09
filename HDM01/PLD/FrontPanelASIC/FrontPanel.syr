@@ -75,24 +75,30 @@ wysiwyg                            : NO
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
+Compiling verilog file "spi.v" in library work
+Module <spi> compiled
+No errors in compilation
+Analysis of file <"FrontPanel.prj"> succeeded.
+ 
 Compiling vhdl file "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd" in Library work.
 Architecture behavioral of Entity rotary_decoder is up to date.
 Compiling vhdl file "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf" in Library work.
-Entity <FrontPanel> compiled.
-Entity <FrontPanel> (Architecture <BEHAVIORAL>) compiled.
+Architecture behavioral of Entity frontpanel is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <FrontPanel> in library <work> (architecture <BEHAVIORAL>).
+Analyzing hierarchy for entity <FrontPanel> in library <work> (architecture <behavioral>).
 
 Analyzing hierarchy for entity <rotary_decoder> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for module <spi> in library <work>.
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <FrontPanel> in library <work> (Architecture <BEHAVIORAL>).
+Analyzing Entity <FrontPanel> in library <work> (Architecture <behavioral>).
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_6> in unit <FrontPanel>.
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_7> in unit <FrontPanel>.
 Entity <FrontPanel> analyzed. Unit <FrontPanel> generated.
@@ -101,6 +107,9 @@ Analyzing Entity <rotary_decoder> in library <work> (Architecture <behavioral>).
 INFO:Xst:1561 - "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd" line 121: Mux is complete : default of case is discarded
 Entity <rotary_decoder> analyzed. Unit <rotary_decoder> generated.
 
+Analyzing module <spi> in library <work>.
+Module <spi> is correct for synthesis.
+ 
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -126,6 +135,12 @@ Synthesizing Unit <rotary_decoder>.
 Unit <rotary_decoder> synthesized.
 
 
+Synthesizing Unit <spi>.
+    Related source file is "spi.v".
+    Found 8-bit register for signal <PDOUT>.
+Unit <spi> synthesized.
+
+
 Synthesizing Unit <FrontPanel>.
     Related source file is "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf".
 Unit <FrontPanel> synthesized.
@@ -135,9 +150,10 @@ Unit <FrontPanel> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 11
+# Registers                                            : 12
  1-bit register                                        : 10
  2-bit register                                        : 1
+ 8-bit register                                        : 1
 
 =========================================================================
 
@@ -162,6 +178,8 @@ Macro Statistics
 Optimizing unit <FrontPanel> ...
 
 Optimizing unit <rotary_decoder> ...
+
+Optimizing unit <spi> ...
 
 =========================================================================
 *                           Partition Report                            *
@@ -190,7 +208,7 @@ Clock Enable                       : YES
 wysiwyg                            : NO
 
 Design Statistics
-# IOs                              : 5
+# IOs                              : 15
 
 Cell Usage :
 # BELS                             : 12
@@ -198,21 +216,21 @@ Cell Usage :
 #      GND                         : 1
 #      INV                         : 2
 #      OR2                         : 4
-# FlipFlops/Latches                : 12
-#      FD                          : 10
+# FlipFlops/Latches                : 20
+#      FD                          : 18
 #      FDCE                        : 2
-# IO Buffers                       : 5
-#      IBUF                        : 3
-#      OBUF                        : 2
+# IO Buffers                       : 15
+#      IBUF                        : 5
+#      OBUF                        : 10
 =========================================================================
 
 
 Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 3.95 secs
+Total CPU time to Xst completion: 3.72 secs
  
 --> 
 
-Total memory usage is 259836 kilobytes
+Total memory usage is 259324 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

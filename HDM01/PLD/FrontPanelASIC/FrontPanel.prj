@@ -1,2 +1,3 @@
+verilog work "spi.v"
 vhdl work "rotary_decoder.vhd"
 vhdl work "FrontPanel.vhf"

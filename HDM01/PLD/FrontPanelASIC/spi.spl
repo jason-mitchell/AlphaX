@@ -1,0 +1,9 @@
+[Inputs]
+SCLK
+MOSI
+[Outputs]
+=PDOUT[7:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel spi
+

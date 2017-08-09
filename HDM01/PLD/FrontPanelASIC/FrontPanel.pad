@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.20131013
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 8- 1-2017 10:31PM
+ 8- 9-2017  8:04PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -24,8 +24,8 @@ P3|PHB|I|I/O|INPUT|||||||||
 P4|GND||GND||||||||||
 P5|DIR|O|I/O|OUTPUT|||||||||
 P6|IRQ|O|I/O|OUTPUT|||||||||
-P7|TIE||I/O||||||||||
-P8|TIE||I/O||||||||||
+P7|MOSI|I|I/O|INPUT|||||||||
+P8|SCLK|I|I/O|INPUT|||||||||
 P9|TDI||TDI||||||||||
 P10|TMS||TMS||||||||||
 P11|TCK||TCK||||||||||
@@ -48,18 +48,18 @@ P27|TIE||I/O||||||||||
 P28|TIE||I/O||||||||||
 P29|TIE||I/O||||||||||
 P30|TIE||I/O||||||||||
-P31|TIE||I/O||||||||||
-P32|TIE||I/O||||||||||
+P31|DB<7>|O|I/O|OUTPUT|||||||||
+P32|DB<6>|O|I/O|OUTPUT|||||||||
 P33|TIE||I/O/GSR||||||||||
 P34|TIE||I/O/GTS2||||||||||
 P35|VCC||VCCINT||||||||||
 P36|TIE||I/O/GTS1||||||||||
-P37|TIE||I/O||||||||||
-P38|TIE||I/O||||||||||
-P39|TIE||I/O||||||||||
-P40|TIE||I/O||||||||||
-P41|TIE||I/O||||||||||
-P42|TIE||I/O||||||||||
+P37|DB<5>|O|I/O|OUTPUT|||||||||
+P38|DB<4>|O|I/O|OUTPUT|||||||||
+P39|DB<3>|O|I/O|OUTPUT|||||||||
+P40|DB<2>|O|I/O|OUTPUT|||||||||
+P41|DB<1>|O|I/O|OUTPUT|||||||||
+P42|DB<0>|O|I/O|OUTPUT|||||||||
 P43|ECLK|GCK|I/O/GCK1||||||||||
 P44|TIE||I/O/GCK2||||||||||
 

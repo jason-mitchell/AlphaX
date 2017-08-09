@@ -1,7 +1,7 @@
  
 cpldfit:  version P.20131013                        Xilinx Inc.
                                   Fitter Report
-Design Name: FrontPanel                          Date:  8- 1-2017, 10:31PM
+Design Name: FrontPanel                          Date:  8- 9-2017,  8:04PM
 Device Used: XC9572XL-10-VQ44
 Fitting Status: Successful
 
@@ -9,18 +9,18 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-12 /72  ( 17%) 16  /360  (  4%) 14 /216 (  6%)   12 /72  ( 17%) 5  /34  ( 15%)
+20 /72  ( 28%) 32  /360  (  9%) 27 /216 ( 12%)   20 /72  ( 28%) 15 /34  ( 44%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1           5/18        7/54        7/90       3/ 9
-FB2           0/18        0/54        0/90       0/ 9
-FB3           7/18        7/54        9/90       2/ 9
-FB4           0/18        0/54        0/90       0/ 7
+FB1           6/18        7/54       10/90       7/ 9
+FB2           6/18        7/54       10/90       4/ 9
+FB3           4/18        7/54        6/90       4/ 9
+FB4           4/18        6/54        6/90       0/ 7
              -----       -----       -----      -----    
-             12/72       14/216      16/360      5/34 
+             20/72       27/216      32/360     15/34 
 
 * - Resource is exhausted
 
@@ -34,18 +34,18 @@ Global set/reset net(s) unused.
 
 Signal Type    Required     Mapped  |  Pin Type            Used    Total 
 ------------------------------------|------------------------------------
-Input         :    2           2    |  I/O              :     4      28
-Output        :    2           2    |  GCK/IO           :     1       3
+Input         :    4           4    |  I/O              :    14      28
+Output        :   10          10    |  GCK/IO           :     1       3
 Bidirectional :    0           0    |  GTS/IO           :     0       2
 GCK           :    1           1    |  GSR/IO           :     0       1
 GTS           :    0           0    |
 GSR           :    0           0    |
                  ----        ----
-        Total      5           5
+        Total     15          15
 
 ** Power Data **
 
-There are 12 macrocells in high performance mode (MCHP).
+There are 20 macrocells in high performance mode (MCHP).
 There are 0 macrocells in low power mode (MCLP).
 End of Mapped Resource Summary
 **************************  Errors and Warnings  ***************************
@@ -59,10 +59,18 @@ INFO:Cpld - Inferring BUFG constraint for signal 'ECLK' based upon the LOC
    ignored.
 *************************  Summary of Mapped Logic  ************************
 
-** 2 Outputs **
+** 10 Outputs **
 
 Signal                  Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
 Name                    Pts   Inps          No.  Type    Use     Mode Rate State
+DB<3>                   2     2     FB1_2   39   I/O     O       STD  FAST RESET
+DB<2>                   2     2     FB1_5   40   I/O     O       STD  FAST RESET
+DB<1>                   2     2     FB1_6   41   I/O     O       STD  FAST RESET
+DB<0>                   2     2     FB1_8   42   I/O     O       STD  FAST RESET
+DB<7>                   2     2     FB2_6   31   I/O     O       STD  FAST RESET
+DB<6>                   2     2     FB2_8   32   I/O     O       STD  FAST RESET
+DB<5>                   2     2     FB2_15  37   I/O     O       STD  FAST RESET
+DB<4>                   2     2     FB2_17  38   I/O     O       STD  FAST RESET
 DIR                     2     2     FB3_2   5    I/O     O       STD  SLOW RESET
 IRQ                     1     1     FB3_5   6    I/O     O       STD  SLOW RESET
 
@@ -70,24 +78,26 @@ IRQ                     1     1     FB3_5   6    I/O     O       STD  SLOW RESET
 
 Signal                  Total Total Loc     Pwr  Reg Init
 Name                    Pts   Inps          Mode State
-XLXI_2/rotary_in<1>     1     1     FB1_14  STD  RESET
-XLXI_2/rotary_in<0>     1     1     FB1_15  STD  RESET
-XLXI_2/rotary_b_in      1     1     FB1_16  STD  RESET
-XLXI_2/rotary_q2        2     3     FB1_17  STD  RESET
-XLXI_2/rotary_q1        2     3     FB1_18  STD  RESET
-XLXI_2/rotary_event     1     2     FB3_14  STD  RESET
-XLXI_2/rotary_a_in      1     1     FB3_15  STD  RESET
-XLXI_2/internal_detent  1     1     FB3_16  STD  RESET
-XLXI_2/delay_rotary_q1  1     1     FB3_17  STD  RESET
+XLXI_2/rotary_event     1     2     FB1_17  STD  RESET
+XLXI_2/delay_rotary_q1  1     1     FB1_18  STD  RESET
+XLXI_2/rotary_a_in      1     1     FB2_16  STD  RESET
+XLXI_2/internal_detent  1     1     FB2_18  STD  RESET
+XLXI_2/rotary_b_in      1     1     FB3_17  STD  RESET
 XLXI_2/rotary_left      2     3     FB3_18  STD  RESET
+XLXI_2/rotary_in<1>     1     1     FB4_15  STD  RESET
+XLXI_2/rotary_in<0>     1     1     FB4_16  STD  RESET
+XLXI_2/rotary_q2        2     3     FB4_17  STD  RESET
+XLXI_2/rotary_q1        2     3     FB4_18  STD  RESET
 
-** 3 Inputs **
+** 5 Inputs **
 
 Signal                  Loc     Pin  Pin     Pin     
 Name                            No.  Type    Use     
 ECLK                    FB1_9   43   GCK/I/O GCK
 PHA                     FB1_15  2    I/O     I
 PHB                     FB1_17  3    I/O     I
+MOSI                    FB3_8   7    I/O     I
+SCLK                    FB3_9   8    I/O     I
 
 Legend:
 Pin No. - ~ - User Assigned
@@ -110,41 +120,44 @@ Number of signals used by logic mapping into function block:  7
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB1_1         (b)     
-(unused)              0       0     0   5     FB1_2   39    I/O     
+DB<3>                 2       0     0   3     FB1_2   39    I/O     O
 (unused)              0       0     0   5     FB1_3         (b)     
 (unused)              0       0     0   5     FB1_4         (b)     
-(unused)              0       0     0   5     FB1_5   40    I/O     
-(unused)              0       0     0   5     FB1_6   41    I/O     
+DB<2>                 2       0     0   3     FB1_5   40    I/O     O
+DB<1>                 2       0     0   3     FB1_6   41    I/O     O
 (unused)              0       0     0   5     FB1_7         (b)     
-(unused)              0       0     0   5     FB1_8   42    I/O     
+DB<0>                 2       0     0   3     FB1_8   42    I/O     O
 (unused)              0       0     0   5     FB1_9   43    GCK/I/O GCK
 (unused)              0       0     0   5     FB1_10        (b)     
 (unused)              0       0     0   5     FB1_11  44    GCK/I/O 
 (unused)              0       0     0   5     FB1_12        (b)     
 (unused)              0       0     0   5     FB1_13        (b)     
-XLXI_2/rotary_in<1>   1       0     0   4     FB1_14  1     GCK/I/O (b)
-XLXI_2/rotary_in<0>   1       0     0   4     FB1_15  2     I/O     I
-XLXI_2/rotary_b_in    1       0     0   4     FB1_16        (b)     (b)
-XLXI_2/rotary_q2      2       0     0   3     FB1_17  3     I/O     I
-XLXI_2/rotary_q1      2       0     0   3     FB1_18        (b)     (b)
+(unused)              0       0     0   5     FB1_14  1     GCK/I/O 
+(unused)              0       0     0   5     FB1_15  2     I/O     I
+(unused)              0       0     0   5     FB1_16        (b)     
+XLXI_2/rotary_event   1       0     0   4     FB1_17  3     I/O     I
+XLXI_2/delay_rotary_q1
+                      1       0     0   4     FB1_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: XLXI_2/rotary_a_in    4: XLXI_2/rotary_in<1>   6: XLXI_2/rotary_q2 
-  2: XLXI_2/rotary_b_in    5: XLXI_2/rotary_q1      7: PHB 
-  3: XLXI_2/rotary_in<0> 
+  1: DB<0>              4: MOSI               6: XLXI_2/delay_rotary_q1 
+  2: DB<1>              5: SCLK               7: XLXI_2/rotary_q1 
+  3: DB<2>            
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-XLXI_2/rotary_in<1>  .X...................................... 1
-XLXI_2/rotary_in<0>  X....................................... 1
-XLXI_2/rotary_b_in   ......X................................. 1
-XLXI_2/rotary_q2     ..XX.X.................................. 3
-XLXI_2/rotary_q1     ..XXX................................... 3
+DB<3>                ..X.X................................... 2
+DB<2>                .X..X................................... 2
+DB<1>                X...X................................... 2
+DB<0>                ...XX................................... 2
+XLXI_2/rotary_event  .....XX................................. 2
+XLXI_2/delay_rotary_q1 
+                     ......X................................. 1
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB2  ***********************************
-Number of function block inputs used/remaining:               0/54
-Number of signals used by logic mapping into function block:  0
+Number of function block inputs used/remaining:               7/47
+Number of signals used by logic mapping into function block:  7
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB2_1         (b)     
@@ -152,19 +165,37 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB2_3         (b)     
 (unused)              0       0     0   5     FB2_4         (b)     
 (unused)              0       0     0   5     FB2_5   30    I/O     
-(unused)              0       0     0   5     FB2_6   31    I/O     
+DB<7>                 2       0     0   3     FB2_6   31    I/O     O
 (unused)              0       0     0   5     FB2_7         (b)     
-(unused)              0       0     0   5     FB2_8   32    I/O     
+DB<6>                 2       0     0   3     FB2_8   32    I/O     O
 (unused)              0       0     0   5     FB2_9   33    GSR/I/O 
 (unused)              0       0     0   5     FB2_10        (b)     
 (unused)              0       0     0   5     FB2_11  34    GTS/I/O 
 (unused)              0       0     0   5     FB2_12        (b)     
 (unused)              0       0     0   5     FB2_13        (b)     
 (unused)              0       0     0   5     FB2_14  36    GTS/I/O 
-(unused)              0       0     0   5     FB2_15  37    I/O     
-(unused)              0       0     0   5     FB2_16        (b)     
-(unused)              0       0     0   5     FB2_17  38    I/O     
-(unused)              0       0     0   5     FB2_18        (b)     
+DB<5>                 2       0     0   3     FB2_15  37    I/O     O
+XLXI_2/rotary_a_in    1       0     0   4     FB2_16        (b)     (b)
+DB<4>                 2       0     0   3     FB2_17  38    I/O     O
+XLXI_2/internal_detent
+                      1       0     0   4     FB2_18        (b)     (b)
+
+Signals Used by Logic in Function Block
+  1: DB<3>              4: DB<6>              6: XLXI_2/rotary_event 
+  2: DB<4>              5: SCLK               7: PHA 
+  3: DB<5>            
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+DB<7>                ...XX................................... 2
+DB<6>                ..X.X................................... 2
+DB<5>                .X..X................................... 2
+XLXI_2/rotary_a_in   ......X................................. 1
+DB<4>                X...X................................... 2
+XLXI_2/internal_detent 
+                     .....X.................................. 1
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
 *********************************** FB3  ***********************************
 Number of function block inputs used/remaining:               7/47
 Number of signals used by logic mapping into function block:  7
@@ -177,41 +208,34 @@ DIR                   2       0     0   3     FB3_2   5     I/O     O
 IRQ                   1       0     0   4     FB3_5   6     I/O     O
 (unused)              0       0     0   5     FB3_6         (b)     
 (unused)              0       0     0   5     FB3_7         (b)     
-(unused)              0       0     0   5     FB3_8   7     I/O     
-(unused)              0       0     0   5     FB3_9   8     I/O     
+(unused)              0       0     0   5     FB3_8   7     I/O     I
+(unused)              0       0     0   5     FB3_9   8     I/O     I
 (unused)              0       0     0   5     FB3_10        (b)     
 (unused)              0       0     0   5     FB3_11  12    I/O     
 (unused)              0       0     0   5     FB3_12        (b)     
 (unused)              0       0     0   5     FB3_13        (b)     
-XLXI_2/rotary_event   1       0     0   4     FB3_14  13    I/O     (b)
-XLXI_2/rotary_a_in    1       0     0   4     FB3_15  14    I/O     (b)
-XLXI_2/internal_detent
-                      1       0     0   4     FB3_16  18    I/O     (b)
-XLXI_2/delay_rotary_q1
-                      1       0     0   4     FB3_17  16    I/O     (b)
+(unused)              0       0     0   5     FB3_14  13    I/O     
+(unused)              0       0     0   5     FB3_15  14    I/O     
+(unused)              0       0     0   5     FB3_16  18    I/O     
+XLXI_2/rotary_b_in    1       0     0   4     FB3_17  16    I/O     (b)
 XLXI_2/rotary_left    2       0     0   3     FB3_18        (b)     (b)
 
 Signals Used by Logic in Function Block
   1: XLXI_2/delay_rotary_q1   4: XLXI_2/rotary_left   6: XLXI_2/rotary_q2 
-  2: XLXI_2/internal_detent   5: XLXI_2/rotary_q1     7: PHA 
+  2: XLXI_2/internal_detent   5: XLXI_2/rotary_q1     7: PHB 
   3: XLXI_2/rotary_event    
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
 DIR                  ..XX.................................... 2
 IRQ                  .X...................................... 1
-XLXI_2/rotary_event  X...X................................... 2
-XLXI_2/rotary_a_in   ......X................................. 1
-XLXI_2/internal_detent 
-                     ..X..................................... 1
-XLXI_2/delay_rotary_q1 
-                     ....X................................... 1
+XLXI_2/rotary_b_in   ......X................................. 1
 XLXI_2/rotary_left   X...XX.................................. 3
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB4  ***********************************
-Number of function block inputs used/remaining:               0/54
-Number of signals used by logic mapping into function block:  0
+Number of function block inputs used/remaining:               6/48
+Number of signals used by logic mapping into function block:  6
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB4_1         (b)     
@@ -228,13 +252,42 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB4_12        (b)     
 (unused)              0       0     0   5     FB4_13        (b)     
 (unused)              0       0     0   5     FB4_14  23    I/O     
-(unused)              0       0     0   5     FB4_15  27    I/O     
-(unused)              0       0     0   5     FB4_16        (b)     
-(unused)              0       0     0   5     FB4_17  28    I/O     
-(unused)              0       0     0   5     FB4_18        (b)     
+XLXI_2/rotary_in<1>   1       0     0   4     FB4_15  27    I/O     (b)
+XLXI_2/rotary_in<0>   1       0     0   4     FB4_16        (b)     (b)
+XLXI_2/rotary_q2      2       0     0   3     FB4_17  28    I/O     (b)
+XLXI_2/rotary_q1      2       0     0   3     FB4_18        (b)     (b)
+
+Signals Used by Logic in Function Block
+  1: XLXI_2/rotary_a_in   3: XLXI_2/rotary_in<0>   5: XLXI_2/rotary_q1 
+  2: XLXI_2/rotary_b_in   4: XLXI_2/rotary_in<1>   6: XLXI_2/rotary_q2 
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+XLXI_2/rotary_in<1>  .X...................................... 1
+XLXI_2/rotary_in<0>  X....................................... 1
+XLXI_2/rotary_q2     ..XX.X.................................. 3
+XLXI_2/rotary_q1     ..XXX................................... 3
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
 *******************************  Equations  ********************************
 
 ********** Mapped Logic **********
+
+FDCPE_DB0: FDCPE port map (DB(0),MOSI,SCLK,'0','0');
+
+FDCPE_DB1: FDCPE port map (DB(1),DB(0),SCLK,'0','0');
+
+FDCPE_DB2: FDCPE port map (DB(2),DB(1),SCLK,'0','0');
+
+FDCPE_DB3: FDCPE port map (DB(3),DB(2),SCLK,'0','0');
+
+FDCPE_DB4: FDCPE port map (DB(4),DB(3),SCLK,'0','0');
+
+FDCPE_DB5: FDCPE port map (DB(5),DB(4),SCLK,'0','0');
+
+FDCPE_DB6: FDCPE port map (DB(6),DB(5),SCLK,'0','0');
+
+FDCPE_DB7: FDCPE port map (DB(7),DB(6),SCLK,'0','0');
 
 FDCPE_DIR: FDCPE port map (DIR,XLXI_2/rotary_left,ECLK,'0','0',XLXI_2/rotary_event);
 
@@ -305,20 +358,20 @@ No. Name                           No. Name
   4 GND                              26 VCC                           
   5 DIR                              27 KPR                           
   6 IRQ                              28 KPR                           
-  7 KPR                              29 KPR                           
-  8 KPR                              30 KPR                           
-  9 TDI                              31 KPR                           
- 10 TMS                              32 KPR                           
+  7 MOSI                             29 KPR                           
+  8 SCLK                             30 KPR                           
+  9 TDI                              31 DB<7>                         
+ 10 TMS                              32 DB<6>                         
  11 TCK                              33 KPR                           
  12 KPR                              34 KPR                           
  13 KPR                              35 VCC                           
  14 KPR                              36 KPR                           
- 15 VCC                              37 KPR                           
- 16 KPR                              38 KPR                           
- 17 GND                              39 KPR                           
- 18 KPR                              40 KPR                           
- 19 KPR                              41 KPR                           
- 20 KPR                              42 KPR                           
+ 15 VCC                              37 DB<5>                         
+ 16 KPR                              38 DB<4>                         
+ 17 GND                              39 DB<3>                         
+ 18 KPR                              40 DB<2>                         
+ 19 KPR                              41 DB<1>                         
+ 20 KPR                              42 DB<0>                         
  21 KPR                              43 ECLK                          
  22 KPR                              44 KPR                           
 

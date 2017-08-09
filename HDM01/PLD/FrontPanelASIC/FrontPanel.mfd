@@ -4,7 +4,7 @@ MACROCELL | 2 | 17 | XLXI_2/rotary_left
 ATTRIBUTES | 8553280 | 0
 OUTPUTMC | 1 | 2 | 1
 INPUTS | 3 | XLXI_2/rotary_q2  | XLXI_2/rotary_q1  | XLXI_2/delay_rotary_q1
-INPUTMC | 3 | 0 | 16 | 0 | 17 | 2 | 16
+INPUTMC | 3 | 3 | 16 | 3 | 17 | 0 | 17
 EQ | 3 | 
    XLXI_2/rotary_left.D = XLXI_2/rotary_q2;
    XLXI_2/rotary_left.CLK = ECLK;	// GCK
@@ -14,28 +14,97 @@ GLOBALS | 1 | 2 | ECLK
 MACROCELL | 2 | 1 | XLXN_5
 ATTRIBUTES | 8684352 | 0
 INPUTS | 2 | XLXI_2/rotary_left  | XLXI_2/rotary_event
-INPUTMC | 2 | 2 | 17 | 2 | 13
+INPUTMC | 2 | 2 | 17 | 0 | 16
 EQ | 3 | 
    DIR.D = XLXI_2/rotary_left;
    DIR.CLK = ECLK;	// GCK
    DIR.CE = XLXI_2/rotary_event;
 GLOBALS | 1 | 2 | ECLK
 
-MACROCELL | 0 | 13 | XLXI_2/rotary_in<1>
+MACROCELL | 0 | 7 | DB_0_OBUF
+ATTRIBUTES | 8782626 | 0
+OUTPUTMC | 1 | 0 | 5
+INPUTS | 2 | MOSI  | SCLK
+INPUTP | 2 | 33 | 38
+EQ | 2 | 
+   DB<0>.D = MOSI;
+   DB<0>.CLK = SCLK;
+
+MACROCELL | 0 | 5 | DB_1_OBUF
+ATTRIBUTES | 8782626 | 0
+OUTPUTMC | 1 | 0 | 4
+INPUTS | 2 | DB<0>  | SCLK
+INPUTMC | 1 | 0 | 7
+INPUTP | 1 | 38
+EQ | 2 | 
+   DB<1>.D = DB<0>;
+   DB<1>.CLK = SCLK;
+
+MACROCELL | 0 | 4 | DB_2_OBUF
+ATTRIBUTES | 8782626 | 0
+OUTPUTMC | 1 | 0 | 1
+INPUTS | 2 | DB<1>  | SCLK
+INPUTMC | 1 | 0 | 5
+INPUTP | 1 | 38
+EQ | 2 | 
+   DB<2>.D = DB<1>;
+   DB<2>.CLK = SCLK;
+
+MACROCELL | 0 | 1 | DB_3_OBUF
+ATTRIBUTES | 8782626 | 0
+OUTPUTMC | 1 | 1 | 16
+INPUTS | 2 | DB<2>  | SCLK
+INPUTMC | 1 | 0 | 4
+INPUTP | 1 | 38
+EQ | 2 | 
+   DB<3>.D = DB<2>;
+   DB<3>.CLK = SCLK;
+
+MACROCELL | 1 | 16 | DB_4_OBUF
+ATTRIBUTES | 8782626 | 0
+OUTPUTMC | 1 | 1 | 14
+INPUTS | 2 | DB<3>  | SCLK
+INPUTMC | 1 | 0 | 1
+INPUTP | 1 | 38
+EQ | 2 | 
+   DB<4>.D = DB<3>;
+   DB<4>.CLK = SCLK;
+
+MACROCELL | 1 | 14 | DB_5_OBUF
+ATTRIBUTES | 8782626 | 0
+OUTPUTMC | 1 | 1 | 7
+INPUTS | 2 | DB<4>  | SCLK
+INPUTMC | 1 | 1 | 16
+INPUTP | 1 | 38
+EQ | 2 | 
+   DB<5>.D = DB<4>;
+   DB<5>.CLK = SCLK;
+
+MACROCELL | 1 | 7 | DB_6_OBUF
+ATTRIBUTES | 8782626 | 0
+OUTPUTMC | 1 | 1 | 5
+INPUTS | 2 | DB<5>  | SCLK
+INPUTMC | 1 | 1 | 14
+INPUTP | 1 | 38
+EQ | 2 | 
+   DB<6>.D = DB<5>;
+   DB<6>.CLK = SCLK;
+
+MACROCELL | 3 | 14 | XLXI_2/rotary_in<1>
 ATTRIBUTES | 8553216 | 0
-OUTPUTMC | 2 | 0 | 17 | 0 | 16
+OUTPUTMC | 2 | 3 | 17 | 3 | 16
 INPUTS | 1 | XLXI_2/rotary_b_in
-INPUTMC | 1 | 0 | 15
+INPUTMC | 1 | 2 | 16
 EQ | 2 | 
    XLXI_2/rotary_in<1>.D = XLXI_2/rotary_b_in;
    XLXI_2/rotary_in<1>.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
-MACROCELL | 0 | 17 | XLXI_2/rotary_q1
+MACROCELL | 3 | 17 | XLXI_2/rotary_q1
 ATTRIBUTES | 4358912 | 0
-OUTPUTMC | 4 | 2 | 17 | 0 | 17 | 2 | 13 | 2 | 16
+OUTPUTMC | 4 | 2 | 17 | 3 | 17 | 0 | 16 | 0 | 17
 INPUTS | 3 | XLXI_2/rotary_in<1>  | XLXI_2/rotary_q1  | XLXI_2/rotary_in<0>
-INPUTMC | 3 | 0 | 13 | 0 | 17 | 0 | 14
+INPUTMC | 3 | 3 | 14 | 3 | 17 | 3 | 15
 EQ | 5 | 
    XLXI_2/rotary_q1.T = XLXI_2/rotary_in<1> & !XLXI_2/rotary_q1 & 
 	XLXI_2/rotary_in<0>
@@ -44,11 +113,11 @@ EQ | 5 |
    XLXI_2/rotary_q1.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
-MACROCELL | 0 | 16 | XLXI_2/rotary_q2
+MACROCELL | 3 | 16 | XLXI_2/rotary_q2
 ATTRIBUTES | 4358912 | 0
-OUTPUTMC | 2 | 2 | 17 | 0 | 16
+OUTPUTMC | 2 | 2 | 17 | 3 | 16
 INPUTS | 3 | XLXI_2/rotary_in<1>  | XLXI_2/rotary_q2  | XLXI_2/rotary_in<0>
-INPUTMC | 3 | 0 | 13 | 0 | 16 | 0 | 14
+INPUTMC | 3 | 3 | 14 | 3 | 16 | 3 | 15
 EQ | 5 | 
    XLXI_2/rotary_q2.T = XLXI_2/rotary_in<1> & !XLXI_2/rotary_q2 & 
 	!XLXI_2/rotary_in<0>
@@ -57,49 +126,49 @@ EQ | 5 |
    XLXI_2/rotary_q2.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
-MACROCELL | 2 | 13 | XLXI_2/rotary_event
+MACROCELL | 0 | 16 | XLXI_2/rotary_event
 ATTRIBUTES | 8553216 | 0
-OUTPUTMC | 2 | 2 | 1 | 2 | 15
+OUTPUTMC | 2 | 2 | 1 | 1 | 17
 INPUTS | 2 | XLXI_2/rotary_q1  | XLXI_2/delay_rotary_q1
-INPUTMC | 2 | 0 | 17 | 2 | 16
+INPUTMC | 2 | 3 | 17 | 0 | 17
 EQ | 2 | 
    XLXI_2/rotary_event.D = XLXI_2/rotary_q1 & !XLXI_2/delay_rotary_q1;
    XLXI_2/rotary_event.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
-MACROCELL | 0 | 14 | XLXI_2/rotary_in<0>
+MACROCELL | 3 | 15 | XLXI_2/rotary_in<0>
 ATTRIBUTES | 8553216 | 0
-OUTPUTMC | 2 | 0 | 17 | 0 | 16
+OUTPUTMC | 2 | 3 | 17 | 3 | 16
 INPUTS | 1 | XLXI_2/rotary_a_in
-INPUTMC | 1 | 2 | 14
+INPUTMC | 1 | 1 | 15
 EQ | 2 | 
    XLXI_2/rotary_in<0>.D = XLXI_2/rotary_a_in;
    XLXI_2/rotary_in<0>.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
-MACROCELL | 2 | 16 | XLXI_2/delay_rotary_q1
+MACROCELL | 0 | 17 | XLXI_2/delay_rotary_q1
 ATTRIBUTES | 8553216 | 0
-OUTPUTMC | 2 | 2 | 17 | 2 | 13
+OUTPUTMC | 2 | 2 | 17 | 0 | 16
 INPUTS | 1 | XLXI_2/rotary_q1
-INPUTMC | 1 | 0 | 17
+INPUTMC | 1 | 3 | 17
 EQ | 2 | 
    XLXI_2/delay_rotary_q1.D = XLXI_2/rotary_q1;
    XLXI_2/delay_rotary_q1.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
-MACROCELL | 2 | 15 | XLXI_2/internal_detent
+MACROCELL | 1 | 17 | XLXI_2/internal_detent
 ATTRIBUTES | 8553216 | 0
 OUTPUTMC | 1 | 2 | 4
 INPUTS | 1 | XLXI_2/rotary_event
-INPUTMC | 1 | 2 | 13
+INPUTMC | 1 | 0 | 16
 EQ | 2 | 
    XLXI_2/internal_detent.D = XLXI_2/rotary_event;
    XLXI_2/internal_detent.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
-MACROCELL | 2 | 14 | XLXI_2/rotary_a_in
+MACROCELL | 1 | 15 | XLXI_2/rotary_a_in
 ATTRIBUTES | 8553216 | 0
-OUTPUTMC | 1 | 0 | 14
+OUTPUTMC | 1 | 3 | 15
 INPUTS | 1 | PHA
 INPUTP | 1 | 26
 EQ | 2 | 
@@ -107,9 +176,9 @@ EQ | 2 |
    XLXI_2/rotary_a_in.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
-MACROCELL | 0 | 15 | XLXI_2/rotary_b_in
+MACROCELL | 2 | 16 | XLXI_2/rotary_b_in
 ATTRIBUTES | 8553216 | 0
-OUTPUTMC | 1 | 0 | 13
+OUTPUTMC | 1 | 3 | 14
 INPUTS | 1 | PHB
 INPUTP | 1 | 27
 EQ | 2 | 
@@ -117,17 +186,36 @@ EQ | 2 |
    XLXI_2/rotary_b_in.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
+MACROCELL | 1 | 5 | DB_7_OBUF
+ATTRIBUTES | 8651554 | 0
+INPUTS | 2 | DB<6>  | SCLK
+INPUTMC | 1 | 1 | 7
+INPUTP | 1 | 38
+EQ | 2 | 
+   DB<7>.D = DB<6>;
+   DB<7>.CLK = SCLK;
+
 MACROCELL | 2 | 4 | XLXN_4
 ATTRIBUTES | 8684288 | 0
 INPUTS | 1 | XLXI_2/internal_detent
-INPUTMC | 1 | 2 | 15
+INPUTMC | 1 | 1 | 17
 EQ | 2 | 
    IRQ.D = XLXI_2/internal_detent;
    IRQ.CLK = ECLK;	// GCK
 GLOBALS | 1 | 2 | ECLK
 
-PIN | ECLK | 4096 | 0 | N/A | 20 | 12 | 2 | 17 | 2 | 1 | 0 | 13 | 0 | 17 | 0 | 16 | 2 | 13 | 0 | 14 | 2 | 16 | 2 | 15 | 2 | 14 | 0 | 15 | 2 | 4
-PIN | PHA | 64 | 0 | N/A | 26 | 1 | 2 | 14
-PIN | PHB | 64 | 0 | N/A | 27 | 1 | 0 | 15
+PIN | ECLK | 4096 | 0 | N/A | 20 | 12 | 2 | 17 | 2 | 1 | 3 | 14 | 3 | 17 | 3 | 16 | 0 | 16 | 3 | 15 | 0 | 17 | 1 | 17 | 1 | 15 | 2 | 16 | 2 | 4
+PIN | MOSI | 64 | 0 | N/A | 33 | 1 | 0 | 7
+PIN | SCLK | 64 | 0 | N/A | 38 | 8 | 0 | 7 | 0 | 5 | 0 | 4 | 0 | 1 | 1 | 16 | 1 | 14 | 1 | 7 | 1 | 5
+PIN | PHA | 64 | 0 | N/A | 26 | 1 | 1 | 15
+PIN | PHB | 64 | 0 | N/A | 27 | 1 | 2 | 16
 PIN | DIR | 128 | 0 | N/A | 29
+PIN | DB<0> | 536871040 | 0 | N/A | 15
+PIN | DB<1> | 536871040 | 0 | N/A | 13
+PIN | DB<2> | 536871040 | 0 | N/A | 12
+PIN | DB<3> | 536871040 | 0 | N/A | 11
+PIN | DB<4> | 536871040 | 0 | N/A | 10
+PIN | DB<5> | 536871040 | 0 | N/A | 9
+PIN | DB<6> | 536871040 | 0 | N/A | 90
+PIN | DB<7> | 536871040 | 0 | N/A | 89
 PIN | IRQ | 128 | 0 | N/A | 31

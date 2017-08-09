@@ -1,3 +1,5 @@
 MODULE FrontPanel
 	SUBMODULE rotary_decoder
 		INSTANCE XLXI_2
+	SUBMODULE spi
+		INSTANCE XLXI_14
