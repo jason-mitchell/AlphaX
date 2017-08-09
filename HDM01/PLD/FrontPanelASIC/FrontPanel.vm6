@@ -8,721 +8,896 @@ NETWORK | FrontPanel | 0 | 0 | 16391
 
 INPUT_INSTANCE | 0 | 0 | NULL | XLXN_15 | FrontPanel_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | ECLK | 878 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+NODE | ECLK | 1169 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
 OUTPUT_NODE_TYPE | 3 | 5 | II_FCLK
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | XLXN_26 | FrontPanel_COPY_0_COPY_0 | 2155877376 | 4 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<0> | 1140 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<0>.Q | XLXI_15/r_reg<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<1> | 1144 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<1>.Q | XLXI_15/r_reg<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<2> | 1147 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<2>.Q | XLXI_15/r_reg<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | XLXN_26$Q | 1120 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_26.Q | XLXN_26 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | XLXN_26 | 1121 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_26.Q | XLXN_26 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | XLXN_26.SI | XLXN_26 | 0 | 3 | 3
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<0> | 1140 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<0>.Q | XLXI_15/r_reg<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<1> | 1144 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<1>.Q | XLXI_15/r_reg<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<2> | 1147 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<2>.Q | XLXI_15/r_reg<2> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXN_26.D1 | 1175 | ? | 0 | 4096 | XLXN_26 | NULL | NULL | XLXN_26.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXN_26.D2 | 1176 | ? | 0 | 4096 | XLXN_26 | NULL | NULL | XLXN_26.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 0 | IV_DC
+OUTPUT_NODE_TYPE | 10 | 9 | MC_SI_CE
+SIGNAL | NODE | XLXN_26.CE | 1177 | ? | 0 | 4096 | XLXN_26 | NULL | NULL | XLXN_26.SI | 10 | 9 | MC_SI_CE
+SPPTERM | 3 | IV_FALSE | XLXI_15/r_reg<0> | IV_FALSE | XLXI_15/r_reg<1> | IV_TRUE | XLXI_15/r_reg<2>
+
+SRFF_INSTANCE | XLXN_26.REG | XLXN_26 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | XLXN_26.D | 1174 | ? | 0 | 0 | XLXN_26 | NULL | NULL | XLXN_26.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 4 | 8 | SRFF_CE
+SIGNAL | NODE | XLXN_26.CE | 1177 | ? | 0 | 4096 | XLXN_26 | NULL | NULL | XLXN_26.SI | 10 | 9 | MC_SI_CE
+SPPTERM | 3 | IV_FALSE | XLXI_15/r_reg<0> | IV_FALSE | XLXI_15/r_reg<1> | IV_TRUE | XLXI_15/r_reg<2>
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | XLXN_26.Q | 1178 | ? | 0 | 0 | XLXN_26 | NULL | NULL | XLXN_26.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXI_2/rotary_left | FrontPanel_COPY_0_COPY_0 | 2155873280 | 4 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q2 | 857 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q2 | 1143 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q1 | 856 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q1 | 1142 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/delay_rotary_q1 | 860 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/delay_rotary_q1 | 1148 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/rotary_left | 837 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_left.Q | XLXI_2/rotary_left | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_left | 1122 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_left.Q | XLXI_2/rotary_left | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/rotary_left.SI | XLXI_2/rotary_left | 0 | 3 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q2 | 857 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q2 | 1143 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q1 | 856 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q1 | 1142 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/delay_rotary_q1 | 860 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/delay_rotary_q1 | 1148 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/rotary_left.D1 | 884 | ? | 0 | 4096 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/rotary_left.D1 | 1180 | ? | 0 | 4096 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/rotary_left.D2 | 885 | ? | 0 | 4096 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/rotary_left.D2 | 1181 | ? | 0 | 4096 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | XLXI_2/rotary_q2
 OUTPUT_NODE_TYPE | 10 | 9 | MC_SI_CE
-SIGNAL | NODE | XLXI_2/rotary_left.CE | 886 | ? | 0 | 4096 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.SI | 10 | 9 | MC_SI_CE
+SIGNAL | NODE | XLXI_2/rotary_left.CE | 1182 | ? | 0 | 4096 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.SI | 10 | 9 | MC_SI_CE
 SPPTERM | 2 | IV_TRUE | XLXI_2/rotary_q1 | IV_FALSE | XLXI_2/delay_rotary_q1
 
 SRFF_INSTANCE | XLXI_2/rotary_left.REG | XLXI_2/rotary_left | 0 | 3 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/rotary_left.D | 883 | ? | 0 | 0 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/rotary_left.D | 1179 | ? | 0 | 0 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 INPUT_NODE_TYPE | 4 | 8 | SRFF_CE
-SIGNAL | NODE | XLXI_2/rotary_left.CE | 886 | ? | 0 | 4096 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.SI | 10 | 9 | MC_SI_CE
+SIGNAL | NODE | XLXI_2/rotary_left.CE | 1182 | ? | 0 | 4096 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.SI | 10 | 9 | MC_SI_CE
 SPPTERM | 2 | IV_TRUE | XLXI_2/rotary_q1 | IV_FALSE | XLXI_2/delay_rotary_q1
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/rotary_left.Q | 887 | ? | 0 | 0 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/rotary_left.Q | 1183 | ? | 0 | 0 | XLXI_2/rotary_left | NULL | NULL | XLXI_2/rotary_left.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXN_5 | FrontPanel_COPY_0_COPY_0 | 2155873280 | 3 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_left | 837 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_left.Q | XLXI_2/rotary_left | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_left | 1122 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_left.Q | XLXI_2/rotary_left | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_event | 858 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_event | 1145 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | XLXN_5 | 838 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_5.Q | XLXN_5 | 0 | 0 | MC_Q
+NODE | XLXN_5 | 1123 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_5.Q | XLXN_5 | 0 | 0 | MC_Q
 
 SIGNAL_INSTANCE | XLXN_5.SI | XLXN_5 | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_left | 837 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_left.Q | XLXI_2/rotary_left | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_left | 1122 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_left.Q | XLXI_2/rotary_left | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_event | 858 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_event | 1145 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXN_5.D1 | 889 | ? | 0 | 4096 | XLXN_5 | NULL | NULL | XLXN_5.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXN_5.D1 | 1185 | ? | 0 | 4096 | XLXN_5 | NULL | NULL | XLXN_5.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXN_5.D2 | 890 | ? | 0 | 4096 | XLXN_5 | NULL | NULL | XLXN_5.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXN_5.D2 | 1186 | ? | 0 | 4096 | XLXN_5 | NULL | NULL | XLXN_5.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | XLXI_2/rotary_left
 OUTPUT_NODE_TYPE | 10 | 9 | MC_SI_CE
-SIGNAL | NODE | XLXN_5.CE | 891 | ? | 0 | 4096 | XLXN_5 | NULL | NULL | XLXN_5.SI | 10 | 9 | MC_SI_CE
+SIGNAL | NODE | XLXN_5.CE | 1187 | ? | 0 | 4096 | XLXN_5 | NULL | NULL | XLXN_5.SI | 10 | 9 | MC_SI_CE
 SPPTERM | 1 | IV_TRUE | XLXI_2/rotary_event
 
 SRFF_INSTANCE | XLXN_5.REG | XLXN_5 | 0 | 3 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXN_5.D | 888 | ? | 0 | 0 | XLXN_5 | NULL | NULL | XLXN_5.XOR | 0 | 7 | ALU_F
+NODE | XLXN_5.D | 1184 | ? | 0 | 0 | XLXN_5 | NULL | NULL | XLXN_5.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 INPUT_NODE_TYPE | 4 | 8 | SRFF_CE
-SIGNAL | NODE | XLXN_5.CE | 891 | ? | 0 | 4096 | XLXN_5 | NULL | NULL | XLXN_5.SI | 10 | 9 | MC_SI_CE
+SIGNAL | NODE | XLXN_5.CE | 1187 | ? | 0 | 4096 | XLXN_5 | NULL | NULL | XLXN_5.SI | 10 | 9 | MC_SI_CE
 SPPTERM | 1 | IV_TRUE | XLXI_2/rotary_event
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXN_5.Q | 892 | ? | 0 | 0 | XLXN_5 | NULL | NULL | XLXN_5.REG | 0 | 8 | SRFF_Q
+NODE | XLXN_5.Q | 1188 | ? | 0 | 0 | XLXN_5 | NULL | NULL | XLXN_5.REG | 0 | 8 | SRFF_Q
 
 INPUT_INSTANCE | 0 | 0 | NULL | MOSI_IBUF | FrontPanel_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | MOSI | 879 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+NODE | MOSI | 1170 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
 OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | MOSI_IBUF | 839 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | MOSI_IBUF | 0 | 5 | II_IMUX
+NODE | MOSI_IBUF | 1124 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | MOSI_IBUF | 0 | 5 | II_IMUX
 
 INPUT_INSTANCE | 0 | 0 | NULL | SCLK_IBUF | FrontPanel_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | SCLK | 880 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+NODE | SCLK | 1171 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
 OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | DB_0_OBUF | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MOSI_IBUF | 839 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | MOSI_IBUF | 0 | 5 | II_IMUX
+NODE | MOSI_IBUF | 1124 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | MOSI_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | DB_0_OBUF$Q | 841 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 0 | 0 | MC_Q
+NODE | DB_0_OBUF$Q | 1126 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | DB_0_OBUF | 842 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 1 | 0 | MC_UIM
+NODE | DB_0_OBUF | 1127 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | DB_0_OBUF.SI | DB_0_OBUF | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MOSI_IBUF | 839 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | MOSI_IBUF | 0 | 5 | II_IMUX
+NODE | MOSI_IBUF | 1124 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | MOSI_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | DB_0_OBUF.D1 | 894 | ? | 0 | 4096 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | DB_0_OBUF.D1 | 1190 | ? | 0 | 4096 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | DB_0_OBUF.D2 | 895 | ? | 0 | 4096 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | DB_0_OBUF.D2 | 1191 | ? | 0 | 4096 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | MOSI_IBUF
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | DB_0_OBUF.CLKF | 896 | ? | 0 | 4096 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_0_OBUF.CLKF | 1192 | ? | 0 | 4096 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 
 SRFF_INSTANCE | DB_0_OBUF.REG | DB_0_OBUF | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | DB_0_OBUF.D | 893 | ? | 0 | 0 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.XOR | 0 | 7 | ALU_F
+NODE | DB_0_OBUF.D | 1189 | ? | 0 | 0 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | DB_0_OBUF.CLKF | 896 | ? | 0 | 4096 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_0_OBUF.CLKF | 1192 | ? | 0 | 4096 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | DB_0_OBUF.Q | 897 | ? | 0 | 0 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | DB_0_OBUF.Q | 1193 | ? | 0 | 0 | DB_0_OBUF | NULL | NULL | DB_0_OBUF.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | DB_1_OBUF | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_0_OBUF | 842 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 1 | 0 | MC_UIM
+NODE | DB_0_OBUF | 1127 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | DB_1_OBUF$Q | 843 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 0 | 0 | MC_Q
+NODE | DB_1_OBUF$Q | 1128 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | DB_1_OBUF | 844 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 1 | 0 | MC_UIM
+NODE | DB_1_OBUF | 1129 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | DB_1_OBUF.SI | DB_1_OBUF | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_0_OBUF | 842 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 1 | 0 | MC_UIM
+NODE | DB_0_OBUF | 1127 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | DB_1_OBUF.D1 | 899 | ? | 0 | 4096 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | DB_1_OBUF.D1 | 1195 | ? | 0 | 4096 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | DB_1_OBUF.D2 | 900 | ? | 0 | 4096 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | DB_1_OBUF.D2 | 1196 | ? | 0 | 4096 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | DB_0_OBUF
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | DB_1_OBUF.CLKF | 901 | ? | 0 | 4096 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_1_OBUF.CLKF | 1197 | ? | 0 | 4096 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 
 SRFF_INSTANCE | DB_1_OBUF.REG | DB_1_OBUF | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | DB_1_OBUF.D | 898 | ? | 0 | 0 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.XOR | 0 | 7 | ALU_F
+NODE | DB_1_OBUF.D | 1194 | ? | 0 | 0 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | DB_1_OBUF.CLKF | 901 | ? | 0 | 4096 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_1_OBUF.CLKF | 1197 | ? | 0 | 4096 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | DB_1_OBUF.Q | 902 | ? | 0 | 0 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | DB_1_OBUF.Q | 1198 | ? | 0 | 0 | DB_1_OBUF | NULL | NULL | DB_1_OBUF.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | DB_2_OBUF | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_1_OBUF | 844 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 1 | 0 | MC_UIM
+NODE | DB_1_OBUF | 1129 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | DB_2_OBUF$Q | 845 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 0 | 0 | MC_Q
+NODE | DB_2_OBUF$Q | 1130 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | DB_2_OBUF | 846 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 1 | 0 | MC_UIM
+NODE | DB_2_OBUF | 1131 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | DB_2_OBUF.SI | DB_2_OBUF | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_1_OBUF | 844 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 1 | 0 | MC_UIM
+NODE | DB_1_OBUF | 1129 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | DB_2_OBUF.D1 | 904 | ? | 0 | 4096 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | DB_2_OBUF.D1 | 1200 | ? | 0 | 4096 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | DB_2_OBUF.D2 | 905 | ? | 0 | 4096 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | DB_2_OBUF.D2 | 1201 | ? | 0 | 4096 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | DB_1_OBUF
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | DB_2_OBUF.CLKF | 906 | ? | 0 | 4096 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_2_OBUF.CLKF | 1202 | ? | 0 | 4096 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 
 SRFF_INSTANCE | DB_2_OBUF.REG | DB_2_OBUF | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | DB_2_OBUF.D | 903 | ? | 0 | 0 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.XOR | 0 | 7 | ALU_F
+NODE | DB_2_OBUF.D | 1199 | ? | 0 | 0 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | DB_2_OBUF.CLKF | 906 | ? | 0 | 4096 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_2_OBUF.CLKF | 1202 | ? | 0 | 4096 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | DB_2_OBUF.Q | 907 | ? | 0 | 0 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | DB_2_OBUF.Q | 1203 | ? | 0 | 0 | DB_2_OBUF | NULL | NULL | DB_2_OBUF.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | DB_3_OBUF | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_2_OBUF | 846 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 1 | 0 | MC_UIM
+NODE | DB_2_OBUF | 1131 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | DB_3_OBUF$Q | 847 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 0 | 0 | MC_Q
+NODE | DB_3_OBUF$Q | 1132 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | DB_3_OBUF | 848 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 1 | 0 | MC_UIM
+NODE | DB_3_OBUF | 1133 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | DB_3_OBUF.SI | DB_3_OBUF | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_2_OBUF | 846 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 1 | 0 | MC_UIM
+NODE | DB_2_OBUF | 1131 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | DB_3_OBUF.D1 | 909 | ? | 0 | 4096 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | DB_3_OBUF.D1 | 1205 | ? | 0 | 4096 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | DB_3_OBUF.D2 | 910 | ? | 0 | 4096 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | DB_3_OBUF.D2 | 1206 | ? | 0 | 4096 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | DB_2_OBUF
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | DB_3_OBUF.CLKF | 911 | ? | 0 | 4096 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_3_OBUF.CLKF | 1207 | ? | 0 | 4096 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 
 SRFF_INSTANCE | DB_3_OBUF.REG | DB_3_OBUF | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | DB_3_OBUF.D | 908 | ? | 0 | 0 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.XOR | 0 | 7 | ALU_F
+NODE | DB_3_OBUF.D | 1204 | ? | 0 | 0 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | DB_3_OBUF.CLKF | 911 | ? | 0 | 4096 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_3_OBUF.CLKF | 1207 | ? | 0 | 4096 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | DB_3_OBUF.Q | 912 | ? | 0 | 0 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | DB_3_OBUF.Q | 1208 | ? | 0 | 0 | DB_3_OBUF | NULL | NULL | DB_3_OBUF.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | DB_4_OBUF | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_3_OBUF | 848 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 1 | 0 | MC_UIM
+NODE | DB_3_OBUF | 1133 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | DB_4_OBUF$Q | 849 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 0 | 0 | MC_Q
+NODE | DB_4_OBUF$Q | 1134 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | DB_4_OBUF | 850 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 1 | 0 | MC_UIM
+NODE | DB_4_OBUF | 1135 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | DB_4_OBUF.SI | DB_4_OBUF | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_3_OBUF | 848 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 1 | 0 | MC_UIM
+NODE | DB_3_OBUF | 1133 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | DB_4_OBUF.D1 | 914 | ? | 0 | 4096 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | DB_4_OBUF.D1 | 1210 | ? | 0 | 4096 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | DB_4_OBUF.D2 | 915 | ? | 0 | 4096 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | DB_4_OBUF.D2 | 1211 | ? | 0 | 4096 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | DB_3_OBUF
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | DB_4_OBUF.CLKF | 916 | ? | 0 | 4096 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_4_OBUF.CLKF | 1212 | ? | 0 | 4096 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 
 SRFF_INSTANCE | DB_4_OBUF.REG | DB_4_OBUF | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | DB_4_OBUF.D | 913 | ? | 0 | 0 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.XOR | 0 | 7 | ALU_F
+NODE | DB_4_OBUF.D | 1209 | ? | 0 | 0 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | DB_4_OBUF.CLKF | 916 | ? | 0 | 4096 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_4_OBUF.CLKF | 1212 | ? | 0 | 4096 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | DB_4_OBUF.Q | 917 | ? | 0 | 0 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | DB_4_OBUF.Q | 1213 | ? | 0 | 0 | DB_4_OBUF | NULL | NULL | DB_4_OBUF.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | DB_5_OBUF | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_4_OBUF | 850 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 1 | 0 | MC_UIM
+NODE | DB_4_OBUF | 1135 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | DB_5_OBUF$Q | 851 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 0 | 0 | MC_Q
+NODE | DB_5_OBUF$Q | 1136 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | DB_5_OBUF | 852 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 1 | 0 | MC_UIM
+NODE | DB_5_OBUF | 1137 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | DB_5_OBUF.SI | DB_5_OBUF | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_4_OBUF | 850 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 1 | 0 | MC_UIM
+NODE | DB_4_OBUF | 1135 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | DB_5_OBUF.D1 | 919 | ? | 0 | 4096 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | DB_5_OBUF.D1 | 1215 | ? | 0 | 4096 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | DB_5_OBUF.D2 | 920 | ? | 0 | 4096 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | DB_5_OBUF.D2 | 1216 | ? | 0 | 4096 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | DB_4_OBUF
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | DB_5_OBUF.CLKF | 921 | ? | 0 | 4096 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_5_OBUF.CLKF | 1217 | ? | 0 | 4096 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 
 SRFF_INSTANCE | DB_5_OBUF.REG | DB_5_OBUF | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | DB_5_OBUF.D | 918 | ? | 0 | 0 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.XOR | 0 | 7 | ALU_F
+NODE | DB_5_OBUF.D | 1214 | ? | 0 | 0 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | DB_5_OBUF.CLKF | 921 | ? | 0 | 4096 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_5_OBUF.CLKF | 1217 | ? | 0 | 4096 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | DB_5_OBUF.Q | 922 | ? | 0 | 0 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | DB_5_OBUF.Q | 1218 | ? | 0 | 0 | DB_5_OBUF | NULL | NULL | DB_5_OBUF.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | DB_6_OBUF | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_5_OBUF | 852 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 1 | 0 | MC_UIM
+NODE | DB_5_OBUF | 1137 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | DB_6_OBUF$Q | 853 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 0 | 0 | MC_Q
+NODE | DB_6_OBUF$Q | 1138 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | DB_6_OBUF | 854 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 1 | 0 | MC_UIM
+NODE | DB_6_OBUF | 1139 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | DB_6_OBUF.SI | DB_6_OBUF | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_5_OBUF | 852 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 1 | 0 | MC_UIM
+NODE | DB_5_OBUF | 1137 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | DB_6_OBUF.D1 | 924 | ? | 0 | 4096 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | DB_6_OBUF.D1 | 1220 | ? | 0 | 4096 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | DB_6_OBUF.D2 | 925 | ? | 0 | 4096 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | DB_6_OBUF.D2 | 1221 | ? | 0 | 4096 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | DB_5_OBUF
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | DB_6_OBUF.CLKF | 926 | ? | 0 | 4096 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_6_OBUF.CLKF | 1222 | ? | 0 | 4096 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 
 SRFF_INSTANCE | DB_6_OBUF.REG | DB_6_OBUF | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | DB_6_OBUF.D | 923 | ? | 0 | 0 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.XOR | 0 | 7 | ALU_F
+NODE | DB_6_OBUF.D | 1219 | ? | 0 | 0 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | DB_6_OBUF.CLKF | 926 | ? | 0 | 4096 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_6_OBUF.CLKF | 1222 | ? | 0 | 4096 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | DB_6_OBUF.Q | 927 | ? | 0 | 0 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | DB_6_OBUF.Q | 1223 | ? | 0 | 0 | DB_6_OBUF | NULL | NULL | DB_6_OBUF.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | Inv+PrldLow+Tff+OptxMapped | XLXI_15/r_reg<0> | FrontPanel_COPY_0_COPY_0 | 2155877632 | 4 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<0> | 1140 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<0>.Q | XLXI_15/r_reg<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<1> | 1144 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<1>.Q | XLXI_15/r_reg<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<2> | 1147 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<2>.Q | XLXI_15/r_reg<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | XLXI_15/r_reg<0> | 1140 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<0>.Q | XLXI_15/r_reg<0> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | XLXI_15/r_reg<0>.SI | XLXI_15/r_reg<0> | 0 | 3 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<0> | 1140 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<0>.Q | XLXI_15/r_reg<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<1> | 1144 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<1>.Q | XLXI_15/r_reg<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<2> | 1147 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<2>.Q | XLXI_15/r_reg<2> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_15/r_reg<0>.D1 | 1225 | ? | 0 | 4096 | XLXI_15/r_reg<0> | NULL | NULL | XLXI_15/r_reg<0>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_15/r_reg<0>.D2 | 1226 | ? | 0 | 4096 | XLXI_15/r_reg<0> | NULL | NULL | XLXI_15/r_reg<0>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | XLXI_15/r_reg<0> | IV_FALSE | XLXI_15/r_reg<1> | IV_TRUE | XLXI_15/r_reg<2>
+
+SRFF_INSTANCE | XLXI_15/r_reg<0>.REG | XLXI_15/r_reg<0> | 0 | 2 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | XLXI_15/r_reg<0>.D | 1224 | ? | 0 | 0 | XLXI_15/r_reg<0> | NULL | NULL | XLXI_15/r_reg<0>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | XLXI_15/r_reg<0>.Q | 1227 | ? | 0 | 0 | XLXI_15/r_reg<0> | NULL | NULL | XLXI_15/r_reg<0>.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXI_2/rotary_in<1> | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_b_in | 865 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_b_in.Q | XLXI_2/rotary_b_in | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_b_in | 1153 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_b_in.Q | XLXI_2/rotary_b_in | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/rotary_in<1> | 855 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<1> | 1141 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/rotary_in<1>.SI | XLXI_2/rotary_in<1> | 0 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_b_in | 865 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_b_in.Q | XLXI_2/rotary_b_in | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_b_in | 1153 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_b_in.Q | XLXI_2/rotary_b_in | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/rotary_in<1>.D1 | 929 | ? | 0 | 4096 | XLXI_2/rotary_in<1> | NULL | NULL | XLXI_2/rotary_in<1>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/rotary_in<1>.D1 | 1229 | ? | 0 | 4096 | XLXI_2/rotary_in<1> | NULL | NULL | XLXI_2/rotary_in<1>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/rotary_in<1>.D2 | 930 | ? | 0 | 4096 | XLXI_2/rotary_in<1> | NULL | NULL | XLXI_2/rotary_in<1>.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/rotary_in<1>.D2 | 1230 | ? | 0 | 4096 | XLXI_2/rotary_in<1> | NULL | NULL | XLXI_2/rotary_in<1>.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | XLXI_2/rotary_b_in
 
 SRFF_INSTANCE | XLXI_2/rotary_in<1>.REG | XLXI_2/rotary_in<1> | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/rotary_in<1>.D | 928 | ? | 0 | 0 | XLXI_2/rotary_in<1> | NULL | NULL | XLXI_2/rotary_in<1>.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/rotary_in<1>.D | 1228 | ? | 0 | 0 | XLXI_2/rotary_in<1> | NULL | NULL | XLXI_2/rotary_in<1>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/rotary_in<1>.Q | 931 | ? | 0 | 0 | XLXI_2/rotary_in<1> | NULL | NULL | XLXI_2/rotary_in<1>.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/rotary_in<1>.Q | 1231 | ? | 0 | 0 | XLXI_2/rotary_in<1> | NULL | NULL | XLXI_2/rotary_in<1>.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | XLXI_2/rotary_q1 | FrontPanel_COPY_0_COPY_0 | 2155877376 | 4 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_in<1> | 855 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<1> | 1141 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q1 | 856 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q1 | 1142 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_in<0> | 859 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<0> | 1146 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/rotary_q1 | 856 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q1 | 1142 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/rotary_q1.SI | XLXI_2/rotary_q1 | 0 | 3 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_in<1> | 855 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<1> | 1141 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q1 | 856 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q1 | 1142 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_in<0> | 859 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<0> | 1146 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/rotary_q1.D1 | 933 | ? | 0 | 4096 | XLXI_2/rotary_q1 | NULL | NULL | XLXI_2/rotary_q1.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/rotary_q1.D1 | 1233 | ? | 0 | 4096 | XLXI_2/rotary_q1 | NULL | NULL | XLXI_2/rotary_q1.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/rotary_q1.D2 | 934 | ? | 0 | 4096 | XLXI_2/rotary_q1 | NULL | NULL | XLXI_2/rotary_q1.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/rotary_q1.D2 | 1234 | ? | 0 | 4096 | XLXI_2/rotary_q1 | NULL | NULL | XLXI_2/rotary_q1.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 3 | IV_TRUE | XLXI_2/rotary_in<1> | IV_FALSE | XLXI_2/rotary_q1 | IV_TRUE | XLXI_2/rotary_in<0>
 SPPTERM | 3 | IV_FALSE | XLXI_2/rotary_in<1> | IV_TRUE | XLXI_2/rotary_q1 | IV_FALSE | XLXI_2/rotary_in<0>
 
 SRFF_INSTANCE | XLXI_2/rotary_q1.REG | XLXI_2/rotary_q1 | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/rotary_q1.D | 932 | ? | 0 | 0 | XLXI_2/rotary_q1 | NULL | NULL | XLXI_2/rotary_q1.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/rotary_q1.D | 1232 | ? | 0 | 0 | XLXI_2/rotary_q1 | NULL | NULL | XLXI_2/rotary_q1.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/rotary_q1.Q | 935 | ? | 0 | 0 | XLXI_2/rotary_q1 | NULL | NULL | XLXI_2/rotary_q1.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/rotary_q1.Q | 1235 | ? | 0 | 0 | XLXI_2/rotary_q1 | NULL | NULL | XLXI_2/rotary_q1.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | XLXI_2/rotary_q2 | FrontPanel_COPY_0_COPY_0 | 2155877376 | 4 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_in<1> | 855 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<1> | 1141 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q2 | 857 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q2 | 1143 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_in<0> | 859 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<0> | 1146 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/rotary_q2 | 857 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q2 | 1143 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/rotary_q2.SI | XLXI_2/rotary_q2 | 0 | 3 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_in<1> | 855 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<1> | 1141 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<1>.Q | XLXI_2/rotary_in<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q2 | 857 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q2 | 1143 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q2.Q | XLXI_2/rotary_q2 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_in<0> | 859 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<0> | 1146 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/rotary_q2.D1 | 937 | ? | 0 | 4096 | XLXI_2/rotary_q2 | NULL | NULL | XLXI_2/rotary_q2.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/rotary_q2.D1 | 1237 | ? | 0 | 4096 | XLXI_2/rotary_q2 | NULL | NULL | XLXI_2/rotary_q2.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/rotary_q2.D2 | 938 | ? | 0 | 4096 | XLXI_2/rotary_q2 | NULL | NULL | XLXI_2/rotary_q2.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/rotary_q2.D2 | 1238 | ? | 0 | 4096 | XLXI_2/rotary_q2 | NULL | NULL | XLXI_2/rotary_q2.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 3 | IV_TRUE | XLXI_2/rotary_in<1> | IV_FALSE | XLXI_2/rotary_q2 | IV_FALSE | XLXI_2/rotary_in<0>
 SPPTERM | 3 | IV_FALSE | XLXI_2/rotary_in<1> | IV_TRUE | XLXI_2/rotary_q2 | IV_TRUE | XLXI_2/rotary_in<0>
 
 SRFF_INSTANCE | XLXI_2/rotary_q2.REG | XLXI_2/rotary_q2 | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/rotary_q2.D | 936 | ? | 0 | 0 | XLXI_2/rotary_q2 | NULL | NULL | XLXI_2/rotary_q2.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/rotary_q2.D | 1236 | ? | 0 | 0 | XLXI_2/rotary_q2 | NULL | NULL | XLXI_2/rotary_q2.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/rotary_q2.Q | 939 | ? | 0 | 0 | XLXI_2/rotary_q2 | NULL | NULL | XLXI_2/rotary_q2.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/rotary_q2.Q | 1239 | ? | 0 | 0 | XLXI_2/rotary_q2 | NULL | NULL | XLXI_2/rotary_q2.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | XLXI_15/r_reg<1> | FrontPanel_COPY_0_COPY_0 | 2155877376 | 2 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<0> | 1140 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<0>.Q | XLXI_15/r_reg<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | XLXI_15/r_reg<1> | 1144 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<1>.Q | XLXI_15/r_reg<1> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | XLXI_15/r_reg<1>.SI | XLXI_15/r_reg<1> | 0 | 1 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<0> | 1140 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<0>.Q | XLXI_15/r_reg<0> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_15/r_reg<1>.D1 | 1241 | ? | 0 | 0 | XLXI_15/r_reg<1> | NULL | NULL | XLXI_15/r_reg<1>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_15/r_reg<1>.D2 | 1242 | ? | 0 | 4096 | XLXI_15/r_reg<1> | NULL | NULL | XLXI_15/r_reg<1>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 1 | IV_TRUE | XLXI_15/r_reg<0>
+
+SRFF_INSTANCE | XLXI_15/r_reg<1>.REG | XLXI_15/r_reg<1> | 0 | 2 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | XLXI_15/r_reg<1>.D | 1240 | ? | 0 | 0 | XLXI_15/r_reg<1> | NULL | NULL | XLXI_15/r_reg<1>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | XLXI_15/r_reg<1>.Q | 1243 | ? | 0 | 0 | XLXI_15/r_reg<1> | NULL | NULL | XLXI_15/r_reg<1>.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXI_2/rotary_event | FrontPanel_COPY_0_COPY_0 | 2155873280 | 3 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q1 | 856 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q1 | 1142 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/delay_rotary_q1 | 860 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/delay_rotary_q1 | 1148 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/rotary_event | 858 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_event | 1145 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/rotary_event.SI | XLXI_2/rotary_event | 0 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q1 | 856 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q1 | 1142 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/delay_rotary_q1 | 860 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/delay_rotary_q1 | 1148 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/rotary_event.D1 | 941 | ? | 0 | 4096 | XLXI_2/rotary_event | NULL | NULL | XLXI_2/rotary_event.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/rotary_event.D1 | 1245 | ? | 0 | 4096 | XLXI_2/rotary_event | NULL | NULL | XLXI_2/rotary_event.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/rotary_event.D2 | 942 | ? | 0 | 4096 | XLXI_2/rotary_event | NULL | NULL | XLXI_2/rotary_event.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/rotary_event.D2 | 1246 | ? | 0 | 4096 | XLXI_2/rotary_event | NULL | NULL | XLXI_2/rotary_event.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 2 | IV_TRUE | XLXI_2/rotary_q1 | IV_FALSE | XLXI_2/delay_rotary_q1
 
 SRFF_INSTANCE | XLXI_2/rotary_event.REG | XLXI_2/rotary_event | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/rotary_event.D | 940 | ? | 0 | 0 | XLXI_2/rotary_event | NULL | NULL | XLXI_2/rotary_event.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/rotary_event.D | 1244 | ? | 0 | 0 | XLXI_2/rotary_event | NULL | NULL | XLXI_2/rotary_event.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/rotary_event.Q | 943 | ? | 0 | 0 | XLXI_2/rotary_event | NULL | NULL | XLXI_2/rotary_event.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/rotary_event.Q | 1247 | ? | 0 | 0 | XLXI_2/rotary_event | NULL | NULL | XLXI_2/rotary_event.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXI_2/rotary_in<0> | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_a_in | 863 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_a_in.Q | XLXI_2/rotary_a_in | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_a_in | 1151 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_a_in.Q | XLXI_2/rotary_a_in | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/rotary_in<0> | 859 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_in<0> | 1146 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_in<0>.Q | XLXI_2/rotary_in<0> | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/rotary_in<0>.SI | XLXI_2/rotary_in<0> | 0 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_a_in | 863 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_a_in.Q | XLXI_2/rotary_a_in | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_a_in | 1151 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_a_in.Q | XLXI_2/rotary_a_in | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/rotary_in<0>.D1 | 945 | ? | 0 | 4096 | XLXI_2/rotary_in<0> | NULL | NULL | XLXI_2/rotary_in<0>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/rotary_in<0>.D1 | 1249 | ? | 0 | 4096 | XLXI_2/rotary_in<0> | NULL | NULL | XLXI_2/rotary_in<0>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/rotary_in<0>.D2 | 946 | ? | 0 | 4096 | XLXI_2/rotary_in<0> | NULL | NULL | XLXI_2/rotary_in<0>.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/rotary_in<0>.D2 | 1250 | ? | 0 | 4096 | XLXI_2/rotary_in<0> | NULL | NULL | XLXI_2/rotary_in<0>.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | XLXI_2/rotary_a_in
 
 SRFF_INSTANCE | XLXI_2/rotary_in<0>.REG | XLXI_2/rotary_in<0> | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/rotary_in<0>.D | 944 | ? | 0 | 0 | XLXI_2/rotary_in<0> | NULL | NULL | XLXI_2/rotary_in<0>.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/rotary_in<0>.D | 1248 | ? | 0 | 0 | XLXI_2/rotary_in<0> | NULL | NULL | XLXI_2/rotary_in<0>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/rotary_in<0>.Q | 947 | ? | 0 | 0 | XLXI_2/rotary_in<0> | NULL | NULL | XLXI_2/rotary_in<0>.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/rotary_in<0>.Q | 1251 | ? | 0 | 0 | XLXI_2/rotary_in<0> | NULL | NULL | XLXI_2/rotary_in<0>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | XLXI_15/r_reg<2> | FrontPanel_COPY_0_COPY_0 | 2155877376 | 4 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<0> | 1140 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<0>.Q | XLXI_15/r_reg<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<1> | 1144 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<1>.Q | XLXI_15/r_reg<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<2> | 1147 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<2>.Q | XLXI_15/r_reg<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | XLXI_15/r_reg<2> | 1147 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<2>.Q | XLXI_15/r_reg<2> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | XLXI_15/r_reg<2>.SI | XLXI_15/r_reg<2> | 0 | 3 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<0> | 1140 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<0>.Q | XLXI_15/r_reg<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<1> | 1144 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<1>.Q | XLXI_15/r_reg<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXI_15/r_reg<2> | 1147 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_15/r_reg<2>.Q | XLXI_15/r_reg<2> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_15/r_reg<2>.D1 | 1253 | ? | 0 | 4096 | XLXI_15/r_reg<2> | NULL | NULL | XLXI_15/r_reg<2>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_15/r_reg<2>.D2 | 1254 | ? | 0 | 4096 | XLXI_15/r_reg<2> | NULL | NULL | XLXI_15/r_reg<2>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | XLXI_15/r_reg<0> | IV_TRUE | XLXI_15/r_reg<1>
+SPPTERM | 3 | IV_FALSE | XLXI_15/r_reg<0> | IV_FALSE | XLXI_15/r_reg<1> | IV_TRUE | XLXI_15/r_reg<2>
+
+SRFF_INSTANCE | XLXI_15/r_reg<2>.REG | XLXI_15/r_reg<2> | 0 | 2 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | XLXI_15/r_reg<2>.D | 1252 | ? | 0 | 0 | XLXI_15/r_reg<2> | NULL | NULL | XLXI_15/r_reg<2>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | XLXI_15/r_reg<2>.Q | 1255 | ? | 0 | 0 | XLXI_15/r_reg<2> | NULL | NULL | XLXI_15/r_reg<2>.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXI_2/delay_rotary_q1 | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q1 | 856 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q1 | 1142 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/delay_rotary_q1 | 860 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/delay_rotary_q1 | 1148 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/delay_rotary_q1.Q | XLXI_2/delay_rotary_q1 | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/delay_rotary_q1.SI | XLXI_2/delay_rotary_q1 | 0 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_q1 | 856 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_q1 | 1142 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_q1.Q | XLXI_2/rotary_q1 | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/delay_rotary_q1.D1 | 949 | ? | 0 | 4096 | XLXI_2/delay_rotary_q1 | NULL | NULL | XLXI_2/delay_rotary_q1.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/delay_rotary_q1.D1 | 1257 | ? | 0 | 4096 | XLXI_2/delay_rotary_q1 | NULL | NULL | XLXI_2/delay_rotary_q1.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/delay_rotary_q1.D2 | 950 | ? | 0 | 4096 | XLXI_2/delay_rotary_q1 | NULL | NULL | XLXI_2/delay_rotary_q1.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/delay_rotary_q1.D2 | 1258 | ? | 0 | 4096 | XLXI_2/delay_rotary_q1 | NULL | NULL | XLXI_2/delay_rotary_q1.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | XLXI_2/rotary_q1
 
 SRFF_INSTANCE | XLXI_2/delay_rotary_q1.REG | XLXI_2/delay_rotary_q1 | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/delay_rotary_q1.D | 948 | ? | 0 | 0 | XLXI_2/delay_rotary_q1 | NULL | NULL | XLXI_2/delay_rotary_q1.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/delay_rotary_q1.D | 1256 | ? | 0 | 0 | XLXI_2/delay_rotary_q1 | NULL | NULL | XLXI_2/delay_rotary_q1.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/delay_rotary_q1.Q | 951 | ? | 0 | 0 | XLXI_2/delay_rotary_q1 | NULL | NULL | XLXI_2/delay_rotary_q1.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/delay_rotary_q1.Q | 1259 | ? | 0 | 0 | XLXI_2/delay_rotary_q1 | NULL | NULL | XLXI_2/delay_rotary_q1.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXI_2/internal_detent | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_event | 858 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_event | 1145 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/internal_detent | 861 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/internal_detent.Q | XLXI_2/internal_detent | 1 | 0 | MC_UIM
+NODE | XLXI_2/internal_detent | 1149 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/internal_detent.Q | XLXI_2/internal_detent | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/internal_detent.SI | XLXI_2/internal_detent | 0 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/rotary_event | 858 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_event | 1145 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_event.Q | XLXI_2/rotary_event | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/internal_detent.D1 | 953 | ? | 0 | 4096 | XLXI_2/internal_detent | NULL | NULL | XLXI_2/internal_detent.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/internal_detent.D1 | 1261 | ? | 0 | 4096 | XLXI_2/internal_detent | NULL | NULL | XLXI_2/internal_detent.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/internal_detent.D2 | 954 | ? | 0 | 4096 | XLXI_2/internal_detent | NULL | NULL | XLXI_2/internal_detent.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/internal_detent.D2 | 1262 | ? | 0 | 4096 | XLXI_2/internal_detent | NULL | NULL | XLXI_2/internal_detent.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | XLXI_2/rotary_event
 
 SRFF_INSTANCE | XLXI_2/internal_detent.REG | XLXI_2/internal_detent | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/internal_detent.D | 952 | ? | 0 | 0 | XLXI_2/internal_detent | NULL | NULL | XLXI_2/internal_detent.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/internal_detent.D | 1260 | ? | 0 | 0 | XLXI_2/internal_detent | NULL | NULL | XLXI_2/internal_detent.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/internal_detent.Q | 955 | ? | 0 | 0 | XLXI_2/internal_detent | NULL | NULL | XLXI_2/internal_detent.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/internal_detent.Q | 1263 | ? | 0 | 0 | XLXI_2/internal_detent | NULL | NULL | XLXI_2/internal_detent.REG | 0 | 8 | SRFF_Q
 
 INPUT_INSTANCE | 0 | 0 | NULL | XLXN_1 | FrontPanel_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | PHA | 881 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+NODE | PHA | 1172 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
 OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | XLXN_1 | 862 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_1 | 0 | 5 | II_IMUX
+NODE | XLXN_1 | 1150 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_1 | 0 | 5 | II_IMUX
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXI_2/rotary_a_in | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_1 | 862 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_1 | 0 | 5 | II_IMUX
+NODE | XLXN_1 | 1150 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_1 | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/rotary_a_in | 863 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_a_in.Q | XLXI_2/rotary_a_in | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_a_in | 1151 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_a_in.Q | XLXI_2/rotary_a_in | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/rotary_a_in.SI | XLXI_2/rotary_a_in | 0 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_1 | 862 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_1 | 0 | 5 | II_IMUX
+NODE | XLXN_1 | 1150 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_1 | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/rotary_a_in.D1 | 957 | ? | 0 | 4096 | XLXI_2/rotary_a_in | NULL | NULL | XLXI_2/rotary_a_in.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/rotary_a_in.D1 | 1265 | ? | 0 | 4096 | XLXI_2/rotary_a_in | NULL | NULL | XLXI_2/rotary_a_in.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/rotary_a_in.D2 | 958 | ? | 0 | 4096 | XLXI_2/rotary_a_in | NULL | NULL | XLXI_2/rotary_a_in.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/rotary_a_in.D2 | 1266 | ? | 0 | 4096 | XLXI_2/rotary_a_in | NULL | NULL | XLXI_2/rotary_a_in.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | XLXN_1
 
 SRFF_INSTANCE | XLXI_2/rotary_a_in.REG | XLXI_2/rotary_a_in | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/rotary_a_in.D | 956 | ? | 0 | 0 | XLXI_2/rotary_a_in | NULL | NULL | XLXI_2/rotary_a_in.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/rotary_a_in.D | 1264 | ? | 0 | 0 | XLXI_2/rotary_a_in | NULL | NULL | XLXI_2/rotary_a_in.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/rotary_a_in.Q | 959 | ? | 0 | 0 | XLXI_2/rotary_a_in | NULL | NULL | XLXI_2/rotary_a_in.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/rotary_a_in.Q | 1267 | ? | 0 | 0 | XLXI_2/rotary_a_in | NULL | NULL | XLXI_2/rotary_a_in.REG | 0 | 8 | SRFF_Q
 
 INPUT_INSTANCE | 0 | 0 | NULL | XLXN_2 | FrontPanel_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | PHB | 882 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+NODE | PHB | 1173 | PI | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
 OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | XLXN_2 | 864 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_2 | 0 | 5 | II_IMUX
+NODE | XLXN_2 | 1152 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_2 | 0 | 5 | II_IMUX
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXI_2/rotary_b_in | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_2 | 864 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_2 | 0 | 5 | II_IMUX
+NODE | XLXN_2 | 1152 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_2 | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | XLXI_2/rotary_b_in | 865 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_b_in.Q | XLXI_2/rotary_b_in | 1 | 0 | MC_UIM
+NODE | XLXI_2/rotary_b_in | 1153 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/rotary_b_in.Q | XLXI_2/rotary_b_in | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | XLXI_2/rotary_b_in.SI | XLXI_2/rotary_b_in | 0 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_2 | 864 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_2 | 0 | 5 | II_IMUX
+NODE | XLXN_2 | 1152 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_2 | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXI_2/rotary_b_in.D1 | 961 | ? | 0 | 4096 | XLXI_2/rotary_b_in | NULL | NULL | XLXI_2/rotary_b_in.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXI_2/rotary_b_in.D1 | 1269 | ? | 0 | 4096 | XLXI_2/rotary_b_in | NULL | NULL | XLXI_2/rotary_b_in.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXI_2/rotary_b_in.D2 | 962 | ? | 0 | 4096 | XLXI_2/rotary_b_in | NULL | NULL | XLXI_2/rotary_b_in.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXI_2/rotary_b_in.D2 | 1270 | ? | 0 | 4096 | XLXI_2/rotary_b_in | NULL | NULL | XLXI_2/rotary_b_in.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | XLXN_2
 
 SRFF_INSTANCE | XLXI_2/rotary_b_in.REG | XLXI_2/rotary_b_in | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXI_2/rotary_b_in.D | 960 | ? | 0 | 0 | XLXI_2/rotary_b_in | NULL | NULL | XLXI_2/rotary_b_in.XOR | 0 | 7 | ALU_F
+NODE | XLXI_2/rotary_b_in.D | 1268 | ? | 0 | 0 | XLXI_2/rotary_b_in | NULL | NULL | XLXI_2/rotary_b_in.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXI_2/rotary_b_in.Q | 963 | ? | 0 | 0 | XLXI_2/rotary_b_in | NULL | NULL | XLXI_2/rotary_b_in.REG | 0 | 8 | SRFF_Q
+NODE | XLXI_2/rotary_b_in.Q | 1271 | ? | 0 | 0 | XLXI_2/rotary_b_in | NULL | NULL | XLXI_2/rotary_b_in.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | DB_7_OBUF | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_6_OBUF | 854 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 1 | 0 | MC_UIM
+NODE | DB_6_OBUF | 1139 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | DB_7_OBUF | 866 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_7_OBUF.Q | DB_7_OBUF | 0 | 0 | MC_Q
+NODE | DB_7_OBUF | 1154 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_7_OBUF.Q | DB_7_OBUF | 0 | 0 | MC_Q
 
 SIGNAL_INSTANCE | DB_7_OBUF.SI | DB_7_OBUF | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | DB_6_OBUF | 854 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 1 | 0 | MC_UIM
+NODE | DB_6_OBUF | 1139 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | SCLK_IBUF | 840 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
+NODE | SCLK_IBUF | 1125 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | SCLK_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | DB_7_OBUF.D1 | 965 | ? | 0 | 4096 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | DB_7_OBUF.D1 | 1273 | ? | 0 | 4096 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | DB_7_OBUF.D2 | 966 | ? | 0 | 4096 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | DB_7_OBUF.D2 | 1274 | ? | 0 | 4096 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | DB_6_OBUF
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | DB_7_OBUF.CLKF | 967 | ? | 0 | 4096 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_7_OBUF.CLKF | 1275 | ? | 0 | 4096 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 
 SRFF_INSTANCE | DB_7_OBUF.REG | DB_7_OBUF | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | DB_7_OBUF.D | 964 | ? | 0 | 0 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.XOR | 0 | 7 | ALU_F
+NODE | DB_7_OBUF.D | 1272 | ? | 0 | 0 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | DB_7_OBUF.CLKF | 967 | ? | 0 | 4096 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | DB_7_OBUF.CLKF | 1275 | ? | 0 | 4096 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | SCLK_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | DB_7_OBUF.Q | 968 | ? | 0 | 0 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | DB_7_OBUF.Q | 1276 | ? | 0 | 0 | DB_7_OBUF | NULL | NULL | DB_7_OBUF.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | OptxMapped | XLXN_24 | FrontPanel_COPY_0_COPY_0 | 2155872256 | 2 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXN_26 | 1121 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_26.Q | XLXN_26 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | DB_0_OBUF | 1127 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | XLXN_24 | 1155 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_24.Q | XLXN_24 | 0 | 0 | MC_Q
+
+SIGNAL_INSTANCE | XLXN_24.SI | XLXN_24 | 0 | 2 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | XLXN_26 | 1121 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_26.Q | XLXN_26 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | DB_0_OBUF | 1127 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXN_24.D1 | 1278 | ? | 0 | 4096 | XLXN_24 | NULL | NULL | XLXN_24.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXN_24.D2 | 1279 | ? | 0 | 4096 | XLXN_24 | NULL | NULL | XLXN_24.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | XLXN_26 | IV_TRUE | DB_0_OBUF
+
+SRFF_INSTANCE | XLXN_24.REG | XLXN_24 | 0 | 1 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | XLXN_24.D | 1277 | ? | 0 | 0 | XLXN_24 | NULL | NULL | XLXN_24.XOR | 0 | 7 | ALU_F
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | XLXN_24.Q | 1280 | ? | 0 | 0 | XLXN_24 | NULL | NULL | XLXN_24.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | PrldLow+OptxMapped | XLXN_4 | FrontPanel_COPY_0_COPY_0 | 2155873280 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/internal_detent | 861 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/internal_detent.Q | XLXI_2/internal_detent | 1 | 0 | MC_UIM
+NODE | XLXI_2/internal_detent | 1149 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/internal_detent.Q | XLXI_2/internal_detent | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | XLXN_4 | 867 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_4.Q | XLXN_4 | 0 | 0 | MC_Q
+NODE | XLXN_4 | 1156 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_4.Q | XLXN_4 | 0 | 0 | MC_Q
 
 SIGNAL_INSTANCE | XLXN_4.SI | XLXN_4 | 0 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | XLXI_2/internal_detent | 861 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/internal_detent.Q | XLXI_2/internal_detent | 1 | 0 | MC_UIM
+NODE | XLXI_2/internal_detent | 1149 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXI_2/internal_detent.Q | XLXI_2/internal_detent | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | XLXN_4.D1 | 970 | ? | 0 | 4096 | XLXN_4 | NULL | NULL | XLXN_4.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | XLXN_4.D1 | 1282 | ? | 0 | 4096 | XLXN_4 | NULL | NULL | XLXN_4.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | XLXN_4.D2 | 971 | ? | 0 | 4096 | XLXN_4 | NULL | NULL | XLXN_4.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | XLXN_4.D2 | 1283 | ? | 0 | 4096 | XLXN_4 | NULL | NULL | XLXN_4.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_TRUE | XLXI_2/internal_detent
 
 SRFF_INSTANCE | XLXN_4.REG | XLXN_4 | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | XLXN_4.D | 969 | ? | 0 | 0 | XLXN_4 | NULL | NULL | XLXN_4.XOR | 0 | 7 | ALU_F
+NODE | XLXN_4.D | 1281 | ? | 0 | 0 | XLXN_4 | NULL | NULL | XLXN_4.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-NODE | XLXN_15/FCLK | 836 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
+NODE | XLXN_15/FCLK | 1119 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | XLXN_15 | 3 | 5 | II_FCLK
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | XLXN_4.Q | 972 | ? | 0 | 0 | XLXN_4 | NULL | NULL | XLXN_4.REG | 0 | 8 | SRFF_Q
+NODE | XLXN_4.Q | 1284 | ? | 0 | 0 | XLXN_4 | NULL | NULL | XLXN_4.REG | 0 | 8 | SRFF_Q
+
+OUTPUT_INSTANCE | 0 | CLK_50 | FrontPanel_COPY_0_COPY_0 | 6 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | XLXN_26$Q | 1120 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_26.Q | XLXN_26 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | CLK_50 | 1157 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | CLK_50 | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | DIR | FrontPanel_COPY_0_COPY_0 | 6 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | XLXN_5 | 838 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_5.Q | XLXN_5 | 0 | 0 | MC_Q
+NODE | XLXN_5 | 1123 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_5.Q | XLXN_5 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | DIR | 868 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DIR | 0 | 6 | OI_OUT
+NODE | DIR | 1158 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DIR | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | DB<0> | FrontPanel_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | DB_0_OBUF$Q | 841 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 0 | 0 | MC_Q
+NODE | DB_0_OBUF$Q | 1126 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_0_OBUF.Q | DB_0_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | DB<0> | 869 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<0> | 0 | 6 | OI_OUT
+NODE | DB<0> | 1159 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<0> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | DB<1> | FrontPanel_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | DB_1_OBUF$Q | 843 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 0 | 0 | MC_Q
+NODE | DB_1_OBUF$Q | 1128 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_1_OBUF.Q | DB_1_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | DB<1> | 870 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<1> | 0 | 6 | OI_OUT
+NODE | DB<1> | 1160 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<1> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | DB<2> | FrontPanel_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | DB_2_OBUF$Q | 845 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 0 | 0 | MC_Q
+NODE | DB_2_OBUF$Q | 1130 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_2_OBUF.Q | DB_2_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | DB<2> | 871 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<2> | 0 | 6 | OI_OUT
+NODE | DB<2> | 1161 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<2> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | DB<3> | FrontPanel_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | DB_3_OBUF$Q | 847 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 0 | 0 | MC_Q
+NODE | DB_3_OBUF$Q | 1132 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_3_OBUF.Q | DB_3_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | DB<3> | 872 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<3> | 0 | 6 | OI_OUT
+NODE | DB<3> | 1162 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<3> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | DB<4> | FrontPanel_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | DB_4_OBUF$Q | 849 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 0 | 0 | MC_Q
+NODE | DB_4_OBUF$Q | 1134 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_4_OBUF.Q | DB_4_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | DB<4> | 873 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<4> | 0 | 6 | OI_OUT
+NODE | DB<4> | 1163 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<4> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | DB<5> | FrontPanel_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | DB_5_OBUF$Q | 851 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 0 | 0 | MC_Q
+NODE | DB_5_OBUF$Q | 1136 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_5_OBUF.Q | DB_5_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | DB<5> | 874 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<5> | 0 | 6 | OI_OUT
+NODE | DB<5> | 1164 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<5> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | DB<6> | FrontPanel_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | DB_6_OBUF$Q | 853 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 0 | 0 | MC_Q
+NODE | DB_6_OBUF$Q | 1138 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_6_OBUF.Q | DB_6_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | DB<6> | 875 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<6> | 0 | 6 | OI_OUT
+NODE | DB<6> | 1165 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<6> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | DB<7> | FrontPanel_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | DB_7_OBUF | 866 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_7_OBUF.Q | DB_7_OBUF | 0 | 0 | MC_Q
+NODE | DB_7_OBUF | 1154 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | DB_7_OBUF.Q | DB_7_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | DB<7> | 876 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<7> | 0 | 6 | OI_OUT
+NODE | DB<7> | 1166 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | DB<7> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | LED_0 | FrontPanel_COPY_0_COPY_0 | 6 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | XLXN_24 | 1155 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_24.Q | XLXN_24 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | LED_0 | 1167 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | LED_0 | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | IRQ | FrontPanel_COPY_0_COPY_0 | 6 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | XLXN_4 | 867 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_4.Q | XLXN_4 | 0 | 0 | MC_Q
+NODE | XLXN_4 | 1156 | ? | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | XLXN_4.Q | XLXN_4 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | IRQ | 877 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | IRQ | 0 | 6 | OI_OUT
+NODE | IRQ | 1168 | PO | 0 | 0 | FrontPanel_COPY_0_COPY_0 | NULL | NULL | IRQ | 0 | 6 | OI_OUT
 
 FB_INSTANCE | FOOBAR1_ | FrontPanel_COPY_0_COPY_0 | 0 | 0 | 0
 FBPIN | 2 | DB_3_OBUF | 1 | NULL | 0 | DB<3> | 1 | 39 | 49152
@@ -730,58 +905,63 @@ FBPIN | 5 | DB_2_OBUF | 1 | NULL | 0 | DB<2> | 1 | 40 | 49152
 FBPIN | 6 | DB_1_OBUF | 1 | NULL | 0 | DB<1> | 1 | 41 | 49152
 FBPIN | 8 | DB_0_OBUF | 1 | NULL | 0 | DB<0> | 1 | 42 | 49152
 FBPIN | 9 | NULL | 0 | XLXN_15 | 0 | NULL | 0 | 43 | 57344
-FBPIN | 15 | NULL | 0 | XLXN_1 | 1 | NULL | 0 | 2 | 49152
-FBPIN | 17 | XLXI_2/rotary_event | 1 | XLXN_2 | 1 | NULL | 0 | 3 | 49152
-FBPIN | 18 | XLXI_2/delay_rotary_q1 | 1 | NULL | 0 | NULL | 0
+FBPIN | 13 | XLXI_2/rotary_event | 1 | NULL | 0 | NULL | 0
+FBPIN | 14 | XLXI_2/delay_rotary_q1 | 1 | NULL | 0 | NULL | 0 | 1 | 57344
+FBPIN | 15 | XLXI_15/r_reg<1> | 1 | XLXN_1 | 1 | NULL | 0 | 2 | 49152
+FBPIN | 16 | XLXI_15/r_reg<0> | 1 | NULL | 0 | NULL | 0
+FBPIN | 17 | XLXI_2/rotary_left | 1 | XLXN_2 | 1 | NULL | 0 | 3 | 49152
+FBPIN | 18 | XLXI_15/r_reg<2> | 1 | NULL | 0 | NULL | 0
 
 FB_INSTANCE | FOOBAR2_ | FrontPanel_COPY_0_COPY_0 | 0 | 0 | 0
 FBPIN | 6 | DB_7_OBUF | 1 | NULL | 0 | DB<7> | 1 | 31 | 49152
 FBPIN | 8 | DB_6_OBUF | 1 | NULL | 0 | DB<6> | 1 | 32 | 49152
+FBPIN | 13 | XLXI_2/rotary_a_in | 1 | NULL | 0 | NULL | 0
+FBPIN | 14 | XLXI_2/internal_detent | 1 | NULL | 0 | NULL | 0 | 36 | 53248
 FBPIN | 15 | DB_5_OBUF | 1 | NULL | 0 | DB<5> | 1 | 37 | 49152
-FBPIN | 16 | XLXI_2/rotary_a_in | 1 | NULL | 0 | NULL | 0
+FBPIN | 16 | XLXI_2/rotary_q2 | 1 | NULL | 0 | NULL | 0
 FBPIN | 17 | DB_4_OBUF | 1 | NULL | 0 | DB<4> | 1 | 38 | 49152
-FBPIN | 18 | XLXI_2/internal_detent | 1 | NULL | 0 | NULL | 0
+FBPIN | 18 | XLXI_2/rotary_q1 | 1 | NULL | 0 | NULL | 0
 
 FB_INSTANCE | FOOBAR3_ | FrontPanel_COPY_0_COPY_0 | 0 | 0 | 0
 FBPIN | 2 | XLXN_5 | 1 | NULL | 0 | DIR | 1 | 5 | 49152
 FBPIN | 5 | XLXN_4 | 1 | NULL | 0 | IRQ | 1 | 6 | 49152
 FBPIN | 8 | NULL | 0 | MOSI_IBUF | 1 | NULL | 0 | 7 | 49152
 FBPIN | 9 | NULL | 0 | SCLK_IBUF | 1 | NULL | 0 | 8 | 49152
-FBPIN | 17 | XLXI_2/rotary_b_in | 1 | NULL | 0 | NULL | 0 | 16 | 49152
-FBPIN | 18 | XLXI_2/rotary_left | 1 | NULL | 0 | NULL | 0
+FBPIN | 11 | XLXN_24 | 1 | NULL | 0 | LED_0 | 1 | 12 | 49152
+FBPIN | 16 | XLXI_2/rotary_in<1> | 1 | NULL | 0 | NULL | 0 | 18 | 49152
+FBPIN | 17 | XLXI_2/rotary_in<0> | 1 | NULL | 0 | NULL | 0 | 16 | 49152
+FBPIN | 18 | XLXI_2/rotary_b_in | 1 | NULL | 0 | NULL | 0
 
 FB_INSTANCE | FOOBAR4_ | FrontPanel_COPY_0_COPY_0 | 0 | 0 | 0
-FBPIN | 15 | XLXI_2/rotary_in<1> | 1 | NULL | 0 | NULL | 0 | 27 | 49152
-FBPIN | 16 | XLXI_2/rotary_in<0> | 1 | NULL | 0 | NULL | 0
-FBPIN | 17 | XLXI_2/rotary_q2 | 1 | NULL | 0 | NULL | 0 | 28 | 49152
-FBPIN | 18 | XLXI_2/rotary_q1 | 1 | NULL | 0 | NULL | 0
+FBPIN | 14 | XLXN_26 | 1 | NULL | 0 | CLK_50 | 1 | 23 | 49152
 
 FB_INSTANCE | INPUTPINS_FOOBAR5_ | FrontPanel_COPY_0_COPY_0 | 0 | 0 | 0
 
 BUSINFO | DB<7:0> | 8 | 0 | 1 | DB<0> | 7 | DB<1> | 6 | DB<2> | 5 | DB<3> | 4 | DB<4> | 3 | DB<5> | 2 | DB<6> | 1 | DB<7> | 0
 
-FB_ORDER_OF_INPUTS | FOOBAR1_ | 4 | DB_2_OBUF | NULL | 7 | DB_0_OBUF | NULL | 21 | DB_1_OBUF | NULL | 25 | MOSI | 7 | 43 | XLXI_2/delay_rotary_q1 | NULL
-FB_ORDER_OF_INPUTS | FOOBAR1_ | 51 | SCLK | 8 | 53 | XLXI_2/rotary_q1 | NULL
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 4 | DB_2_OBUF | NULL | 7 | DB_0_OBUF | NULL | 17 | XLXI_2/rotary_q1 | NULL | 19 | XLXI_15/r_reg<1> | NULL | 21 | DB_1_OBUF | NULL
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 26 | MOSI | 7 | 30 | XLXI_2/rotary_q2 | NULL | 31 | XLXI_2/delay_rotary_q1 | NULL | 43 | XLXI_15/r_reg<2> | NULL | 51 | SCLK | 8
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 52 | XLXI_15/r_reg<0> | NULL
 
-FB_IMUX_INDEX | FOOBAR1_ | -1 | -1 | -1 | -1 | 4 | -1 | -1 | 7 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 5 | -1 | -1 | -1 | 142 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 17 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 137 | -1 | 71
-
-
-FB_ORDER_OF_INPUTS | FOOBAR2_ | 7 | DB_6_OBUF | NULL | 14 | DB_5_OBUF | NULL | 16 | DB_4_OBUF | NULL | 32 | XLXI_2/rotary_event | NULL | 44 | DB_3_OBUF | NULL
-FB_ORDER_OF_INPUTS | FOOBAR2_ | 51 | SCLK | 8 | 53 | PHA | 2
-
-FB_IMUX_INDEX | FOOBAR2_ | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 25 | -1 | -1 | -1 | -1 | -1 | -1 | 32 | -1 | 34 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 16 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 1 | -1 | -1 | -1 | -1 | -1 | -1 | 137 | -1 | 130
+FB_IMUX_INDEX | FOOBAR1_ | -1 | -1 | -1 | -1 | 4 | -1 | -1 | 7 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 35 | -1 | 14 | -1 | 5 | -1 | -1 | -1 | -1 | 142 | -1 | -1 | -1 | 33 | 13 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 17 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 137 | 15 | -1
 
 
-FB_ORDER_OF_INPUTS | FOOBAR3_ | 6 | PHB | 3 | 32 | XLXI_2/rotary_event | NULL | 43 | XLXI_2/delay_rotary_q1 | NULL | 45 | XLXI_2/rotary_q2 | NULL | 49 | XLXI_2/internal_detent | NULL
-FB_ORDER_OF_INPUTS | FOOBAR3_ | 52 | XLXI_2/rotary_left | NULL | 53 | XLXI_2/rotary_q1 | NULL
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 4 | PHA | 2 | 7 | DB_6_OBUF | NULL | 12 | XLXI_2/rotary_event | NULL | 14 | DB_5_OBUF | NULL | 15 | XLXI_2/rotary_in<1> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 16 | XLXI_2/rotary_in<0> | NULL | 17 | XLXI_2/rotary_q1 | NULL | 30 | XLXI_2/rotary_q2 | NULL | 38 | DB_4_OBUF | NULL | 44 | DB_3_OBUF | NULL
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 51 | SCLK | 8
 
-FB_IMUX_INDEX | FOOBAR3_ | -1 | -1 | -1 | -1 | -1 | -1 | 132 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 16 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 17 | -1 | 70 | -1 | -1 | -1 | 35 | -1 | -1 | 53 | 71
+FB_IMUX_INDEX | FOOBAR2_ | -1 | -1 | -1 | -1 | 130 | -1 | -1 | 25 | -1 | -1 | -1 | -1 | 12 | -1 | 32 | 51 | 52 | 35 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 33 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 34 | -1 | -1 | -1 | -1 | -1 | 1 | -1 | -1 | -1 | -1 | -1 | -1 | 137 | -1 | -1
 
 
-FB_ORDER_OF_INPUTS | FOOBAR4_ | 14 | XLXI_2/rotary_in<1> | NULL | 16 | XLXI_2/rotary_b_in | NULL | 26 | XLXI_2/rotary_in<0> | NULL | 44 | XLXI_2/rotary_a_in | NULL | 45 | XLXI_2/rotary_q2 | NULL
-FB_ORDER_OF_INPUTS | FOOBAR4_ | 53 | XLXI_2/rotary_q1 | NULL
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 7 | DB_0_OBUF | NULL | 12 | XLXI_2/rotary_event | NULL | 16 | XLXI_2/rotary_left | NULL | 17 | XLXI_2/rotary_b_in | NULL | 19 | XLXI_2/internal_detent | NULL
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 25 | XLXN_26 | NULL | 32 | PHB | 3 | 41 | XLXI_2/rotary_a_in | NULL
 
-FB_IMUX_INDEX | FOOBAR4_ | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 68 | -1 | 52 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 69 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 33 | 70 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 71
+FB_IMUX_INDEX | FOOBAR3_ | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 7 | -1 | -1 | -1 | -1 | 12 | -1 | -1 | -1 | 16 | 53 | -1 | 31 | -1 | -1 | -1 | -1 | -1 | 67 | -1 | -1 | -1 | -1 | -1 | -1 | 132 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 30 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1
+
+
+FB_ORDER_OF_INPUTS | FOOBAR4_ | 17 | XLXI_15/r_reg<2> | NULL | 19 | XLXI_15/r_reg<1> | NULL | 52 | XLXI_15/r_reg<0> | NULL
+
+FB_IMUX_INDEX | FOOBAR4_ | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 17 | -1 | 14 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 15 | -1
 
 
 GLOBAL_FCLK | ECLK | 0 | 0

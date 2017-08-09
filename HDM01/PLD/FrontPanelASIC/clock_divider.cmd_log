@@ -1,0 +1,2 @@
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/clock_divider.v -lang verilog -prj FrontPanelASIC -o clock_divider.spl -module clock_divider -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl clock_divider.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/clock_divider.sym 

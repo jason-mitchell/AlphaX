@@ -95,7 +95,7 @@ unsigned char TickFlagI2C;
 char arr[32];
 unsigned int cnt;
 unsigned char Delta;
-
+unsigned char cnst;
 
 // Timer that derives from the system ticker...
 //-----------------------------------------------
@@ -170,6 +170,25 @@ void TestI2C(void){
   //while (I2C_GetFlagStatus(I2C1, I2C_ISR_STOPF) == RESET);
   //I2C_ClearFlag(I2C1, I2C_ICR_STOPCF);
 }
+
+void SimpleSPI(unsigned char data){
+	unsigned char bcnt;
+
+	// shift out LSB first
+	//--------------------
+	for(bcnt = 0; bcnt < 7; bcnt++){
+		if((data & 0x01) == 0x01){
+			GPIO_SetBits(GPIOA, GPIO_Pin_6);	// MOSI = '1'
+		} else {
+			GPIO_ResetBits(GPIOA, GPIO_Pin_6);
+		}
+		data = data >> 1;
+
+		GPIO_SetBits(GPIOA, GPIO_Pin_5);		// Clock = H
+		GPIO_ResetBits(GPIOA,GPIO_Pin_5);
+
+	}
+}
 //-------------------------------------------------------------------------------------------------------------------------------------
 //                                          Main Function
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -229,7 +248,7 @@ int main(void){
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
         GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
@@ -259,7 +278,8 @@ int main(void){
         InitTimers();
 
 
-
+        GPIO_ResetBits(GPIOA,GPIO_Pin_5);
+        GPIO_ResetBits(GPIOA,GPIO_Pin_6);
 
         InitI2C();                                                  // Initialize and enable I2C module
         SysTick_Config(TickerRate);									// Initialize the System Tick
@@ -300,6 +320,15 @@ int main(void){
                 GetTimeNow(&TimeOfDay);
                 if (Delta != TimeOfDay.second){
                 	Delta = TimeOfDay.second;
+
+                    if (cnst == 0x55){
+                    	cnst = 0xAA;
+                    } else {
+                    	cnst = 0x55;
+                    }
+                    SimpleSPI(cnst);
+
+
                 }
                 sprintf(arr, "%2d:%02d:%02d", TimeOfDay.hour, TimeOfDay.minute, TimeOfDay.second);
                 OutString(arr, Font1);

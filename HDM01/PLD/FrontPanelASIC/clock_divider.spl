@@ -1,0 +1,8 @@
+[Inputs]
+clk
+[Outputs]
+clk_out
+[BiDir]
+[ATTRIBUTES]
+VeriModel clock_divider
+

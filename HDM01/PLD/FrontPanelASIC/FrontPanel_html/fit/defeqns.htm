@@ -5,6 +5,10 @@
 </td></tr><tr><td>
 ********** Mapped Logic **********
 </td></tr><tr><td>
+FTCPE_CLK_50: FTCPE port map (CLK_50,'1',ECLK,'0','0',CLK_50_CE);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLK_50_CE <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_15/r_reg(2));
+</td></tr><tr><td>
 FDCPE_DB0: FDCPE port map (DB(0),MOSI,SCLK,'0','0');
 </td></tr><tr><td>
 FDCPE_DB1: FDCPE port map (DB(1),DB(0),SCLK,'0','0');
@@ -24,6 +28,20 @@ FDCPE_DB7: FDCPE port map (DB(7),DB(6),SCLK,'0','0');
 FDCPE_DIR: FDCPE port map (DIR,XLXI_2/rotary_left,ECLK,'0','0',XLXI_2/rotary_event);
 </td></tr><tr><td>
 FDCPE_IRQ: FDCPE port map (IRQ,XLXI_2/internal_detent,ECLK,'0','0');
+</td></tr><tr><td>
+</td></tr><tr><td>
+LED_0 <= (CLK_50 AND DB(0));
+</td></tr><tr><td>
+FTCPE_XLXI_15/r_reg0: FTCPE port map (XLXI_15/r_reg(0),XLXI_15/r_reg_T(0),ECLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_15/r_reg_T(0) <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_15/r_reg(2));
+</td></tr><tr><td>
+FTCPE_XLXI_15/r_reg1: FTCPE port map (XLXI_15/r_reg(1),XLXI_15/r_reg(0),ECLK,'0','0');
+</td></tr><tr><td>
+FTCPE_XLXI_15/r_reg2: FTCPE port map (XLXI_15/r_reg(2),XLXI_15/r_reg_T(2),ECLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_15/r_reg_T(2) <= ((XLXI_15/r_reg(0) AND XLXI_15/r_reg(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_15/r_reg(2)));
 </td></tr><tr><td>
 FDCPE_XLXI_2/delay_rotary_q1: FDCPE port map (XLXI_2/delay_rotary_q1,XLXI_2/rotary_q1,ECLK,'0','0');
 </td></tr><tr><td>
