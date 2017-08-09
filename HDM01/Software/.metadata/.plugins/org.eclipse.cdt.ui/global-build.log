@@ -1,5 +1,7 @@
-23:56:47 **** Incremental Build of configuration Debug for project HDM01 ****
+20:07:30 **** Rebuild of configuration Debug for project HDM01 ****
 Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crc.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crc.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.o 
 arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
 ..\src\main.c:11:1: warning: multi-line comment [-Wcomment]
  //  |    .'                 .-'_.' \ .                 \
@@ -46,9 +48,6 @@ In file included from ..\src\main.c:52:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-..\src\main.c:282:9: warning: implicit declaration of function 'ControlTimer' [-Wimplicit-function-declaration]
-         ControlTimer("Timer1", 1);
-         ^~~~~~~~~~~~
 ..\src\main.c:286:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
          TxData("\r\nTimer has expired!");
                 ^~~~~~~~~~~~~~~~~~~~~~~~
@@ -77,6 +76,90 @@ In file included from ..\src\main.c:46:0:
 ..\src\display.h:37:6: note: expected 'char *' but argument is of type 'const char *'
  void PutGraphic(char *graphics);
       ^~~~~~~~~~
+arm-atollic-eabi-gcc -c ..\src\display.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\display.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o 
+arm-atollic-eabi-gcc -c ..\src\stm32f0xx_it.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\stm32f0xx_it.o 
+arm-atollic-eabi-gcc -c ..\src\timers.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\timers.o 
+..\src\timers.c:10:1: warning: multi-line comment [-Wcomment]
+ //  |    .'                 .-'_.' \ .                 \
+ ^
+..\src\timers.c:20:1: warning: multi-line comment [-Wcomment]
+ //  :   :bd;   '        :b_d; :                           \
+ ^
+..\src\timers.c:24:1: warning: multi-line comment [-Wcomment]
+ // .sdP^T$bs.               /'       \
+ ^
+..\src\timers.c: In function 'CreateTimer':
+..\src\timers.c:85:12: warning: pointer targets in passing argument 1 of 'strncpy' differ in signedness [-Wpointer-sign]
+    strncpy(tcb.timerobj[r].name, name, 7);  // allocate name
+            ^~~
+In file included from c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\string.h:10:0,
+                 from ..\src\timers.c:45:
+c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\string.h:40:8: note: expected 'char * restrict' but argument is of type 'unsigned char *'
+ char  *_EXFUN(strncpy,(char *__restrict, const char *__restrict, size_t));
+        ^
+..\src\timers.c: In function 'ControlTimer':
+..\src\timers.c:106:14: warning: pointer targets in passing argument 1 of 'strstr' differ in signedness [-Wpointer-sign]
+   if (strstr(tcb.timerobj[r].name, name) != NULL){
+              ^~~
+In file included from c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\string.h:10:0,
+                 from ..\src\timers.c:45:
+c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\string.h:44:8: note: expected 'const char *' but argument is of type 'unsigned char *'
+ char  *_EXFUN(strstr,(const char *, const char *));
+        ^
+..\src\timers.c: In function 'ReleaseTimer':
+..\src\timers.c:134:14: warning: pointer targets in passing argument 1 of 'strstr' differ in signedness [-Wpointer-sign]
+   if (strstr(tcb.timerobj[r].name, name) != NULL){
+              ^~~
+In file included from c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\string.h:10:0,
+                 from ..\src\timers.c:45:
+c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\string.h:44:8: note: expected 'const char *' but argument is of type 'unsigned char *'
+ char  *_EXFUN(strstr,(const char *, const char *));
+        ^
+..\src\timers.c: In function 'IsTimerExpired':
+..\src\timers.c:158:14: warning: pointer targets in passing argument 1 of 'strstr' differ in signedness [-Wpointer-sign]
+   if (strstr(tcb.timerobj[r].name, name) != NULL){
+              ^~~
+In file included from c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\string.h:10:0,
+                 from ..\src\timers.c:45:
+c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\string.h:44:8: note: expected 'const char *' but argument is of type 'unsigned char *'
+ char  *_EXFUN(strstr,(const char *, const char *));
+        ^
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.o 
+arm-atollic-eabi-gcc -c ..\src\i2c.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\i2c.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_pwr.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_pwr.o 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m0 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -g -Wa,--warn -x assembler-with-cpp -specs=nano.specs -o src\startup_stm32f0xx_hd.o ..\src\startup_stm32f0xx_hd.s 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_can.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_can.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o 
+arm-atollic-eabi-gcc -c ..\src\system_stm32f0xx.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\system_stm32f0xx.o 
+arm-atollic-eabi-gcc -c ..\src\clock.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\clock.o 
+arm-atollic-eabi-gcc -c ..\src\graphlib.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\graphlib.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o 
+arm-atollic-eabi-gcc -c ..\src\serial.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\serial.o 
+..\src\serial.c:10:1: warning: multi-line comment [-Wcomment]
+ //  |    .'                 .-'_.' \ .                 \
+ ^
+..\src\serial.c:20:1: warning: multi-line comment [-Wcomment]
+ //  :   :bd;   '        :b_d; :                           \
+ ^
+..\src\serial.c:24:1: warning: multi-line comment [-Wcomment]
+ // .sdP^T$bs.               /'       \
+ ^
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rtc.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rtc.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_comp.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_comp.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dac.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dac.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_cec.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_cec.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crs.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crs.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o 
+arm-atollic-eabi-gcc -c ..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.o 
 arm-atollic-eabi-gcc -o HDM01.elf Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_can.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_cec.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_comp.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crs.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dac.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_pwr.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rtc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o src\clock.o src\display.o src\graphlib.o src\i2c.o src\main.o src\serial.o src\startup_stm32f0xx_hd.o src\stm32f0xx_it.o src\system_stm32f0xx.o src\timers.o -mthumb -mcpu=cortex-m0 -T..\stm32_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=HDM01.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
 C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\ide\jre\bin\java -jar C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\Tools\arm-atollic-reports.jar sizeinfo list C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf 
 Generate build reports...

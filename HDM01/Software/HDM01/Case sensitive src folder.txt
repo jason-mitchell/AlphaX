@@ -1,0 +1,2 @@
+The folder name 'src' is case-sensitive for Atollic truestudio.
+I cannot get GitHub to not capitalize the word 'src' so manual intervention will be needed

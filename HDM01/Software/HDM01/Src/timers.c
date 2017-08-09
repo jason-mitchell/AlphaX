@@ -117,7 +117,7 @@ int ControlTimer(char *name, unsigned char action){
 		}
 	}
 
-
+	return result;
 }
 //----------------------------------------------------------------------------
 // Name: ReleaseTimer

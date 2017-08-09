@@ -28,5 +28,6 @@ int CreateTimer(unsigned int delay, char *name);
 int ReleaseTimer(char *name);
 unsigned char IsTimerExpired(char *name);
 void TimerSvc(void);
+int ControlTimer(char *name, unsigned char action);
 
 #endif /* TIMERS_H_ */
