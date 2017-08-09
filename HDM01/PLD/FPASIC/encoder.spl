@@ -1,8 +1,0 @@
-[Inputs]
-rotary_a
-rotary_b
-clk
-[Outputs]
-detent
-dir
-[BiDir]
