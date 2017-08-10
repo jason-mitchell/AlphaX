@@ -18,18 +18,30 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module spi(
+module spi
+(
 			SCLK,
 			MOSI,
-			PDOUT
+			SS,
+			PDOUT,
+			TFLAG
     );
 
 input SCLK;
 input MOSI;
+input SS;
 output reg[7:0]PDOUT;
+output reg TFLAG;
+reg[3:0] BITCNT;
 
 always @ (posedge SCLK)
-begin
+if (~SS) begin
 	PDOUT[7:0] <= {PDOUT[6:0], MOSI};
+	BITCNT <= BITCNT + 1;
+	if (BITCNT == 8)
+		assign TFLAG = 1;
+	else 
+		assign TFLAG = 0;
+
 end
 endmodule

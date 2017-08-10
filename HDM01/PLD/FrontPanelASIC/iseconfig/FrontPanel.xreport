@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-08-09T21:06:44</DateModified>
+  <DateModified>2017-08-10T20:00:02</DateModified>
   <ModuleName>FrontPanel</ModuleName>
-  <SummaryTimeStamp>2017-08-09T20:58:48</SummaryTimeStamp>
+  <SummaryTimeStamp>2017-08-10T19:34:10</SummaryTimeStamp>
   <SavedFilePath>C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/iseconfig/FrontPanel.xreport</SavedFilePath>
   <ImplementationReportsDirectory>C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC\</ImplementationReportsDirectory>
   <DateInitialized>2017-08-01T22:23:07</DateInitialized>

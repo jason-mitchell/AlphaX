@@ -13,11 +13,13 @@ NET "DB<7>"  LOC = "P31"  ;
 NET "DIR"  LOC = "P5"  ; 
 NET "ECLK"  LOC = "P43"  ; 
 NET "IRQ"  LOC = "P6"  ; 
-NET "LED_0"  LOC = "P12"  ;
+NET "LED_0"  LOC = "P13"  ; 
 NET "MOSI"  LOC = "P7"  ; 
 NET "PHA"  LOC = "P2"  ; 
 NET "PHB"  LOC = "P3"  ; 
 NET "SCLK"  LOC = "P8"  ; 
+NET "SS"  LOC = "P12"  ; 
+NET "TP"  LOC = "P14"  ;
 
 #PACE: Start of PACE Area Constraints
 

@@ -7,7 +7,7 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : sch2hdl
 --  /   /         Filename : FrontPanel.vhf
--- /___/   /\     Timestamp : 08/09/2017 21:07:18
+-- /___/   /\     Timestamp : 08/10/2017 20:00:08
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -31,11 +31,13 @@ entity FrontPanel is
           PHA    : in    std_logic; 
           PHB    : in    std_logic; 
           SCLK   : in    std_logic; 
+          SS     : in    std_logic; 
           CLK_50 : out   std_logic; 
           DB     : out   std_logic_vector (7 downto 0); 
           DIR    : out   std_logic; 
           IRQ    : out   std_logic; 
-          LED_0  : out   std_logic);
+          LED_0  : out   std_logic; 
+          TP     : out   std_logic);
 end FrontPanel;
 
 architecture BEHAVIORAL of FrontPanel is
@@ -70,12 +72,6 @@ architecture BEHAVIORAL of FrontPanel is
    attribute SLEW of OBUF : component is "SLOW";
    attribute BOX_TYPE of OBUF : component is "BLACK_BOX";
    
-   component spi
-      port ( SCLK  : in    std_logic; 
-             MOSI  : in    std_logic; 
-             PDOUT : out   std_logic_vector (7 downto 0));
-   end component;
-   
    component clock_divider
       port ( clk     : in    std_logic; 
              clk_out : out   std_logic);
@@ -87,6 +83,14 @@ architecture BEHAVIORAL of FrontPanel is
              O  : out   std_logic);
    end component;
    attribute BOX_TYPE of AND2 : component is "BLACK_BOX";
+   
+   component spi
+      port ( SCLK  : in    std_logic; 
+             MOSI  : in    std_logic; 
+             SS    : in    std_logic; 
+             TFLAG : out   std_logic; 
+             PDOUT : out   std_logic_vector (7 downto 0));
+   end component;
    
 begin
    DB(7 downto 0) <= DB_DUMMY(7 downto 0);
@@ -117,11 +121,6 @@ begin
       port map (I=>XLXN_5,
                 O=>DIR);
    
-   XLXI_14 : spi
-      port map (MOSI=>MOSI,
-                SCLK=>SCLK,
-                PDOUT(7 downto 0)=>DB_DUMMY(7 downto 0));
-   
    XLXI_15 : clock_divider
       port map (clk=>XLXN_15,
                 clk_out=>XLXN_26);
@@ -138,6 +137,13 @@ begin
    XLXI_19 : OBUF
       port map (I=>XLXN_24,
                 O=>LED_0);
+   
+   XLXI_20 : spi
+      port map (MOSI=>MOSI,
+                SCLK=>SCLK,
+                SS=>SS,
+                PDOUT(7 downto 0)=>DB_DUMMY(7 downto 0),
+                TFLAG=>TP);
    
 end BEHAVIORAL;
 

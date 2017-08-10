@@ -1,7 +1,9 @@
 [Inputs]
 SCLK
 MOSI
+SS
 [Outputs]
+TFLAG
 =PDOUT[7:0]=
 [BiDir]
 [ATTRIBUTES]

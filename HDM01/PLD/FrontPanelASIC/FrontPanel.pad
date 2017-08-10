@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.20131013
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 8- 9-2017  9:08PM
+ 8-10-2017 10:12PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -29,9 +29,9 @@ P8|SCLK|I|I/O|INPUT|||||||||
 P9|TDI||TDI||||||||||
 P10|TMS||TMS||||||||||
 P11|TCK||TCK||||||||||
-P12|LED_0|O|I/O|OUTPUT|||||||||
-P13|TIE||I/O||||||||||
-P14|TIE||I/O||||||||||
+P12|SS|I|I/O|INPUT|||||||||
+P13|LED_0|O|I/O|OUTPUT|||||||||
+P14|TP|O|I/O|OUTPUT|||||||||
 P15|VCC||VCCINT||||||||||
 P16|TIE||I/O||||||||||
 P17|GND||GND||||||||||
