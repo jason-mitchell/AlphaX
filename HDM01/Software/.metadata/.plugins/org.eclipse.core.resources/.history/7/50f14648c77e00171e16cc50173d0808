@@ -176,7 +176,7 @@ void SimpleSPI(unsigned char data){
 
 	// shift out LSB first
 	//--------------------
-	for(bcnt = 0; bcnt < 8; bcnt++){
+	for(bcnt = 0; bcnt < 7; bcnt++){
 		if((data & 0x01) == 0x01){
 			GPIO_SetBits(GPIOA, GPIO_Pin_6);	// MOSI = '1'
 		} else {

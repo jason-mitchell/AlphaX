@@ -5,11 +5,6 @@
 </td></tr><tr><td>
 ********** Mapped Logic **********
 </td></tr><tr><td>
-</td></tr><tr><td>
-$OpTx$INV$3__$INT <= ((SS)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_20/BITCNT(0) AND NOT XLXI_20/BITCNT(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_20/BITCNT(2) AND XLXI_20/BITCNT(3)));
-</td></tr><tr><td>
 FTCPE_CLK_50: FTCPE port map (CLK_50,'1',ECLK,'0','0',CLK_50_CE);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLK_50_CE <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_15/r_reg(2));
@@ -37,9 +32,9 @@ FDCPE_IRQ: FDCPE port map (IRQ,XLXI_2/internal_detent,ECLK,'0','0');
 </td></tr><tr><td>
 LED_0 <= (DB(0) AND CLK_50);
 </td></tr><tr><td>
-FDCPE_TP: FDCPE port map (TP,'0','0',NOT $OpTx$INV$3__$INT,TP_PRE);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TP_PRE <= (NOT SS AND NOT XLXI_20/BITCNT(0) AND NOT XLXI_20/BITCNT(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_20/BITCNT(2) AND XLXI_20/BITCNT(3));
+</td></tr><tr><td>
+TP <= (XLXI_20/BITCNT(3) AND NOT XLXI_20/BITCNT(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_20/BITCNT(1) AND NOT XLXI_20/BITCNT(2));
 </td></tr><tr><td>
 FTCPE_XLXI_15/r_reg0: FTCPE port map (XLXI_15/r_reg(0),XLXI_15/r_reg_T(0),ECLK,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_15/r_reg_T(0) <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
@@ -82,16 +77,23 @@ FTCPE_XLXI_2/rotary_q2: FTCPE port map (XLXI_2/rotary_q2,XLXI_2/rotary_q2_T,ECLK
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_2/rotary_in(1) AND XLXI_2/rotary_q2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/rotary_in(0)));
 </td></tr><tr><td>
-FTCPE_XLXI_20/BITCNT0: FTCPE port map (XLXI_20/BITCNT(0),'1',SCLK,'0','0',NOT SS);
+FDCPE_XLXI_20/BITCNT0: FDCPE port map (XLXI_20/BITCNT(0),XLXI_20/BITCNT_D(0),SCLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_20/BITCNT_D(0) <= (NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0));
 </td></tr><tr><td>
-FTCPE_XLXI_20/BITCNT1: FTCPE port map (XLXI_20/BITCNT(1),XLXI_20/BITCNT(0),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_20/BITCNT1: FDCPE port map (XLXI_20/BITCNT(1),XLXI_20/BITCNT_D(1),SCLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_20/BITCNT_D(1) <= ((NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_20/BITCNT(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_20/BITCNT(3) AND NOT XLXI_20/BITCNT(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_20/BITCNT(1)));
 </td></tr><tr><td>
-FTCPE_XLXI_20/BITCNT2: FTCPE port map (XLXI_20/BITCNT(2),XLXI_20/BITCNT_T(2),SCLK,'0','0',NOT SS);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_20/BITCNT_T(2) <= (XLXI_20/BITCNT(0) AND XLXI_20/BITCNT(1));
+FTCPE_XLXI_20/BITCNT2: FTCPE port map (XLXI_20/BITCNT(2),XLXI_20/BITCNT_T(2),SCLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_20/BITCNT_T(2) <= ((XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_20/BITCNT(1)));
 </td></tr><tr><td>
-FTCPE_XLXI_20/BITCNT3: FTCPE port map (XLXI_20/BITCNT(3),XLXI_20/BITCNT_T(3),SCLK,'0','0',NOT SS);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_20/BITCNT_T(3) <= (XLXI_20/BITCNT(0) AND XLXI_20/BITCNT(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_20/BITCNT(2));
+FDCPE_XLXI_20/BITCNT3: FDCPE port map (XLXI_20/BITCNT(3),XLXI_20/BITCNT_D(3),SCLK,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_20/BITCNT_D(3) <= (NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_20/BITCNT(1) AND XLXI_20/BITCNT(2));
 </td></tr><tr><td>
 Register Legend:
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 

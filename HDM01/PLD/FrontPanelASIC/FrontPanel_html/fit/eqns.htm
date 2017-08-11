@@ -3,9 +3,9 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "FrontPanel";
       var device = "XC9572XL";
-      signals = new Array("CLK_50","DB0_SPECSIG","DB1_SPECSIG","DB2_SPECSIG","DB3_SPECSIG","DB4_SPECSIG","DB5_SPECSIG","DB6_SPECSIG","DB7_SPECSIG","DIR","IRQ","LED_0","OpTxINV3__INT_SPECSIG","TP","XLXI_15r_reg0_SPECSIG","XLXI_15r_reg1_SPECSIG","XLXI_15r_reg2_SPECSIG","XLXI_20BITCNT0_SPECSIG","XLXI_20BITCNT1_SPECSIG","XLXI_20BITCNT2_SPECSIG","XLXI_20BITCNT3_SPECSIG","XLXI_2delay_rotary_q1_SPECSIG","XLXI_2internal_detent_SPECSIG","XLXI_2rotary_a_in_SPECSIG","XLXI_2rotary_b_in_SPECSIG","XLXI_2rotary_event_SPECSIG","XLXI_2rotary_in0_SPECSIG","XLXI_2rotary_in1_SPECSIG","XLXI_2rotary_left_SPECSIG","XLXI_2rotary_q1_SPECSIG","XLXI_2rotary_q2_SPECSIG");
-      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF");
-      sigTypes = new Array("T","D","D","D","D","D","D","D","D","D","D","","","D","T","T","T","T","T","T","T","D","D","D","D","D","D","D","D","T","T");
+      signals = new Array("CLK_50","DB0_SPECSIG","DB1_SPECSIG","DB2_SPECSIG","DB3_SPECSIG","DB4_SPECSIG","DB5_SPECSIG","DB6_SPECSIG","DB7_SPECSIG","DIR","IRQ","LED_0","TP","XLXI_15r_reg0_SPECSIG","XLXI_15r_reg1_SPECSIG","XLXI_15r_reg2_SPECSIG","XLXI_20BITCNT0_SPECSIG","XLXI_20BITCNT1_SPECSIG","XLXI_20BITCNT2_SPECSIG","XLXI_20BITCNT3_SPECSIG","XLXI_2delay_rotary_q1_SPECSIG","XLXI_2internal_detent_SPECSIG","XLXI_2rotary_a_in_SPECSIG","XLXI_2rotary_b_in_SPECSIG","XLXI_2rotary_event_SPECSIG","XLXI_2rotary_in0_SPECSIG","XLXI_2rotary_in1_SPECSIG","XLXI_2rotary_left_SPECSIG","XLXI_2rotary_q1_SPECSIG","XLXI_2rotary_q2_SPECSIG");
+      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF");
+      sigTypes = new Array("T","D","D","D","D","D","D","D","D","D","D","","","T","T","T","D","D","T","D","D","D","D","D","D","D","D","D","T","T");
 
       
         specSig["DB3_SPECSIG"]=new Array("DB<3>");
@@ -24,41 +24,39 @@
       
         specSig["DB6_SPECSIG"]=new Array("DB<6>");
       
-        specSig["XLXI_2rotary_b_in_SPECSIG"]=new Array("XLXI_2/rotary_b_in");
-      
         specSig["DB5_SPECSIG"]=new Array("DB<5>");
       
         specSig["DB4_SPECSIG"]=new Array("DB<4>");
       
-        specSig["XLXI_20BITCNT3_SPECSIG"]=new Array("XLXI_20/BITCNT<3>");
+        specSig["XLXI_15r_reg2_SPECSIG"]=new Array("XLXI_15/r_reg<2>");
       
         specSig["XLXI_20BITCNT2_SPECSIG"]=new Array("XLXI_20/BITCNT<2>");
       
         specSig["XLXI_2rotary_event_SPECSIG"]=new Array("XLXI_2/rotary_event");
       
+        specSig["XLXI_2rotary_b_in_SPECSIG"]=new Array("XLXI_2/rotary_b_in");
+      
         specSig["XLXI_2delay_rotary_q1_SPECSIG"]=new Array("XLXI_2/delay_rotary_q1");
-      
-        specSig["XLXI_15r_reg0_SPECSIG"]=new Array("XLXI_15/r_reg<0>");
-      
-        specSig["XLXI_2rotary_left_SPECSIG"]=new Array("XLXI_2/rotary_left");
-      
-        specSig["XLXI_15r_reg2_SPECSIG"]=new Array("XLXI_15/r_reg<2>");
-      
-        specSig["XLXI_15r_reg1_SPECSIG"]=new Array("XLXI_15/r_reg<1>");
-      
-        specSig["XLXI_2rotary_q1_SPECSIG"]=new Array("XLXI_2/rotary_q1");
       
         specSig["XLXI_2rotary_q2_SPECSIG"]=new Array("XLXI_2/rotary_q2");
       
-        specSig["XLXI_2rotary_in1_SPECSIG"]=new Array("XLXI_2/rotary_in<1>");
+        specSig["XLXI_2rotary_q1_SPECSIG"]=new Array("XLXI_2/rotary_q1");
+      
+        specSig["XLXI_2rotary_left_SPECSIG"]=new Array("XLXI_2/rotary_left");
       
         specSig["XLXI_2rotary_in0_SPECSIG"]=new Array("XLXI_2/rotary_in<0>");
       
+        specSig["XLXI_2rotary_in1_SPECSIG"]=new Array("XLXI_2/rotary_in<1>");
+      
         specSig["XLXI_2internal_detent_SPECSIG"]=new Array("XLXI_2/internal_detent");
       
-        specSig["XLXI_20BITCNT0_SPECSIG"]=new Array("XLXI_20/BITCNT<0>");
+        specSig["XLXI_15r_reg1_SPECSIG"]=new Array("XLXI_15/r_reg<1>");
       
-        specSig["OpTxINV3__INT_SPECSIG"]=new Array("$OpTx$INV$3__$INT");
+        specSig["XLXI_15r_reg0_SPECSIG"]=new Array("XLXI_15/r_reg<0>");
+      
+        specSig["XLXI_20BITCNT3_SPECSIG"]=new Array("XLXI_20/BITCNT<3>");
+      
+        specSig["XLXI_20BITCNT0_SPECSIG"]=new Array("XLXI_20/BITCNT<0>");
       
         specSig["XLXI_20BITCNT1_SPECSIG"]=new Array("XLXI_20/BITCNT<1>");
       
@@ -86,21 +84,25 @@
           
             pterms["FB1_8_3"]=new Array("/SS");
           
-            pterms["FB1_13_1"]=new Array("XLXI_2rotary_q1_SPECSIG","/XLXI_2delay_rotary_q1_SPECSIG");
+            pterms["FB1_12_1"]=new Array("XLXI_2rotary_q1_SPECSIG","/XLXI_2delay_rotary_q1_SPECSIG");
+          
+            pterms["FB1_13_1"]=new Array("PHB");
           
             pterms["FB1_14_1"]=new Array("PHA");
           
             pterms["FB1_15_1"]=new Array("XLXI_2rotary_q1_SPECSIG");
           
-            pterms["FB1_16_1"]=new Array("/XLXI_15r_reg0_SPECSIG","/XLXI_15r_reg1_SPECSIG","XLXI_15r_reg2_SPECSIG");
+            pterms["FB1_16_1"]=new Array("XLXI_2rotary_in1_SPECSIG","/XLXI_2rotary_q2_SPECSIG","/XLXI_2rotary_in0_SPECSIG");
           
-            pterms["FB1_17_1"]=new Array("XLXI_2rotary_q2_SPECSIG");
+            pterms["FB1_16_2"]=new Array("/XLXI_2rotary_in1_SPECSIG","XLXI_2rotary_q2_SPECSIG","XLXI_2rotary_in0_SPECSIG");
           
-            pterms["FB1_17_2"]=new Array("XLXI_2rotary_q1_SPECSIG","/XLXI_2delay_rotary_q1_SPECSIG");
+            pterms["FB1_17_1"]=new Array("XLXI_2rotary_in1_SPECSIG","/XLXI_2rotary_q1_SPECSIG","XLXI_2rotary_in0_SPECSIG");
           
-            pterms["FB1_18_1"]=new Array("XLXI_15r_reg0_SPECSIG","XLXI_15r_reg1_SPECSIG");
+            pterms["FB1_17_2"]=new Array("/XLXI_2rotary_in1_SPECSIG","XLXI_2rotary_q1_SPECSIG","/XLXI_2rotary_in0_SPECSIG");
           
-            pterms["FB1_18_2"]=new Array("/XLXI_15r_reg0_SPECSIG","/XLXI_15r_reg1_SPECSIG","XLXI_15r_reg2_SPECSIG");
+            pterms["FB1_18_1"]=new Array("XLXI_2rotary_q2_SPECSIG");
+          
+            pterms["FB1_18_2"]=new Array("XLXI_2rotary_q1_SPECSIG","/XLXI_2delay_rotary_q1_SPECSIG");
           
             pterms["FB2_6_1"]=new Array("DB6_SPECSIG");
           
@@ -114,21 +116,13 @@
           
             pterms["FB2_8_3"]=new Array("/SS");
           
-            pterms["FB2_12_1"]=new Array("XLXI_2rotary_b_in_SPECSIG");
-          
-            pterms["FB2_13_1"]=new Array("XLXI_2rotary_a_in_SPECSIG");
-          
-            pterms["FB2_14_1"]=new Array("PHB");
-          
             pterms["FB2_15_1"]=new Array("DB4_SPECSIG");
           
             pterms["FB2_15_2"]=new Array("SCLK");
           
             pterms["FB2_15_3"]=new Array("/SS");
           
-            pterms["FB2_16_1"]=new Array("XLXI_2rotary_in1_SPECSIG","/XLXI_2rotary_q2_SPECSIG","/XLXI_2rotary_in0_SPECSIG");
-          
-            pterms["FB2_16_2"]=new Array("/XLXI_2rotary_in1_SPECSIG","XLXI_2rotary_q2_SPECSIG","XLXI_2rotary_in0_SPECSIG");
+            pterms["FB2_16_1"]=new Array("XLXI_2rotary_b_in_SPECSIG");
           
             pterms["FB2_17_1"]=new Array("DB3_SPECSIG");
           
@@ -136,9 +130,7 @@
           
             pterms["FB2_17_3"]=new Array("/SS");
           
-            pterms["FB2_18_1"]=new Array("XLXI_2rotary_in1_SPECSIG","/XLXI_2rotary_q1_SPECSIG","XLXI_2rotary_in0_SPECSIG");
-          
-            pterms["FB2_18_2"]=new Array("/XLXI_2rotary_in1_SPECSIG","XLXI_2rotary_q1_SPECSIG","/XLXI_2rotary_in0_SPECSIG");
+            pterms["FB2_18_1"]=new Array("XLXI_2rotary_a_in_SPECSIG");
           
             pterms["FB3_2_1"]=new Array("XLXI_2rotary_left_SPECSIG");
           
@@ -146,41 +138,39 @@
           
             pterms["FB3_5_1"]=new Array("XLXI_2internal_detent_SPECSIG");
           
-            pterms["FB3_10_1"]=new Array("XLXI_2rotary_event_SPECSIG");
+            pterms["FB3_9_1"]=new Array("XLXI_2rotary_event_SPECSIG");
           
-            pterms["FB3_11_1"]=new Array("XLXI_15r_reg0_SPECSIG");
+            pterms["FB3_10_1"]=new Array("XLXI_15r_reg0_SPECSIG");
           
-            pterms["FB3_12_1"]=new Array("SCLK");
+            pterms["FB3_11_1"]=new Array("/XLXI_15r_reg0_SPECSIG","/XLXI_15r_reg1_SPECSIG","XLXI_15r_reg2_SPECSIG");
           
-            pterms["FB3_12_2"]=new Array("/SS");
+            pterms["FB3_12_1"]=new Array("/XLXI_20BITCNT3_SPECSIG","XLXI_20BITCNT0_SPECSIG","XLXI_20BITCNT1_SPECSIG","XLXI_20BITCNT2_SPECSIG");
           
-            pterms["FB3_13_1"]=new Array("SS");
+            pterms["FB3_12_2"]=new Array("SCLK");
           
-            pterms["FB3_13_2"]=new Array("/XLXI_20BITCNT0_SPECSIG","/XLXI_20BITCNT1_SPECSIG","/XLXI_20BITCNT2_SPECSIG","XLXI_20BITCNT3_SPECSIG");
+            pterms["FB3_13_1"]=new Array("/XLXI_20BITCNT3_SPECSIG","XLXI_20BITCNT0_SPECSIG");
+          
+            pterms["FB3_13_2"]=new Array("SCLK");
           
             pterms["FB3_14_1"]=new Array("DB0_SPECSIG","CLK_50");
           
-            pterms["FB3_15_1"]=new Array("/OpTxINV3__INT_SPECSIG");
+            pterms["FB3_15_1"]=new Array("XLXI_20BITCNT3_SPECSIG","/XLXI_20BITCNT0_SPECSIG","/XLXI_20BITCNT1_SPECSIG","/XLXI_20BITCNT2_SPECSIG");
           
-            pterms["FB3_15_2"]=new Array("/SS","/XLXI_20BITCNT0_SPECSIG","/XLXI_20BITCNT1_SPECSIG","/XLXI_20BITCNT2_SPECSIG","XLXI_20BITCNT3_SPECSIG");
+            pterms["FB3_16_1"]=new Array("XLXI_15r_reg0_SPECSIG","XLXI_15r_reg1_SPECSIG");
           
-            pterms["FB3_16_1"]=new Array("XLXI_20BITCNT0_SPECSIG","XLXI_20BITCNT1_SPECSIG","XLXI_20BITCNT2_SPECSIG");
+            pterms["FB3_16_2"]=new Array("/XLXI_15r_reg0_SPECSIG","/XLXI_15r_reg1_SPECSIG","XLXI_15r_reg2_SPECSIG");
           
-            pterms["FB3_16_2"]=new Array("SCLK");
+            pterms["FB3_17_1"]=new Array("XLXI_20BITCNT3_SPECSIG","XLXI_20BITCNT2_SPECSIG");
           
-            pterms["FB3_16_3"]=new Array("/SS");
+            pterms["FB3_17_2"]=new Array("/XLXI_20BITCNT3_SPECSIG","XLXI_20BITCNT0_SPECSIG","XLXI_20BITCNT1_SPECSIG");
           
-            pterms["FB3_17_1"]=new Array("XLXI_20BITCNT0_SPECSIG","XLXI_20BITCNT1_SPECSIG");
+            pterms["FB3_17_3"]=new Array("SCLK");
           
-            pterms["FB3_17_2"]=new Array("SCLK");
+            pterms["FB3_18_1"]=new Array("/XLXI_20BITCNT3_SPECSIG","XLXI_20BITCNT0_SPECSIG","/XLXI_20BITCNT1_SPECSIG");
           
-            pterms["FB3_17_3"]=new Array("/SS");
+            pterms["FB3_18_2"]=new Array("/XLXI_20BITCNT3_SPECSIG","/XLXI_20BITCNT0_SPECSIG","XLXI_20BITCNT1_SPECSIG");
           
-            pterms["FB3_18_1"]=new Array("XLXI_20BITCNT0_SPECSIG");
-          
-            pterms["FB3_18_2"]=new Array("SCLK");
-          
-            pterms["FB3_18_3"]=new Array("/SS");
+            pterms["FB3_18_3"]=new Array("SCLK");
           
             pterms["FB4_14_1"]=new Array("/XLXI_15r_reg0_SPECSIG","/XLXI_15r_reg1_SPECSIG","XLXI_15r_reg2_SPECSIG");
           
@@ -232,12 +222,18 @@
           
             ceimp["DB0_SPECSIG"]=new Array("1");
           prld["DB0_SPECSIG"]="GND";
-          d2["XLXI_2rotary_event_SPECSIG"]=new Array("FB1_13_1");
+          d2["XLXI_2rotary_event_SPECSIG"]=new Array("FB1_12_1");
           
             d2imp["XLXI_2rotary_event_SPECSIG"]=new Array("1");
           
               gblclk["XLXI_2rotary_event_SPECSIG"]=new Array("ECLK");
             prld["XLXI_2rotary_event_SPECSIG"]="GND";
+          d2["XLXI_2rotary_b_in_SPECSIG"]=new Array("FB1_13_1");
+          
+            d2imp["XLXI_2rotary_b_in_SPECSIG"]=new Array("1");
+          
+              gblclk["XLXI_2rotary_b_in_SPECSIG"]=new Array("ECLK");
+            prld["XLXI_2rotary_b_in_SPECSIG"]="GND";
           d2["XLXI_2rotary_a_in_SPECSIG"]=new Array("FB1_14_1");
           
             d2imp["XLXI_2rotary_a_in_SPECSIG"]=new Array("1");
@@ -250,28 +246,28 @@
           
               gblclk["XLXI_2delay_rotary_q1_SPECSIG"]=new Array("ECLK");
             prld["XLXI_2delay_rotary_q1_SPECSIG"]="GND";
-          d2["XLXI_15r_reg0_SPECSIG"]=new Array("FB1_16_1");
+          d2["XLXI_2rotary_q2_SPECSIG"]=new Array("FB1_16_1","FB1_16_2");
           
-            d2imp["XLXI_15r_reg0_SPECSIG"]=new Array("1");
+            d2imp["XLXI_2rotary_q2_SPECSIG"]=new Array("1","1");
           
-              gblclk["XLXI_15r_reg0_SPECSIG"]=new Array("ECLK");
-            prld["XLXI_15r_reg0_SPECSIG"]="GND";
-          d2["XLXI_2rotary_left_SPECSIG"]=new Array("FB1_17_1");
+              gblclk["XLXI_2rotary_q2_SPECSIG"]=new Array("ECLK");
+            prld["XLXI_2rotary_q2_SPECSIG"]="GND";
+          d2["XLXI_2rotary_q1_SPECSIG"]=new Array("FB1_17_1","FB1_17_2");
+          
+            d2imp["XLXI_2rotary_q1_SPECSIG"]=new Array("1","1");
+          
+              gblclk["XLXI_2rotary_q1_SPECSIG"]=new Array("ECLK");
+            prld["XLXI_2rotary_q1_SPECSIG"]="GND";
+          d2["XLXI_2rotary_left_SPECSIG"]=new Array("FB1_18_1");
           
             d2imp["XLXI_2rotary_left_SPECSIG"]=new Array("1");
           
               gblclk["XLXI_2rotary_left_SPECSIG"]=new Array("ECLK");
             
-          ce["XLXI_2rotary_left_SPECSIG"]=new Array("FB1_17_2");
+          ce["XLXI_2rotary_left_SPECSIG"]=new Array("FB1_18_2");
           
             ceimp["XLXI_2rotary_left_SPECSIG"]=new Array("1");
           prld["XLXI_2rotary_left_SPECSIG"]="GND";
-          d2["XLXI_15r_reg2_SPECSIG"]=new Array("FB1_18_1","FB1_18_2");
-          
-            d2imp["XLXI_15r_reg2_SPECSIG"]=new Array("1","1");
-          
-              gblclk["XLXI_15r_reg2_SPECSIG"]=new Array("ECLK");
-            prld["XLXI_15r_reg2_SPECSIG"]="GND";
           d2["DB7_SPECSIG"]=new Array("FB2_6_1");
           
             d2imp["DB7_SPECSIG"]=new Array("1");
@@ -296,24 +292,6 @@
           
             ceimp["DB6_SPECSIG"]=new Array("1");
           prld["DB6_SPECSIG"]="GND";
-          d2["XLXI_2rotary_in1_SPECSIG"]=new Array("FB2_12_1");
-          
-            d2imp["XLXI_2rotary_in1_SPECSIG"]=new Array("1");
-          
-              gblclk["XLXI_2rotary_in1_SPECSIG"]=new Array("ECLK");
-            prld["XLXI_2rotary_in1_SPECSIG"]="GND";
-          d2["XLXI_2rotary_in0_SPECSIG"]=new Array("FB2_13_1");
-          
-            d2imp["XLXI_2rotary_in0_SPECSIG"]=new Array("1");
-          
-              gblclk["XLXI_2rotary_in0_SPECSIG"]=new Array("ECLK");
-            prld["XLXI_2rotary_in0_SPECSIG"]="GND";
-          d2["XLXI_2rotary_b_in_SPECSIG"]=new Array("FB2_14_1");
-          
-            d2imp["XLXI_2rotary_b_in_SPECSIG"]=new Array("1");
-          
-              gblclk["XLXI_2rotary_b_in_SPECSIG"]=new Array("ECLK");
-            prld["XLXI_2rotary_b_in_SPECSIG"]="GND";
           d2["DB5_SPECSIG"]=new Array("FB2_15_1");
           
             d2imp["DB5_SPECSIG"]=new Array("1");
@@ -326,12 +304,12 @@
           
             ceimp["DB5_SPECSIG"]=new Array("1");
           prld["DB5_SPECSIG"]="GND";
-          d2["XLXI_2rotary_q2_SPECSIG"]=new Array("FB2_16_1","FB2_16_2");
+          d2["XLXI_2rotary_in1_SPECSIG"]=new Array("FB2_16_1");
           
-            d2imp["XLXI_2rotary_q2_SPECSIG"]=new Array("1","1");
+            d2imp["XLXI_2rotary_in1_SPECSIG"]=new Array("1");
           
-              gblclk["XLXI_2rotary_q2_SPECSIG"]=new Array("ECLK");
-            prld["XLXI_2rotary_q2_SPECSIG"]="GND";
+              gblclk["XLXI_2rotary_in1_SPECSIG"]=new Array("ECLK");
+            prld["XLXI_2rotary_in1_SPECSIG"]="GND";
           d2["DB4_SPECSIG"]=new Array("FB2_17_1");
           
             d2imp["DB4_SPECSIG"]=new Array("1");
@@ -344,12 +322,12 @@
           
             ceimp["DB4_SPECSIG"]=new Array("1");
           prld["DB4_SPECSIG"]="GND";
-          d2["XLXI_2rotary_q1_SPECSIG"]=new Array("FB2_18_1","FB2_18_2");
+          d2["XLXI_2rotary_in0_SPECSIG"]=new Array("FB2_18_1");
           
-            d2imp["XLXI_2rotary_q1_SPECSIG"]=new Array("1","1");
+            d2imp["XLXI_2rotary_in0_SPECSIG"]=new Array("1");
           
-              gblclk["XLXI_2rotary_q1_SPECSIG"]=new Array("ECLK");
-            prld["XLXI_2rotary_q1_SPECSIG"]="GND";
+              gblclk["XLXI_2rotary_in0_SPECSIG"]=new Array("ECLK");
+            prld["XLXI_2rotary_in0_SPECSIG"]="GND";
           d2["DIR"]=new Array("FB3_2_1");
           
             d2imp["DIR"]=new Array("1");
@@ -366,90 +344,70 @@
           
               gblclk["IRQ"]=new Array("ECLK");
             prld["IRQ"]="GND";
-          d2["XLXI_2internal_detent_SPECSIG"]=new Array("FB3_10_1");
+          d2["XLXI_2internal_detent_SPECSIG"]=new Array("FB3_9_1");
           
             d2imp["XLXI_2internal_detent_SPECSIG"]=new Array("1");
           
               gblclk["XLXI_2internal_detent_SPECSIG"]=new Array("ECLK");
             prld["XLXI_2internal_detent_SPECSIG"]="GND";
-          d2["XLXI_15r_reg1_SPECSIG"]=new Array("FB3_11_1");
+          d2["XLXI_15r_reg1_SPECSIG"]=new Array("FB3_10_1");
           
             d2imp["XLXI_15r_reg1_SPECSIG"]=new Array("1");
           
               gblclk["XLXI_15r_reg1_SPECSIG"]=new Array("ECLK");
             prld["XLXI_15r_reg1_SPECSIG"]="GND";
-          d2["XLXI_20BITCNT0_SPECSIG"]=new Array("VCC");
+          d2["XLXI_15r_reg0_SPECSIG"]=new Array("FB3_11_1");
+          
+            d2imp["XLXI_15r_reg0_SPECSIG"]=new Array("1");
+          
+              gblclk["XLXI_15r_reg0_SPECSIG"]=new Array("ECLK");
+            prld["XLXI_15r_reg0_SPECSIG"]="GND";
+          d2["XLXI_20BITCNT3_SPECSIG"]=new Array("FB3_12_1");
+          
+            d2imp["XLXI_20BITCNT3_SPECSIG"]=new Array("1");
+          
+              clk["XLXI_20BITCNT3_SPECSIG"]=new Array("FB3_12_2");
+              
+                clkimp["XLXI_20BITCNT3_SPECSIG"]=new Array("1");
+              prld["XLXI_20BITCNT3_SPECSIG"]="GND";
+          d2["XLXI_20BITCNT0_SPECSIG"]=new Array("FB3_13_1");
           
             d2imp["XLXI_20BITCNT0_SPECSIG"]=new Array("1");
           
-              clk["XLXI_20BITCNT0_SPECSIG"]=new Array("FB3_12_1");
+              clk["XLXI_20BITCNT0_SPECSIG"]=new Array("FB3_13_2");
               
                 clkimp["XLXI_20BITCNT0_SPECSIG"]=new Array("1");
-              
-          ce["XLXI_20BITCNT0_SPECSIG"]=new Array("FB3_12_2");
-          
-            ceimp["XLXI_20BITCNT0_SPECSIG"]=new Array("1");
-          prld["XLXI_20BITCNT0_SPECSIG"]="GND";
-          d2["OpTxINV3__INT_SPECSIG"]=new Array("FB3_13_1","FB3_13_2");
-          
-            d2imp["OpTxINV3__INT_SPECSIG"]=new Array("1","1");
-          
+              prld["XLXI_20BITCNT0_SPECSIG"]="GND";
           d2["LED_0"]=new Array("FB3_14_1");
           
             d2imp["LED_0"]=new Array("1");
           
-          d2["TP"]=new Array("GND");
+          d2["TP"]=new Array("FB3_15_1");
           
             d2imp["TP"]=new Array("1");
           
-              clk["TP"]=new Array("GND");
-              
-                clkimp["TP"]=new Array("1");
-              
-              set["TP"]=new Array("FB3_15_2");
-              
-                setimp["TP"]=new Array("1");
-              
-              rst["TP"]=new Array("FB3_15_1");
-              
-                rstimp["TP"]=new Array("1");
-              prld["TP"]="GND";
-          d2["XLXI_20BITCNT3_SPECSIG"]=new Array("FB3_16_1");
+          d2["XLXI_15r_reg2_SPECSIG"]=new Array("FB3_16_1","FB3_16_2");
           
-            d2imp["XLXI_20BITCNT3_SPECSIG"]=new Array("1");
+            d2imp["XLXI_15r_reg2_SPECSIG"]=new Array("1","1");
           
-              clk["XLXI_20BITCNT3_SPECSIG"]=new Array("FB3_16_2");
-              
-                clkimp["XLXI_20BITCNT3_SPECSIG"]=new Array("1");
-              
-          ce["XLXI_20BITCNT3_SPECSIG"]=new Array("FB3_16_3");
+              gblclk["XLXI_15r_reg2_SPECSIG"]=new Array("ECLK");
+            prld["XLXI_15r_reg2_SPECSIG"]="GND";
+          d2["XLXI_20BITCNT2_SPECSIG"]=new Array("FB3_17_1","FB3_17_2");
           
-            ceimp["XLXI_20BITCNT3_SPECSIG"]=new Array("1");
-          prld["XLXI_20BITCNT3_SPECSIG"]="GND";
-          d2["XLXI_20BITCNT2_SPECSIG"]=new Array("FB3_17_1");
+            d2imp["XLXI_20BITCNT2_SPECSIG"]=new Array("1","1");
           
-            d2imp["XLXI_20BITCNT2_SPECSIG"]=new Array("1");
-          
-              clk["XLXI_20BITCNT2_SPECSIG"]=new Array("FB3_17_2");
+              clk["XLXI_20BITCNT2_SPECSIG"]=new Array("FB3_17_3");
               
                 clkimp["XLXI_20BITCNT2_SPECSIG"]=new Array("1");
-              
-          ce["XLXI_20BITCNT2_SPECSIG"]=new Array("FB3_17_3");
+              prld["XLXI_20BITCNT2_SPECSIG"]="GND";
+          d2["XLXI_20BITCNT1_SPECSIG"]=new Array("FB3_18_1","FB3_18_2");
           
-            ceimp["XLXI_20BITCNT2_SPECSIG"]=new Array("1");
-          prld["XLXI_20BITCNT2_SPECSIG"]="GND";
-          d2["XLXI_20BITCNT1_SPECSIG"]=new Array("FB3_18_1");
+            d2imp["XLXI_20BITCNT1_SPECSIG"]=new Array("1","1");
           
-            d2imp["XLXI_20BITCNT1_SPECSIG"]=new Array("1");
-          
-              clk["XLXI_20BITCNT1_SPECSIG"]=new Array("FB3_18_2");
+              clk["XLXI_20BITCNT1_SPECSIG"]=new Array("FB3_18_3");
               
                 clkimp["XLXI_20BITCNT1_SPECSIG"]=new Array("1");
-              
-          ce["XLXI_20BITCNT1_SPECSIG"]=new Array("FB3_18_3");
-          
-            ceimp["XLXI_20BITCNT1_SPECSIG"]=new Array("1");
-          prld["XLXI_20BITCNT1_SPECSIG"]="GND";
+              prld["XLXI_20BITCNT1_SPECSIG"]="GND";
           d2["CLK_50"]=new Array("VCC");
           
             d2imp["CLK_50"]=new Array("1");

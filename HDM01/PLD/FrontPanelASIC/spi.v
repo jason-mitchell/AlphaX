@@ -32,16 +32,27 @@ input MOSI;
 input SS;
 output reg[7:0]PDOUT;
 output reg TFLAG;
-reg[3:0] BITCNT;
+reg[3:0] BITCNT = 0;
+
+
+always @ (BITCNT)
+begin
+		if (BITCNT == 8)
+			TFLAG = 1;
+		else
+			TFLAG = 0;
+end
 
 always @ (posedge SCLK)
 if (~SS) begin
 	PDOUT[7:0] <= {PDOUT[6:0], MOSI};
-	BITCNT <= BITCNT + 1;
-	if (BITCNT == 8)
-		assign TFLAG = 1;
-	else 
-		assign TFLAG = 0;
 
+end
+
+always @ (posedge SCLK)
+begin
+	BITCNT <= BITCNT + 1;
+	if (BITCNT >= 8)
+		BITCNT <= 1;
 end
 endmodule

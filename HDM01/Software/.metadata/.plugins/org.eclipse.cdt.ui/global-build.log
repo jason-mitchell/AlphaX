@@ -1,4 +1,4 @@
-20:39:50 **** Incremental Build of configuration Debug for project HDM01 ****
+21:00:03 **** Incremental Build of configuration Debug for project HDM01 ****
 Info: Internal Builder is used for build
 arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
 ..\src\main.c:11:1: warning: multi-line comment [-Wcomment]

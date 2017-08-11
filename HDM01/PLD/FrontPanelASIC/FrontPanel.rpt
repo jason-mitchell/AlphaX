@@ -1,7 +1,7 @@
  
 cpldfit:  version P.20131013                        Xilinx Inc.
                                   Fitter Report
-Design Name: FrontPanel                          Date:  8-10-2017, 10:12PM
+Design Name: FrontPanel                          Date:  8-11-2017,  9:02PM
 Device Used: XC9572XL-10-VQ44
 Fitting Status: Successful
 
@@ -9,18 +9,18 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-31 /72  ( 43%) 61  /360  ( 17%) 42 /216 ( 19%)   29 /72  ( 40%) 19 /34  ( 56%)
+30 /72  ( 42%) 57  /360  ( 16%) 37 /216 ( 17%)   28 /72  ( 39%) 19 /34  ( 56%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1          10/18       13/54       20/90       7/ 9
-FB2           9/18       13/54       19/90       4/ 9
-FB3          11/18       13/54       21/90       7/ 9
+FB1          11/18       13/54       22/90       7/ 9
+FB2           6/18        8/54       14/90       4/ 9
+FB3          12/18       13/54       20/90       7/ 9
 FB4           1/18        3/54        1/90       1/ 7
              -----       -----       -----      -----    
-             31/72       42/216      61/360     19/34 
+             30/72       37/216      57/360     19/34 
 
 * - Resource is exhausted
 
@@ -45,7 +45,7 @@ GSR           :    0           0    |
 
 ** Power Data **
 
-There are 31 macrocells in high performance mode (MCHP).
+There are 30 macrocells in high performance mode (MCHP).
 There are 0 macrocells in low power mode (MCLP).
 End of Mapped Resource Summary
 **************************  Errors and Warnings  ***************************
@@ -74,31 +74,30 @@ DB<4>                   3     3     FB2_17  38   I/O     O       STD  FAST RESET
 DIR                     2     2     FB3_2   5    I/O     O       STD  SLOW RESET
 IRQ                     1     1     FB3_5   6    I/O     O       STD  SLOW RESET
 LED_0                   1     2     FB3_14  13   I/O     O       STD  SLOW 
-TP                      2     6     FB3_15  14   I/O     O       STD  FAST RESET
+TP                      1     4     FB3_15  14   I/O     O       STD  FAST 
 CLK_50                  1     3     FB4_14  23   I/O     O       STD  SLOW RESET
 
-** 18 Buried Nodes **
+** 17 Buried Nodes **
 
 Signal                  Total Total Loc     Pwr  Reg Init
 Name                    Pts   Inps          Mode State
-XLXI_2/rotary_event     1     2     FB1_13  STD  RESET
+XLXI_2/rotary_event     1     2     FB1_12  STD  RESET
+XLXI_2/rotary_b_in      1     1     FB1_13  STD  RESET
 XLXI_2/rotary_a_in      1     1     FB1_14  STD  RESET
 XLXI_2/delay_rotary_q1  1     1     FB1_15  STD  RESET
-XLXI_15/r_reg<0>        1     3     FB1_16  STD  RESET
-XLXI_2/rotary_left      2     3     FB1_17  STD  RESET
-XLXI_15/r_reg<2>        2     3     FB1_18  STD  RESET
-XLXI_2/rotary_in<1>     1     1     FB2_12  STD  RESET
-XLXI_2/rotary_in<0>     1     1     FB2_13  STD  RESET
-XLXI_2/rotary_b_in      1     1     FB2_14  STD  RESET
-XLXI_2/rotary_q2        2     3     FB2_16  STD  RESET
-XLXI_2/rotary_q1        2     3     FB2_18  STD  RESET
-XLXI_2/internal_detent  1     1     FB3_10  STD  RESET
-XLXI_15/r_reg<1>        1     1     FB3_11  STD  RESET
-XLXI_20/BITCNT<0>       2     2     FB3_12  STD  RESET
-$OpTx$INV$3__$INT       2     5     FB3_13  STD  
-XLXI_20/BITCNT<3>       3     5     FB3_16  STD  RESET
-XLXI_20/BITCNT<2>       3     4     FB3_17  STD  RESET
-XLXI_20/BITCNT<1>       3     3     FB3_18  STD  RESET
+XLXI_2/rotary_q2        2     3     FB1_16  STD  RESET
+XLXI_2/rotary_q1        2     3     FB1_17  STD  RESET
+XLXI_2/rotary_left      2     3     FB1_18  STD  RESET
+XLXI_2/rotary_in<1>     1     1     FB2_16  STD  RESET
+XLXI_2/rotary_in<0>     1     1     FB2_18  STD  RESET
+XLXI_2/internal_detent  1     1     FB3_9   STD  RESET
+XLXI_15/r_reg<1>        1     1     FB3_10  STD  RESET
+XLXI_15/r_reg<0>        1     3     FB3_11  STD  RESET
+XLXI_20/BITCNT<3>       2     5     FB3_12  STD  RESET
+XLXI_20/BITCNT<0>       2     3     FB3_13  STD  RESET
+XLXI_15/r_reg<2>        2     3     FB3_16  STD  RESET
+XLXI_20/BITCNT<2>       3     5     FB3_17  STD  RESET
+XLXI_20/BITCNT<1>       3     4     FB3_18  STD  RESET
 
 ** 6 Inputs **
 
@@ -142,20 +141,20 @@ DB<0>                 3       0     0   2     FB1_8   42    I/O     O
 (unused)              0       0     0   5     FB1_9   43    GCK/I/O GCK
 (unused)              0       0     0   5     FB1_10        (b)     
 (unused)              0       0     0   5     FB1_11  44    GCK/I/O 
-(unused)              0       0     0   5     FB1_12        (b)     
-XLXI_2/rotary_event   1       0     0   4     FB1_13        (b)     (b)
+XLXI_2/rotary_event   1       0     0   4     FB1_12        (b)     (b)
+XLXI_2/rotary_b_in    1       0     0   4     FB1_13        (b)     (b)
 XLXI_2/rotary_a_in    1       0     0   4     FB1_14  1     GCK/I/O (b)
 XLXI_2/delay_rotary_q1
                       1       0     0   4     FB1_15  2     I/O     I
-XLXI_15/r_reg<0>      1       0     0   4     FB1_16        (b)     (b)
-XLXI_2/rotary_left    2       0     0   3     FB1_17  3     I/O     I
-XLXI_15/r_reg<2>      2       0     0   3     FB1_18        (b)     (b)
+XLXI_2/rotary_q2      2       0     0   3     FB1_16        (b)     (b)
+XLXI_2/rotary_q1      2       0     0   3     FB1_17  3     I/O     I
+XLXI_2/rotary_left    2       0     0   3     FB1_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: DB<0>              6: SS                10: XLXI_2/delay_rotary_q1 
-  2: DB<1>              7: XLXI_15/r_reg<0>  11: XLXI_2/rotary_q1 
-  3: DB<2>              8: XLXI_15/r_reg<1>  12: XLXI_2/rotary_q2 
-  4: MOSI               9: XLXI_15/r_reg<2>  13: PHA 
+  1: DB<0>              6: SS                      10: XLXI_2/rotary_q1 
+  2: DB<1>              7: XLXI_2/delay_rotary_q1  11: XLXI_2/rotary_q2 
+  3: DB<2>              8: XLXI_2/rotary_in<0>     12: PHA 
+  4: MOSI               9: XLXI_2/rotary_in<1>     13: PHB 
   5: SCLK             
 
 Signal                        1         2         3         4 FB
@@ -164,18 +163,19 @@ DB<3>                ..X.XX.................................. 3
 DB<2>                .X..XX.................................. 3
 DB<1>                X...XX.................................. 3
 DB<0>                ...XXX.................................. 3
-XLXI_2/rotary_event  .........XX............................. 2
-XLXI_2/rotary_a_in   ............X........................... 1
+XLXI_2/rotary_event  ......X..X.............................. 2
+XLXI_2/rotary_b_in   ............X........................... 1
+XLXI_2/rotary_a_in   ...........X............................ 1
 XLXI_2/delay_rotary_q1 
-                     ..........X............................. 1
-XLXI_15/r_reg<0>     ......XXX............................... 3
-XLXI_2/rotary_left   .........XXX............................ 3
-XLXI_15/r_reg<2>     ......XXX............................... 3
+                     .........X.............................. 1
+XLXI_2/rotary_q2     .......XX.X............................. 3
+XLXI_2/rotary_q1     .......XXX.............................. 3
+XLXI_2/rotary_left   ......X..XX............................. 3
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB2  ***********************************
-Number of function block inputs used/remaining:               13/41
-Number of signals used by logic mapping into function block:  13
+Number of function block inputs used/remaining:               8/46
+Number of signals used by logic mapping into function block:  8
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB2_1         (b)     
@@ -189,32 +189,27 @@ DB<6>                 3       0     0   2     FB2_8   32    I/O     O
 (unused)              0       0     0   5     FB2_9   33    GSR/I/O 
 (unused)              0       0     0   5     FB2_10        (b)     
 (unused)              0       0     0   5     FB2_11  34    GTS/I/O 
-XLXI_2/rotary_in<1>   1       0     0   4     FB2_12        (b)     (b)
-XLXI_2/rotary_in<0>   1       0     0   4     FB2_13        (b)     (b)
-XLXI_2/rotary_b_in    1       0     0   4     FB2_14  36    GTS/I/O (b)
+(unused)              0       0     0   5     FB2_12        (b)     
+(unused)              0       0     0   5     FB2_13        (b)     
+(unused)              0       0     0   5     FB2_14  36    GTS/I/O 
 DB<5>                 3       0     0   2     FB2_15  37    I/O     O
-XLXI_2/rotary_q2      2       0     0   3     FB2_16        (b)     (b)
+XLXI_2/rotary_in<1>   1       0     0   4     FB2_16        (b)     (b)
 DB<4>                 3       0     0   2     FB2_17  38    I/O     O
-XLXI_2/rotary_q1      2       0     0   3     FB2_18        (b)     (b)
+XLXI_2/rotary_in<0>   1       0     0   4     FB2_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: DB<3>              6: SS                   10: XLXI_2/rotary_in<1> 
-  2: DB<4>              7: XLXI_2/rotary_a_in   11: XLXI_2/rotary_q1 
-  3: DB<5>              8: XLXI_2/rotary_b_in   12: XLXI_2/rotary_q2 
-  4: DB<6>              9: XLXI_2/rotary_in<0>  13: PHB 
-  5: SCLK             
+  1: DB<3>              4: DB<6>              7: XLXI_2/rotary_a_in 
+  2: DB<4>              5: SCLK               8: XLXI_2/rotary_b_in 
+  3: DB<5>              6: SS               
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
 DB<7>                ...XXX.................................. 3
 DB<6>                ..X.XX.................................. 3
-XLXI_2/rotary_in<1>  .......X................................ 1
-XLXI_2/rotary_in<0>  ......X................................. 1
-XLXI_2/rotary_b_in   ............X........................... 1
 DB<5>                .X..XX.................................. 3
-XLXI_2/rotary_q2     ........XX.X............................ 3
+XLXI_2/rotary_in<1>  .......X................................ 1
 DB<4>                X...XX.................................. 3
-XLXI_2/rotary_q1     ........XXX............................. 3
+XLXI_2/rotary_in<0>  ......X................................. 1
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB3  ***********************************
@@ -230,24 +225,24 @@ IRQ                   1       0     0   4     FB3_5   6     I/O     O
 (unused)              0       0     0   5     FB3_6         (b)     
 (unused)              0       0     0   5     FB3_7         (b)     
 (unused)              0       0     0   5     FB3_8   7     I/O     I
-(unused)              0       0     0   5     FB3_9   8     I/O     I
 XLXI_2/internal_detent
-                      1       0     0   4     FB3_10        (b)     (b)
-XLXI_15/r_reg<1>      1       0     0   4     FB3_11  12    I/O     I
-XLXI_20/BITCNT<0>     2       0     0   3     FB3_12        (b)     (b)
-$OpTx$INV$3__$INT     2       0     0   3     FB3_13        (b)     (b)
+                      1       0     0   4     FB3_9   8     I/O     I
+XLXI_15/r_reg<1>      1       0     0   4     FB3_10        (b)     (b)
+XLXI_15/r_reg<0>      1       0     0   4     FB3_11  12    I/O     I
+XLXI_20/BITCNT<3>     2       0     0   3     FB3_12        (b)     (b)
+XLXI_20/BITCNT<0>     2       0     0   3     FB3_13        (b)     (b)
 LED_0                 1       0     0   4     FB3_14  13    I/O     O
-TP                    2       0     0   3     FB3_15  14    I/O     O
-XLXI_20/BITCNT<3>     3       0     0   2     FB3_16  18    I/O     (b)
+TP                    1       0     0   4     FB3_15  14    I/O     O
+XLXI_15/r_reg<2>      2       0     0   3     FB3_16  18    I/O     (b)
 XLXI_20/BITCNT<2>     3       0     0   2     FB3_17  16    I/O     (b)
 XLXI_20/BITCNT<1>     3       0     0   2     FB3_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: $OpTx$INV$3__$INT   6: XLXI_15/r_reg<0>        10: XLXI_20/BITCNT<0> 
-  2: CLK_50              7: XLXI_2/internal_detent  11: XLXI_20/BITCNT<1> 
-  3: DB<0>               8: XLXI_2/rotary_event     12: XLXI_20/BITCNT<2> 
-  4: SCLK                9: XLXI_2/rotary_left      13: XLXI_20/BITCNT<3> 
-  5: SS                
+  1: CLK_50             6: XLXI_15/r_reg<2>        10: XLXI_20/BITCNT<0> 
+  2: DB<0>              7: XLXI_2/internal_detent  11: XLXI_20/BITCNT<1> 
+  3: SCLK               8: XLXI_2/rotary_event     12: XLXI_20/BITCNT<2> 
+  4: XLXI_15/r_reg<0>   9: XLXI_2/rotary_left      13: XLXI_20/BITCNT<3> 
+  5: XLXI_15/r_reg<1> 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
@@ -255,14 +250,15 @@ DIR                  .......XX............................... 2
 IRQ                  ......X................................. 1
 XLXI_2/internal_detent 
                      .......X................................ 1
-XLXI_15/r_reg<1>     .....X.................................. 1
-XLXI_20/BITCNT<0>    ...XX................................... 2
-$OpTx$INV$3__$INT    ....X....XXXX........................... 5
-LED_0                .XX..................................... 2
-TP                   X...X....XXXX........................... 6
-XLXI_20/BITCNT<3>    ...XX....XXX............................ 5
-XLXI_20/BITCNT<2>    ...XX....XX............................. 4
-XLXI_20/BITCNT<1>    ...XX....X.............................. 3
+XLXI_15/r_reg<1>     ...X.................................... 1
+XLXI_15/r_reg<0>     ...XXX.................................. 3
+XLXI_20/BITCNT<3>    ..X......XXXX........................... 5
+XLXI_20/BITCNT<0>    ..X......X..X........................... 3
+LED_0                XX...................................... 2
+TP                   .........XXXX........................... 4
+XLXI_15/r_reg<2>     ...XXX.................................. 3
+XLXI_20/BITCNT<2>    ..X......XXXX........................... 5
+XLXI_20/BITCNT<1>    ..X......XX.X........................... 4
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB4  ***********************************
@@ -301,11 +297,6 @@ CLK_50               XXX..................................... 3
 
 ********** Mapped Logic **********
 
-
-$OpTx$INV$3__$INT <= ((SS)
-	OR (NOT XLXI_20/BITCNT(0) AND NOT XLXI_20/BITCNT(1) AND 
-	NOT XLXI_20/BITCNT(2) AND XLXI_20/BITCNT(3)));
-
 FTCPE_CLK_50: FTCPE port map (CLK_50,'1',ECLK,'0','0',CLK_50_CE);
 CLK_50_CE <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
 	XLXI_15/r_reg(2));
@@ -333,9 +324,9 @@ FDCPE_IRQ: FDCPE port map (IRQ,XLXI_2/internal_detent,ECLK,'0','0');
 
 LED_0 <= (DB(0) AND CLK_50);
 
-FDCPE_TP: FDCPE port map (TP,'0','0',NOT $OpTx$INV$3__$INT,TP_PRE);
-TP_PRE <= (NOT SS AND NOT XLXI_20/BITCNT(0) AND NOT XLXI_20/BITCNT(1) AND 
-	NOT XLXI_20/BITCNT(2) AND XLXI_20/BITCNT(3));
+
+TP <= (XLXI_20/BITCNT(3) AND NOT XLXI_20/BITCNT(0) AND 
+	NOT XLXI_20/BITCNT(1) AND NOT XLXI_20/BITCNT(2));
 
 FTCPE_XLXI_15/r_reg0: FTCPE port map (XLXI_15/r_reg(0),XLXI_15/r_reg_T(0),ECLK,'0','0');
 XLXI_15/r_reg_T(0) <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
@@ -378,16 +369,23 @@ XLXI_2/rotary_q2_T <= ((XLXI_2/rotary_in(1) AND NOT XLXI_2/rotary_q2 AND
 	OR (NOT XLXI_2/rotary_in(1) AND XLXI_2/rotary_q2 AND 
 	XLXI_2/rotary_in(0)));
 
-FTCPE_XLXI_20/BITCNT0: FTCPE port map (XLXI_20/BITCNT(0),'1',SCLK,'0','0',NOT SS);
+FDCPE_XLXI_20/BITCNT0: FDCPE port map (XLXI_20/BITCNT(0),XLXI_20/BITCNT_D(0),SCLK,'0','0');
+XLXI_20/BITCNT_D(0) <= (NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0));
 
-FTCPE_XLXI_20/BITCNT1: FTCPE port map (XLXI_20/BITCNT(1),XLXI_20/BITCNT(0),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_20/BITCNT1: FDCPE port map (XLXI_20/BITCNT(1),XLXI_20/BITCNT_D(1),SCLK,'0','0');
+XLXI_20/BITCNT_D(1) <= ((NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0) AND 
+	NOT XLXI_20/BITCNT(1))
+	OR (NOT XLXI_20/BITCNT(3) AND NOT XLXI_20/BITCNT(0) AND 
+	XLXI_20/BITCNT(1)));
 
-FTCPE_XLXI_20/BITCNT2: FTCPE port map (XLXI_20/BITCNT(2),XLXI_20/BITCNT_T(2),SCLK,'0','0',NOT SS);
-XLXI_20/BITCNT_T(2) <= (XLXI_20/BITCNT(0) AND XLXI_20/BITCNT(1));
+FTCPE_XLXI_20/BITCNT2: FTCPE port map (XLXI_20/BITCNT(2),XLXI_20/BITCNT_T(2),SCLK,'0','0');
+XLXI_20/BITCNT_T(2) <= ((XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(2))
+	OR (NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0) AND 
+	XLXI_20/BITCNT(1)));
 
-FTCPE_XLXI_20/BITCNT3: FTCPE port map (XLXI_20/BITCNT(3),XLXI_20/BITCNT_T(3),SCLK,'0','0',NOT SS);
-XLXI_20/BITCNT_T(3) <= (XLXI_20/BITCNT(0) AND XLXI_20/BITCNT(1) AND 
-	XLXI_20/BITCNT(2));
+FDCPE_XLXI_20/BITCNT3: FDCPE port map (XLXI_20/BITCNT(3),XLXI_20/BITCNT_D(3),SCLK,'0','0');
+XLXI_20/BITCNT_D(3) <= (NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0) AND 
+	XLXI_20/BITCNT(1) AND XLXI_20/BITCNT(2));
 
 Register Legend:
  FDCPE (Q,D,C,CLR,PRE,CE); 
