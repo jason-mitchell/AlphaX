@@ -3,7 +3,7 @@
  
 cpldfit:  version P.20131013                        Xilinx Inc.
                                   Fitter Report
-Design Name: FrontPanel                          Date:  8-11-2017,  9:02PM
+Design Name: FrontPanel                          Date:  8-13-2017,  5:24PM
 Device Used: XC9572XL-10-VQ44
 Fitting Status: Successful
 
@@ -11,18 +11,18 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-30 /72  ( 42%) 57  /360  ( 16%) 37 /216 ( 17%)   28 /72  ( 39%) 19 /34  ( 56%)
+60 /72  ( 83%) 244 /360  ( 68%) 103/216 ( 48%)   44 /72  ( 61%) 15 /34  ( 44%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1          11/18       13/54       22/90       7/ 9
-FB2           6/18        8/54       14/90       4/ 9
-FB3          12/18       13/54       20/90       7/ 9
-FB4           1/18        3/54        1/90       1/ 7
+FB1          18/18*      21/54       40/90       6/ 9
+FB2          18/18*      23/54       39/90       0/ 9
+FB3          16/18       40/54       79/90       7/ 9
+FB4           8/18       19/54       86/90       2/ 7
              -----       -----       -----      -----    
-             30/72       37/216      57/360     19/34 
+             60/72      103/216     244/360     15/34 
 
 * - Resource is exhausted
 
@@ -36,18 +36,18 @@ Global set/reset net(s) unused.
 
 Signal Type    Required     Mapped  |  Pin Type            Used    Total 
 ------------------------------------|------------------------------------
-Input         :    5           5    |  I/O              :    18      28
-Output        :   13          13    |  GCK/IO           :     1       3
+Input         :    6           6    |  I/O              :    14      28
+Output        :    8           8    |  GCK/IO           :     1       3
 Bidirectional :    0           0    |  GTS/IO           :     0       2
 GCK           :    1           1    |  GSR/IO           :     0       1
 GTS           :    0           0    |
 GSR           :    0           0    |
                  ----        ----
-        Total     19          19
+        Total     15          15
 
 ** Power Data **
 
-There are 30 macrocells in high performance mode (MCHP).
+There are 60 macrocells in high performance mode (MCHP).
 There are 0 macrocells in low power mode (MCLP).
 End of Mapped Resource Summary
 **************************  Errors and Warnings  ***************************
@@ -61,56 +61,90 @@ INFO:Cpld - Inferring BUFG constraint for signal 'ECLK' based upon the LOC
    ignored.
 *************************  Summary of Mapped Logic  ************************
 
-** 13 Outputs **
+** 8 Outputs **
 
-Signal                  Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
-Name                    Pts   Inps          No.  Type    Use     Mode Rate State
-DB<3>                   3     3     FB1_2   39   I/O     O       STD  FAST RESET
-DB<2>                   3     3     FB1_5   40   I/O     O       STD  FAST RESET
-DB<1>                   3     3     FB1_6   41   I/O     O       STD  FAST RESET
-DB<0>                   3     3     FB1_8   42   I/O     O       STD  FAST RESET
-DB<7>                   3     3     FB2_6   31   I/O     O       STD  FAST RESET
-DB<6>                   3     3     FB2_8   32   I/O     O       STD  FAST RESET
-DB<5>                   3     3     FB2_15  37   I/O     O       STD  FAST RESET
-DB<4>                   3     3     FB2_17  38   I/O     O       STD  FAST RESET
-DIR                     2     2     FB3_2   5    I/O     O       STD  SLOW RESET
-IRQ                     1     1     FB3_5   6    I/O     O       STD  SLOW RESET
-LED_0                   1     2     FB3_14  13   I/O     O       STD  SLOW 
-TP                      1     4     FB3_15  14   I/O     O       STD  FAST 
-CLK_50                  1     3     FB4_14  23   I/O     O       STD  SLOW RESET
+Signal                                                    Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
+Name                                                      Pts   Inps          No.  Type    Use     Mode Rate State
+LED_2                                                     1     2     FB1_5   40   I/O     O       STD  SLOW 
+LED_1                                                     1     2     FB1_6   41   I/O     O       STD  SLOW 
+LED_0                                                     1     2     FB1_8   42   I/O     O       STD  SLOW 
+DIR                                                       2     2     FB3_2   5    I/O     O       STD  SLOW RESET
+IRQ                                                       1     1     FB3_5   6    I/O     O       STD  SLOW RESET
+MISO                                                      5     6     FB3_14  13   I/O     O       STD  FAST RESET
+PWMOUT                                                    25    15    FB4_2   19   I/O     O       STD  SLOW RESET
+CLK_50                                                    1     3     FB4_14  23   I/O     O       STD  SLOW RESET
 
-** 17 Buried Nodes **
+** 52 Buried Nodes **
 
-Signal                  Total Total Loc     Pwr  Reg Init
-Name                    Pts   Inps          Mode State
-XLXI_2/rotary_event     1     2     FB1_12  STD  RESET
-XLXI_2/rotary_b_in      1     1     FB1_13  STD  RESET
-XLXI_2/rotary_a_in      1     1     FB1_14  STD  RESET
-XLXI_2/delay_rotary_q1  1     1     FB1_15  STD  RESET
-XLXI_2/rotary_q2        2     3     FB1_16  STD  RESET
-XLXI_2/rotary_q1        2     3     FB1_17  STD  RESET
-XLXI_2/rotary_left      2     3     FB1_18  STD  RESET
-XLXI_2/rotary_in<1>     1     1     FB2_16  STD  RESET
-XLXI_2/rotary_in<0>     1     1     FB2_18  STD  RESET
-XLXI_2/internal_detent  1     1     FB3_9   STD  RESET
-XLXI_15/r_reg<1>        1     1     FB3_10  STD  RESET
-XLXI_15/r_reg<0>        1     3     FB3_11  STD  RESET
-XLXI_20/BITCNT<3>       2     5     FB3_12  STD  RESET
-XLXI_20/BITCNT<0>       2     3     FB3_13  STD  RESET
-XLXI_15/r_reg<2>        2     3     FB3_16  STD  RESET
-XLXI_20/BITCNT<2>       3     5     FB3_17  STD  RESET
-XLXI_20/BITCNT<1>       3     4     FB3_18  STD  RESET
+Signal                                                    Total Total Loc     Pwr  Reg Init
+Name                                                      Pts   Inps          Mode State
+XLXI_58/SPIDATA_OUT<6>/XLXI_58/SPIDATA_OUT<6>_RSTF__$INT  2     10    FB1_1   STD  
+XLXI_58/DEVCMD<7>                                         3     4     FB1_2   STD  
+XLXI_58/DEVCMD<6>                                         3     4     FB1_3   STD  
+XLXI_58/DEVCMD<5>                                         3     4     FB1_4   STD  
+XLXI_58/DEVCMD<4>                                         3     4     FB1_7   STD  
+XLXI_58/DEVCMD<3>                                         3     4     FB1_9   STD  
+XLXI_58/DEVCMD<2>                                         3     4     FB1_10  STD  
+XLXI_58/DEVCMD<1>                                         3     4     FB1_11  STD  
+PWMBUS<7>                                                 2     10    FB1_12  STD  RESET
+PWMBUS<6>                                                 2     10    FB1_13  STD  RESET
+PWMBUS<5>                                                 2     10    FB1_14  STD  RESET
+PWMBUS<4>                                                 2     10    FB1_15  STD  RESET
+PWMBUS<3>                                                 2     10    FB1_16  STD  RESET
+PWMBUS<2>                                                 2     10    FB1_17  STD  RESET
+PWMBUS<1>                                                 2     10    FB1_18  STD  RESET
+XLXI_2/rotary_in<0>                                       1     1     FB2_1   STD  RESET
+XLXI_2/rotary_event                                       1     2     FB2_2   STD  RESET
+XLXI_2/rotary_b_in                                        1     1     FB2_3   STD  RESET
+XLXI_2/rotary_a_in                                        1     1     FB2_4   STD  RESET
+XLXI_2/delay_rotary_q1                                    1     1     FB2_5   STD  RESET
+XLXI_15/r_reg<1>                                          1     1     FB2_6   STD  RESET
+XLXI_2/rotary_q2                                          2     3     FB2_7   STD  RESET
+XLXI_2/rotary_q1                                          2     3     FB2_8   STD  RESET
+XLXI_2/rotary_left                                        2     3     FB2_9   STD  RESET
+XLXI_58/SPIDATA_IN<7>                                     3     3     FB2_10  STD  RESET
+XLXI_58/SPIDATA_IN<6>                                     3     3     FB2_11  STD  RESET
+XLXI_58/SPIDATA_IN<5>                                     3     3     FB2_12  STD  RESET
+XLXI_58/SPIDATA_IN<4>                                     3     3     FB2_13  STD  RESET
+XLXI_58/SPIDATA_IN<3>                                     3     3     FB2_14  STD  RESET
+XLXI_58/SPIDATA_IN<2>                                     3     3     FB2_15  STD  RESET
+XLXI_58/SPIDATA_IN<1>                                     3     3     FB2_16  STD  RESET
+XLXI_58/SPIDATA_IN<0>                                     3     3     FB2_17  STD  RESET
+XLXI_58/DEVCMD<0>                                         3     4     FB2_18  STD  
+LED<0>                                                    11    12    FB3_1   STD  
+PWMBUS<0>                                                 2     10    FB3_3   STD  RESET
+XLXI_58/BITCNT<0>                                         2     5     FB3_4   STD  RESET
+XLXI_48/count<1>                                          19    14    FB3_6   STD  RESET
+$OpTx$FX_DC$98                                            2     2     FB3_8   STD  
+XLXI_58/BITCNT<3>                                         3     5     FB3_9   STD  RESET
+XLXI_58/BITCNT<2>                                         3     5     FB3_10  STD  RESET
 
-** 6 Inputs **
+Signal                                                    Total Total Loc     Pwr  Reg Init
+Name                                                      Pts   Inps          Mode State
+XLXI_58/BITCNT<1>                                         3     5     FB3_11  STD  RESET
+XLXI_2/internal_detent                                    1     1     FB3_12  STD  RESET
+LED<2>                                                    11    12    FB3_13  STD  
+XLXI_58/SPIDATA_OUT<6>                                    2     11    FB3_15  STD  RESET
+XLXI_58/CMDDATA                                           1     4     FB3_16  STD  RESET
+LED<1>                                                    11    12    FB3_18  STD  
+XLXI_15/r_reg<0>                                          1     3     FB4_5   STD  RESET
+XLXI_15/r_reg<2>                                          2     3     FB4_6   STD  RESET
+XLXI_48/count<0>                                          15    14    FB4_8   STD  RESET
+XLXI_48/count<2>                                          20    14    FB4_12  STD  RESET
+XLXI_48/count<3>                                          21    14    FB4_16  STD  RESET
+XLXI_2/rotary_in<1>                                       1     1     FB4_18  STD  RESET
 
-Signal                  Loc     Pin  Pin     Pin     
-Name                            No.  Type    Use     
-ECLK                    FB1_9   43   GCK/I/O GCK
-PHA                     FB1_15  2    I/O     I
-PHB                     FB1_17  3    I/O     I
-MOSI                    FB3_8   7    I/O     I
-SCLK                    FB3_9   8    I/O     I
-SS                      FB3_11  12   I/O     I
+** 7 Inputs **
+
+Signal                                                    Loc     Pin  Pin     Pin     
+Name                                                              No.  Type    Use     
+ECLK                                                      FB1_9   43   GCK/I/O GCK
+PHA                                                       FB1_15  2    I/O     I
+PHB                                                       FB1_17  3    I/O     I
+MOSI                                                      FB3_8   7    I/O     I
+SCLK                                                      FB3_9   8    I/O     I
+SS                                                        FB3_11  12   I/O     I
+RESET                                                     FB3_16  18   I/O     I
 
 Legend:
 Pin No. - ~ - User Assigned
@@ -128,207 +162,469 @@ Pin Type/Use - I  - Input             GCK - Global Clock
 X            - Signal used as input to the macrocell logic.
 Pin No.      - ~  - User Assigned
 *********************************** FB1  ***********************************
-Number of function block inputs used/remaining:               13/41
-Number of signals used by logic mapping into function block:  13
+Number of function block inputs used/remaining:               21/33
+Number of signals used by logic mapping into function block:  21
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB1_1         (b)     
-DB<3>                 3       0     0   2     FB1_2   39    I/O     O
-(unused)              0       0     0   5     FB1_3         (b)     
-(unused)              0       0     0   5     FB1_4         (b)     
-DB<2>                 3       0     0   2     FB1_5   40    I/O     O
-DB<1>                 3       0     0   2     FB1_6   41    I/O     O
-(unused)              0       0     0   5     FB1_7         (b)     
-DB<0>                 3       0     0   2     FB1_8   42    I/O     O
-(unused)              0       0     0   5     FB1_9   43    GCK/I/O GCK
-(unused)              0       0     0   5     FB1_10        (b)     
-(unused)              0       0     0   5     FB1_11  44    GCK/I/O 
-XLXI_2/rotary_event   1       0     0   4     FB1_12        (b)     (b)
-XLXI_2/rotary_b_in    1       0     0   4     FB1_13        (b)     (b)
-XLXI_2/rotary_a_in    1       0     0   4     FB1_14  1     GCK/I/O (b)
-XLXI_2/delay_rotary_q1
-                      1       0     0   4     FB1_15  2     I/O     I
-XLXI_2/rotary_q2      2       0     0   3     FB1_16        (b)     (b)
-XLXI_2/rotary_q1      2       0     0   3     FB1_17  3     I/O     I
-XLXI_2/rotary_left    2       0     0   3     FB1_18        (b)     (b)
+XLXI_58/SPIDATA_OUT<6>/XLXI_58/SPIDATA_OUT<6>_RSTF__$INT
+                      2       0     0   3     FB1_1         (b)     (b)
+XLXI_58/DEVCMD<7>     3       0     0   2     FB1_2   39    I/O     (b)
+XLXI_58/DEVCMD<6>     3       0     0   2     FB1_3         (b)     (b)
+XLXI_58/DEVCMD<5>     3       0     0   2     FB1_4         (b)     (b)
+LED_2                 1       0     0   4     FB1_5   40    I/O     O
+LED_1                 1       0     0   4     FB1_6   41    I/O     O
+XLXI_58/DEVCMD<4>     3       0     0   2     FB1_7         (b)     (b)
+LED_0                 1       0     0   4     FB1_8   42    I/O     O
+XLXI_58/DEVCMD<3>     3       0     0   2     FB1_9   43    GCK/I/O GCK
+XLXI_58/DEVCMD<2>     3       0     0   2     FB1_10        (b)     (b)
+XLXI_58/DEVCMD<1>     3       0     0   2     FB1_11  44    GCK/I/O (b)
+PWMBUS<7>             2       0     0   3     FB1_12        (b)     (b)
+PWMBUS<6>             2       0     0   3     FB1_13        (b)     (b)
+PWMBUS<5>             2       0     0   3     FB1_14  1     GCK/I/O (b)
+PWMBUS<4>             2       0     0   3     FB1_15  2     I/O     I
+PWMBUS<3>             2       0     0   3     FB1_16        (b)     (b)
+PWMBUS<2>             2       0     0   3     FB1_17  3     I/O     I
+PWMBUS<1>             2       0     0   3     FB1_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: DB<0>              6: SS                      10: XLXI_2/rotary_q1 
-  2: DB<1>              7: XLXI_2/delay_rotary_q1  11: XLXI_2/rotary_q2 
-  3: DB<2>              8: XLXI_2/rotary_in<0>     12: PHA 
-  4: MOSI               9: XLXI_2/rotary_in<1>     13: PHB 
-  5: SCLK             
+  1: CLK_50              8: XLXI_58/DEVCMD<1>  15: XLXI_58/SPIDATA_IN<1> 
+  2: LED<0>              9: XLXI_58/DEVCMD<2>  16: XLXI_58/SPIDATA_IN<2> 
+  3: LED<1>             10: XLXI_58/DEVCMD<3>  17: XLXI_58/SPIDATA_IN<3> 
+  4: LED<2>             11: XLXI_58/DEVCMD<4>  18: XLXI_58/SPIDATA_IN<4> 
+  5: RESET              12: XLXI_58/DEVCMD<5>  19: XLXI_58/SPIDATA_IN<5> 
+  6: XLXI_58/CMDDATA    13: XLXI_58/DEVCMD<6>  20: XLXI_58/SPIDATA_IN<6> 
+  7: XLXI_58/DEVCMD<0>  14: XLXI_58/DEVCMD<7>  21: XLXI_58/SPIDATA_IN<7> 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-DB<3>                ..X.XX.................................. 3
-DB<2>                .X..XX.................................. 3
-DB<1>                X...XX.................................. 3
-DB<0>                ...XXX.................................. 3
-XLXI_2/rotary_event  ......X..X.............................. 2
-XLXI_2/rotary_b_in   ............X........................... 1
-XLXI_2/rotary_a_in   ...........X............................ 1
-XLXI_2/delay_rotary_q1 
-                     .........X.............................. 1
-XLXI_2/rotary_q2     .......XX.X............................. 3
-XLXI_2/rotary_q1     .......XXX.............................. 3
-XLXI_2/rotary_left   ......X..XX............................. 3
+XLXI_58/SPIDATA_OUT<6>/XLXI_58/SPIDATA_OUT<6>_RSTF__$INT 
+                     ....XXXXXXXXXX.......................... 10
+XLXI_58/DEVCMD<7>    ....XX.......X......X................... 4
+XLXI_58/DEVCMD<6>    ....XX......X......X.................... 4
+XLXI_58/DEVCMD<5>    ....XX.....X......X..................... 4
+LED_2                X..X.................................... 2
+LED_1                X.X..................................... 2
+XLXI_58/DEVCMD<4>    ....XX....X......X...................... 4
+LED_0                XX...................................... 2
+XLXI_58/DEVCMD<3>    ....XX...X......X....................... 4
+XLXI_58/DEVCMD<2>    ....XX..X......X........................ 4
+XLXI_58/DEVCMD<1>    ....XX.X......X......................... 4
+PWMBUS<7>            .....XXXXXXXXX......X................... 10
+PWMBUS<6>            .....XXXXXXXXX.....X.................... 10
+PWMBUS<5>            .....XXXXXXXXX....X..................... 10
+PWMBUS<4>            .....XXXXXXXXX...X...................... 10
+PWMBUS<3>            .....XXXXXXXXX..X....................... 10
+PWMBUS<2>            .....XXXXXXXXX.X........................ 10
+PWMBUS<1>            .....XXXXXXXXXX......................... 10
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB2  ***********************************
-Number of function block inputs used/remaining:               8/46
-Number of signals used by logic mapping into function block:  8
+Number of function block inputs used/remaining:               23/31
+Number of signals used by logic mapping into function block:  23
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB2_1         (b)     
-(unused)              0       0     0   5     FB2_2   29    I/O     
-(unused)              0       0     0   5     FB2_3         (b)     
-(unused)              0       0     0   5     FB2_4         (b)     
-(unused)              0       0     0   5     FB2_5   30    I/O     
-DB<7>                 3       0     0   2     FB2_6   31    I/O     O
-(unused)              0       0     0   5     FB2_7         (b)     
-DB<6>                 3       0     0   2     FB2_8   32    I/O     O
-(unused)              0       0     0   5     FB2_9   33    GSR/I/O 
-(unused)              0       0     0   5     FB2_10        (b)     
-(unused)              0       0     0   5     FB2_11  34    GTS/I/O 
-(unused)              0       0     0   5     FB2_12        (b)     
-(unused)              0       0     0   5     FB2_13        (b)     
-(unused)              0       0     0   5     FB2_14  36    GTS/I/O 
-DB<5>                 3       0     0   2     FB2_15  37    I/O     O
-XLXI_2/rotary_in<1>   1       0     0   4     FB2_16        (b)     (b)
-DB<4>                 3       0     0   2     FB2_17  38    I/O     O
-XLXI_2/rotary_in<0>   1       0     0   4     FB2_18        (b)     (b)
+XLXI_2/rotary_in<0>   1       0     0   4     FB2_1         (b)     (b)
+XLXI_2/rotary_event   1       0     0   4     FB2_2   29    I/O     (b)
+XLXI_2/rotary_b_in    1       0     0   4     FB2_3         (b)     (b)
+XLXI_2/rotary_a_in    1       0     0   4     FB2_4         (b)     (b)
+XLXI_2/delay_rotary_q1
+                      1       0     0   4     FB2_5   30    I/O     (b)
+XLXI_15/r_reg<1>      1       0     0   4     FB2_6   31    I/O     (b)
+XLXI_2/rotary_q2      2       0     0   3     FB2_7         (b)     (b)
+XLXI_2/rotary_q1      2       0     0   3     FB2_8   32    I/O     (b)
+XLXI_2/rotary_left    2       0     0   3     FB2_9   33    GSR/I/O (b)
+XLXI_58/SPIDATA_IN<7>
+                      3       0     0   2     FB2_10        (b)     (b)
+XLXI_58/SPIDATA_IN<6>
+                      3       0     0   2     FB2_11  34    GTS/I/O (b)
+XLXI_58/SPIDATA_IN<5>
+                      3       0     0   2     FB2_12        (b)     (b)
+XLXI_58/SPIDATA_IN<4>
+                      3       0     0   2     FB2_13        (b)     (b)
+XLXI_58/SPIDATA_IN<3>
+                      3       0     0   2     FB2_14  36    GTS/I/O (b)
+XLXI_58/SPIDATA_IN<2>
+                      3       0     0   2     FB2_15  37    I/O     (b)
+XLXI_58/SPIDATA_IN<1>
+                      3       0     0   2     FB2_16        (b)     (b)
+XLXI_58/SPIDATA_IN<0>
+                      3       0     0   2     FB2_17  38    I/O     (b)
+XLXI_58/DEVCMD<0>     3       0     0   2     FB2_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: DB<3>              4: DB<6>              7: XLXI_2/rotary_a_in 
-  2: DB<4>              5: SCLK               8: XLXI_2/rotary_b_in 
-  3: DB<5>              6: SS               
+  1: MOSI                     9: XLXI_2/rotary_in<1>    17: XLXI_58/SPIDATA_IN<3> 
+  2: RESET                   10: XLXI_2/rotary_q1       18: XLXI_58/SPIDATA_IN<4> 
+  3: SCLK                    11: XLXI_2/rotary_q2       19: XLXI_58/SPIDATA_IN<5> 
+  4: SS                      12: XLXI_58/CMDDATA        20: XLXI_58/SPIDATA_IN<6> 
+  5: XLXI_15/r_reg<0>        13: XLXI_58/DEVCMD<0>      21: XLXI_58/SPIDATA_IN<7> 
+  6: XLXI_2/delay_rotary_q1  14: XLXI_58/SPIDATA_IN<0>  22: PHA 
+  7: XLXI_2/rotary_a_in      15: XLXI_58/SPIDATA_IN<1>  23: PHB 
+  8: XLXI_2/rotary_in<0>     16: XLXI_58/SPIDATA_IN<2> 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-DB<7>                ...XXX.................................. 3
-DB<6>                ..X.XX.................................. 3
-DB<5>                .X..XX.................................. 3
-XLXI_2/rotary_in<1>  .......X................................ 1
-DB<4>                X...XX.................................. 3
 XLXI_2/rotary_in<0>  ......X................................. 1
+XLXI_2/rotary_event  .....X...X.............................. 2
+XLXI_2/rotary_b_in   ......................X................. 1
+XLXI_2/rotary_a_in   .....................X.................. 1
+XLXI_2/delay_rotary_q1 
+                     .........X.............................. 1
+XLXI_15/r_reg<1>     ....X................................... 1
+XLXI_2/rotary_q2     .......XX.X............................. 3
+XLXI_2/rotary_q1     .......XXX.............................. 3
+XLXI_2/rotary_left   .....X...XX............................. 3
+XLXI_58/SPIDATA_IN<7> 
+                     X.XX.................................... 3
+XLXI_58/SPIDATA_IN<6> 
+                     ..XX................X................... 3
+XLXI_58/SPIDATA_IN<5> 
+                     ..XX...............X.................... 3
+XLXI_58/SPIDATA_IN<4> 
+                     ..XX..............X..................... 3
+XLXI_58/SPIDATA_IN<3> 
+                     ..XX.............X...................... 3
+XLXI_58/SPIDATA_IN<2> 
+                     ..XX............X....................... 3
+XLXI_58/SPIDATA_IN<1> 
+                     ..XX...........X........................ 3
+XLXI_58/SPIDATA_IN<0> 
+                     ..XX..........X......................... 3
+XLXI_58/DEVCMD<0>    .X.........XXX.......................... 4
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB3  ***********************************
-Number of function block inputs used/remaining:               13/41
-Number of signals used by logic mapping into function block:  13
+Number of function block inputs used/remaining:               40/14
+Number of signals used by logic mapping into function block:  40
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB3_1         (b)     
-DIR                   2       0     0   3     FB3_2   5     I/O     O
-(unused)              0       0     0   5     FB3_3         (b)     
-(unused)              0       0     0   5     FB3_4         (b)     
-IRQ                   1       0     0   4     FB3_5   6     I/O     O
-(unused)              0       0     0   5     FB3_6         (b)     
-(unused)              0       0     0   5     FB3_7         (b)     
-(unused)              0       0     0   5     FB3_8   7     I/O     I
+LED<0>               11       6<-   0   0     FB3_1         (b)     (b)
+DIR                   2       0   /\3   0     FB3_2   5     I/O     O
+PWMBUS<0>             2       0     0   3     FB3_3         (b)     (b)
+XLXI_58/BITCNT<0>     2       0   \/1   2     FB3_4         (b)     (b)
+IRQ                   1       1<- \/5   0     FB3_5   6     I/O     O
+XLXI_48/count<1>     19      14<-   0   0     FB3_6         (b)     (b)
+(unused)              0       0   /\5   0     FB3_7         (b)     (b)
+$OpTx$FX_DC$98        2       1<- /\4   0     FB3_8   7     I/O     I
+XLXI_58/BITCNT<3>     3       0   /\1   1     FB3_9   8     I/O     I
+XLXI_58/BITCNT<2>     3       0     0   2     FB3_10        (b)     (b)
+XLXI_58/BITCNT<1>     3       0   \/1   1     FB3_11  12    I/O     I
 XLXI_2/internal_detent
-                      1       0     0   4     FB3_9   8     I/O     I
-XLXI_15/r_reg<1>      1       0     0   4     FB3_10        (b)     (b)
-XLXI_15/r_reg<0>      1       0     0   4     FB3_11  12    I/O     I
-XLXI_20/BITCNT<3>     2       0     0   3     FB3_12        (b)     (b)
-XLXI_20/BITCNT<0>     2       0     0   3     FB3_13        (b)     (b)
-LED_0                 1       0     0   4     FB3_14  13    I/O     O
-TP                    1       0     0   4     FB3_15  14    I/O     O
-XLXI_15/r_reg<2>      2       0     0   3     FB3_16  18    I/O     (b)
-XLXI_20/BITCNT<2>     3       0     0   2     FB3_17  16    I/O     (b)
-XLXI_20/BITCNT<1>     3       0     0   2     FB3_18        (b)     (b)
+                      1       1<- \/5   0     FB3_12        (b)     (b)
+LED<2>               11       6<-   0   0     FB3_13        (b)     (b)
+MISO                  5       1<- /\1   0     FB3_14  13    I/O     O
+XLXI_58/SPIDATA_OUT<6>
+                      2       0   /\1   2     FB3_15  14    I/O     (b)
+XLXI_58/CMDDATA       1       0   \/4   0     FB3_16  18    I/O     I
+(unused)              0       0   \/5   0     FB3_17  16    I/O     (b)
+LED<1>               11       9<- \/3   0     FB3_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: CLK_50             6: XLXI_15/r_reg<2>        10: XLXI_20/BITCNT<0> 
-  2: DB<0>              7: XLXI_2/internal_detent  11: XLXI_20/BITCNT<1> 
-  3: SCLK               8: XLXI_2/rotary_event     12: XLXI_20/BITCNT<2> 
-  4: XLXI_15/r_reg<0>   9: XLXI_2/rotary_left      13: XLXI_20/BITCNT<3> 
-  5: XLXI_15/r_reg<1> 
+  1: LED<0>            15: SS                      28: XLXI_58/DEVCMD<0> 
+  2: LED<1>            16: XLXI_2/internal_detent  29: XLXI_58/DEVCMD<1> 
+  3: LED<2>            17: XLXI_2/rotary_event     30: XLXI_58/DEVCMD<2> 
+  4: PWMBUS<0>         18: XLXI_2/rotary_left      31: XLXI_58/DEVCMD<3> 
+  5: PWMBUS<1>         19: XLXI_48/count<0>        32: XLXI_58/DEVCMD<4> 
+  6: PWMBUS<2>         20: XLXI_48/count<1>        33: XLXI_58/DEVCMD<5> 
+  7: PWMBUS<3>         21: XLXI_48/count<2>        34: XLXI_58/DEVCMD<6> 
+  8: PWMBUS<4>         22: XLXI_48/count<3>        35: XLXI_58/DEVCMD<7> 
+  9: PWMBUS<5>         23: XLXI_58/BITCNT<0>       36: XLXI_58/SPIDATA_IN<0> 
+ 10: PWMBUS<6>         24: XLXI_58/BITCNT<1>       37: XLXI_58/SPIDATA_IN<1> 
+ 11: PWMBUS<7>         25: XLXI_58/BITCNT<2>       38: XLXI_58/SPIDATA_IN<2> 
+ 12: PWMOUT            26: XLXI_58/BITCNT<3>       39: XLXI_58/SPIDATA_OUT<6> 
+ 13: RESET             27: XLXI_58/CMDDATA         40: XLXI_58/SPIDATA_OUT<6>/XLXI_58/SPIDATA_OUT<6>_RSTF__$INT 
+ 14: SCLK             
 
-Signal                        1         2         3         4 FB
-Name                0----+----0----+----0----+----0----+----0 Inputs
-DIR                  .......XX............................... 2
-IRQ                  ......X................................. 1
+Signal                        1         2         3         4         5 FB
+Name                0----+----0----+----0----+----0----+----0----+----0 Inputs
+LED<0>               X...........X.............XXXXXXXXXX.............. 12
+DIR                  ................XX................................ 2
+PWMBUS<0>            ..........................XXXXXXXXXX.............. 10
+XLXI_58/BITCNT<0>    .............X........XXXX........................ 5
+IRQ                  ...............X.................................. 1
+XLXI_48/count<1>     ...XXXXXXXXXX.....XXXX............................ 14
+$OpTx$FX_DC$98       .....X..............X............................. 2
+XLXI_58/BITCNT<3>    .............X........XXXX........................ 5
+XLXI_58/BITCNT<2>    .............X........XXXX........................ 5
+XLXI_58/BITCNT<1>    .............X........XXXX........................ 5
 XLXI_2/internal_detent 
-                     .......X................................ 1
-XLXI_15/r_reg<1>     ...X.................................... 1
-XLXI_15/r_reg<0>     ...XXX.................................. 3
-XLXI_20/BITCNT<3>    ..X......XXXX........................... 5
-XLXI_20/BITCNT<0>    ..X......X..X........................... 3
-LED_0                XX...................................... 2
-TP                   .........XXXX........................... 4
-XLXI_15/r_reg<2>     ...XXX.................................. 3
-XLXI_20/BITCNT<2>    ..X......XXXX........................... 5
-XLXI_20/BITCNT<1>    ..X......XX.X........................... 4
-                    0----+----1----+----2----+----3----+----4
-                              0         0         0         0
+                     ................X................................. 1
+LED<2>               ..X.........X.............XXXXXXXXX..X............ 12
+MISO                 .............XX.......XXX.............X........... 6
+XLXI_58/SPIDATA_OUT<6> 
+                     ............X.............XXXXXXXXX....X.......... 11
+XLXI_58/CMDDATA      ......................XXXX........................ 4
+LED<1>               .X..........X.............XXXXXXXXX.X............. 12
+                    0----+----1----+----2----+----3----+----4----+----5
+                              0         0         0         0         0
 *********************************** FB4  ***********************************
-Number of function block inputs used/remaining:               3/51
-Number of signals used by logic mapping into function block:  3
+Number of function block inputs used/remaining:               19/35
+Number of signals used by logic mapping into function block:  19
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB4_1         (b)     
-(unused)              0       0     0   5     FB4_2   19    I/O     
-(unused)              0       0     0   5     FB4_3         (b)     
-(unused)              0       0     0   5     FB4_4         (b)     
-(unused)              0       0     0   5     FB4_5   20    I/O     
-(unused)              0       0     0   5     FB4_6         (b)     
-(unused)              0       0     0   5     FB4_7         (b)     
-(unused)              0       0     0   5     FB4_8   21    I/O     
-(unused)              0       0     0   5     FB4_9         (b)     
-(unused)              0       0     0   5     FB4_10        (b)     
-(unused)              0       0     0   5     FB4_11  22    I/O     
-(unused)              0       0     0   5     FB4_12        (b)     
-(unused)              0       0     0   5     FB4_13        (b)     
-CLK_50                1       0     0   4     FB4_14  23    I/O     O
-(unused)              0       0     0   5     FB4_15  27    I/O     
-(unused)              0       0     0   5     FB4_16        (b)     
-(unused)              0       0     0   5     FB4_17  28    I/O     
-(unused)              0       0     0   5     FB4_18        (b)     
+(unused)              0       0   \/5   0     FB4_1         (b)     (b)
+PWMOUT               25      20<-   0   0     FB4_2   19    I/O     O
+(unused)              0       0   /\5   0     FB4_3         (b)     (b)
+(unused)              0       0   /\5   0     FB4_4         (b)     (b)
+XLXI_15/r_reg<0>      1       1<- /\5   0     FB4_5   20    I/O     (b)
+XLXI_15/r_reg<2>      2       0   /\1   2     FB4_6         (b)     (b)
+(unused)              0       0   \/5   0     FB4_7         (b)     (b)
+XLXI_48/count<0>     15      10<-   0   0     FB4_8   21    I/O     (b)
+(unused)              0       0   /\5   0     FB4_9         (b)     (b)
+(unused)              0       0   \/5   0     FB4_10        (b)     (b)
+(unused)              0       0   \/5   0     FB4_11  22    I/O     (b)
+XLXI_48/count<2>     20      15<-   0   0     FB4_12        (b)     (b)
+(unused)              0       0   /\5   0     FB4_13        (b)     (b)
+CLK_50                1       0   \/4   0     FB4_14  23    I/O     O
+(unused)              0       0   \/5   0     FB4_15  27    I/O     (b)
+XLXI_48/count<3>     21      16<-   0   0     FB4_16        (b)     (b)
+(unused)              0       0   /\5   0     FB4_17  28    I/O     (b)
+XLXI_2/rotary_in<1>   1       0   /\2   2     FB4_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: XLXI_15/r_reg<0>   2: XLXI_15/r_reg<1>   3: XLXI_15/r_reg<2> 
+  1: $OpTx$FX_DC$98     8: PWMBUS<6>         14: XLXI_15/r_reg<2> 
+  2: PWMBUS<0>          9: PWMBUS<7>         15: XLXI_2/rotary_b_in 
+  3: PWMBUS<1>         10: PWMOUT            16: XLXI_48/count<0> 
+  4: PWMBUS<2>         11: RESET             17: XLXI_48/count<1> 
+  5: PWMBUS<3>         12: XLXI_15/r_reg<0>  18: XLXI_48/count<2> 
+  6: PWMBUS<4>         13: XLXI_15/r_reg<1>  19: XLXI_48/count<3> 
+  7: PWMBUS<5>        
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-CLK_50               XXX..................................... 3
+PWMOUT               XXXXXXXXXXX....XXXX..................... 15
+XLXI_15/r_reg<0>     ...........XXX.......................... 3
+XLXI_15/r_reg<2>     ...........XXX.......................... 3
+XLXI_48/count<0>     .XXXXXXXXXX....XXXX..................... 14
+XLXI_48/count<2>     .XXXXXXXXXX....XXXX..................... 14
+CLK_50               ...........XXX.......................... 3
+XLXI_48/count<3>     .XXXXXXXXXX....XXXX..................... 14
+XLXI_2/rotary_in<1>  ..............X......................... 1
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *******************************  Equations  ********************************
 
 ********** Mapped Logic **********
 
+
+$OpTx$FX_DC$98 <= NOT (PWMBUS(2)
+	 XOR 
+$OpTx$FX_DC$98 <= NOT (XLXI_48/count(2));
+
 FTCPE_CLK_50: FTCPE port map (CLK_50,'1',ECLK,'0','0',CLK_50_CE);
 CLK_50_CE <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
 	XLXI_15/r_reg(2));
 
-FDCPE_DB0: FDCPE port map (DB(0),MOSI,SCLK,'0','0',NOT SS);
-
-FDCPE_DB1: FDCPE port map (DB(1),DB(0),SCLK,'0','0',NOT SS);
-
-FDCPE_DB2: FDCPE port map (DB(2),DB(1),SCLK,'0','0',NOT SS);
-
-FDCPE_DB3: FDCPE port map (DB(3),DB(2),SCLK,'0','0',NOT SS);
-
-FDCPE_DB4: FDCPE port map (DB(4),DB(3),SCLK,'0','0',NOT SS);
-
-FDCPE_DB5: FDCPE port map (DB(5),DB(4),SCLK,'0','0',NOT SS);
-
-FDCPE_DB6: FDCPE port map (DB(6),DB(5),SCLK,'0','0',NOT SS);
-
-FDCPE_DB7: FDCPE port map (DB(7),DB(6),SCLK,'0','0',NOT SS);
-
 FDCPE_DIR: FDCPE port map (DIR,XLXI_2/rotary_left,ECLK,'0','0',XLXI_2/rotary_event);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 FDCPE_IRQ: FDCPE port map (IRQ,XLXI_2/internal_detent,ECLK,'0','0');
 
 
-LED_0 <= (DB(0) AND CLK_50);
+LED(0) <= ((NOT RESET AND XLXI_58/SPIDATA_IN(0) AND LED(0))
+	OR (NOT RESET AND XLXI_58/DEVCMD(2) AND LED(0))
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(0) AND 
+	XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND NOT XLXI_58/DEVCMD(2) AND 
+	NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND NOT XLXI_58/DEVCMD(5) AND 
+	NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA)
+	OR (NOT RESET AND NOT XLXI_58/DEVCMD(0) AND LED(0))
+	OR (NOT RESET AND XLXI_58/DEVCMD(1) AND LED(0))
+	OR (NOT RESET AND LED(0) AND NOT XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/DEVCMD(3) AND LED(0))
+	OR (NOT RESET AND XLXI_58/DEVCMD(4) AND LED(0))
+	OR (NOT RESET AND XLXI_58/DEVCMD(5) AND LED(0))
+	OR (NOT RESET AND XLXI_58/DEVCMD(6) AND LED(0))
+	OR (NOT RESET AND XLXI_58/DEVCMD(7) AND LED(0)));
 
 
-TP <= (XLXI_20/BITCNT(3) AND NOT XLXI_20/BITCNT(0) AND 
-	NOT XLXI_20/BITCNT(1) AND NOT XLXI_20/BITCNT(2));
+LED(1) <= ((XLXI_58/CMDDATA.EXP)
+	OR (NOT RESET AND NOT XLXI_58/DEVCMD(0) AND LED(1))
+	OR (NOT RESET AND XLXI_58/DEVCMD(5) AND LED(1))
+	OR (NOT RESET AND XLXI_58/DEVCMD(6) AND LED(1))
+	OR (NOT RESET AND XLXI_58/DEVCMD(7) AND LED(1))
+	OR (NOT RESET AND LED(1) AND NOT XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/DEVCMD(3) AND LED(1))
+	OR (NOT RESET AND XLXI_58/DEVCMD(4) AND LED(1)));
+
+
+LED(2) <= ((NOT RESET AND XLXI_58/SPIDATA_IN(2) AND LED(2))
+	OR (NOT RESET AND NOT XLXI_58/DEVCMD(0) AND LED(2))
+	OR (NOT RESET AND XLXI_58/DEVCMD(1) AND LED(2))
+	OR (NOT RESET AND XLXI_58/DEVCMD(2) AND LED(2))
+	OR (NOT RESET AND LED(2) AND NOT XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(2) AND 
+	XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND NOT XLXI_58/DEVCMD(2) AND 
+	NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND NOT XLXI_58/DEVCMD(5) AND 
+	NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/DEVCMD(3) AND LED(2))
+	OR (NOT RESET AND XLXI_58/DEVCMD(4) AND LED(2))
+	OR (NOT RESET AND XLXI_58/DEVCMD(5) AND LED(2))
+	OR (NOT RESET AND XLXI_58/DEVCMD(6) AND LED(2))
+	OR (NOT RESET AND XLXI_58/DEVCMD(7) AND LED(2)));
+
+
+LED_0 <= (CLK_50 AND LED(0));
+
+
+LED_1 <= (CLK_50 AND LED(1));
+
+
+LED_2 <= (CLK_50 AND LED(2));
+
+FDCPE_MISO: FDCPE port map (MISO,MISO_D,SCLK,'0','0',NOT SS);
+MISO_D <= ((NOT XLXI_58/BITCNT(0) AND XLXI_58/BITCNT(2) AND 
+	XLXI_58/SPIDATA_OUT(6))
+	OR (NOT XLXI_58/BITCNT(0) AND NOT XLXI_58/BITCNT(1) AND 
+	XLXI_58/SPIDATA_OUT(6))
+	OR (NOT XLXI_58/BITCNT(1) AND XLXI_58/BITCNT(2) AND 
+	XLXI_58/SPIDATA_OUT(6)));
+
+FDCPE_PWMBUS0: FDCPE port map (PWMBUS(0),'0','0',PWMBUS_CLR(0),PWMBUS_PRE(0));
+PWMBUS_CLR(0) <= (NOT XLXI_58/SPIDATA_IN(0) AND NOT XLXI_58/DEVCMD(0) AND 
+	NOT XLXI_58/DEVCMD(1) AND XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND 
+	NOT XLXI_58/DEVCMD(4) AND NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND 
+	NOT XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA);
+PWMBUS_PRE(0) <= (XLXI_58/SPIDATA_IN(0) AND NOT XLXI_58/DEVCMD(0) AND 
+	NOT XLXI_58/DEVCMD(1) AND XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND 
+	NOT XLXI_58/DEVCMD(4) AND NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND 
+	NOT XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA);
+
+FDCPE_PWMBUS1: FDCPE port map (PWMBUS(1),'0','0',PWMBUS_CLR(1),PWMBUS_PRE(1));
+PWMBUS_CLR(1) <= (NOT XLXI_58/SPIDATA_IN(1) AND NOT XLXI_58/DEVCMD(0) AND 
+	NOT XLXI_58/DEVCMD(1) AND XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND 
+	NOT XLXI_58/DEVCMD(4) AND NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND 
+	NOT XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA);
+PWMBUS_PRE(1) <= (XLXI_58/SPIDATA_IN(1) AND NOT XLXI_58/DEVCMD(0) AND 
+	NOT XLXI_58/DEVCMD(1) AND XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND 
+	NOT XLXI_58/DEVCMD(4) AND NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND 
+	NOT XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA);
+
+FDCPE_PWMBUS2: FDCPE port map (PWMBUS(2),'0','0',PWMBUS_CLR(2),PWMBUS_PRE(2));
+PWMBUS_CLR(2) <= (NOT XLXI_58/SPIDATA_IN(2) AND NOT XLXI_58/DEVCMD(0) AND 
+	NOT XLXI_58/DEVCMD(1) AND XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND 
+	NOT XLXI_58/DEVCMD(4) AND NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND 
+	NOT XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA);
+PWMBUS_PRE(2) <= (XLXI_58/SPIDATA_IN(2) AND NOT XLXI_58/DEVCMD(0) AND 
+	NOT XLXI_58/DEVCMD(1) AND XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND 
+	NOT XLXI_58/DEVCMD(4) AND NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND 
+	NOT XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA);
+
+FDCPE_PWMBUS3: FDCPE port map (PWMBUS(3),'0','0',PWMBUS_CLR(3),PWMBUS_PRE(3));
+PWMBUS_CLR(3) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	NOT XLXI_58/SPIDATA_IN(3) AND XLXI_58/CMDDATA);
+PWMBUS_PRE(3) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	XLXI_58/SPIDATA_IN(3) AND XLXI_58/CMDDATA);
+
+FDCPE_PWMBUS4: FDCPE port map (PWMBUS(4),'0','0',PWMBUS_CLR(4),PWMBUS_PRE(4));
+PWMBUS_CLR(4) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	NOT XLXI_58/SPIDATA_IN(4) AND XLXI_58/CMDDATA);
+PWMBUS_PRE(4) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	XLXI_58/SPIDATA_IN(4) AND XLXI_58/CMDDATA);
+
+FDCPE_PWMBUS5: FDCPE port map (PWMBUS(5),'0','0',PWMBUS_CLR(5),PWMBUS_PRE(5));
+PWMBUS_CLR(5) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	NOT XLXI_58/SPIDATA_IN(5) AND XLXI_58/CMDDATA);
+PWMBUS_PRE(5) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	XLXI_58/SPIDATA_IN(5) AND XLXI_58/CMDDATA);
+
+FDCPE_PWMBUS6: FDCPE port map (PWMBUS(6),'0','0',PWMBUS_CLR(6),PWMBUS_PRE(6));
+PWMBUS_CLR(6) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	NOT XLXI_58/SPIDATA_IN(6) AND XLXI_58/CMDDATA);
+PWMBUS_PRE(6) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	XLXI_58/SPIDATA_IN(6) AND XLXI_58/CMDDATA);
+
+FDCPE_PWMBUS7: FDCPE port map (PWMBUS(7),'0','0',PWMBUS_CLR(7),PWMBUS_PRE(7));
+PWMBUS_CLR(7) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	NOT XLXI_58/SPIDATA_IN(7) AND XLXI_58/CMDDATA);
+PWMBUS_PRE(7) <= (NOT XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	XLXI_58/SPIDATA_IN(7) AND XLXI_58/CMDDATA);
+
+FTCPE_PWMOUT: FTCPE port map (PWMOUT,PWMOUT_T,ECLK,'0',RESET);
+PWMOUT_T <= ((PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	XLXI_48/count(3) AND PWMBUS(0) AND NOT PWMBUS(1) AND PWMBUS(3) AND 
+	$OpTx$FX_DC$98)
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	NOT XLXI_48/count(3) AND PWMBUS(0) AND NOT PWMBUS(1) AND NOT PWMBUS(3) AND 
+	$OpTx$FX_DC$98)
+	OR (PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(0) AND NOT PWMBUS(1) AND PWMBUS(2) AND PWMBUS(3) AND 
+	NOT $OpTx$FX_DC$98)
+	OR (PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	NOT XLXI_48/count(3) AND NOT PWMBUS(0) AND NOT PWMBUS(1) AND PWMBUS(2) AND NOT PWMBUS(3) AND 
+	NOT $OpTx$FX_DC$98)
+	OR (PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	NOT XLXI_48/count(3) AND NOT PWMBUS(0) AND NOT PWMBUS(1) AND NOT PWMBUS(2) AND PWMBUS(3) AND 
+	NOT $OpTx$FX_DC$98)
+	OR (EXP10_.EXP)
+	OR (NOT PWMOUT AND XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	XLXI_48/count(2) AND XLXI_48/count(3) AND NOT PWMBUS(4) AND PWMBUS(5) AND 
+	PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	XLXI_48/count(2) AND NOT XLXI_48/count(3) AND NOT PWMBUS(4) AND PWMBUS(5) AND 
+	PWMBUS(6) AND NOT PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	XLXI_48/count(2) AND XLXI_48/count(3) AND PWMBUS(4) AND PWMBUS(5) AND 
+	PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	XLXI_48/count(2) AND NOT XLXI_48/count(3) AND PWMBUS(4) AND PWMBUS(5) AND 
+	PWMBUS(6) AND NOT PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	XLXI_48/count(2) AND XLXI_48/count(3) AND PWMBUS(4) AND NOT PWMBUS(5) AND 
+	PWMBUS(6) AND PWMBUS(7))
+	OR (PWMOUT AND XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(0) AND PWMBUS(1) AND PWMBUS(3) AND 
+	$OpTx$FX_DC$98)
+	OR (PWMOUT AND XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	NOT XLXI_48/count(3) AND NOT PWMBUS(0) AND PWMBUS(1) AND NOT PWMBUS(3) AND 
+	$OpTx$FX_DC$98)
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	XLXI_48/count(3) AND PWMBUS(0) AND PWMBUS(1) AND PWMBUS(3) AND 
+	$OpTx$FX_DC$98)
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	NOT XLXI_48/count(3) AND PWMBUS(0) AND PWMBUS(1) AND NOT PWMBUS(3) AND 
+	$OpTx$FX_DC$98));
 
 FTCPE_XLXI_15/r_reg0: FTCPE port map (XLXI_15/r_reg(0),XLXI_15/r_reg_T(0),ECLK,'0','0');
 XLXI_15/r_reg_T(0) <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
@@ -371,23 +667,227 @@ XLXI_2/rotary_q2_T <= ((XLXI_2/rotary_in(1) AND NOT XLXI_2/rotary_q2 AND
 	OR (NOT XLXI_2/rotary_in(1) AND XLXI_2/rotary_q2 AND 
 	XLXI_2/rotary_in(0)));
 
-FDCPE_XLXI_20/BITCNT0: FDCPE port map (XLXI_20/BITCNT(0),XLXI_20/BITCNT_D(0),SCLK,'0','0');
-XLXI_20/BITCNT_D(0) <= (NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0));
+FDCPE_XLXI_48/count0: FDCPE port map (XLXI_48/count(0),XLXI_48/count_D(0),ECLK,RESET,'0');
+XLXI_48/count_D(0) <= ((PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	PWMBUS(1))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	NOT PWMBUS(6))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(2) AND 
+	PWMBUS(6))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(3) AND 
+	NOT PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(3) AND 
+	PWMBUS(7))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	NOT PWMBUS(1))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	NOT PWMBUS(2))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(2) AND 
+	PWMBUS(2))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(3) AND 
+	NOT PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(3) AND 
+	PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND NOT PWMBUS(0))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT PWMBUS(4))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	NOT PWMBUS(5))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	PWMBUS(5)));
 
-FDCPE_XLXI_20/BITCNT1: FDCPE port map (XLXI_20/BITCNT(1),XLXI_20/BITCNT_D(1),SCLK,'0','0');
-XLXI_20/BITCNT_D(1) <= ((NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0) AND 
-	NOT XLXI_20/BITCNT(1))
-	OR (NOT XLXI_20/BITCNT(3) AND NOT XLXI_20/BITCNT(0) AND 
-	XLXI_20/BITCNT(1)));
+FDCPE_XLXI_48/count1: FDCPE port map (XLXI_48/count(1),XLXI_48/count_D(1),ECLK,RESET,'0');
+XLXI_48/count_D(1) <= ((NOT PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	NOT XLXI_48/count(3) AND NOT PWMBUS(4) AND PWMBUS(5) AND PWMBUS(6) AND NOT PWMBUS(7))
+	OR (NOT PWMOUT AND XLXI_48/count(0) AND NOT XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(4) AND PWMBUS(5) AND NOT PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	NOT XLXI_48/count(3) AND PWMBUS(4) AND PWMBUS(5) AND PWMBUS(6) AND NOT PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND PWMBUS(4) AND PWMBUS(5) AND NOT PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(2) AND 
+	NOT XLXI_48/count(3) AND PWMBUS(4) AND PWMBUS(5) AND NOT PWMBUS(6) AND NOT PWMBUS(7))
+	OR ($OpTx$FX_DC$98.EXP)
+	OR (PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(0) AND PWMBUS(1) AND PWMBUS(2) AND PWMBUS(3))
+	OR (PWMOUT AND XLXI_48/count(0) AND NOT XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(0) AND PWMBUS(1) AND NOT PWMBUS(2) AND PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND PWMBUS(0) AND PWMBUS(1) AND PWMBUS(2) AND PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND PWMBUS(0) AND PWMBUS(1) AND NOT PWMBUS(2) AND PWMBUS(3))
+	OR (NOT PWMOUT AND XLXI_48/count(0) AND NOT XLXI_48/count(2) AND 
+	NOT XLXI_48/count(3) AND NOT PWMBUS(4) AND PWMBUS(5) AND NOT PWMBUS(6) AND NOT PWMBUS(7))
+	OR (XLXI_48/count(0) AND XLXI_48/count(1))
+	OR (NOT XLXI_48/count(0) AND NOT XLXI_48/count(1))
+	OR (NOT PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(4) AND PWMBUS(5) AND PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND PWMBUS(4) AND PWMBUS(5) AND PWMBUS(6) AND PWMBUS(7)));
 
-FTCPE_XLXI_20/BITCNT2: FTCPE port map (XLXI_20/BITCNT(2),XLXI_20/BITCNT_T(2),SCLK,'0','0');
-XLXI_20/BITCNT_T(2) <= ((XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(2))
-	OR (NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0) AND 
-	XLXI_20/BITCNT(1)));
+FDCPE_XLXI_48/count2: FDCPE port map (XLXI_48/count(2),XLXI_48/count_D(2),ECLK,RESET,'0');
+XLXI_48/count_D(2) <= ((EXP13_.EXP)
+	OR (PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(0) AND PWMBUS(1) AND PWMBUS(2) AND PWMBUS(3))
+	OR (PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	NOT XLXI_48/count(3) AND NOT PWMBUS(0) AND PWMBUS(1) AND PWMBUS(2) AND NOT PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	XLXI_48/count(3) AND PWMBUS(0) AND NOT PWMBUS(1) AND PWMBUS(2) AND PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	NOT XLXI_48/count(3) AND PWMBUS(0) AND NOT PWMBUS(1) AND PWMBUS(2) AND NOT PWMBUS(3))
+	OR (PWMOUT AND XLXI_48/count(1) AND XLXI_48/count(2) AND 
+	NOT XLXI_48/count(3) AND PWMBUS(0) AND PWMBUS(1) AND PWMBUS(2) AND NOT PWMBUS(3))
+	OR (PWMOUT AND XLXI_48/count(1) AND XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND PWMBUS(0) AND PWMBUS(1) AND PWMBUS(2) AND PWMBUS(3))
+	OR (NOT PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	NOT XLXI_48/count(3) AND NOT PWMBUS(4) AND PWMBUS(5) AND PWMBUS(6) AND NOT PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	XLXI_48/count(3) AND PWMBUS(4) AND NOT PWMBUS(5) AND PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	NOT XLXI_48/count(3) AND PWMBUS(4) AND NOT PWMBUS(5) AND PWMBUS(6) AND NOT PWMBUS(7))
+	OR (NOT PWMOUT AND XLXI_48/count(1) AND XLXI_48/count(2) AND 
+	NOT XLXI_48/count(3) AND PWMBUS(4) AND PWMBUS(5) AND PWMBUS(6) AND NOT PWMBUS(7))
+	OR (PWMOUT AND NOT XLXI_48/count(2) AND XLXI_48/count(3) AND 
+	NOT PWMBUS(0) AND NOT PWMBUS(1) AND PWMBUS(2) AND PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(2) AND NOT XLXI_48/count(3) AND 
+	NOT PWMBUS(0) AND NOT PWMBUS(1) AND PWMBUS(2) AND NOT PWMBUS(3))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(2) AND XLXI_48/count(3) AND 
+	NOT PWMBUS(4) AND NOT PWMBUS(5) AND PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(2) AND NOT XLXI_48/count(3) AND 
+	NOT PWMBUS(4) AND NOT PWMBUS(5) AND PWMBUS(6) AND NOT PWMBUS(7)));
 
-FDCPE_XLXI_20/BITCNT3: FDCPE port map (XLXI_20/BITCNT(3),XLXI_20/BITCNT_D(3),SCLK,'0','0');
-XLXI_20/BITCNT_D(3) <= (NOT XLXI_20/BITCNT(3) AND XLXI_20/BITCNT(0) AND 
-	XLXI_20/BITCNT(1) AND XLXI_20/BITCNT(2));
+FDCPE_XLXI_48/count3: FDCPE port map (XLXI_48/count(3),XLXI_48/count_D(3),ECLK,RESET,'0');
+XLXI_48/count_D(3) <= ((XLXN_41.EXP)
+	OR (PWMOUT AND XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	NOT XLXI_48/count(2) AND NOT PWMBUS(0) AND PWMBUS(1) AND NOT PWMBUS(2) AND PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	NOT XLXI_48/count(2) AND PWMBUS(0) AND PWMBUS(1) AND NOT PWMBUS(2) AND PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	NOT XLXI_48/count(2) AND PWMBUS(0) AND NOT PWMBUS(1) AND NOT PWMBUS(2) AND PWMBUS(3))
+	OR (NOT PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(4) AND NOT PWMBUS(5) AND PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	NOT XLXI_48/count(2) AND PWMBUS(4) AND PWMBUS(5) AND NOT PWMBUS(6) AND PWMBUS(7))
+	OR (XLXI_2/rotary_in(1).EXP)
+	OR (PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(1) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(0) AND NOT PWMBUS(1) AND PWMBUS(2) AND PWMBUS(3))
+	OR (PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	XLXI_48/count(2) AND PWMBUS(0) AND NOT PWMBUS(1) AND PWMBUS(2) AND PWMBUS(3))
+	OR (NOT PWMOUT AND XLXI_48/count(0) AND XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND NOT PWMBUS(4) AND PWMBUS(5) AND PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	XLXI_48/count(2) AND PWMBUS(4) AND NOT PWMBUS(5) AND PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND XLXI_48/count(1) AND XLXI_48/count(2) AND 
+	XLXI_48/count(3) AND PWMBUS(4) AND PWMBUS(5) AND PWMBUS(6) AND PWMBUS(7))
+	OR (PWMOUT AND NOT XLXI_48/count(3) AND NOT PWMBUS(0) AND 
+	NOT PWMBUS(1) AND NOT PWMBUS(2) AND PWMBUS(3))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(3) AND NOT PWMBUS(4) AND 
+	NOT PWMBUS(5) AND NOT PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	NOT XLXI_48/count(2) AND NOT PWMBUS(4) AND PWMBUS(5) AND NOT PWMBUS(6) AND PWMBUS(7))
+	OR (NOT PWMOUT AND NOT XLXI_48/count(0) AND NOT XLXI_48/count(1) AND 
+	NOT XLXI_48/count(2) AND PWMBUS(4) AND NOT PWMBUS(5) AND NOT PWMBUS(6) AND PWMBUS(7)));
+
+FTCPE_XLXI_58/BITCNT0: FTCPE port map (XLXI_58/BITCNT(0),'1',SCLK,XLXI_58/BITCNT_CLR(0),'0');
+XLXI_58/BITCNT_CLR(0) <= (NOT XLXI_58/BITCNT(0) AND NOT XLXI_58/BITCNT(1) AND 
+	NOT XLXI_58/BITCNT(2) AND XLXI_58/BITCNT(3));
+
+FTCPE_XLXI_58/BITCNT1: FTCPE port map (XLXI_58/BITCNT(1),XLXI_58/BITCNT(0),SCLK,XLXI_58/BITCNT_CLR(1),'0');
+XLXI_58/BITCNT_CLR(1) <= (NOT XLXI_58/BITCNT(0) AND NOT XLXI_58/BITCNT(1) AND 
+	NOT XLXI_58/BITCNT(2) AND XLXI_58/BITCNT(3));
+
+FTCPE_XLXI_58/BITCNT2: FTCPE port map (XLXI_58/BITCNT(2),XLXI_58/BITCNT_T(2),SCLK,XLXI_58/BITCNT_CLR(2),'0');
+XLXI_58/BITCNT_T(2) <= (XLXI_58/BITCNT(0) AND XLXI_58/BITCNT(1));
+XLXI_58/BITCNT_CLR(2) <= (NOT XLXI_58/BITCNT(0) AND NOT XLXI_58/BITCNT(1) AND 
+	NOT XLXI_58/BITCNT(2) AND XLXI_58/BITCNT(3));
+
+FTCPE_XLXI_58/BITCNT3: FTCPE port map (XLXI_58/BITCNT(3),XLXI_58/BITCNT_T(3),SCLK,XLXI_58/BITCNT_CLR(3),'0');
+XLXI_58/BITCNT_T(3) <= (XLXI_58/BITCNT(0) AND XLXI_58/BITCNT(1) AND 
+	XLXI_58/BITCNT(2));
+XLXI_58/BITCNT_CLR(3) <= (NOT XLXI_58/BITCNT(0) AND NOT XLXI_58/BITCNT(1) AND 
+	NOT XLXI_58/BITCNT(2) AND XLXI_58/BITCNT(3));
+
+FTCPE_XLXI_58/CMDDATA: FTCPE port map (XLXI_58/CMDDATA,'1',XLXI_58/CMDDATA_C,'0','0');
+XLXI_58/CMDDATA_C <= (NOT XLXI_58/BITCNT(0) AND NOT XLXI_58/BITCNT(1) AND 
+	NOT XLXI_58/BITCNT(2) AND XLXI_58/BITCNT(3));
+
+
+XLXI_58/DEVCMD(0) <= ((NOT RESET AND XLXI_58/SPIDATA_IN(0) AND 
+	XLXI_58/DEVCMD(0))
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(0) AND NOT XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/DEVCMD(0) AND XLXI_58/CMDDATA));
+
+
+XLXI_58/DEVCMD(1) <= ((NOT RESET AND XLXI_58/SPIDATA_IN(1) AND 
+	XLXI_58/DEVCMD(1))
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(1) AND NOT XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/DEVCMD(1) AND XLXI_58/CMDDATA));
+
+
+XLXI_58/DEVCMD(2) <= ((NOT RESET AND XLXI_58/SPIDATA_IN(2) AND 
+	XLXI_58/DEVCMD(2))
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(2) AND NOT XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/DEVCMD(2) AND XLXI_58/CMDDATA));
+
+
+XLXI_58/DEVCMD(3) <= ((NOT RESET AND XLXI_58/DEVCMD(3) AND 
+	XLXI_58/SPIDATA_IN(3))
+	OR (NOT RESET AND XLXI_58/DEVCMD(3) AND XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(3) AND NOT XLXI_58/CMDDATA));
+
+
+XLXI_58/DEVCMD(4) <= ((NOT RESET AND XLXI_58/DEVCMD(4) AND 
+	XLXI_58/SPIDATA_IN(4))
+	OR (NOT RESET AND XLXI_58/DEVCMD(4) AND XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(4) AND NOT XLXI_58/CMDDATA));
+
+
+XLXI_58/DEVCMD(5) <= ((NOT RESET AND XLXI_58/DEVCMD(5) AND 
+	XLXI_58/SPIDATA_IN(5))
+	OR (NOT RESET AND XLXI_58/DEVCMD(5) AND XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(5) AND NOT XLXI_58/CMDDATA));
+
+
+XLXI_58/DEVCMD(6) <= ((NOT RESET AND XLXI_58/DEVCMD(6) AND 
+	XLXI_58/SPIDATA_IN(6))
+	OR (NOT RESET AND XLXI_58/DEVCMD(6) AND XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(6) AND NOT XLXI_58/CMDDATA));
+
+
+XLXI_58/DEVCMD(7) <= ((NOT RESET AND XLXI_58/DEVCMD(7) AND 
+	XLXI_58/SPIDATA_IN(7))
+	OR (NOT RESET AND XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/SPIDATA_IN(7) AND NOT XLXI_58/CMDDATA));
+
+FDCPE_XLXI_58/SPIDATA_IN0: FDCPE port map (XLXI_58/SPIDATA_IN(0),XLXI_58/SPIDATA_IN(1),SCLK,'0','0',NOT SS);
+
+FDCPE_XLXI_58/SPIDATA_IN1: FDCPE port map (XLXI_58/SPIDATA_IN(1),XLXI_58/SPIDATA_IN(2),SCLK,'0','0',NOT SS);
+
+FDCPE_XLXI_58/SPIDATA_IN2: FDCPE port map (XLXI_58/SPIDATA_IN(2),XLXI_58/SPIDATA_IN(3),SCLK,'0','0',NOT SS);
+
+FDCPE_XLXI_58/SPIDATA_IN3: FDCPE port map (XLXI_58/SPIDATA_IN(3),XLXI_58/SPIDATA_IN(4),SCLK,'0','0',NOT SS);
+
+FDCPE_XLXI_58/SPIDATA_IN4: FDCPE port map (XLXI_58/SPIDATA_IN(4),XLXI_58/SPIDATA_IN(5),SCLK,'0','0',NOT SS);
+
+FDCPE_XLXI_58/SPIDATA_IN5: FDCPE port map (XLXI_58/SPIDATA_IN(5),XLXI_58/SPIDATA_IN(6),SCLK,'0','0',NOT SS);
+
+FDCPE_XLXI_58/SPIDATA_IN6: FDCPE port map (XLXI_58/SPIDATA_IN(6),XLXI_58/SPIDATA_IN(7),SCLK,'0','0',NOT SS);
+
+FDCPE_XLXI_58/SPIDATA_IN7: FDCPE port map (XLXI_58/SPIDATA_IN(7),MOSI,SCLK,'0','0',NOT SS);
+
+FDCPE_XLXI_58/SPIDATA_OUT6: FDCPE port map (XLXI_58/SPIDATA_OUT(6),'0','0',NOT XLXI_58/SPIDATA_OUT(6)/XLXI_58/SPIDATA_OUT(6)_RSTF__$INT,XLXI_58/SPIDATA_OUT_PRE(6));
+XLXI_58/SPIDATA_OUT_PRE(6) <= (NOT RESET AND NOT XLXI_58/DEVCMD(0) AND XLXI_58/DEVCMD(1) AND 
+	XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	XLXI_58/CMDDATA);
+
+
+XLXI_58/SPIDATA_OUT(6)/XLXI_58/SPIDATA_OUT(6)_RSTF__$INT <= ((NOT RESET AND NOT XLXI_58/DEVCMD(0) AND XLXI_58/DEVCMD(2) AND 
+	NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND NOT XLXI_58/DEVCMD(5) AND 
+	NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND XLXI_58/CMDDATA)
+	OR (NOT RESET AND XLXI_58/DEVCMD(0) AND NOT XLXI_58/DEVCMD(1) AND 
+	NOT XLXI_58/DEVCMD(2) AND NOT XLXI_58/DEVCMD(3) AND NOT XLXI_58/DEVCMD(4) AND 
+	NOT XLXI_58/DEVCMD(5) AND NOT XLXI_58/DEVCMD(6) AND NOT XLXI_58/DEVCMD(7) AND 
+	XLXI_58/CMDDATA));
 
 Register Legend:
  FDCPE (Q,D,C,CLR,PRE,CE); 
@@ -426,18 +926,18 @@ No. Name                           No. Name
   6 IRQ                              28 KPR                           
   7 MOSI                             29 KPR                           
   8 SCLK                             30 KPR                           
-  9 TDI                              31 DB<7>                         
- 10 TMS                              32 DB<6>                         
+  9 TDI                              31 KPR                           
+ 10 TMS                              32 KPR                           
  11 TCK                              33 KPR                           
  12 SS                               34 KPR                           
- 13 LED_0                            35 VCC                           
- 14 TP                               36 KPR                           
- 15 VCC                              37 DB<5>                         
- 16 KPR                              38 DB<4>                         
- 17 GND                              39 DB<3>                         
- 18 KPR                              40 DB<2>                         
- 19 KPR                              41 DB<1>                         
- 20 KPR                              42 DB<0>                         
+ 13 MISO                             35 VCC                           
+ 14 KPR                              36 KPR                           
+ 15 VCC                              37 KPR                           
+ 16 KPR                              38 KPR                           
+ 17 GND                              39 KPR                           
+ 18 RESET                            40 LED_2                         
+ 19 PWMOUT                           41 LED_1                         
+ 20 KPR                              42 LED_0                         
  21 KPR                              43 ECLK                          
  22 KPR                              44 KPR                           
 

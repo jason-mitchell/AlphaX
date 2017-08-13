@@ -2,9 +2,12 @@
 SCLK
 MOSI
 SS
+NRST
 [Outputs]
-TFLAG
-=PDOUT[7:0]=
+MISO
+
+=LEDPORT[3:0]=
+=PWMPORT[7:0]=
 [BiDir]
 [ATTRIBUTES]
 VeriModel spi

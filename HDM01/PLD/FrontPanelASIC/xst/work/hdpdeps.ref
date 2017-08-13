@@ -1,13 +1,13 @@
-V3 16
-FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf 2017/08/10.20:00:08 P.20131013
-EN work/FrontPanel 1502478125 \
+V3 19
+FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf 2017/08/13.17:24:19 P.20131013
+EN work/FrontPanel 1502637864 \
       FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 LB UNISIM \
       PH unisim/VCOMPONENTS 1381692182
-AR work/FrontPanel/BEHAVIORAL 1502478126 \
+AR work/FrontPanel/BEHAVIORAL 1502637865 \
       FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf \
-      EN work/FrontPanel 1502478125 CP rotary_decoder CP IBUF CP OBUF \
-      CP clock_divider CP AND2 CP spi
+      EN work/FrontPanel 1502637864 CP rotary_decoder CP IBUF CP OBUF \
+      CP clock_divider CP AND2 CP PWM CP BUF CP spi CP INV
 FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/NEC_IR_DECODER.vhd 2017/08/05.22:38:13 P.20131013
 EN work/NEC_IR_DECODER 1501965498 \
       FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/NEC_IR_DECODER.vhd \
@@ -17,10 +17,10 @@ AR work/NEC_IR_DECODER/Behavioral 1501965499 \
       FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/NEC_IR_DECODER.vhd \
       EN work/NEC_IR_DECODER 1501965498
 FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd 2017/08/01.22:24:31 P.20131013
-EN work/rotary_decoder 1502478123 \
+EN work/rotary_decoder 1502637862 \
       FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/rotary_decoder/Behavioral 1502478124 \
+AR work/rotary_decoder/Behavioral 1502637863 \
       FL C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd \
-      EN work/rotary_decoder 1502478123
+      EN work/rotary_decoder 1502637862

@@ -1,0 +1,11 @@
+[Inputs]
+clk
+reset
+=rise[3:0]=
+=fall[3:0]=
+[Outputs]
+clk_out
+[BiDir]
+[ATTRIBUTES]
+VeriModel PWM
+

@@ -58,6 +58,8 @@ GPIO_InitTypeDef        GPIO_InitStructure;
 USART_InitTypeDef       USART_InitStructure;
 USART_ClockInitTypeDef  USART_ClockInitStructure;
 NVIC_InitTypeDef        NVIC_InitStructure;
+TIM_TimeBaseInitTypeDef Timer_InitStructure;
+
 CurrentTime				TimeOfDay;
 
 // Macros, definitions, constants
@@ -204,6 +206,7 @@ int main(void){
         RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);                             // Port B
         RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);                             // Port A
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);                          // Enable clock to USART 1
+        RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);							// Clock to TIM2
 
 
 
@@ -228,6 +231,7 @@ int main(void){
 
         // Configure I/O pins on PORTB
         // PB6 & PB7 -> UART1, PB8 & PB9 -> I2C1
+        //------------------------------------------------------
 
         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
@@ -237,7 +241,13 @@ int main(void){
         GPIO_Init(GPIOB, &GPIO_InitStructure);
 
         GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_0);
-        GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_0);                        // Pin 6 and 7 are AF0
+        GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_0);                        // Pin 6 and 7 are AF0 (USART Tx and RX)
+
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+        GPIO_Init(GPIOB, &GPIO_InitStructure);										// Pin 11 is an output
+        GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_2);						// Alternate function 2 = (Timer 2 CH4)
+
 
 
         // Configure PORT A
@@ -255,6 +265,7 @@ int main(void){
         GPIO_Init(GPIOA, &GPIO_InitStructure);
 
         // Configure UART 1
+        //-----------------------------------------------
 
         USART_InitStructure.USART_BaudRate = 9600;
         USART_InitStructure.USART_WordLength = USART_WordLength_8b;
@@ -272,8 +283,28 @@ int main(void){
         USART_Cmd(USART1, ENABLE);
 
 
-       // printf("\r\nHDM01 Boot...");
-       // fflush(stdout);
+
+        // Configure TIM2 for PWM out to clock CPLD
+        //------------------------------------------
+
+        Timer_InitStructure.TIM_Prescaler = 1200;
+        Timer_InitStructure.TIM_CounterMode = TIM_CounterMode_Up;
+        Timer_InitStructure.TIM_Period = 500;		// PWM period value
+        Timer_InitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+        Timer_InitStructure.TIM_RepetitionCounter = 0;
+        TIM_TimeBaseInit(TIM2, &Timer_InitStructure);
+        TIM_Cmd(TIM2, ENABLE);
+
+        TIM_OCInitTypeDef outputChannelInit = {0,};
+        outputChannelInit.TIM_OCMode = TIM_OCMode_PWM1;
+        outputChannelInit.TIM_Pulse = 2;	// PWM duty cycle  @ 25 LED is dim, quite bright  4 = nice and dim (needle pulse width)
+        outputChannelInit.TIM_OutputState = TIM_OutputState_Enable;
+        outputChannelInit.TIM_OCPolarity = TIM_OCPolarity_High;
+
+        TIM_OC4Init(TIM2, &outputChannelInit);
+        TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
+
+
         InitClockHW();
         InitTimers();
 
@@ -283,7 +314,6 @@ int main(void){
 
         InitI2C();                                                  // Initialize and enable I2C module
         SysTick_Config(TickerRate);									// Initialize the System Tick
-
 
         // System Startup begins here...
         ResetDisplay();
@@ -326,7 +356,15 @@ int main(void){
                     } else {
                     	cnst = 0x55;
                     }
-                    SimpleSPI(cnst);
+                    SimpleSPI(0x01);			// Command portion
+                    SimpleSPI(cnst & 0x01);		// Data portion- write toggling bit
+
+                    SimpleSPI(0x06);			// Command Portion
+                    SimpleSPI(0x00);			// Data Portion, send zero, the other leg will clock in...
+
+                    SimpleSPI(0x04);
+                    SimpleSPI(0xF1);
+
 
 
                 }

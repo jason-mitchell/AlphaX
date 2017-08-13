@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.20131013
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 8-11-2017  9:02PM
+ 8-13-2017  5:24PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -30,13 +30,13 @@ P9|TDI||TDI||||||||||
 P10|TMS||TMS||||||||||
 P11|TCK||TCK||||||||||
 P12|SS|I|I/O|INPUT|||||||||
-P13|LED_0|O|I/O|OUTPUT|||||||||
-P14|TP|O|I/O|OUTPUT|||||||||
+P13|MISO|O|I/O|OUTPUT|||||||||
+P14|TIE||I/O||||||||||
 P15|VCC||VCCINT||||||||||
 P16|TIE||I/O||||||||||
 P17|GND||GND||||||||||
-P18|TIE||I/O||||||||||
-P19|TIE||I/O||||||||||
+P18|RESET|I|I/O|INPUT|||||||||
+P19|PWMOUT|O|I/O|OUTPUT|||||||||
 P20|TIE||I/O||||||||||
 P21|TIE||I/O||||||||||
 P22|TIE||I/O||||||||||
@@ -48,18 +48,18 @@ P27|TIE||I/O||||||||||
 P28|TIE||I/O||||||||||
 P29|TIE||I/O||||||||||
 P30|TIE||I/O||||||||||
-P31|DB<7>|O|I/O|OUTPUT|||||||||
-P32|DB<6>|O|I/O|OUTPUT|||||||||
+P31|TIE||I/O||||||||||
+P32|TIE||I/O||||||||||
 P33|TIE||I/O/GSR||||||||||
 P34|TIE||I/O/GTS2||||||||||
 P35|VCC||VCCINT||||||||||
 P36|TIE||I/O/GTS1||||||||||
-P37|DB<5>|O|I/O|OUTPUT|||||||||
-P38|DB<4>|O|I/O|OUTPUT|||||||||
-P39|DB<3>|O|I/O|OUTPUT|||||||||
-P40|DB<2>|O|I/O|OUTPUT|||||||||
-P41|DB<1>|O|I/O|OUTPUT|||||||||
-P42|DB<0>|O|I/O|OUTPUT|||||||||
+P37|TIE||I/O||||||||||
+P38|TIE||I/O||||||||||
+P39|TIE||I/O||||||||||
+P40|LED_2|O|I/O|OUTPUT|||||||||
+P41|LED_1|O|I/O|OUTPUT|||||||||
+P42|LED_0|O|I/O|OUTPUT|||||||||
 P43|ECLK|GCK|I/O/GCK1||||||||||
 P44|TIE||I/O/GCK2||||||||||
 

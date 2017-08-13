@@ -1,0 +1,339 @@
+iMPACT Version: 14.7
+
+iMPACT log file Started on Sun Aug 13 15:17:52 2017
+
+Welcome to iMPACT
+iMPACT Version: 14.7
+Project: 'C:\Temp\Work\VHDL\ENCODER\\auto_project.ipf' already exists.
+Original project has been renamed to'C:\Temp\Work\VHDL\ENCODER\\auto_project_1.ipf'.
+Project: C:\Temp\Work\VHDL\ENCODER\\auto_project.ipf created.
+// *** BATCH CMD : setMode -bs
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+INFO:iMPACT - Digilent Plugin: Plugin Version: 2.4.4
+INFO:iMPACT - Digilent Plugin: no JTAG device was found.
+AutoDetecting cable. Please wait.
+*** WARNING ***: When port is set to auto detect mode, cable speed is set todefault 6 MHz regardless of explicit arguments supplied for setting the baudrates
+PROGRESS_START - Starting Operation.
+Connecting to cable (Usb Port - USB21).
+Checking cable driver.
+ Driver file xusb21.sys found.
+ File C:/Xilinx/14.7/ISE_DS/ISE/bin/nt64/xusb21.sys not found.
+ Driver file xusb_emb.sys found.
+ Driver version: src=1029, dest=1029.
+ Driver windrvr6.sys version = 10.2.1.0. WinDriver v10.21 Jungo (c) 1997 - 2010 Build Date: Aug 31 2010 x86_64 64bit SYS14:14:44, version = 1021.
+ Cable PID = 0008.
+ Max current requested during enumeration is 74 mA.
+Type = 0x0004.
+ Cable Type = 3, Revision = 0.
+ Setting cable speed to 6 MHz.
+Cable connection established.
+Firmware version = 1029.
+File version of C:/Xilinx/14.7/ISE_DS/ISE/data/xusb_xlp.hex = 1303.
+Firmware hex file version = 1303.
+Downloading C:/Xilinx/14.7/ISE_DS/ISE/data/xusb_xlp.hex.
+Downloaded firmware version = 1303.
+PLD file version = 0012h.
+ PLD version = 0012h.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+Type = 0x0004.
+ ESN device is not available for this cable.
+Attempting to identify devices in the boundary-scan chain configuration...
+INFO:iMPACT - Current time: 8/13/2017 3:17:56 PM
+// *** BATCH CMD : Identify 
+PROGRESS_START - Starting Operation.
+Identifying chain contents...'0': : Manufacturer's ID = Xilinx xc9572xl, Version : 4
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/14.7/ISE_DS/ISE/xc9500xl/data/xc9572xl.bsd...
+INFO:iMPACT:501 - '1': Added Device xc9572xl successfully.
+----------------------------------------------------------------------
+'1': : Manufacturer's ID = Xilinx xcf04s, Version : 0
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/14.7/ISE_DS/ISE/xcf/data/xcf04s.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf04s successfully.
+----------------------------------------------------------------------
+'2': : Manufacturer's ID = Xilinx xc3s500e, Version : 0
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/14.7/ISE_DS/ISE/spartan3e/data/xc3s500e.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+done.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : saveProjectFile -file"C:\Temp\Work\VHDL\ENCODER\\auto_project.ipf"
+// *** BATCH CMD : assignFile -p 3 -file"C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.jed"
+'3': Loading file 'C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.jed'...
+done.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '3': Added Device xc9572xl successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 8/13/2017 3:18:36 PM
+// *** BATCH CMD : Program -p 3 -e -v 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'3': Erasing device...
+PROGRESS_START - Starting Operation.
+'3': Erasure completed successfully.
+'3': Programming device...
+done.
+'3': Putting device in ISP mode...done.
+'3': Putting device in ISP mode...done.
+'3': Verifying device...done.
+'3': Verification completed successfully.
+'3': Putting device in ISP mode...done.
+'3': Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      4 sec.
+INFO:iMPACT - Current time: 8/13/2017 3:21:08 PM
+Updating config fileC:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.jed...
+// *** BATCH CMD : Program -p 3 -e -v 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'3': Erasing device...
+PROGRESS_START - Starting Operation.
+'3': Erasure completed successfully.
+'3': Programming device...
+done.
+'3': Putting device in ISP mode...done.
+'3': Putting device in ISP mode...done.
+'3': Verifying device...done.
+'3': Verification completed successfully.
+'3': Putting device in ISP mode...done.
+'3': Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      3 sec.
+INFO:iMPACT - Current time: 8/13/2017 3:32:18 PM
+Updating config fileC:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.jed...
+// *** BATCH CMD : Program -p 3 -e -v 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'3': Erasing device...
+PROGRESS_START - Starting Operation.
+'3': Erasure completed successfully.
+'3': Programming device...
+done.
+'3': Putting device in ISP mode...done.
+'3': Putting device in ISP mode...done.
+'3': Verifying device...done.
+'3': Verification completed successfully.
+'3': Putting device in ISP mode...done.
+'3': Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      4 sec.
+INFO:iMPACT - Current time: 8/13/2017 3:34:00 PM
+Updating config fileC:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.jed...
+// *** BATCH CMD : Program -p 3 -e -v 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'3': Erasing device...
+PROGRESS_START - Starting Operation.
+'3': Erasure completed successfully.
+'3': Programming device...
+done.
+'3': Putting device in ISP mode...done.
+'3': Putting device in ISP mode...done.
+'3': Verifying device...done.
+'3': Verification completed successfully.
+'3': Putting device in ISP mode...done.
+'3': Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      4 sec.
+INFO:iMPACT - Current time: 8/13/2017 3:52:54 PM
+Updating config fileC:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.jed...
+// *** BATCH CMD : Program -p 3 -e -v 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'3': Erasing device...
+PROGRESS_START - Starting Operation.
+'3': Erasure completed successfully.
+'3': Programming device...
+done.
+'3': Putting device in ISP mode...done.
+'3': Putting device in ISP mode...done.
+'3': Verifying device...done.
+'3': Verification completed successfully.
+'3': Putting device in ISP mode...done.
+'3': Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      4 sec.
+INFO:iMPACT - Current time: 8/13/2017 3:57:01 PM
+Updating config fileC:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.jed...
+// *** BATCH CMD : Program -p 3 -e -v 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'3': Erasing device...
+PROGRESS_START - Starting Operation.
+'3': Erasure completed successfully.
+'3': Programming device...
+done.
+'3': Putting device in ISP mode...done.
+'3': Putting device in ISP mode...done.
+'3': Verifying device...done.
+'3': Verification completed successfully.
+'3': Putting device in ISP mode...done.
+'3': Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      3 sec.
+INFO:iMPACT - Current time: 8/13/2017 5:14:59 PM
+Updating config fileC:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.jed...
+// *** BATCH CMD : Program -p 3 -e -v 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'3': Erasing device...
+PROGRESS_START - Starting Operation.
+'3': Erasure completed successfully.
+'3': Programming device...
+done.
+'3': Putting device in ISP mode...done.
+'3': Putting device in ISP mode...done.
+'3': Verifying device...write cmd failed      103.
+'3': Verification failed'3': Verification terminated
+'3': Putting device in ISP mode...done.
+'3': Programming of user selected options failed.
+PROGRESS_END - End Operation.
+Elapsed time =      3 sec.
+INFO:iMPACT - Current time: 8/13/2017 5:15:06 PM
+// *** BATCH CMD : Erase -p 3 
+read count != nBytes, rc = C0000012.
+read failed C0000012.
+INFO:iMPACT:583 - '3': The idcode read from the device does not match the idcode   in the bsdl File.
+INFO:iMPACT:1578 - '3':  Device IDCODE :        00001100000000000000000000000001
+INFO:iMPACT:1579 - '3': Expected IDCODE:    00001001011000000100000010010011
+PROGRESS_START - Starting Operation.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+INFO:iMPACT - Current time: 8/13/2017 5:15:08 PM
+// *** BATCH CMD : Program -p 3 -e -v 
+read count != nBytes, rc = C0000012.
+read failed C0000012.
+INFO:iMPACT:451 - The device 'xc9572xl' is in 'in-system programming' mode.
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+read count != nBytes, rc = 00000000.
+INFO:iMPACT:1205 - Testing for '1' at position 43. The Instruction capture of   the device 3 does not match expected capture.
+INFO:iMPACT:1206 - Instruction Capture =   '00100000001101001001011000000000000100000000'
+INFO:iMPACT:1207 - Expected    Capture =   '1010101010101010101010XXXX01XXXXX001000XXX01'
+ERROR:iMPACT - Boundary-scan chain test failed. Please check tdi->tdo connection   between  device:'3' ( 'xc9572xl') and the cable . A problem may exist in the   hardware configuration. Check that the cable, scan chain, and power   connections are intact, that the specified scan chain configuration matches   the actual hardware, and that the power supply is adequate and delivering the   correct voltage.
+PROGRESS_START - Starting Operation.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+Cable is not connected.
+WARNING:iMPACT - This operation will interfere with the operation of other   applications that are using the download cables. Make certain that all other   cable-related applications are shut down or their cable connections are   closed.
+Releasing all cable semaphores. Please wait.
+Done.
+Releasing all cable semaphores. Please wait.
+Done.
+No cable is currently selected.
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+INFO:iMPACT - Digilent Plugin: Plugin Version: 2.4.4
+INFO:iMPACT - Digilent Plugin: no JTAG device was found.
+AutoDetecting cable. Please wait.
+*** WARNING ***: When port is set to auto detect mode, cable speed is set todefault 6 MHz regardless of explicit arguments supplied for setting the baudrates
+PROGRESS_START - Starting Operation.
+Connecting to cable (Usb Port - USB21).
+Checking cable driver.
+ Driver file xusb21.sys found.
+ File C:/Xilinx/14.7/ISE_DS/ISE/bin/nt64/xusb21.sys not found.
+ Driver file xusb_emb.sys found.
+ Driver version: src=1029, dest=1029.
+ Driver windrvr6.sys version = 10.2.1.0. WinDriver v10.21 Jungo (c) 1997 - 2010 Build Date: Aug 31 2010 x86_64 64bit SYS14:14:44, version = 1021.
+ Cable PID = 0008.
+ Max current requested during enumeration is 74 mA.
+Type = 0x0004.
+ Cable Type = 3, Revision = 0.
+ Setting cable speed to 6 MHz.
+Cable connection established.
+Firmware version = 1029.
+File version of C:/Xilinx/14.7/ISE_DS/ISE/data/xusb_xlp.hex = 1303.
+Firmware hex file version = 1303.
+Downloading C:/Xilinx/14.7/ISE_DS/ISE/data/xusb_xlp.hex.
+Downloaded firmware version = 1303.
+PLD file version = 0012h.
+ PLD version = 0012h.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+Type = 0x0004.
+ ESN device is not available for this cable.
+INFO:iMPACT - Current time: 8/13/2017 5:15:32 PM
+// *** BATCH CMD : Program -p 3 -e -v 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'3': Erasing device...
+PROGRESS_START - Starting Operation.
+'3': Erasure completed successfully.
+'3': Programming device...
+done.
+'3': Putting device in ISP mode...done.
+'3': Putting device in ISP mode...done.
+'3': Verifying device...done.
+'3': Verification completed successfully.
+'3': Putting device in ISP mode...done.
+'3': Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      4 sec.
+INFO:iMPACT - Current time: 8/13/2017 5:25:00 PM
+Updating config fileC:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.jed...
+// *** BATCH CMD : Program -p 3 -e -v 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'3': Erasing device...
+PROGRESS_START - Starting Operation.
+'3': Erasure completed successfully.
+'3': Programming device...
+done.
+'3': Putting device in ISP mode...done.
+'3': Putting device in ISP mode...done.
+'3': Verifying device...done.
+'3': Verification completed successfully.
+'3': Putting device in ISP mode...done.
+'3': Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      4 sec.
+Cable is not connected.
+Backup of auto project 'C:\Temp\Work\VHDL\ENCODER\\auto_project_1.ipf' created.
+Project: 'C:\Temp\Work\VHDL\ENCODER\\auto_project.ipf' created.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : saveProjectFile -file"C:\Temp\Work\VHDL\ENCODER\\auto_project.ipf"
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff

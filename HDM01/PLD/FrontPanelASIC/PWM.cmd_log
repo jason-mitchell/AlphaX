@@ -1,0 +1,2 @@
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/PWM.v -lang verilog -prj FrontPanelASIC -o PWM.spl -module PWM -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl PWM.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/PWM.sym 

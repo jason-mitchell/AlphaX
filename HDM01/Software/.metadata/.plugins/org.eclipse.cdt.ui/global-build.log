@@ -1,4 +1,4 @@
-21:00:03 **** Incremental Build of configuration Debug for project HDM01 ****
+21:38:31 **** Incremental Build of configuration Debug for project HDM01 ****
 Info: Internal Builder is used for build
 arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
 ..\src\main.c:11:1: warning: multi-line comment [-Wcomment]
@@ -11,63 +11,63 @@ arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32
  // .sdP^T$bs.               /'       \
  ^
 ..\src\main.c: In function 'main':
-..\src\main.c:291:20: warning: passing argument 1 of 'PutGraphic' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+..\src\main.c:321:20: warning: passing argument 1 of 'PutGraphic' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          PutGraphic(Graphic1);
                     ^~~~~~~~
 In file included from ..\src\main.c:46:0:
 ..\src\display.h:37:6: note: expected 'char *' but argument is of type 'const char *'
  void PutGraphic(char *graphics);
       ^~~~~~~~~~
-..\src\main.c:295:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+..\src\main.c:325:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
          TxData("\r\n Testing Timer code: ");
                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from ..\src\main.c:52:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-..\src\main.c:296:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+..\src\main.c:326:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
          TxData("\r\n    Creating a timer object...");
                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from ..\src\main.c:52:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-..\src\main.c:298:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+..\src\main.c:328:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
           TxData("SUCCESS!");
                  ^~~~~~~~~~
 In file included from ..\src\main.c:52:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-..\src\main.c:300:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+..\src\main.c:330:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
           TxData("FAILED!");
                  ^~~~~~~~~
 In file included from ..\src\main.c:52:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-..\src\main.c:306:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+..\src\main.c:336:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
          TxData("\r\nTimer has expired!");
                 ^~~~~~~~~~~~~~~~~~~~~~~~
 In file included from ..\src\main.c:52:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-..\src\main.c:308:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+..\src\main.c:338:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
           TxData("\r\nTimer object destroyed!");
                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from ..\src\main.c:52:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-..\src\main.c:310:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+..\src\main.c:340:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
           TxData("\r\nError destroying timer object!");
                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from ..\src\main.c:52:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-..\src\main.c:341:24: warning: passing argument 1 of 'PutGraphic' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+..\src\main.c:379:24: warning: passing argument 1 of 'PutGraphic' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              PutGraphic(Graphic1);
                         ^~~~~~~~
 In file included from ..\src\main.c:46:0:
@@ -79,7 +79,7 @@ C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\ide\jre\bin\java -jar C:
 Generate build reports...
 Print size information
    text	   data	    bss	    dec	    hex	filename
-  18952	    144	    820	  19916	   4dcc	C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf
+  19896	    144	    832	  20872	   5188	C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf
 Print size information done
 Generate listing file
 Output sent to: C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.list

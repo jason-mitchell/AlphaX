@@ -10,3 +10,31 @@ vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang veri
 spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
 vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
 spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.v -lang verilog -prj FrontPanelASIC -o spi.spl -module spi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl spi.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/spi.sym 
