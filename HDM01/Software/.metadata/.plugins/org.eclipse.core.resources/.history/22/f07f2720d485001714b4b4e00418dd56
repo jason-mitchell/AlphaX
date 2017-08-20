@@ -287,9 +287,9 @@ int main(void){
         // Configure TIM2 for PWM out to clock CPLD
         //------------------------------------------
 
-        Timer_InitStructure.TIM_Prescaler = 418;
+        Timer_InitStructure.TIM_Prescaler = 1200;
         Timer_InitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-        Timer_InitStructure.TIM_Period = 50;		// PWM period value
+        Timer_InitStructure.TIM_Period = 500;		// PWM period value
         Timer_InitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
         Timer_InitStructure.TIM_RepetitionCounter = 0;
         TIM_TimeBaseInit(TIM2, &Timer_InitStructure);
@@ -297,7 +297,7 @@ int main(void){
 
         TIM_OCInitTypeDef outputChannelInit = {0,};
         outputChannelInit.TIM_OCMode = TIM_OCMode_PWM1;
-        outputChannelInit.TIM_Pulse = 25;
+        outputChannelInit.TIM_Pulse = 2;	// PWM duty cycle  @ 25 LED is dim, quite bright  4 = nice and dim (needle pulse width)
         outputChannelInit.TIM_OutputState = TIM_OutputState_Enable;
         outputChannelInit.TIM_OCPolarity = TIM_OCPolarity_High;
 
@@ -356,14 +356,14 @@ int main(void){
                     } else {
                     	cnst = 0x55;
                     }
-                    SimpleSPI(0x01);			// Command portion
+                    //SimpleSPI(0x01);			// Command portion
                     SimpleSPI(cnst & 0x01);		// Data portion- write toggling bit
 
-                    SimpleSPI(0x06);			// Command Portion
-                    SimpleSPI(0x00);			// Data Portion, send zero, the other leg will clock in...
+                    //SimpleSPI(0x06);			// Command Portion
+                    //SimpleSPI(0x00);			// Data Portion, send zero, the other leg will clock in...
 
-                    SimpleSPI(0x04);
-                    SimpleSPI(0xA1);
+                    //SimpleSPI(0x04);
+                    //SimpleSPI(0xF1);
 
 
 

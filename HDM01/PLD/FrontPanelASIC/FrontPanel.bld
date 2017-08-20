@@ -31,7 +31,7 @@ NGDBUILD Design Results Summary:
 Total memory usage is 153080 kilobytes
 
 Writing NGD file "FrontPanel.ngd" ...
-Total REAL time to NGDBUILD completion:  3 sec
-Total CPU time to NGDBUILD completion:   3 sec
+Total REAL time to NGDBUILD completion:  2 sec
+Total CPU time to NGDBUILD completion:   2 sec
 
 Writing NGDBUILD log file "FrontPanel.bld"...

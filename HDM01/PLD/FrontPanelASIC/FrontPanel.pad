@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.20131013
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 8-13-2017  5:24PM
+ 8-20-2017  9:39PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -36,7 +36,7 @@ P15|VCC||VCCINT||||||||||
 P16|TIE||I/O||||||||||
 P17|GND||GND||||||||||
 P18|RESET|I|I/O|INPUT|||||||||
-P19|PWMOUT|O|I/O|OUTPUT|||||||||
+P19|BYTE_IN|O|I/O|OUTPUT|||||||||
 P20|TIE||I/O||||||||||
 P21|TIE||I/O||||||||||
 P22|TIE||I/O||||||||||

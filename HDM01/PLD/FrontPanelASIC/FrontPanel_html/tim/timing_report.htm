@@ -27,7 +27,7 @@
   <TD WIDTH="65%" CLASS="cpldta_text_normal"><A HREF="Javascript:popWin('http://www.xilinx.com/literature/index.htm','800','800','test');">XC9572XL</A>, -10 (3.0)</TD>
  </TR>
  <TR>
-  <TD WIDTH="35%" CLASS="cpldta_text_normal_bold"><B>Date Created</B></TD>  <TD WIDTH="65%" CLASS="cpldta_text_normal">Wed Aug 09 17:18:19 2017
+  <TD WIDTH="35%" CLASS="cpldta_text_normal_bold"><B>Date Created</B></TD>  <TD WIDTH="65%" CLASS="cpldta_text_normal">Thu Aug 17 20:08:39 2017
 </TD>
  </TR>
  <TR>
@@ -48,6 +48,9 @@
  <TR>
   <TD WIDTH="100%" CLASS="cpldta_text_normal">Note: A default set of constraints using a delay of 0.000ns will be used for analysis.</TD>
  </TR>
+ <TR>
+  <TD WIDTH="100%" CLASS="cpldta_text_normal">Possible asynchronous logic: Clock pin 'XLXI_29/CMDDATA.CLKF' has multiple original clock nets 'XLXI_29/BITCNT<3>.Q' 'XLXI_29/BITCNT<2>.Q' 'XLXI_29/BITCNT<1>.Q' 'XLXI_29/BITCNT<0>.Q'.</TD>
+ </TR>
 </TABLE><BR>
 <TABLE WIDTH="80%" border="1" ALIGN="center">
  <TR CLASS="cpldta_warnings_header">
@@ -55,18 +58,22 @@
  </TR>
  <TR>
   <TD WIDTH="65%" CLASS="cpldta_text_normal_bold"><B>Min. Clock Period</B></TD>
-  <TD WIDTH="35%" CLASS="cpldta_text_normal">10.000 ns.</TD>
+  <TD WIDTH="35%" CLASS="cpldta_text_normal">14.000 ns.</TD>
  </TR>
  <TR>
   <TD WIDTH="65%" CLASS="cpldta_text_normal_bold"><B>Max. Clock Frequency </B><A HREF="cpldta_glossary.htm#fSYSTEM">(fSYSTEM)</A></TD>
-  <TD WIDTH="35%" CLASS="cpldta_text_normal">100.000 MHz. </TD>
+  <TD WIDTH="35%" CLASS="cpldta_text_normal">71.429 MHz. </TD>
  </TR>
  <TR>
-  <TD WIDTH="100%" colspan="2" CLASS="cpldta_text_normal">Limited by Cycle Time for ECLK</TD>
+  <TD WIDTH="100%" colspan="2" CLASS="cpldta_text_normal">Limited by Clock Pulse Width for XLXI_29/BITCNT<3>.Q</TD>
  </TR>
  <TR>
   <TD WIDTH="65%" CLASS="cpldta_text_normal_bold"><B>Clock to Setup </B><A HREF="cpldta_glossary.htm#tCYC">(tCYC)</A></TD>
   <TD WIDTH="35%" CLASS="cpldta_text_normal">10.000 ns. </TD>
+ </TR>
+ <TR>
+  <TD WIDTH="65%" CLASS="cpldta_text_normal_bold"><B>Pad to Pad Delay </B><A HREF="cpldta_glossary.htm#tPD">(tPD)</A></TD>
+  <TD WIDTH="35%" CLASS="cpldta_text_normal">31.600 ns. </TD>
  </TR>
  <TR>
   <TD WIDTH="65%" CLASS="cpldta_text_normal_bold"><B>Setup to Clock at the Pad </B><A HREF="cpldta_glossary.htm#tSU">(tSU)</A></TD>
@@ -74,7 +81,7 @@
  </TR>
  <TR>
   <TD WIDTH="65%" CLASS="cpldta_text_normal_bold"><B>Clock Pad to Output Pad Delay </B><A HREF="cpldta_glossary.htm#tCO">(tCO)</A></TD>
-  <TD WIDTH="35%" CLASS="cpldta_text_normal">10.300 ns. </TD>
+  <TD WIDTH="35%" CLASS="cpldta_text_normal">46.700 ns. </TD>
  </TR>
 </TABLE>
 <HR>
@@ -95,38 +102,158 @@
   <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
  </TR>
  <TR>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1001">TS1001</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+ </TR>
+ <TR>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1002">TS1002</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+ </TR>
+ <TR>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1003">TS1003</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+ </TR>
+ <TR>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1004">TS1004</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+ </TR>
+ <TR>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1005">TS1005</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+ </TR>
+ <TR>
+  <TD ALIGN="left" CLASS="cpldta_constraint_name"><A HREF="#TS1006">TS1006</A></TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0.0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+  <TD ALIGN="center" CLASS="cpldta_time_value">0</TD>
+ </TR>
+ <TR>
   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#AUTO_TS_F2F">AUTO_TS_F2F</A></TD>
   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">0.0</TD>
   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">10.0</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">18</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">18</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">44</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">44</TD>
  </TR>
  <TR>
   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#AUTO_TS_P2P">AUTO_TS_P2P</A></TD>
   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">0.0</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">10.3</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">2</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">2</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">46.7</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">13</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">13</TD>
  </TR>
  <TR>
   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#AUTO_TS_P2F">AUTO_TS_P2F</A></TD>
   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">0.0</TD>
   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">8.3</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">3</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">3</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">26</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">26</TD>
  </TR>
  <TR>
   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error"><A HREF="#AUTO_TS_F2P">AUTO_TS_F2P</A></TD>
   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">0.0</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">8.5</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">2</TD>
-  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">2</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">32.6</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">34</TD>
+  <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error">34</TD>
  </TR>
 </TABLE>
 </BR>
 </BR>
 <A NAME="TS1000">
 <h3 CLASS="cpldta_text_subsection_header">Constraint: TS1000</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_XLXI_29/SPIDATA_OUT<6>.CLKF:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="TS1001">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1001</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_XLXI_29/BITCNT<3>.Q:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="TS1002">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1002</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_XLXI_29/BITCNT<2>.Q:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="TS1003">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1003</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_XLXI_29/BITCNT<1>.Q:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="TS1004">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1004</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_XLXI_29/BITCNT<0>.Q:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="TS1005">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1005</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_SCLK:0.000 nS</B></CAPTION>
+  <TR CLASS="cpldta_delaytable_header">
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Path</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Requirement (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
+  </TR>
+ </TABLE>
+ </BR>
+ </BR>
+<A NAME="TS1006">
+<h3 CLASS="cpldta_text_subsection_header">Constraint: TS1006</h3>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
   <CAPTION CLASS="cpldta_text_caption"><B>Description: PERIOD:PERIOD_ECLK:0.000 nS</B></CAPTION>
   <TR CLASS="cpldta_delaytable_header">
@@ -149,19 +276,19 @@
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
   </TR>
   <TR>
-   <A NAME="_XLXI_2_delay_rotary_q1_Q_to_XLXI_2_rotary_event_D"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2F_XLXI_2_delay_rotary_q1_Q_to_XLXI_2_rotary_event_D();">XLXI_2/delay_rotary_q1.Q to XLXI_2/rotary_event.D</A></TD>
+   <A NAME="_XLXI_15_r_reg_0__Q_to_CLK_50_CE"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2F_XLXI_15_r_reg_0__Q_to_CLK_50_CE();">XLXI_15/r_reg<0>.Q to CLK_50.CE</A></TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">10.000</TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-10.000</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_F2F_XLXI_2_delay_rotary_q1_Q_to_XLXI_2_rotary_event_D() {
+function AUTO_TS_F2F_XLXI_15_r_reg_0__Q_to_CLK_50_CE() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("XLXI_2/delay_rotary_q1.Q to XLXI_2/rotary_event.D")
+   aWindow.document.writeln("XLXI_15/r_reg<0>.Q to CLK_50.CE")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -172,64 +299,30 @@ function AUTO_TS_F2F_XLXI_2_delay_rotary_q1_Q_to_XLXI_2_rotary_event_D() {
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_2/delay_rotary_q1</TD>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tSUI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">9.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_2/rotary_event.D</TD>")
-   aWindow.document.writeln("</TABLE>")
-   aWindow.document.close()
-}
-//-->
-</SCRIPT>
-  <TR>
-   <A NAME="_XLXI_2_delay_rotary_q1_Q_to_XLXI_2_rotary_left_CE"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2F_XLXI_2_delay_rotary_q1_Q_to_XLXI_2_rotary_left_CE();">XLXI_2/delay_rotary_q1.Q to XLXI_2/rotary_left.CE</A></TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">10.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-10.000</TD>
-  </TR>
-<SCRIPT language="JavaScript">
-<!--
-function AUTO_TS_F2F_XLXI_2_delay_rotary_q1_Q_to_XLXI_2_rotary_left_CE() {
-   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
-   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
-   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("XLXI_2/delay_rotary_q1.Q to XLXI_2/rotary_left.CE")
-   aWindow.document.writeln("</H3>")
-   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
-   aWindow.document.writeln("</TR>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_2/delay_rotary_q1</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_15/r_reg<0></TD>")
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTSR + tECSU</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">9.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_2/rotary_left.CE</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">CLK_50.CE</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
 //-->
 </SCRIPT>
   <TR>
-   <A NAME="_XLXI_2_internal_detent_Q_to_IRQ_D"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2F_XLXI_2_internal_detent_Q_to_IRQ_D();">XLXI_2/internal_detent.Q to IRQ.D</A></TD>
+   <A NAME="_XLXI_15_r_reg_0__Q_to_XLXI_15_r_reg_0__D"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2F_XLXI_15_r_reg_0__Q_to_XLXI_15_r_reg_0__D();">XLXI_15/r_reg<0>.Q to XLXI_15/r_reg<0>.D</A></TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">10.000</TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-10.000</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_F2F_XLXI_2_internal_detent_Q_to_IRQ_D() {
+function AUTO_TS_F2F_XLXI_15_r_reg_0__Q_to_XLXI_15_r_reg_0__D() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("XLXI_2/internal_detent.Q to IRQ.D")
+   aWindow.document.writeln("XLXI_15/r_reg<0>.Q to XLXI_15/r_reg<0>.D")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -240,11 +333,45 @@ function AUTO_TS_F2F_XLXI_2_internal_detent_Q_to_IRQ_D() {
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_2/internal_detent</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_15/r_reg<0></TD>")
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tSUI</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">9.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">IRQ.D</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_15/r_reg<0>.D</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+  <TR>
+   <A NAME="_XLXI_15_r_reg_0__Q_to_XLXI_15_r_reg_1__D"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2F_XLXI_15_r_reg_0__Q_to_XLXI_15_r_reg_1__D();">XLXI_15/r_reg<0>.Q to XLXI_15/r_reg<1>.D</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">10.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-10.000</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_F2F_XLXI_15_r_reg_0__Q_to_XLXI_15_r_reg_1__D() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("XLXI_15/r_reg<0>.Q to XLXI_15/r_reg<1>.D")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_15/r_reg<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tSUI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">9.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_15/r_reg<1>.D</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
@@ -264,19 +391,19 @@ function AUTO_TS_F2F_XLXI_2_internal_detent_Q_to_IRQ_D() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
   </TR>
   <TR>
-   <A NAME="_ECLK_to_DIR"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2P_ECLK_to_DIR();">ECLK to DIR</A></TD>
+   <A NAME="_SCLK_to_LED_0"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2P_SCLK_to_LED_0();">SCLK to LED_0</A></TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">10.300</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-10.300</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">46.700</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-46.700</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_P2P_ECLK_to_DIR() {
+function AUTO_TS_P2P_SCLK_to_LED_0() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("ECLK to DIR")
+   aWindow.document.writeln("SCLK to LED_0")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -287,38 +414,54 @@ function AUTO_TS_P2P_ECLK_to_DIR() {
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">ECLK</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SCLK</TD>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tGCK</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.800</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXN_15/FCLK</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tIN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SCLK_IBUF</TD>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DIR</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tPTCK + tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/BITCNT<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTCK + tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.900</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/CMDDATA</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/DEVCMD<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">8.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_0</TD>")
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT + tSLEW</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.500</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DIR</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_0</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
 //-->
 </SCRIPT>
   <TR>
-   <A NAME="_ECLK_to_IRQ"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2P_ECLK_to_IRQ();">ECLK to IRQ</A></TD>
+   <A NAME="_SCLK_to_LED_1"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2P_SCLK_to_LED_1();">SCLK to LED_1</A></TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">10.300</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-10.300</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">46.700</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-46.700</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_P2P_ECLK_to_IRQ() {
+function AUTO_TS_P2P_SCLK_to_LED_1() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("ECLK to IRQ")
+   aWindow.document.writeln("SCLK to LED_1")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -329,19 +472,93 @@ function AUTO_TS_P2P_ECLK_to_IRQ() {
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">ECLK</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SCLK</TD>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tGCK</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.800</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXN_15/FCLK</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tIN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SCLK_IBUF</TD>")
    aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">IRQ</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tPTCK + tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/BITCNT<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTCK + tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.900</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/CMDDATA</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/DEVCMD<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">8.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED<1></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_1</TD>")
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT + tSLEW</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.500</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">IRQ</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_1</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+  <TR>
+   <A NAME="_SCLK_to_LED_2"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2P_SCLK_to_LED_2();">SCLK to LED_2</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">46.700</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-46.700</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_P2P_SCLK_to_LED_2() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("SCLK to LED_2")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SCLK</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tIN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">SCLK_IBUF</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tPTCK + tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/BITCNT<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tPTCK + tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.900</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/CMDDATA</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/DEVCMD<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">8.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED<2></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_2</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT + tSLEW</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_2</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
@@ -360,6 +577,44 @@ function AUTO_TS_P2P_ECLK_to_IRQ() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay (ns)</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
   </TR>
+  <TR>
+   <A NAME="_MOSI_to_XLXI_29_SPIDATA_IN_7__D"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2F_MOSI_to_XLXI_29_SPIDATA_IN_7__D();">MOSI to XLXI_29/SPIDATA_IN<7>.D</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">8.300</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-8.300</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_P2F_MOSI_to_XLXI_29_SPIDATA_IN_7__D() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("MOSI to XLXI_29/SPIDATA_IN<7>.D")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">MOSI</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tIN</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">3.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">MOSI_IBUF</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tLOGI + tSUI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">4.800</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/SPIDATA_IN<7>.D</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
   <TR>
    <A NAME="_PHA_to_XLXI_2_rotary_a_in_D"></A>
    <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2F_PHA_to_XLXI_2_rotary_a_in_D();">PHA to XLXI_2/rotary_a_in.D</A></TD>
@@ -436,40 +691,6 @@ function AUTO_TS_P2F_PHB_to_XLXI_2_rotary_b_in_D() {
 }
 //-->
 </SCRIPT>
-  <TR>
-   <A NAME="_ECLK_to_XLXN_15_FCLK"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_P2F_ECLK_to_XLXN_15_FCLK();">ECLK to XLXN_15/FCLK</A></TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">1.800</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-1.800</TD>
-  </TR>
-<SCRIPT language="JavaScript">
-<!--
-function AUTO_TS_P2F_ECLK_to_XLXN_15_FCLK() {
-   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
-   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
-   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("ECLK to XLXN_15/FCLK")
-   aWindow.document.writeln("</H3>")
-   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
-   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
-   aWindow.document.writeln("</TR>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">-</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">0.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">ECLK</TD>")
-   aWindow.document.writeln("<TR>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tGCK</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.800</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXN_15/FCLK</TD>")
-   aWindow.document.writeln("</TABLE>")
-   aWindow.document.close()
-}
-//-->
-</SCRIPT>
  </TABLE>
  </BR>
  </BR>
@@ -484,19 +705,19 @@ function AUTO_TS_P2F_ECLK_to_XLXN_15_FCLK() {
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Slack (ns)</TH>
   </TR>
   <TR>
-   <A NAME="_DIR_Q_to_DIR"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2P_DIR_Q_to_DIR();">DIR.Q to DIR</A></TD>
+   <A NAME="_XLXI_29_CMDDATA_Q_to_LED_0"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2P_XLXI_29_CMDDATA_Q_to_LED_0();">XLXI_29/CMDDATA.Q to LED_0</A></TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">8.500</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-8.500</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">32.600</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-32.600</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_F2P_DIR_Q_to_DIR() {
+function AUTO_TS_F2P_XLXI_29_CMDDATA_Q_to_LED_0() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("DIR.Q to DIR")
+   aWindow.document.writeln("XLXI_29/CMDDATA.Q to LED_0")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -507,30 +728,42 @@ function AUTO_TS_F2P_DIR_Q_to_DIR() {
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DIR</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/CMDDATA</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/DEVCMD<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">8.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_0</TD>")
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT + tSLEW</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.500</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">DIR</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_0</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
 //-->
 </SCRIPT>
   <TR>
-   <A NAME="_IRQ_Q_to_IRQ"></A>
-   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2P_IRQ_Q_to_IRQ();">IRQ.Q to IRQ</A></TD>
+   <A NAME="_XLXI_29_CMDDATA_Q_to_LED_1"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2P_XLXI_29_CMDDATA_Q_to_LED_1();">XLXI_29/CMDDATA.Q to LED_1</A></TD>
    <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">8.500</TD>
-   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-8.500</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">32.600</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-32.600</TD>
   </TR>
 <SCRIPT language="JavaScript">
 <!--
-function AUTO_TS_F2P_IRQ_Q_to_IRQ() {
+function AUTO_TS_F2P_XLXI_29_CMDDATA_Q_to_LED_1() {
    aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
    aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
    aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
-   aWindow.document.writeln("IRQ.Q to IRQ")
+   aWindow.document.writeln("XLXI_29/CMDDATA.Q to LED_1")
    aWindow.document.writeln("</H3>")
    aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
    aWindow.document.writeln("<TR>")
@@ -541,11 +774,69 @@ function AUTO_TS_F2P_IRQ_Q_to_IRQ() {
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">IRQ</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/CMDDATA</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/DEVCMD<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">8.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED<1></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_1</TD>")
    aWindow.document.writeln("<TR>")
    aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT + tSLEW</TD>")
    aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.500</TD>")
-   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">IRQ</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_1</TD>")
+   aWindow.document.writeln("</TABLE>")
+   aWindow.document.close()
+}
+//-->
+</SCRIPT>
+  <TR>
+   <A NAME="_XLXI_29_CMDDATA_Q_to_LED_2"></A>
+   <TD BGCOLOR="#FFCCCC" ALIGN="left" CLASS="cpldta_constraint_name_error" WIDTH="40%"><A HREF="javascript:AUTO_TS_F2P_XLXI_29_CMDDATA_Q_to_LED_2();">XLXI_29/CMDDATA.Q to LED_2</A></TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">0.000</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">32.600</TD>
+   <TD BGCOLOR="#FFCCCC" ALIGN="center" CLASS="cpldta_time_value_error" WIDTH="10%">-32.600</TD>
+  </TR>
+<SCRIPT language="JavaScript">
+<!--
+function AUTO_TS_F2P_XLXI_29_CMDDATA_Q_to_LED_2() {
+   aWindow=window.open("","thewindow","toolbar=no,WIDTH=350,height=300,status=no,scrollbars=yes,resizable=yes,menubar=no")
+   aWindow.document.writeln("<link type=\"text/css\" rel=\"stylesheet\" href=\"cpldta_style.css\">")
+   aWindow.document.writeln("<H3 CLASS=\"cpldta_text_subsection_header\">Path Trace: ")
+   aWindow.document.writeln("XLXI_29/CMDDATA.Q to LED_2")
+   aWindow.document.writeln("</H3>")
+   aWindow.document.writeln("<TABLE  WIDTH=\"90%\" border=\"1\" ALIGN=\"center\">")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Delay Type</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"20%\" CLASS=\"cpldta_time_header\">Delay (ns)</TH>")
+   aWindow.document.writeln("<TH BGCOLOR=\"#FFFFCC\" WIDTH=\"40%\" CLASS=\"cpldta_constraint_header\">Logical Resource</TH>")
+   aWindow.document.writeln("</TR>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tCOI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">1.000</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/CMDDATA</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">XLXI_29/DEVCMD<0></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPTA + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">8.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED<2></TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tF + tLOGI + tPDI</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.700</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_2</TD>")
+   aWindow.document.writeln("<TR>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">tOUT + tSLEW</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"20%\" CLASS=\"cpldta_datasheet_time_value\">7.500</TD>")
+   aWindow.document.writeln("<TD WIDTH=\"40%\" CLASS=\"cpldta_datasheet_pathname\">LED_2</TD>")
    aWindow.document.writeln("</TABLE>")
    aWindow.document.close()
 }
@@ -567,6 +858,31 @@ function AUTO_TS_F2P_IRQ_Q_to_IRQ() {
    <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Reason</TH>
   </TR>
   <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<3>.Q</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for XLXI_29/BITCNT<3>.Q</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<2>.Q</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for XLXI_29/BITCNT<2>.Q</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<1>.Q</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for XLXI_29/BITCNT<1>.Q</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<0>.Q</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for XLXI_29/BITCNT<0>.Q</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">SCLK</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">71.429</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Clock Pulse Width for SCLK</TD>
+  </TR>
+  <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">ECLK</TD>
    <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">100.000</TD>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">Limited by Cycle Time for ECLK</TD>
@@ -575,6 +891,24 @@ function AUTO_TS_F2P_IRQ_Q_to_IRQ() {
  <BR>
  <A NAME="SetupHoldTimesForClocks"></a>
  <h3 CLASS="cpldta_text_subsection_header">Setup/Hold Times for Clocks</h3>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Setup/Hold Times for Clock SCLK</B></CAPTION>
+  <TR>
+   <TH BGCOLOR="#FFFFCC" WIDTH="60%" CLASS="cpldta_constraint_header">Source Pad</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Setup to clk (edge) </TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Hold to clk (edge) </TH>
+  </TR>
+  <TR>
+   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">MOSI</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">2.100</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">1.400</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="60%" CLASS="cpldta_datasheet_pathname">SS</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">2.100</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">1.400</TD>
+  </TR>
+ </TABLE><BR>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
   <CAPTION CLASS="cpldta_text_caption"><B>Setup/Hold Times for Clock ECLK</B></CAPTION>
   <TR>
@@ -597,10 +931,49 @@ function AUTO_TS_F2P_IRQ_Q_to_IRQ() {
  <A NAME="ClockToPadTiming"></a>
  <h3 CLASS="cpldta_text_subsection_header">Clock to Pad Timing</h3>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Clock SCLK to Pad</B></CAPTION>
+  <TR>
+   <TH BGCOLOR="#FFFFCC" WIDTH="80%" CLASS="cpldta_constraint_header">Destination Pad</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Clock (edge) to Pad </TH>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">LED_0</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">46.700</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">LED_1</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">46.700</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">LED_2</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">46.700</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">MISO</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.200</TD>
+  </TR>
+ </TABLE><BR>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
   <CAPTION CLASS="cpldta_text_caption"><B>Clock ECLK to Pad</B></CAPTION>
   <TR>
    <TH BGCOLOR="#FFFFCC" WIDTH="80%" CLASS="cpldta_constraint_header">Destination Pad</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Clock (edge) to Pad </TH>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">LED_0</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">18.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">LED_1</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">18.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">LED_2</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">18.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">CLK_50</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.300</TD>
   </TR>
   <TR>
    <TD WIDTH="80%" CLASS="cpldta_datasheet_pathname">DIR</TD>
@@ -615,11 +988,149 @@ function AUTO_TS_F2P_IRQ_Q_to_IRQ() {
  <A NAME="ClockToSetupTimesForClocks"></a>
  <h3 CLASS="cpldta_text_subsection_header">Clock to Setup Times for Clocks</h3>
  <TABLE  WIDTH="80%" border="1" ALIGN="center">
+  <CAPTION CLASS="cpldta_text_caption"><B>Clock to Setup for clock SCLK</B></CAPTION>
+  <TR>
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Source</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Destination</TH>
+   <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay</TH>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">MISO.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<1>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<2>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<3>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<1>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">MISO.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<1>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<2>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<1>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<3>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<2>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">MISO.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<2>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/BITCNT<3>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<1>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<0>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<2>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<1>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<3>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<2>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<4>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<3>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<5>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<4>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<6>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<5>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<7>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_29/SPIDATA_IN<6>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+ </TABLE><BR>
+ <TABLE  WIDTH="80%" border="1" ALIGN="center">
   <CAPTION CLASS="cpldta_text_caption"><B>Clock to Setup for clock ECLK</B></CAPTION>
   <TR>
    <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Source</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Destination</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay</TH>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">CLK_50.CE</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<0>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<1>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<0>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<2>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<1>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">CLK_50.CE</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<1>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<0>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<1>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<2>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<2>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">CLK_50.CE</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<2>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<0>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<2>.Q</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_15/r_reg<2>.D</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">10.000</TD>
   </TR>
   <TR>
    <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">XLXI_2/delay_rotary_q1.Q</TD>
@@ -721,14 +1232,29 @@ function AUTO_TS_F2P_IRQ_Q_to_IRQ() {
    <TH BGCOLOR="#FFFFCC" WIDTH="40%" CLASS="cpldta_constraint_header">Destination Pad</TH>
    <TH BGCOLOR="#FFFFCC" WIDTH="20%" CLASS="cpldta_time_header">Delay</TH>
   </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RESET</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LED_0</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">31.600</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RESET</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LED_1</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">31.600</TD>
+  </TR>
+  <TR>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">RESET</TD>
+   <TD WIDTH="40%" CLASS="cpldta_datasheet_pathname">LED_2</TD>
+   <TD WIDTH="20%" CLASS="cpldta_datasheet_time_value">31.600</TD>
+  </TR>
  </TABLE>
  <BR>
 <HR>
 <BR><SPAN CLASS="cpldta_text_normal_bold"><B>Number of paths analyzed:</B></SPAN> 
-<SPAN CLASS="cpldta_text_normal">25</SPAN>
+<SPAN CLASS="cpldta_text_normal">117</SPAN>
 <BR><SPAN CLASS="cpldta_text_normal_bold"><B>Number of Timing errors:</B></SPAN> 
-<SPAN CLASS="cpldta_text_normal">25</SPAN>
-<BR><SPAN CLASS="cpldta_text_normal_bold"><B>Analysis Completed:</B></SPAN> <SPAN CLASS="cpldta_text_normal">Wed Aug 09 17:18:19 2017
+<SPAN CLASS="cpldta_text_normal">117</SPAN>
+<BR><SPAN CLASS="cpldta_text_normal_bold"><B>Analysis Completed:</B></SPAN> <SPAN CLASS="cpldta_text_normal">Thu Aug 17 20:08:39 2017
 </SPAN>
 <HR>
 </HTML>

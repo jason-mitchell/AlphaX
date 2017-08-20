@@ -241,12 +241,12 @@ int main(void){
         GPIO_Init(GPIOB, &GPIO_InitStructure);
 
         GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_0);
-        GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_0);                        // Pin 6 and 7 are AF0
+        GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_0);                        // Pin 6 and 7 are AF0 (USART Tx and RX)
 
         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
-        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
         GPIO_Init(GPIOB, &GPIO_InitStructure);										// Pin 11 is an output
-        GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_2);					// Alternate function, Timer 2 CH4
+        GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_2);						// Alternate function 2 = (Timer 2 CH4)
 
 
 
@@ -287,7 +287,7 @@ int main(void){
         // Configure TIM2 for PWM out to clock CPLD
         //------------------------------------------
 
-        Timer_InitStructure.TIM_Prescaler = 40000;
+        Timer_InitStructure.TIM_Prescaler = 1200;
         Timer_InitStructure.TIM_CounterMode = TIM_CounterMode_Up;
         Timer_InitStructure.TIM_Period = 500;		// PWM period value
         Timer_InitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
@@ -295,6 +295,14 @@ int main(void){
         TIM_TimeBaseInit(TIM2, &Timer_InitStructure);
         TIM_Cmd(TIM2, ENABLE);
 
+        TIM_OCInitTypeDef outputChannelInit = {0,};
+        outputChannelInit.TIM_OCMode = TIM_OCMode_PWM1;
+        outputChannelInit.TIM_Pulse = 2;	// PWM duty cycle  @ 25 LED is dim, quite bright  4 = nice and dim (needle pulse width)
+        outputChannelInit.TIM_OutputState = TIM_OutputState_Enable;
+        outputChannelInit.TIM_OCPolarity = TIM_OCPolarity_High;
+
+        TIM_OC4Init(TIM2, &outputChannelInit);
+        TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
 
 
         InitClockHW();
@@ -348,14 +356,14 @@ int main(void){
                     } else {
                     	cnst = 0x55;
                     }
-                    SimpleSPI(0x01);			// Command portion
-                    SimpleSPI(cnst & 0x01);		// Data portion- write toggling bit
+                    SimpleSPI(0x01);			// Command = Write LED port
+                    SimpleSPI(cnst & 0x01);		// Data portion- write toggling bit, MISO = 0x00
 
-                    SimpleSPI(0x06);			// Command Portion
-                    SimpleSPI(0x00);			// Data Portion, send zero, the other leg will clock in...
+                    SimpleSPI(0x06);			// Command = Read Chip ID
+                    SimpleSPI(0x00);			// Data Portion, send 0x00, MISO = data returned
 
-                    SimpleSPI(0x04);
-                    SimpleSPI(0xA1);
+                    //SimpleSPI(0x04);
+                    //SimpleSPI(0xF1);
 
 
 

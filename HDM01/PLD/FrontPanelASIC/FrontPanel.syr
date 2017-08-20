@@ -76,10 +76,8 @@ wysiwyg                            : NO
 *                          HDL Compilation                              *
 =========================================================================
 Compiling verilog file "spi.v" in library work
-Compiling verilog file "PWM.v" in library work
-Module <spi> compiled
 Compiling verilog file "clock_divider.v" in library work
-Module <PWM> compiled
+Module <spi> compiled
 Module <clock_divider> compiled
 No errors in compilation
 Analysis of file <"FrontPanel.prj"> succeeded.
@@ -87,8 +85,7 @@ Analysis of file <"FrontPanel.prj"> succeeded.
 Compiling vhdl file "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd" in Library work.
 Architecture behavioral of Entity rotary_decoder is up to date.
 Compiling vhdl file "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf" in Library work.
-Entity <frontpanel> compiled.
-Entity <frontpanel> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity frontpanel is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -101,13 +98,15 @@ Analyzing hierarchy for module <clock_divider> in library <work> with parameters
 	N = "00000000000000000000000000000101"
 	WIDTH = "00000000000000000000000000000011"
 
-Analyzing hierarchy for module <PWM> in library <work>.
-
 Analyzing hierarchy for module <spi> in library <work> with parameters.
+	ACK = "00000000000000000000000000000001"
 	CHIP_ID = "00000000000000000000000001110001"
+	NAK = "00000000000000000000000010000000"
+	NO_OPERATION = "00000000000000000000000000000000"
 	READ_CHIP_ID = "00000000000000000000000000000110"
+	READ_VENDOR_ID = "00000000000000000000000000011001"
+	VENDOR_ID = "00000000000000000000000010101110"
 	WRITE_LED_PORT = "00000000000000000000000000000001"
-	WRITE_PWM_PORT = "00000000000000000000000000000100"
 
 
 =========================================================================
@@ -120,7 +119,6 @@ Analyzing Entity <FrontPanel> in library <work> (Architecture <behavioral>).
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_19> in unit <FrontPanel>.
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_27> in unit <FrontPanel>.
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_28> in unit <FrontPanel>.
-    Set user-defined property "SLEW =  SLOW" for instance <XLXI_49> in unit <FrontPanel>.
 Entity <FrontPanel> analyzed. Unit <FrontPanel> generated.
 
 Analyzing Entity <rotary_decoder> in library <work> (Architecture <behavioral>).
@@ -132,14 +130,15 @@ Analyzing module <clock_divider> in library <work>.
 	WIDTH = 32'sb00000000000000000000000000000011
 Module <clock_divider> is correct for synthesis.
  
-Analyzing module <PWM> in library <work>.
-Module <PWM> is correct for synthesis.
- 
 Analyzing module <spi> in library <work>.
+	ACK = 32'b00000000000000000000000000000001
 	CHIP_ID = 32'b00000000000000000000000001110001
+	NAK = 32'b00000000000000000000000010000000
+	NO_OPERATION = 32'b00000000000000000000000000000000
 	READ_CHIP_ID = 32'b00000000000000000000000000000110
+	READ_VENDOR_ID = 32'b00000000000000000000000000011001
+	VENDOR_ID = 32'b00000000000000000000000010101110
 	WRITE_LED_PORT = 32'b00000000000000000000000000000001
-	WRITE_PWM_PORT = 32'b00000000000000000000000000000100
 Module <spi> is correct for synthesis.
  
 
@@ -179,71 +178,44 @@ Synthesizing Unit <clock_divider>.
 Unit <clock_divider> synthesized.
 
 
-Synthesizing Unit <PWM>.
-    Related source file is "PWM.v".
-    Found 6-bit subtractor for signal <$sub0000> created at line 47.
-    Found 6-bit subtractor for signal <$sub0001> created at line 57.
-    Found 4-bit register for signal <count>.
-    Found 6-bit comparator equal for signal <count$cmp_eq0000> created at line 47.
-    Found 6-bit comparator equal for signal <count$cmp_eq0001> created at line 57.
-    Found 4-bit adder for signal <count$share0000>.
-    Found 1-bit register for signal <pos_or_neg>.
-    Found 6-bit comparator not equal for signal <pos_or_neg$cmp_ne0000> created at line 47.
-    Found 6-bit comparator not equal for signal <pos_or_neg$cmp_ne0001> created at line 57.
-    Summary:
-	inferred   1 D-type flip-flop(s).
-	inferred   3 Adder/Subtractor(s).
-	inferred   4 Comparator(s).
-Unit <PWM> synthesized.
-
-
 Synthesizing Unit <spi>.
     Related source file is "spi.v".
-WARNING:Xst:646 - Signal <TFLAG> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:737 - Found 8-bit latch for signal <DEVCMD>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 4-bit latch for signal <LEDPORT>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <PWMPORT>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <SPIDATA_OUT>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 1-bit register for signal <BYTE_IN>.
     Found 1-bit register for signal <MISO>.
+    Found 8-bit register for signal <LEDPORT>.
     Found 4-bit up counter for signal <BITCNT>.
     Found 1-bit register for signal <CMDDATA>.
+    Found 8-bit register for signal <DEVCMD>.
+    Found 4-bit adder for signal <old_BITCNT_2$add0000> created at line 127.
     Found 8-bit register for signal <SPIDATA_IN>.
+    Found 8-bit register for signal <SPIDATA_OUT>.
     Summary:
 	inferred   1 Counter(s).
-	inferred   1 D-type flip-flop(s).
+	inferred   2 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
 Unit <spi> synthesized.
 
 
 Synthesizing Unit <FrontPanel>.
     Related source file is "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf".
-WARNING:Xst:646 - Signal <LED<3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <LED<7:3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 Unit <FrontPanel> synthesized.
 
-INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 4
+# Adders/Subtractors                                   : 2
  3-bit adder                                           : 1
  4-bit adder                                           : 1
- 6-bit subtractor                                      : 2
 # Counters                                             : 2
  3-bit up counter                                      : 1
  4-bit up counter                                      : 1
-# Registers                                            : 17
+# Registers                                            : 19
  1-bit register                                        : 14
  2-bit register                                        : 1
- 4-bit register                                        : 1
- 8-bit register                                        : 1
-# Latches                                              : 4
- 4-bit latch                                           : 1
- 8-bit latch                                           : 3
-# Comparators                                          : 4
- 6-bit comparator equal                                : 2
- 6-bit comparator not equal                            : 2
+ 8-bit register                                        : 4
 # Multiplexers                                         : 1
  1-bit 8-to-1 multiplexer                              : 1
 
@@ -253,29 +225,19 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <0>. This FF/Latch will be trimmed during the optimization process.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 4
+# Adders/Subtractors                                   : 2
  3-bit adder                                           : 1
  4-bit adder                                           : 1
- 6-bit subtractor                                      : 2
 # Counters                                             : 2
  3-bit up counter                                      : 1
  4-bit up counter                                      : 1
 # Registers                                            : 11
  Flip-Flops                                            : 11
-# Latches                                              : 4
- 4-bit latch                                           : 1
- 8-bit latch                                           : 3
-# Comparators                                          : 2
- 6-bit comparator equal                                : 2
 # Multiplexers                                         : 1
  1-bit 8-to-1 multiplexer                              : 1
 
@@ -284,28 +246,57 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1710 - FF/Latch <SPIDATA_OUT_7> (without init value) has a constant value of 0 in block <spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <SPIDATA_OUT_3> (without init value) has a constant value of 0 in block <spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <SPIDATA_OUT_2> (without init value) has a constant value of 0 in block <spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <SPIDATA_OUT_1> (without init value) has a constant value of 0 in block <spi>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <SPIDATA_OUT_6> in Unit <spi> is equivalent to the following 3 FFs/Latches, which will be removed : <SPIDATA_OUT_5> <SPIDATA_OUT_4> <SPIDATA_OUT_0> 
+INFO:Xst:2261 - The FF/Latch <SPIDATA_OUT_3> in Unit <spi> is equivalent to the following 2 FFs/Latches, which will be removed : <SPIDATA_OUT_2> <SPIDATA_OUT_1> 
+INFO:Xst:2261 - The FF/Latch <SPIDATA_OUT_6> in Unit <spi> is equivalent to the following FF/Latch, which will be removed : <SPIDATA_OUT_4> 
 
 Optimizing unit <FrontPanel> ...
 
 Optimizing unit <rotary_decoder> ...
 
-Optimizing unit <PWM> ...
-
 Optimizing unit <clock_divider> ...
 
 Optimizing unit <spi> ...
+  implementation constraint: INIT=r	 : SPIDATA_OUT_0
+  implementation constraint: INIT=r	 : DEVCMD_7
+  implementation constraint: INIT=r	 : LEDPORT_7
   implementation constraint: INIT=r	 : BITCNT_2
+  implementation constraint: INIT=r	 : BITCNT_3
+  implementation constraint: INIT=r	 : SPIDATA_IN_2
+  implementation constraint: INIT=r	 : BYTE_IN
   implementation constraint: INIT=r	 : CMDDATA
+  implementation constraint: INIT=r	 : SPIDATA_IN_7
+  implementation constraint: INIT=r	 : SPIDATA_IN_3
   implementation constraint: INIT=r	 : MISO
   implementation constraint: INIT=r	 : BITCNT_0
-  implementation constraint: INIT=r	 : BITCNT_3
   implementation constraint: INIT=r	 : BITCNT_1
-WARNING:Xst:2677 - Node <LEDPORT_3> of sequential type is unconnected in block <XLXI_58>.
+  implementation constraint: INIT=r	 : LEDPORT_0
+  implementation constraint: INIT=r	 : LEDPORT_1
+  implementation constraint: INIT=r	 : LEDPORT_2
+  implementation constraint: INIT=r	 : LEDPORT_3
+  implementation constraint: INIT=r	 : LEDPORT_4
+  implementation constraint: INIT=r	 : LEDPORT_5
+  implementation constraint: INIT=r	 : LEDPORT_6
+  implementation constraint: INIT=r	 : DEVCMD_0
+  implementation constraint: INIT=r	 : DEVCMD_1
+  implementation constraint: INIT=r	 : DEVCMD_2
+  implementation constraint: INIT=r	 : DEVCMD_3
+  implementation constraint: INIT=r	 : DEVCMD_4
+  implementation constraint: INIT=r	 : DEVCMD_5
+  implementation constraint: INIT=r	 : DEVCMD_6
+  implementation constraint: INIT=r	 : SPIDATA_OUT_7
+  implementation constraint: INIT=r	 : SPIDATA_IN_4
+  implementation constraint: INIT=r	 : SPIDATA_OUT_6
+  implementation constraint: INIT=r	 : SPIDATA_OUT_5
+  implementation constraint: INIT=r	 : SPIDATA_IN_6
+  implementation constraint: INIT=r	 : SPIDATA_OUT_3
+  implementation constraint: INIT=r	 : SPIDATA_IN_5
+  implementation constraint: INIT=r	 : SPIDATA_IN_1
+  implementation constraint: INIT=r	 : SPIDATA_IN_0
+WARNING:Xst:2677 - Node <LEDPORT_3> of sequential type is unconnected in block <XLXI_29>.
+WARNING:Xst:2677 - Node <LEDPORT_4> of sequential type is unconnected in block <XLXI_29>.
+WARNING:Xst:2677 - Node <LEDPORT_5> of sequential type is unconnected in block <XLXI_29>.
+WARNING:Xst:2677 - Node <LEDPORT_6> of sequential type is unconnected in block <XLXI_29>.
+WARNING:Xst:2677 - Node <LEDPORT_7> of sequential type is unconnected in block <XLXI_29>.
 
 =========================================================================
 *                           Partition Report                            *
@@ -337,40 +328,34 @@ Design Statistics
 # IOs                              : 15
 
 Cell Usage :
-# BELS                             : 235
-#      AND2                        : 60
-#      AND3                        : 4
-#      AND4                        : 4
-#      AND6                        : 2
-#      AND8                        : 1
-#      BUF                         : 8
+# BELS                             : 115
+#      AND2                        : 34
+#      AND3                        : 5
+#      AND4                        : 3
 #      GND                         : 3
-#      INV                         : 103
-#      OR2                         : 23
-#      OR3                         : 2
+#      INV                         : 47
+#      OR2                         : 13
+#      OR3                         : 3
 #      OR4                         : 2
-#      XOR2                        : 23
-# FlipFlops/Latches                : 55
-#      FD                          : 14
-#      FDC                         : 8
-#      FDCE                        : 12
-#      FDPE                        : 1
-#      LD                          : 9
-#      LDC                         : 11
+#      XOR2                        : 5
+# FlipFlops/Latches                : 47
+#      FD                          : 19
+#      FDC                         : 5
+#      FDCE                        : 23
 # IO Buffers                       : 15
 #      IBUF                        : 7
 #      OBUF                        : 8
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.22 secs
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.97 secs
  
 --> 
 
-Total memory usage is 268988 kilobytes
+Total memory usage is 266364 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   15 (   0 filtered)
-Number of infos    :    4 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
 

@@ -7,7 +7,7 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : sch2hdl
 --  /   /         Filename : FrontPanel.vhf
--- /___/   /\     Timestamp : 08/13/2017 17:13:55
+-- /___/   /\     Timestamp : 08/20/2017 17:28:10
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -26,30 +26,27 @@ library UNISIM;
 use UNISIM.Vcomponents.ALL;
 
 entity FrontPanel is
-   port ( ECLK   : in    std_logic; 
-          MOSI   : in    std_logic; 
-          PHA    : in    std_logic; 
-          PHB    : in    std_logic; 
-          RESET  : in    std_logic; 
-          SCLK   : in    std_logic; 
-          SS     : in    std_logic; 
-          CLK_50 : out   std_logic; 
-          DIR    : out   std_logic; 
-          IRQ    : out   std_logic; 
-          LED_0  : out   std_logic; 
-          LED_1  : out   std_logic; 
-          LED_2  : out   std_logic; 
-          MISO   : out   std_logic; 
-          PWMOUT : out   std_logic);
+   port ( ECLK    : in    std_logic; 
+          MOSI    : in    std_logic; 
+          PHA     : in    std_logic; 
+          PHB     : in    std_logic; 
+          RESET   : in    std_logic; 
+          SCLK    : in    std_logic; 
+          SS      : in    std_logic; 
+          BYTE_IN : out   std_logic; 
+          CLK_50  : out   std_logic; 
+          DIR     : out   std_logic; 
+          IRQ     : out   std_logic; 
+          LED_0   : out   std_logic; 
+          LED_1   : out   std_logic; 
+          LED_2   : out   std_logic; 
+          MISO    : out   std_logic);
 end FrontPanel;
 
 architecture BEHAVIORAL of FrontPanel is
    attribute BOX_TYPE   : string ;
    attribute SLEW       : string ;
-   signal LED     : std_logic_vector (3 downto 0);
-   signal MARK    : std_logic_vector (3 downto 0);
-   signal PWMBUS  : std_logic_vector (7 downto 0);
-   signal SPACE   : std_logic_vector (3 downto 0);
+   signal LED     : std_logic_vector (7 downto 0);
    signal XLXN_1  : std_logic;
    signal XLXN_2  : std_logic;
    signal XLXN_15 : std_logic;
@@ -58,7 +55,6 @@ architecture BEHAVIORAL of FrontPanel is
    signal XLXN_28 : std_logic;
    signal XLXN_41 : std_logic;
    signal XLXN_66 : std_logic;
-   signal XLXN_73 : std_logic;
    signal XLXN_77 : std_logic;
    component rotary_decoder
       port ( rotary_a : in    std_logic; 
@@ -93,28 +89,14 @@ architecture BEHAVIORAL of FrontPanel is
    end component;
    attribute BOX_TYPE of AND2 : component is "BLACK_BOX";
    
-   component PWM
-      port ( clk     : in    std_logic; 
-             reset   : in    std_logic; 
-             rise    : in    std_logic_vector (3 downto 0); 
-             fall    : in    std_logic_vector (3 downto 0); 
-             clk_out : out   std_logic);
-   end component;
-   
-   component BUF
-      port ( I : in    std_logic; 
-             O : out   std_logic);
-   end component;
-   attribute BOX_TYPE of BUF : component is "BLACK_BOX";
-   
    component spi
       port ( SCLK    : in    std_logic; 
              MOSI    : in    std_logic; 
              SS      : in    std_logic; 
              NRST    : in    std_logic; 
              MISO    : out   std_logic; 
-             LEDPORT : out   std_logic_vector (3 downto 0); 
-             PWMPORT : out   std_logic_vector (7 downto 0));
+             LEDPORT : out   std_logic_vector (7 downto 0); 
+             BYTE_IN : out   std_logic);
    end component;
    
 begin
@@ -180,57 +162,14 @@ begin
       port map (I=>XLXN_28,
                 O=>LED_2);
    
-   XLXI_48 : PWM
-      port map (clk=>XLXN_15,
-                fall(3 downto 0)=>SPACE(3 downto 0),
-                reset=>RESET,
-                rise(3 downto 0)=>MARK(3 downto 0),
-                clk_out=>XLXN_73);
-   
-   XLXI_49 : OBUF
-      port map (I=>XLXN_73,
-                O=>PWMOUT);
-   
-   XLXI_50 : BUF
-      port map (I=>PWMBUS(0),
-                O=>MARK(0));
-   
-   XLXI_51 : BUF
-      port map (I=>PWMBUS(1),
-                O=>MARK(1));
-   
-   XLXI_52 : BUF
-      port map (I=>PWMBUS(2),
-                O=>MARK(2));
-   
-   XLXI_53 : BUF
-      port map (I=>PWMBUS(3),
-                O=>MARK(3));
-   
-   XLXI_54 : BUF
-      port map (I=>PWMBUS(4),
-                O=>SPACE(0));
-   
-   XLXI_55 : BUF
-      port map (I=>PWMBUS(5),
-                O=>SPACE(1));
-   
-   XLXI_56 : BUF
-      port map (I=>PWMBUS(6),
-                O=>SPACE(2));
-   
-   XLXI_57 : BUF
-      port map (I=>PWMBUS(7),
-                O=>SPACE(3));
-   
-   XLXI_58 : spi
+   XLXI_29 : spi
       port map (MOSI=>MOSI,
                 NRST=>RESET,
                 SCLK=>SCLK,
                 SS=>SS,
-                LEDPORT(3 downto 0)=>LED(3 downto 0),
-                MISO=>MISO,
-                PWMPORT(7 downto 0)=>PWMBUS(7 downto 0));
+                BYTE_IN=>BYTE_IN,
+                LEDPORT(7 downto 0)=>LED(7 downto 0),
+                MISO=>MISO);
    
 end BEHAVIORAL;
 

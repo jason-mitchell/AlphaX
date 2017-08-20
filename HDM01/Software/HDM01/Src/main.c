@@ -356,14 +356,14 @@ int main(void){
                     } else {
                     	cnst = 0x55;
                     }
-                    SimpleSPI(0x01);			// Command portion
-                    SimpleSPI(cnst & 0x01);		// Data portion- write toggling bit
+                    SimpleSPI(0x01);			// Command = Write LED port
+                    SimpleSPI(cnst & 0x01);		// Data portion- write toggling bit, MISO = 0x00
 
-                    SimpleSPI(0x06);			// Command Portion
-                    SimpleSPI(0x00);			// Data Portion, send zero, the other leg will clock in...
+                    SimpleSPI(0x06);			// Command = Read Chip ID
+                    SimpleSPI(0x00);			// Data Portion, send 0x00, MISO = data returned
 
-                    SimpleSPI(0x04);
-                    SimpleSPI(0xF1);
+                    SimpleSPI(0x19);			// Command = Read Chip Vendor
+                    SimpleSPI(0x00);
 
 
 
