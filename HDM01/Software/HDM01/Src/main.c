@@ -32,6 +32,7 @@
 //	               `*=--..--=*'
 //
 //					22/7/17 - Project moved to Atollic TrueStudio- Gain in performance apparent (code size down to 17k)
+//					23/8/17 - This code works on the STM32F072RBT8 without change but we need to be careful.
 //
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

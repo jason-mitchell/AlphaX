@@ -1823,3 +1823,163 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.atollic.truestudio.productmanager 1 0 2017-08-20 21:44:02.083
 !MESSAGE Unloading product manager
+!SESSION 2017-08-23 18:09:46.404 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2017-08-23 18:09:47.905
+!MESSAGE Loading product manager
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2017-08-23 18:09:47.920
+!MESSAGE OS info: Windows 7, 6.1, x86
+
+!ENTRY TrueSTUDIO 1 0 2017-08-23 18:09:49.007
+!MESSAGE Target: ARM, Version: 8.0.0, Build date: 20170621-1519, Installation dir: /C:/Program Files (x86)/Atollic/TrueSTUDIO for ARM 8.0.0/ide/
+
+!ENTRY TrueSTUDIO 1 0 2017-08-23 18:09:49.008
+!MESSAGE Workspace: C:\Temp\Work\AlphaX\HDM01\Software
+
+!ENTRY LicenseSystem 1 0 2017-08-23 18:09:49.012
+!MESSAGE Updated java.library.path to: C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\ide;C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\ide;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Atollic/TrueSTUDIO for ARM 8.0.0/ide/jre/bin/client;C:/Program Files (x86)/Atollic/TrueSTUDIO for ARM 8.0.0/ide/jre/bin;C:/Program Files (x86)/Atollic/TrueSTUDIO for ARM 8.0.0/ide/jre/lib/i386;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Calibre2\;C:\Program Files (x86)\GNU\GnuPG\pub;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Skype\Phone\;C:\Go\bin;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0;;.
+
+!ENTRY TrueSTUDIO License 1 0 2017-08-23 18:09:49.176
+!MESSAGE Valid local features found: 0
+
+!ENTRY TrueSTUDIO License 1 0 2017-08-23 18:09:49.177
+!MESSAGE Valid network features found: 0
+
+!ENTRY TrueSTUDIO License 1 0 2017-08-23 18:09:49.177
+!MESSAGE License system initialized in 108ms
+
+!ENTRY TrueSTUDIO 1 0 2017-08-23 18:09:49.181
+!MESSAGE License numbers: 0 []
+
+!ENTRY TrueSTUDIO 1 0 2017-08-23 18:09:49.181
+!MESSAGE This installation is running as LITE
+
+!ENTRY org.eclipse.jface 2 0 2017-08-23 18:09:50.675
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-08-23 18:09:50.675
+!MESSAGE A conflict occurred for ALT+CTRL+T:
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.EditPropertiesCommand,Show Properties,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@792107,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.connector.local.command.launch,Open Local Terminal on Selection,
+		,
+		Category(org.eclipse.tm.terminal.view.ui.commands.category,Terminal Commands,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e19c86,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.atollic.truestudio.integration.processorexpert 0 0 2017-08-23 18:09:55.924
+!MESSAGE Atollic TrueSTUDIO Processor Expert integration is up.
+
+!ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2017-08-23 18:09:55.980
+!MESSAGE Code Review is up.
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-08-23 18:09:56.033
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\user'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.atollic.truestudio.common.wizards 4 0 2017-08-23 18:37:38.824
+!MESSAGE Failed to find the correct FPU ABI, falling back to Soft. Value: 
+
+!ENTRY com.atollic.truestudio.common.wizards 4 0 2017-08-23 18:37:40.128
+!MESSAGE Failed to find the correct FPU ABI, falling back to Soft. Value: 
+
+!ENTRY com.atollic.truestudio.common.wizards 4 0 2017-08-23 18:37:41.187
+!MESSAGE Failed to find the correct FPU ABI, falling back to Soft. Value: 
+
+!ENTRY com.atollic.truestudio.common.wizards 4 0 2017-08-23 18:37:45.217
+!MESSAGE Failed to find the correct FPU ABI, falling back to Soft. Value: 
+
+!ENTRY com.atollic.truestudio.common.wizards 4 0 2017-08-23 18:37:46.820
+!MESSAGE Failed to find the correct FPU ABI, falling back to Soft. Value: 
+
+!ENTRY com.atollic.truestudio.common.wizards 4 0 2017-08-23 18:38:28.987
+!MESSAGE Failed to find the correct FPU ABI, falling back to Soft. Value: 
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.021
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.022
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.026
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.027
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2017-08-23 18:39:03.062
+!MESSAGE HDM01_MICON needs property 'com.atollic.truestudio.general.runtimelib.586949061' fixed. Fixing to 'com.atollic.truestudio.ld.general.clib.small'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2017-08-23 18:39:03.062
+!MESSAGE Failed to get device info (Debug) for project HDM01_MICON
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2017-08-23 18:39:03.062
+!MESSAGE Failed to get device info (Debug) for project HDM01_MICON
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2017-08-23 18:39:03.062
+!MESSAGE Failed to get device info (Debug) for project HDM01_MICON
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2017-08-23 18:39:03.063
+!MESSAGE HDM01_MICON needs property 'com.atollic.truestudio.general.runtimelib.1513660432' fixed. Fixing to 'com.atollic.truestudio.ld.general.clib.small'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2017-08-23 18:39:03.064
+!MESSAGE Failed to get device info (Release) for project HDM01_MICON
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2017-08-23 18:39:03.064
+!MESSAGE Failed to get device info (Release) for project HDM01_MICON
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2017-08-23 18:39:03.064
+!MESSAGE Failed to get device info (Release) for project HDM01_MICON
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.084
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.085
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.088
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.089
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.130
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:03.131
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:05.865
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:06.100
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:06.353
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2017-08-23 18:39:06.487
+!MESSAGE Failed to find device info
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-08-23 18:39:14.747
+!MESSAGE Indexed 'HDM01_MICON' (4 sources, 64 headers) in 5.35 sec: 9,201 declarations; 12,432 references; 14 unresolved inclusions; 103 syntax errors; 1,607 unresolved names (6.9%)
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2017-08-23 18:44:25.365
+!MESSAGE Unloading product manager
