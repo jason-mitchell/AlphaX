@@ -1,4 +1,5 @@
 verilog work "spi.v"
 vhdl work "rotary_decoder.vhd"
+verilog work "counter8.v"
 verilog work "clock_divider.v"
 vhdl work "FrontPanel.vhf"

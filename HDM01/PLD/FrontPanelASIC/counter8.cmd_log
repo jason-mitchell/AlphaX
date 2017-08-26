@@ -1,0 +1,4 @@
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/counter8.v -lang verilog -prj FrontPanelASIC -o counter8.spl -module counter8 -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl counter8.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/counter8.sym 
+vhdtdtfi -lib work C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/counter8.v -lang verilog -prj FrontPanelASIC -o counter8.spl -module counter8 -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl counter8.spl C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/counter8.sym 

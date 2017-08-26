@@ -55,7 +55,7 @@ XOR Preserve                       : YES
 Equivalent register Removal        : YES
 
 ---- General Options
-Optimization Goal                  : Speed
+Optimization Goal                  : Area
 Optimization Effort                : 1
 Keep Hierarchy                     : Yes
 Netlist Hierarchy                  : As_Optimized
@@ -76,8 +76,10 @@ wysiwyg                            : NO
 *                          HDL Compilation                              *
 =========================================================================
 Compiling verilog file "spi.v" in library work
-Compiling verilog file "clock_divider.v" in library work
+Compiling verilog file "counter8.v" in library work
 Module <spi> compiled
+Compiling verilog file "clock_divider.v" in library work
+Module <counter8> compiled
 Module <clock_divider> compiled
 No errors in compilation
 Analysis of file <"FrontPanel.prj"> succeeded.
@@ -85,7 +87,8 @@ Analysis of file <"FrontPanel.prj"> succeeded.
 Compiling vhdl file "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/rotary_decoder.vhd" in Library work.
 Architecture behavioral of Entity rotary_decoder is up to date.
 Compiling vhdl file "C:/Temp/Work/AlphaX/HDM01/PLD/FrontPanelASIC/FrontPanel.vhf" in Library work.
-Architecture behavioral of Entity frontpanel is up to date.
+Entity <frontpanel> compiled.
+Entity <frontpanel> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -104,9 +107,12 @@ Analyzing hierarchy for module <spi> in library <work> with parameters.
 	NAK = "00000000000000000000000010000000"
 	NO_OPERATION = "00000000000000000000000000000000"
 	READ_CHIP_ID = "00000000000000000000000000000110"
+	READ_PORT = "00000000000000000000000000011111"
 	READ_VENDOR_ID = "00000000000000000000000000011001"
 	VENDOR_ID = "00000000000000000000000010101110"
 	WRITE_LED_PORT = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <counter8> in library <work>.
 
 
 =========================================================================
@@ -115,10 +121,13 @@ Analyzing hierarchy for module <spi> in library <work> with parameters.
 Analyzing Entity <FrontPanel> in library <work> (Architecture <behavioral>).
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_6> in unit <FrontPanel>.
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_7> in unit <FrontPanel>.
+    Set user-defined property "PWR_MODE =  LOW" for instance <XLXI_15> in unit <FrontPanel>.
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_16> in unit <FrontPanel>.
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_19> in unit <FrontPanel>.
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_27> in unit <FrontPanel>.
     Set user-defined property "SLEW =  SLOW" for instance <XLXI_28> in unit <FrontPanel>.
+    Set user-defined property "PWR_MODE =  LOW" for instance <XLXI_30> in unit <FrontPanel>.
+    Set user-defined property "PWR_MODE =  LOW" for instance <XLXI_31> in unit <FrontPanel>.
 Entity <FrontPanel> analyzed. Unit <FrontPanel> generated.
 
 Analyzing Entity <rotary_decoder> in library <work> (Architecture <behavioral>).
@@ -136,10 +145,14 @@ Analyzing module <spi> in library <work>.
 	NAK = 32'b00000000000000000000000010000000
 	NO_OPERATION = 32'b00000000000000000000000000000000
 	READ_CHIP_ID = 32'b00000000000000000000000000000110
+	READ_PORT = 32'b00000000000000000000000000011111
 	READ_VENDOR_ID = 32'b00000000000000000000000000011001
 	VENDOR_ID = 32'b00000000000000000000000010101110
 	WRITE_LED_PORT = 32'b00000000000000000000000000000001
 Module <spi> is correct for synthesis.
+ 
+Analyzing module <counter8> in library <work>.
+Module <counter8> is correct for synthesis.
  
 
 =========================================================================
@@ -186,14 +199,22 @@ Synthesizing Unit <spi>.
     Found 4-bit up counter for signal <BITCNT>.
     Found 1-bit register for signal <CMDDATA>.
     Found 8-bit register for signal <DEVCMD>.
-    Found 4-bit adder for signal <old_BITCNT_2$add0000> created at line 127.
+    Found 4-bit adder for signal <old_BITCNT_2$add0000> created at line 138.
     Found 8-bit register for signal <SPIDATA_IN>.
     Found 8-bit register for signal <SPIDATA_OUT>.
     Summary:
 	inferred   1 Counter(s).
-	inferred   2 D-type flip-flop(s).
+	inferred   3 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 Unit <spi> synthesized.
+
+
+Synthesizing Unit <counter8>.
+    Related source file is "counter8.v".
+    Found 8-bit updown counter for signal <COUNT>.
+    Summary:
+	inferred   1 Counter(s).
+Unit <counter8> synthesized.
 
 
 Synthesizing Unit <FrontPanel>.
@@ -209,9 +230,10 @@ Macro Statistics
 # Adders/Subtractors                                   : 2
  3-bit adder                                           : 1
  4-bit adder                                           : 1
-# Counters                                             : 2
+# Counters                                             : 3
  3-bit up counter                                      : 1
  4-bit up counter                                      : 1
+ 8-bit updown counter                                  : 1
 # Registers                                            : 19
  1-bit register                                        : 14
  2-bit register                                        : 1
@@ -233,11 +255,12 @@ Macro Statistics
 # Adders/Subtractors                                   : 2
  3-bit adder                                           : 1
  4-bit adder                                           : 1
-# Counters                                             : 2
+# Counters                                             : 3
  3-bit up counter                                      : 1
  4-bit up counter                                      : 1
-# Registers                                            : 11
- Flip-Flops                                            : 11
+ 8-bit updown counter                                  : 1
+# Registers                                            : 12
+ Flip-Flops                                            : 12
 # Multiplexers                                         : 1
  1-bit 8-to-1 multiplexer                              : 1
 
@@ -246,8 +269,6 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-INFO:Xst:2261 - The FF/Latch <SPIDATA_OUT_3> in Unit <spi> is equivalent to the following 2 FFs/Latches, which will be removed : <SPIDATA_OUT_2> <SPIDATA_OUT_1> 
-INFO:Xst:2261 - The FF/Latch <SPIDATA_OUT_6> in Unit <spi> is equivalent to the following FF/Latch, which will be removed : <SPIDATA_OUT_4> 
 
 Optimizing unit <FrontPanel> ...
 
@@ -256,19 +277,35 @@ Optimizing unit <rotary_decoder> ...
 Optimizing unit <clock_divider> ...
 
 Optimizing unit <spi> ...
-  implementation constraint: INIT=r	 : SPIDATA_OUT_0
-  implementation constraint: INIT=r	 : DEVCMD_7
   implementation constraint: INIT=r	 : LEDPORT_7
-  implementation constraint: INIT=r	 : BITCNT_2
-  implementation constraint: INIT=r	 : BITCNT_3
-  implementation constraint: INIT=r	 : SPIDATA_IN_2
-  implementation constraint: INIT=r	 : BYTE_IN
   implementation constraint: INIT=r	 : CMDDATA
-  implementation constraint: INIT=r	 : SPIDATA_IN_7
-  implementation constraint: INIT=r	 : SPIDATA_IN_3
+  implementation constraint: INIT=r	 : SPIDATA_OUT_7
+  implementation constraint: INIT=r	 : SPIDATA_IN_2
   implementation constraint: INIT=r	 : MISO
+  implementation constraint: INIT=r	 : SPIDATA_IN_6
+  implementation constraint: INIT=r	 : BYTE_IN
+  implementation constraint: INIT=r	 : DEVCMD_0
+  implementation constraint: INIT=r	 : SPIDATA_IN_7
   implementation constraint: INIT=r	 : BITCNT_0
   implementation constraint: INIT=r	 : BITCNT_1
+  implementation constraint: INIT=r	 : BITCNT_2
+  implementation constraint: INIT=r	 : BITCNT_3
+  implementation constraint: INIT=r	 : SPIDATA_IN_0
+  implementation constraint: INIT=r	 : SPIDATA_IN_1
+  implementation constraint: INIT=r	 : SPIDATA_OUT_0
+  implementation constraint: INIT=r	 : SPIDATA_OUT_1
+  implementation constraint: INIT=r	 : SPIDATA_OUT_2
+  implementation constraint: INIT=r	 : SPIDATA_OUT_3
+  implementation constraint: INIT=r	 : SPIDATA_OUT_4
+  implementation constraint: INIT=r	 : SPIDATA_OUT_5
+  implementation constraint: INIT=r	 : SPIDATA_OUT_6
+  implementation constraint: INIT=r	 : DEVCMD_1
+  implementation constraint: INIT=r	 : DEVCMD_2
+  implementation constraint: INIT=r	 : DEVCMD_3
+  implementation constraint: INIT=r	 : DEVCMD_4
+  implementation constraint: INIT=r	 : DEVCMD_5
+  implementation constraint: INIT=r	 : DEVCMD_6
+  implementation constraint: INIT=r	 : DEVCMD_7
   implementation constraint: INIT=r	 : LEDPORT_0
   implementation constraint: INIT=r	 : LEDPORT_1
   implementation constraint: INIT=r	 : LEDPORT_2
@@ -276,27 +313,24 @@ Optimizing unit <spi> ...
   implementation constraint: INIT=r	 : LEDPORT_4
   implementation constraint: INIT=r	 : LEDPORT_5
   implementation constraint: INIT=r	 : LEDPORT_6
-  implementation constraint: INIT=r	 : DEVCMD_0
-  implementation constraint: INIT=r	 : DEVCMD_1
-  implementation constraint: INIT=r	 : DEVCMD_2
-  implementation constraint: INIT=r	 : DEVCMD_3
-  implementation constraint: INIT=r	 : DEVCMD_4
-  implementation constraint: INIT=r	 : DEVCMD_5
-  implementation constraint: INIT=r	 : DEVCMD_6
-  implementation constraint: INIT=r	 : SPIDATA_OUT_7
-  implementation constraint: INIT=r	 : SPIDATA_IN_4
-  implementation constraint: INIT=r	 : SPIDATA_OUT_6
-  implementation constraint: INIT=r	 : SPIDATA_OUT_5
-  implementation constraint: INIT=r	 : SPIDATA_IN_6
-  implementation constraint: INIT=r	 : SPIDATA_OUT_3
   implementation constraint: INIT=r	 : SPIDATA_IN_5
-  implementation constraint: INIT=r	 : SPIDATA_IN_1
-  implementation constraint: INIT=r	 : SPIDATA_IN_0
-WARNING:Xst:2677 - Node <LEDPORT_3> of sequential type is unconnected in block <XLXI_29>.
-WARNING:Xst:2677 - Node <LEDPORT_4> of sequential type is unconnected in block <XLXI_29>.
-WARNING:Xst:2677 - Node <LEDPORT_5> of sequential type is unconnected in block <XLXI_29>.
-WARNING:Xst:2677 - Node <LEDPORT_6> of sequential type is unconnected in block <XLXI_29>.
-WARNING:Xst:2677 - Node <LEDPORT_7> of sequential type is unconnected in block <XLXI_29>.
+  implementation constraint: INIT=r	 : SPIDATA_IN_4
+  implementation constraint: INIT=r	 : SPIDATA_IN_3
+
+Optimizing unit <counter8> ...
+  implementation constraint: INIT=r	 : COUNT_7
+  implementation constraint: INIT=r	 : COUNT_6
+  implementation constraint: INIT=r	 : COUNT_5
+  implementation constraint: INIT=r	 : COUNT_4
+  implementation constraint: INIT=r	 : COUNT_3
+  implementation constraint: INIT=r	 : COUNT_2
+  implementation constraint: INIT=r	 : COUNT_1
+  implementation constraint: INIT=r	 : COUNT_0
+WARNING:Xst:2677 - Node <LEDPORT_3> of sequential type is unconnected in block <XLXI_30>.
+WARNING:Xst:2677 - Node <LEDPORT_4> of sequential type is unconnected in block <XLXI_30>.
+WARNING:Xst:2677 - Node <LEDPORT_5> of sequential type is unconnected in block <XLXI_30>.
+WARNING:Xst:2677 - Node <LEDPORT_6> of sequential type is unconnected in block <XLXI_30>.
+WARNING:Xst:2677 - Node <LEDPORT_7> of sequential type is unconnected in block <XLXI_30>.
 
 =========================================================================
 *                           Partition Report                            *
@@ -316,7 +350,7 @@ Final Results
 RTL Top Level Output File Name     : FrontPanel.ngr
 Top Level Output File Name         : FrontPanel
 Output Format                      : NGC
-Optimization Goal                  : Speed
+Optimization Goal                  : Area
 Keep Hierarchy                     : Yes
 Target Technology                  : XC9500XL CPLDs
 Macro Preserve                     : YES
@@ -328,20 +362,18 @@ Design Statistics
 # IOs                              : 15
 
 Cell Usage :
-# BELS                             : 115
-#      AND2                        : 34
-#      AND3                        : 5
-#      AND4                        : 3
-#      GND                         : 3
-#      INV                         : 47
-#      OR2                         : 13
-#      OR3                         : 3
-#      OR4                         : 2
-#      XOR2                        : 5
-# FlipFlops/Latches                : 47
-#      FD                          : 19
-#      FDC                         : 5
-#      FDCE                        : 23
+# BELS                             : 224
+#      AND2                        : 82
+#      AND3                        : 11
+#      GND                         : 4
+#      INV                         : 74
+#      OR2                         : 27
+#      OR3                         : 7
+#      XOR2                        : 19
+# FlipFlops/Latches                : 58
+#      FD                          : 13
+#      FDC                         : 13
+#      FDCE                        : 32
 # IO Buffers                       : 15
 #      IBUF                        : 7
 #      OBUF                        : 8
@@ -349,13 +381,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 3.97 secs
+Total CPU time to Xst completion: 4.06 secs
  
 --> 
 
-Total memory usage is 266364 kilobytes
+Total memory usage is 268220 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    6 (   0 filtered)
-Number of infos    :    3 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
 

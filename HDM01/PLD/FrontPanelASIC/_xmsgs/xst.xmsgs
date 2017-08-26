@@ -11,25 +11,19 @@
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">LED&lt;7:3&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">SPIDATA_OUT_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;SPIDATA_OUT_2&gt; &lt;SPIDATA_OUT_1&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_30</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">SPIDATA_OUT_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;SPIDATA_OUT_4&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_30</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_29</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_30</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_29</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_30</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_29</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_29</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_29</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">LEDPORT_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_30</arg>&gt;.
 </msg>
 
 </messages>

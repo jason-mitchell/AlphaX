@@ -3,7 +3,7 @@
  
 cpldfit:  version P.20131013                        Xilinx Inc.
                                   Fitter Report
-Design Name: FrontPanel                          Date:  8-20-2017,  9:39PM
+Design Name: FrontPanel                          Date:  8-25-2017,  7:30PM
 Device Used: XC9572XL-10-VQ44
 Fitting Status: Successful
 
@@ -11,18 +11,18 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-50 /72  ( 69%) 118 /360  ( 33%) 68 /216 ( 31%)   47 /72  ( 65%) 15 /34  ( 44%)
+61 /72  ( 85%) 184 /360  ( 51%) 96 /216 ( 44%)   58 /72  ( 81%) 15 /34  ( 44%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1          16/18       22/54       41/90       6/ 9
-FB2           0/18        0/54        0/90       0/ 9
-FB3          16/18       23/54       47/90       7/ 9
-FB4          18/18*      23/54       30/90       2/ 7
+FB1          14/18       27/54       45/90       6/ 9
+FB2          13/18       15/54       22/90       0/ 9
+FB3          18/18*      27/54       65/90       7/ 9
+FB4          16/18       27/54       52/90       2/ 7
              -----       -----       -----      -----    
-             50/72       68/216     118/360     15/34 
+             61/72       96/216     184/360     15/34 
 
 * - Resource is exhausted
 
@@ -47,8 +47,8 @@ GSR           :    0           0    |
 
 ** Power Data **
 
-There are 50 macrocells in high performance mode (MCHP).
-There are 0 macrocells in low power mode (MCLP).
+There are 15 macrocells in high performance mode (MCHP).
+There are 46 macrocells in low power mode (MCLP).
 End of Mapped Resource Summary
 **************************  Errors and Warnings  ***************************
 
@@ -59,6 +59,10 @@ INFO:Cpld - Inferring BUFG constraint for signal 'ECLK' based upon the LOC
    in your design. Note that for certain device families the output of a BUFG
    constraint can not drive a gated clock, and the BUFG constraint will be
    ignored.
+WARNING:Cpld - Invalid constraint 'PULLDOWN' found in netlist.  The constraint
+   is not supported for targeted device and is ignored.
+WARNING:Cpld - Invalid constraint 'PULLDOWN' found in netlist.  The constraint
+   is not supported for targeted device and is ignored.
 *************************  Summary of Mapped Logic  ************************
 
 ** 8 Outputs **
@@ -70,59 +74,70 @@ LED_1                   1     2     FB1_6   41   I/O     O       STD  SLOW
 LED_0                   1     2     FB1_8   42   I/O     O       STD  SLOW 
 DIR                     2     2     FB3_2   5    I/O     O       STD  SLOW RESET
 IRQ                     1     1     FB3_5   6    I/O     O       STD  SLOW RESET
-MISO                    8     10    FB3_14  13   I/O     O       STD  FAST RESET
-BYTE_IN                 3     6     FB4_2   19   I/O     O       STD  FAST RESET
-CLK_50                  1     3     FB4_14  23   I/O     O       STD  SLOW RESET
+MISO                    10    13    FB3_14  13   I/O     O       LOW  FAST RESET
+BYTE_IN                 3     6     FB4_2   19   I/O     O       LOW  FAST RESET
+CLK_50                  1     3     FB4_14  23   I/O     O       LOW  SLOW RESET
 
-** 42 Buried Nodes **
-
-Signal                  Total Total Loc     Pwr  Reg Init
-Name                    Pts   Inps          Mode State
-XLXI_29/SPIDATA_OUT<6>  2     10    FB1_3   STD  RESET
-XLXI_29/SPIDATA_OUT<3>  2     10    FB1_4   STD  RESET
-XLXI_29/SPIDATA_OUT<5>  3     10    FB1_7   STD  RESET
-XLXI_29/SPIDATA_OUT<0>  3     10    FB1_9   STD  RESET
-XLXI_29/DEVCMD<7>       3     3     FB1_10  STD  RESET
-XLXI_29/DEVCMD<6>       3     3     FB1_11  STD  RESET
-XLXI_29/DEVCMD<5>       3     3     FB1_12  STD  RESET
-XLXI_29/DEVCMD<4>       3     3     FB1_13  STD  RESET
-XLXI_29/DEVCMD<3>       3     3     FB1_14  STD  RESET
-LED<2>                  3     11    FB1_15  STD  RESET
-LED<1>                  3     11    FB1_16  STD  RESET
-LED<0>                  3     11    FB1_17  STD  RESET
-XLXI_29/SPIDATA_OUT<7>  4     10    FB1_18  STD  RESET
-XLXI_2/internal_detent  1     1     FB3_4   STD  RESET
-XLXI_29/BITCNT<0>       2     2     FB3_6   STD  RESET
-XLXI_29/SPIDATA_IN<7>   3     3     FB3_7   STD  RESET
-XLXI_29/SPIDATA_IN<6>   3     3     FB3_8   STD  RESET
-XLXI_29/SPIDATA_IN<5>   3     3     FB3_9   STD  RESET
-XLXI_29/SPIDATA_IN<4>   3     3     FB3_10  STD  RESET
-XLXI_29/SPIDATA_IN<3>   3     3     FB3_11  STD  RESET
-XLXI_29/SPIDATA_IN<2>   3     3     FB3_12  STD  RESET
-XLXI_29/SPIDATA_IN<1>   3     3     FB3_13  STD  RESET
-XLXI_29/SPIDATA_IN<0>   3     3     FB3_15  STD  RESET
-XLXI_29/BITCNT<3>       3     6     FB3_16  STD  RESET
-XLXI_29/BITCNT<2>       3     4     FB3_17  STD  RESET
-XLXI_29/BITCNT<1>       3     3     FB3_18  STD  RESET
-XLXI_29/CMDDATA         1     1     FB4_1   STD  RESET
-XLXI_2/rotary_in<1>     1     1     FB4_3   STD  RESET
-XLXI_2/rotary_in<0>     1     1     FB4_4   STD  RESET
-XLXI_2/rotary_event     1     2     FB4_5   STD  RESET
-XLXI_2/rotary_b_in      1     1     FB4_6   STD  RESET
-XLXI_2/rotary_a_in      1     1     FB4_7   STD  RESET
-XLXI_2/delay_rotary_q1  1     1     FB4_8   STD  RESET
-XLXI_15/r_reg<1>        1     1     FB4_9   STD  RESET
-XLXI_15/r_reg<0>        1     3     FB4_10  STD  RESET
-XLXI_2/rotary_q2        2     3     FB4_11  STD  RESET
-XLXI_2/rotary_q1        2     3     FB4_12  STD  RESET
-XLXI_2/rotary_left      2     3     FB4_13  STD  RESET
-XLXI_15/r_reg<2>        2     3     FB4_15  STD  RESET
-XLXI_29/DEVCMD<2>       3     3     FB4_16  STD  RESET
+** 53 Buried Nodes **
 
 Signal                  Total Total Loc     Pwr  Reg Init
 Name                    Pts   Inps          Mode State
-XLXI_29/DEVCMD<1>       3     3     FB4_17  STD  RESET
-XLXI_29/DEVCMD<0>       3     3     FB4_18  STD  RESET
+XLXN_78<0>              2     2     FB1_7   LOW  RESET
+XLXN_78<7>              4     10    FB1_9   LOW  RESET
+XLXN_78<6>              4     9     FB1_10  LOW  RESET
+XLXN_78<5>              4     8     FB1_11  LOW  RESET
+XLXN_78<4>              4     7     FB1_12  LOW  RESET
+XLXN_78<3>              4     6     FB1_13  LOW  RESET
+XLXN_78<2>              4     5     FB1_14  LOW  RESET
+XLXN_78<1>              4     4     FB1_15  LOW  RESET
+LED<2>                  4     12    FB1_16  LOW  RESET
+LED<1>                  4     12    FB1_17  LOW  RESET
+LED<0>                  4     12    FB1_18  LOW  RESET
+XLXI_2/rotary_in<1>     1     1     FB2_6   STD  RESET
+XLXI_2/rotary_in<0>     1     1     FB2_7   STD  RESET
+XLXI_2/rotary_event     1     2     FB2_8   STD  RESET
+XLXI_2/rotary_b_in      1     1     FB2_9   STD  RESET
+XLXI_2/rotary_a_in      1     1     FB2_10  STD  RESET
+XLXI_2/internal_detent  1     1     FB2_11  STD  RESET
+XLXI_2/delay_rotary_q1  1     1     FB2_12  STD  RESET
+XLXI_2/rotary_q2        2     3     FB2_13  STD  RESET
+XLXI_2/rotary_q1        2     3     FB2_14  STD  RESET
+XLXI_2/rotary_left      2     3     FB2_15  STD  RESET
+XLXI_30/SPIDATA_IN<7>   3     3     FB2_16  LOW  RESET
+XLXI_30/SPIDATA_IN<6>   3     3     FB2_17  LOW  RESET
+XLXI_30/SPIDATA_IN<5>   3     3     FB2_18  LOW  RESET
+XLXI_30/SPIDATA_IN<4>   3     3     FB3_1   LOW  RESET
+XLXI_30/SPIDATA_IN<3>   3     3     FB3_3   LOW  RESET
+XLXI_30/SPIDATA_IN<2>   3     3     FB3_4   LOW  RESET
+XLXI_30/SPIDATA_IN<1>   3     3     FB3_6   LOW  RESET
+XLXI_30/SPIDATA_IN<0>   3     3     FB3_7   LOW  RESET
+XLXI_30/BITCNT<3>       3     6     FB3_8   LOW  RESET
+XLXI_30/BITCNT<2>       3     4     FB3_9   LOW  RESET
+XLXI_30/DEVCMD<6>       4     4     FB3_10  LOW  RESET
+XLXI_30/DEVCMD<5>       4     4     FB3_11  LOW  RESET
+XLXI_30/DEVCMD<4>       4     4     FB3_12  LOW  RESET
+XLXI_30/BITCNT<1>       3     3     FB3_13  LOW  RESET
+XLXI_30/DEVCMD<3>       4     4     FB3_15  LOW  RESET
+XLXI_30/DEVCMD<2>       4     4     FB3_16  LOW  RESET
+XLXI_30/DEVCMD<1>       4     4     FB3_17  LOW  RESET
+XLXI_30/DEVCMD<0>       4     4     FB3_18  LOW  RESET
+XLXI_15/r_reg<1>        1     1     FB4_4   LOW  RESET
+
+Signal                  Total Total Loc     Pwr  Reg Init
+Name                    Pts   Inps          Mode State
+XLXI_15/r_reg<0>        1     3     FB4_5   LOW  RESET
+XLXI_30/CMDDATA         2     2     FB4_6   LOW  RESET
+XLXI_30/BITCNT<0>       2     2     FB4_7   LOW  RESET
+XLXI_15/r_reg<2>        2     3     FB4_8   LOW  RESET
+XLXI_30/SPIDATA_OUT<6>  4     12    FB4_9   LOW  RESET
+XLXI_30/SPIDATA_OUT<4>  4     12    FB4_10  LOW  RESET
+XLXI_30/SPIDATA_OUT<3>  4     12    FB4_11  LOW  RESET
+XLXI_30/SPIDATA_OUT<2>  4     12    FB4_12  LOW  RESET
+XLXI_30/SPIDATA_OUT<1>  4     12    FB4_13  LOW  RESET
+XLXI_30/DEVCMD<7>       4     4     FB4_15  LOW  RESET
+XLXI_30/SPIDATA_OUT<5>  5     12    FB4_16  LOW  RESET
+XLXI_30/SPIDATA_OUT<0>  5     12    FB4_17  LOW  RESET
+XLXI_30/SPIDATA_OUT<7>  6     12    FB4_18  LOW  RESET
 
 ** 7 Inputs **
 
@@ -152,72 +167,61 @@ Pin Type/Use - I  - Input             GCK - Global Clock
 X            - Signal used as input to the macrocell logic.
 Pin No.      - ~  - User Assigned
 *********************************** FB1  ***********************************
-Number of function block inputs used/remaining:               22/32
-Number of signals used by logic mapping into function block:  22
+Number of function block inputs used/remaining:               27/27
+Number of signals used by logic mapping into function block:  27
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB1_1         (b)     
 (unused)              0       0     0   5     FB1_2   39    I/O     
-XLXI_29/SPIDATA_OUT<6>
-                      2       0     0   3     FB1_3         (b)     (b)
-XLXI_29/SPIDATA_OUT<3>
-                      2       0     0   3     FB1_4         (b)     (b)
+(unused)              0       0     0   5     FB1_3         (b)     
+(unused)              0       0     0   5     FB1_4         (b)     
 LED_2                 1       0     0   4     FB1_5   40    I/O     O
 LED_1                 1       0     0   4     FB1_6   41    I/O     O
-XLXI_29/SPIDATA_OUT<5>
-                      3       0     0   2     FB1_7         (b)     (b)
+XLXN_78<0>            2       0     0   3     FB1_7         (b)     (b)
 LED_0                 1       0     0   4     FB1_8   42    I/O     O
-XLXI_29/SPIDATA_OUT<0>
-                      3       0     0   2     FB1_9   43    GCK/I/O GCK
-XLXI_29/DEVCMD<7>     3       0     0   2     FB1_10        (b)     (b)
-XLXI_29/DEVCMD<6>     3       0     0   2     FB1_11  44    GCK/I/O (b)
-XLXI_29/DEVCMD<5>     3       0     0   2     FB1_12        (b)     (b)
-XLXI_29/DEVCMD<4>     3       0     0   2     FB1_13        (b)     (b)
-XLXI_29/DEVCMD<3>     3       0     0   2     FB1_14  1     GCK/I/O (b)
-LED<2>                3       0     0   2     FB1_15  2     I/O     I
-LED<1>                3       0     0   2     FB1_16        (b)     (b)
-LED<0>                3       0     0   2     FB1_17  3     I/O     I
-XLXI_29/SPIDATA_OUT<7>
-                      4       0     0   1     FB1_18        (b)     (b)
+XLXN_78<7>            4       0     0   1     FB1_9   43    GCK/I/O GCK
+XLXN_78<6>            4       0     0   1     FB1_10        (b)     (b)
+XLXN_78<5>            4       0     0   1     FB1_11  44    GCK/I/O (b)
+XLXN_78<4>            4       0     0   1     FB1_12        (b)     (b)
+XLXN_78<3>            4       0     0   1     FB1_13        (b)     (b)
+XLXN_78<2>            4       0     0   1     FB1_14  1     GCK/I/O (b)
+XLXN_78<1>            4       0     0   1     FB1_15  2     I/O     I
+LED<2>                4       0     0   1     FB1_16        (b)     (b)
+LED<1>                4       0     0   1     FB1_17  3     I/O     I
+LED<0>                4       0     0   1     FB1_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: BYTE_IN             9: XLXI_29/DEVCMD<2>      16: XLXI_29/SPIDATA_IN<1> 
-  2: CLK_50             10: XLXI_29/DEVCMD<3>      17: XLXI_29/SPIDATA_IN<2> 
-  3: LED<0>             11: XLXI_29/DEVCMD<4>      18: XLXI_29/SPIDATA_IN<3> 
-  4: LED<1>             12: XLXI_29/DEVCMD<5>      19: XLXI_29/SPIDATA_IN<4> 
-  5: LED<2>             13: XLXI_29/DEVCMD<6>      20: XLXI_29/SPIDATA_IN<5> 
-  6: XLXI_29/CMDDATA    14: XLXI_29/DEVCMD<7>      21: XLXI_29/SPIDATA_IN<6> 
-  7: XLXI_29/DEVCMD<0>  15: XLXI_29/SPIDATA_IN<0>  22: XLXI_29/SPIDATA_IN<7> 
-  8: XLXI_29/DEVCMD<1> 
+  1: BYTE_IN           10: XLXI_30/DEVCMD<0>      19: XLXI_30/SPIDATA_IN<1> 
+  2: CLK_50            11: XLXI_30/DEVCMD<1>      20: XLXI_30/SPIDATA_IN<2> 
+  3: DIR               12: XLXI_30/DEVCMD<2>      21: XLXN_78<0> 
+  4: IRQ               13: XLXI_30/DEVCMD<3>      22: XLXN_78<1> 
+  5: LED<0>            14: XLXI_30/DEVCMD<4>      23: XLXN_78<2> 
+  6: LED<1>            15: XLXI_30/DEVCMD<5>      24: XLXN_78<3> 
+  7: LED<2>            16: XLXI_30/DEVCMD<6>      25: XLXN_78<4> 
+  8: RESET             17: XLXI_30/DEVCMD<7>      26: XLXN_78<5> 
+  9: XLXI_30/CMDDATA   18: XLXI_30/SPIDATA_IN<0>  27: XLXN_78<6> 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-XLXI_29/SPIDATA_OUT<6> 
-                     X....X........XXXXXXXX.................. 10
-XLXI_29/SPIDATA_OUT<3> 
-                     X....X........XXXXXXXX.................. 10
-LED_2                .X..X................................... 2
-LED_1                .X.X.................................... 2
-XLXI_29/SPIDATA_OUT<5> 
-                     X....X........XXXXXXXX.................. 10
-LED_0                .XX..................................... 2
-XLXI_29/SPIDATA_OUT<0> 
-                     X....X........XXXXXXXX.................. 10
-XLXI_29/DEVCMD<7>    X....X...............X.................. 3
-XLXI_29/DEVCMD<6>    X....X..............X................... 3
-XLXI_29/DEVCMD<5>    X....X.............X.................... 3
-XLXI_29/DEVCMD<4>    X....X............X..................... 3
-XLXI_29/DEVCMD<3>    X....X...........X...................... 3
-LED<2>               X....XXXXXXXXX..X....................... 11
-LED<1>               X....XXXXXXXXX.X........................ 11
-LED<0>               X....XXXXXXXXXX......................... 11
-XLXI_29/SPIDATA_OUT<7> 
-                     X....X........XXXXXXXX.................. 10
+LED_2                .X....X................................. 2
+LED_1                .X...X.................................. 2
+XLXN_78<0>           ...X...X................................ 2
+LED_0                .X..X................................... 2
+XLXN_78<7>           ..XX...X............XXXXXXX............. 10
+XLXN_78<6>           ..XX...X............XXXXXX.............. 9
+XLXN_78<5>           ..XX...X............XXXXX............... 8
+XLXN_78<4>           ..XX...X............XXXX................ 7
+XLXN_78<3>           ..XX...X............XXX................. 6
+XLXN_78<2>           ..XX...X............XX.................. 5
+XLXN_78<1>           ..XX...X............X................... 4
+LED<2>               X......XXXXXXXXXX..X.................... 12
+LED<1>               X......XXXXXXXXXX.X..................... 12
+LED<0>               X......XXXXXXXXXXX...................... 12
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB2  ***********************************
-Number of function block inputs used/remaining:               0/54
-Number of signals used by logic mapping into function block:  0
+Number of function block inputs used/remaining:               15/39
+Number of signals used by logic mapping into function block:  15
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB2_1         (b)     
@@ -225,147 +229,190 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB2_3         (b)     
 (unused)              0       0     0   5     FB2_4         (b)     
 (unused)              0       0     0   5     FB2_5   30    I/O     
-(unused)              0       0     0   5     FB2_6   31    I/O     
-(unused)              0       0     0   5     FB2_7         (b)     
-(unused)              0       0     0   5     FB2_8   32    I/O     
-(unused)              0       0     0   5     FB2_9   33    GSR/I/O 
-(unused)              0       0     0   5     FB2_10        (b)     
-(unused)              0       0     0   5     FB2_11  34    GTS/I/O 
-(unused)              0       0     0   5     FB2_12        (b)     
-(unused)              0       0     0   5     FB2_13        (b)     
-(unused)              0       0     0   5     FB2_14  36    GTS/I/O 
-(unused)              0       0     0   5     FB2_15  37    I/O     
-(unused)              0       0     0   5     FB2_16        (b)     
-(unused)              0       0     0   5     FB2_17  38    I/O     
-(unused)              0       0     0   5     FB2_18        (b)     
-*********************************** FB3  ***********************************
-Number of function block inputs used/remaining:               23/31
-Number of signals used by logic mapping into function block:  23
-Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
-Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB3_1         (b)     
-DIR                   2       0     0   3     FB3_2   5     I/O     O
-(unused)              0       0     0   5     FB3_3         (b)     
+XLXI_2/rotary_in<1>   1       0     0   4     FB2_6   31    I/O     (b)
+XLXI_2/rotary_in<0>   1       0     0   4     FB2_7         (b)     (b)
+XLXI_2/rotary_event   1       0     0   4     FB2_8   32    I/O     (b)
+XLXI_2/rotary_b_in    1       0     0   4     FB2_9   33    GSR/I/O (b)
+XLXI_2/rotary_a_in    1       0     0   4     FB2_10        (b)     (b)
 XLXI_2/internal_detent
-                      1       0     0   4     FB3_4         (b)     (b)
-IRQ                   1       0     0   4     FB3_5   6     I/O     O
-XLXI_29/BITCNT<0>     2       0     0   3     FB3_6         (b)     (b)
-XLXI_29/SPIDATA_IN<7>
-                      3       0     0   2     FB3_7         (b)     (b)
-XLXI_29/SPIDATA_IN<6>
-                      3       0     0   2     FB3_8   7     I/O     I
-XLXI_29/SPIDATA_IN<5>
-                      3       0     0   2     FB3_9   8     I/O     I
-XLXI_29/SPIDATA_IN<4>
-                      3       0     0   2     FB3_10        (b)     (b)
-XLXI_29/SPIDATA_IN<3>
-                      3       0     0   2     FB3_11  12    I/O     I
-XLXI_29/SPIDATA_IN<2>
-                      3       0     0   2     FB3_12        (b)     (b)
-XLXI_29/SPIDATA_IN<1>
-                      3       0   \/1   1     FB3_13        (b)     (b)
-MISO                  8       3<-   0   0     FB3_14  13    I/O     O
-XLXI_29/SPIDATA_IN<0>
-                      3       0   /\2   0     FB3_15  14    I/O     (b)
-XLXI_29/BITCNT<3>     3       0     0   2     FB3_16  18    I/O     I
-XLXI_29/BITCNT<2>     3       0     0   2     FB3_17  16    I/O     (b)
-XLXI_29/BITCNT<1>     3       0     0   2     FB3_18        (b)     (b)
+                      1       0     0   4     FB2_11  34    GTS/I/O (b)
+XLXI_2/delay_rotary_q1
+                      1       0     0   4     FB2_12        (b)     (b)
+XLXI_2/rotary_q2      2       0     0   3     FB2_13        (b)     (b)
+XLXI_2/rotary_q1      2       0     0   3     FB2_14  36    GTS/I/O (b)
+XLXI_2/rotary_left    2       0     0   3     FB2_15  37    I/O     (b)
+XLXI_30/SPIDATA_IN<7>
+                      3       0     0   2     FB2_16        (b)     (b)
+XLXI_30/SPIDATA_IN<6>
+                      3       0     0   2     FB2_17  38    I/O     (b)
+XLXI_30/SPIDATA_IN<5>
+                      3       0     0   2     FB2_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: MOSI                     9: XLXI_29/BITCNT<1>      17: XLXI_29/SPIDATA_IN<6> 
-  2: RESET                   10: XLXI_29/BITCNT<2>      18: XLXI_29/SPIDATA_IN<7> 
-  3: SCLK                    11: XLXI_29/BITCNT<3>      19: XLXI_29/SPIDATA_OUT<0> 
-  4: SS                      12: XLXI_29/SPIDATA_IN<1>  20: XLXI_29/SPIDATA_OUT<3> 
-  5: XLXI_2/internal_detent  13: XLXI_29/SPIDATA_IN<2>  21: XLXI_29/SPIDATA_OUT<5> 
-  6: XLXI_2/rotary_event     14: XLXI_29/SPIDATA_IN<3>  22: XLXI_29/SPIDATA_OUT<6> 
-  7: XLXI_2/rotary_left      15: XLXI_29/SPIDATA_IN<4>  23: XLXI_29/SPIDATA_OUT<7> 
-  8: XLXI_29/BITCNT<0>       16: XLXI_29/SPIDATA_IN<5> 
+  1: MOSI                     6: XLXI_2/rotary_b_in   11: XLXI_2/rotary_q2 
+  2: SCLK                     7: XLXI_2/rotary_event  12: XLXI_30/SPIDATA_IN<6> 
+  3: SS                       8: XLXI_2/rotary_in<0>  13: XLXI_30/SPIDATA_IN<7> 
+  4: XLXI_2/delay_rotary_q1   9: XLXI_2/rotary_in<1>  14: PHA 
+  5: XLXI_2/rotary_a_in      10: XLXI_2/rotary_q1     15: PHB 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-DIR                  .....XX................................. 2
+XLXI_2/rotary_in<1>  .....X.................................. 1
+XLXI_2/rotary_in<0>  ....X................................... 1
+XLXI_2/rotary_event  ...X.....X.............................. 2
+XLXI_2/rotary_b_in   ..............X......................... 1
+XLXI_2/rotary_a_in   .............X.......................... 1
 XLXI_2/internal_detent 
-                     .....X.................................. 1
-IRQ                  ....X................................... 1
-XLXI_29/BITCNT<0>    .XX..................................... 2
-XLXI_29/SPIDATA_IN<7> 
-                     X.XX.................................... 3
-XLXI_29/SPIDATA_IN<6> 
+                     ......X................................. 1
+XLXI_2/delay_rotary_q1 
+                     .........X.............................. 1
+XLXI_2/rotary_q2     .......XX.X............................. 3
+XLXI_2/rotary_q1     .......XXX.............................. 3
+XLXI_2/rotary_left   ...X.....XX............................. 3
+XLXI_30/SPIDATA_IN<7> 
+                     XXX..................................... 3
+XLXI_30/SPIDATA_IN<6> 
+                     .XX.........X........................... 3
+XLXI_30/SPIDATA_IN<5> 
+                     .XX........X............................ 3
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
+*********************************** FB3  ***********************************
+Number of function block inputs used/remaining:               27/27
+Number of signals used by logic mapping into function block:  27
+Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
+Name                Pt      Pt    Pt  Pt               #    Type    Use
+XLXI_30/SPIDATA_IN<4>
+                      3       0     0   2     FB3_1         (b)     (b)
+DIR                   2       0     0   3     FB3_2   5     I/O     O
+XLXI_30/SPIDATA_IN<3>
+                      3       0     0   2     FB3_3         (b)     (b)
+XLXI_30/SPIDATA_IN<2>
+                      3       0     0   2     FB3_4         (b)     (b)
+IRQ                   1       0     0   4     FB3_5   6     I/O     O
+XLXI_30/SPIDATA_IN<1>
+                      3       0     0   2     FB3_6         (b)     (b)
+XLXI_30/SPIDATA_IN<0>
+                      3       0     0   2     FB3_7         (b)     (b)
+XLXI_30/BITCNT<3>     3       0     0   2     FB3_8   7     I/O     I
+XLXI_30/BITCNT<2>     3       0     0   2     FB3_9   8     I/O     I
+XLXI_30/DEVCMD<6>     4       0     0   1     FB3_10        (b)     (b)
+XLXI_30/DEVCMD<5>     4       0     0   1     FB3_11  12    I/O     I
+XLXI_30/DEVCMD<4>     4       0   \/1   0     FB3_12        (b)     (b)
+XLXI_30/BITCNT<1>     3       1<- \/3   0     FB3_13        (b)     (b)
+MISO                 10       5<-   0   0     FB3_14  13    I/O     O
+XLXI_30/DEVCMD<3>     4       1<- /\2   0     FB3_15  14    I/O     (b)
+XLXI_30/DEVCMD<2>     4       0   /\1   0     FB3_16  18    I/O     I
+XLXI_30/DEVCMD<1>     4       0     0   1     FB3_17  16    I/O     (b)
+XLXI_30/DEVCMD<0>     4       0     0   1     FB3_18        (b)     (b)
+
+Signals Used by Logic in Function Block
+  1: BYTE_IN                 10: XLXI_30/BITCNT<2>      19: XLXI_30/SPIDATA_IN<6> 
+  2: RESET                   11: XLXI_30/BITCNT<3>      20: XLXI_30/SPIDATA_OUT<0> 
+  3: SCLK                    12: XLXI_30/CMDDATA        21: XLXI_30/SPIDATA_OUT<1> 
+  4: SS                      13: XLXI_30/SPIDATA_IN<0>  22: XLXI_30/SPIDATA_OUT<2> 
+  5: XLXI_2/internal_detent  14: XLXI_30/SPIDATA_IN<1>  23: XLXI_30/SPIDATA_OUT<3> 
+  6: XLXI_2/rotary_event     15: XLXI_30/SPIDATA_IN<2>  24: XLXI_30/SPIDATA_OUT<4> 
+  7: XLXI_2/rotary_left      16: XLXI_30/SPIDATA_IN<3>  25: XLXI_30/SPIDATA_OUT<5> 
+  8: XLXI_30/BITCNT<0>       17: XLXI_30/SPIDATA_IN<4>  26: XLXI_30/SPIDATA_OUT<6> 
+  9: XLXI_30/BITCNT<1>       18: XLXI_30/SPIDATA_IN<5>  27: XLXI_30/SPIDATA_OUT<7> 
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+XLXI_30/SPIDATA_IN<4> 
                      ..XX.............X...................... 3
-XLXI_29/SPIDATA_IN<5> 
+DIR                  .....XX................................. 2
+XLXI_30/SPIDATA_IN<3> 
                      ..XX............X....................... 3
-XLXI_29/SPIDATA_IN<4> 
+XLXI_30/SPIDATA_IN<2> 
                      ..XX...........X........................ 3
-XLXI_29/SPIDATA_IN<3> 
+IRQ                  ....X................................... 1
+XLXI_30/SPIDATA_IN<1> 
                      ..XX..........X......................... 3
-XLXI_29/SPIDATA_IN<2> 
+XLXI_30/SPIDATA_IN<0> 
                      ..XX.........X.......................... 3
-XLXI_29/SPIDATA_IN<1> 
-                     ..XX........X........................... 3
-MISO                 ..XX...XXX........XXXXX................. 10
-XLXI_29/SPIDATA_IN<0> 
-                     ..XX.......X............................ 3
-XLXI_29/BITCNT<3>    .XX....XXXX............................. 6
-XLXI_29/BITCNT<2>    .XX....XX............................... 4
-XLXI_29/BITCNT<1>    .XX....X................................ 3
+XLXI_30/BITCNT<3>    .XX....XXXX............................. 6
+XLXI_30/BITCNT<2>    .XX....XX............................... 4
+XLXI_30/DEVCMD<6>    XX.........X......X..................... 4
+XLXI_30/DEVCMD<5>    XX.........X.....X...................... 4
+XLXI_30/DEVCMD<4>    XX.........X....X....................... 4
+XLXI_30/BITCNT<1>    .XX....X................................ 3
+MISO                 ..XX...XXX.........XXXXXXXX............. 13
+XLXI_30/DEVCMD<3>    XX.........X...X........................ 4
+XLXI_30/DEVCMD<2>    XX.........X..X......................... 4
+XLXI_30/DEVCMD<1>    XX.........X.X.......................... 4
+XLXI_30/DEVCMD<0>    XX.........XX........................... 4
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB4  ***********************************
-Number of function block inputs used/remaining:               23/31
-Number of signals used by logic mapping into function block:  23
+Number of function block inputs used/remaining:               27/27
+Number of signals used by logic mapping into function block:  27
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
-XLXI_29/CMDDATA       1       0     0   4     FB4_1         (b)     (b)
+(unused)              0       0   /\1   4     FB4_1         (b)     (b)
 BYTE_IN               3       0     0   2     FB4_2   19    I/O     O
-XLXI_2/rotary_in<1>   1       0     0   4     FB4_3         (b)     (b)
-XLXI_2/rotary_in<0>   1       0     0   4     FB4_4         (b)     (b)
-XLXI_2/rotary_event   1       0     0   4     FB4_5   20    I/O     (b)
-XLXI_2/rotary_b_in    1       0     0   4     FB4_6         (b)     (b)
-XLXI_2/rotary_a_in    1       0     0   4     FB4_7         (b)     (b)
-XLXI_2/delay_rotary_q1
-                      1       0     0   4     FB4_8   21    I/O     (b)
-XLXI_15/r_reg<1>      1       0     0   4     FB4_9         (b)     (b)
-XLXI_15/r_reg<0>      1       0     0   4     FB4_10        (b)     (b)
-XLXI_2/rotary_q2      2       0     0   3     FB4_11  22    I/O     (b)
-XLXI_2/rotary_q1      2       0     0   3     FB4_12        (b)     (b)
-XLXI_2/rotary_left    2       0     0   3     FB4_13        (b)     (b)
+(unused)              0       0     0   5     FB4_3         (b)     
+XLXI_15/r_reg<1>      1       0     0   4     FB4_4         (b)     (b)
+XLXI_15/r_reg<0>      1       0     0   4     FB4_5   20    I/O     (b)
+XLXI_30/CMDDATA       2       0     0   3     FB4_6         (b)     (b)
+XLXI_30/BITCNT<0>     2       0     0   3     FB4_7         (b)     (b)
+XLXI_15/r_reg<2>      2       0     0   3     FB4_8   21    I/O     (b)
+XLXI_30/SPIDATA_OUT<6>
+                      4       0     0   1     FB4_9         (b)     (b)
+XLXI_30/SPIDATA_OUT<4>
+                      4       0     0   1     FB4_10        (b)     (b)
+XLXI_30/SPIDATA_OUT<3>
+                      4       0     0   1     FB4_11  22    I/O     (b)
+XLXI_30/SPIDATA_OUT<2>
+                      4       0     0   1     FB4_12        (b)     (b)
+XLXI_30/SPIDATA_OUT<1>
+                      4       0     0   1     FB4_13        (b)     (b)
 CLK_50                1       0     0   4     FB4_14  23    I/O     O
-XLXI_15/r_reg<2>      2       0     0   3     FB4_15  27    I/O     (b)
-XLXI_29/DEVCMD<2>     3       0     0   2     FB4_16        (b)     (b)
-XLXI_29/DEVCMD<1>     3       0     0   2     FB4_17  28    I/O     (b)
-XLXI_29/DEVCMD<0>     3       0     0   2     FB4_18        (b)     (b)
+XLXI_30/DEVCMD<7>     4       0     0   1     FB4_15  27    I/O     (b)
+XLXI_30/SPIDATA_OUT<5>
+                      5       0     0   0     FB4_16        (b)     (b)
+XLXI_30/SPIDATA_OUT<0>
+                      5       0     0   0     FB4_17  28    I/O     (b)
+XLXI_30/SPIDATA_OUT<7>
+                      6       1<-   0   0     FB4_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: BYTE_IN                  9: XLXI_2/rotary_b_in   17: XLXI_29/BITCNT<3> 
-  2: RESET                   10: XLXI_2/rotary_in<0>  18: XLXI_29/CMDDATA 
-  3: SCLK                    11: XLXI_2/rotary_in<1>  19: XLXI_29/SPIDATA_IN<0> 
-  4: XLXI_15/r_reg<0>        12: XLXI_2/rotary_q1     20: XLXI_29/SPIDATA_IN<1> 
-  5: XLXI_15/r_reg<1>        13: XLXI_2/rotary_q2     21: XLXI_29/SPIDATA_IN<2> 
-  6: XLXI_15/r_reg<2>        14: XLXI_29/BITCNT<0>    22: PHA 
-  7: XLXI_2/delay_rotary_q1  15: XLXI_29/BITCNT<1>    23: PHB 
-  8: XLXI_2/rotary_a_in      16: XLXI_29/BITCNT<2>   
+  1: BYTE_IN            10: XLXI_30/BITCNT<3>      19: XLXI_30/SPIDATA_IN<7> 
+  2: RESET              11: XLXI_30/CMDDATA        20: XLXN_78<0> 
+  3: SCLK               12: XLXI_30/SPIDATA_IN<0>  21: XLXN_78<1> 
+  4: XLXI_15/r_reg<0>   13: XLXI_30/SPIDATA_IN<1>  22: XLXN_78<2> 
+  5: XLXI_15/r_reg<1>   14: XLXI_30/SPIDATA_IN<2>  23: XLXN_78<3> 
+  6: XLXI_15/r_reg<2>   15: XLXI_30/SPIDATA_IN<3>  24: XLXN_78<4> 
+  7: XLXI_30/BITCNT<0>  16: XLXI_30/SPIDATA_IN<4>  25: XLXN_78<5> 
+  8: XLXI_30/BITCNT<1>  17: XLXI_30/SPIDATA_IN<5>  26: XLXN_78<6> 
+  9: XLXI_30/BITCNT<2>  18: XLXI_30/SPIDATA_IN<6>  27: XLXN_78<7> 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-XLXI_29/CMDDATA      X....................................... 1
-BYTE_IN              .XX..........XXXX....................... 6
-XLXI_2/rotary_in<1>  ........X............................... 1
-XLXI_2/rotary_in<0>  .......X................................ 1
-XLXI_2/rotary_event  ......X....X............................ 2
-XLXI_2/rotary_b_in   ......................X................. 1
-XLXI_2/rotary_a_in   .....................X.................. 1
-XLXI_2/delay_rotary_q1 
-                     ...........X............................ 1
+BYTE_IN              .XX...XXXX.............................. 6
 XLXI_15/r_reg<1>     ...X.................................... 1
 XLXI_15/r_reg<0>     ...XXX.................................. 3
-XLXI_2/rotary_q2     .........XX.X........................... 3
-XLXI_2/rotary_q1     .........XXX............................ 3
-XLXI_2/rotary_left   ......X....XX........................... 3
-CLK_50               ...XXX.................................. 3
+XLXI_30/CMDDATA      XX...................................... 2
+XLXI_30/BITCNT<0>    .XX..................................... 2
 XLXI_15/r_reg<2>     ...XXX.................................. 3
-XLXI_29/DEVCMD<2>    X................X..X................... 3
-XLXI_29/DEVCMD<1>    X................X.X.................... 3
-XLXI_29/DEVCMD<0>    X................XX..................... 3
+XLXI_30/SPIDATA_OUT<6> 
+                     XX........XXXXXXXXX......X.............. 12
+XLXI_30/SPIDATA_OUT<4> 
+                     XX........XXXXXXXXX....X................ 12
+XLXI_30/SPIDATA_OUT<3> 
+                     XX........XXXXXXXXX...X................. 12
+XLXI_30/SPIDATA_OUT<2> 
+                     XX........XXXXXXXXX..X.................. 12
+XLXI_30/SPIDATA_OUT<1> 
+                     XX........XXXXXXXXX.X................... 12
+CLK_50               ...XXX.................................. 3
+XLXI_30/DEVCMD<7>    XX........X.......X..................... 4
+XLXI_30/SPIDATA_OUT<5> 
+                     XX........XXXXXXXXX.....X............... 12
+XLXI_30/SPIDATA_OUT<0> 
+                     XX........XXXXXXXXXX.................... 12
+XLXI_30/SPIDATA_OUT<7> 
+                     XX........XXXXXXXXX.......X............. 12
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *******************************  Equations  ********************************
@@ -373,8 +420,8 @@ XLXI_29/DEVCMD<0>    X................XX..................... 3
 ********** Mapped Logic **********
 
 FDCPE_BYTE_IN: FDCPE port map (BYTE_IN,BYTE_IN_D,NOT SCLK,RESET,'0');
-BYTE_IN_D <= (XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-	XLXI_29/BITCNT(1) AND NOT XLXI_29/BITCNT(3));
+BYTE_IN_D <= (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+	XLXI_30/BITCNT(1) AND NOT XLXI_30/BITCNT(3));
 
 FTCPE_CLK_50: FTCPE port map (CLK_50,'1',ECLK,'0','0',CLK_50_CE);
 CLK_50_CE <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
@@ -382,48 +429,54 @@ CLK_50_CE <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND
 
 FDCPE_DIR: FDCPE port map (DIR,XLXI_2/rotary_left,ECLK,'0','0',XLXI_2/rotary_event);
 
+
+
 FDCPE_IRQ: FDCPE port map (IRQ,XLXI_2/internal_detent,ECLK,'0','0');
 
-FDCPE_LED0: FDCPE port map (LED(0),XLXI_29/SPIDATA_IN(0),BYTE_IN,'0','0',LED_CE(0));
-LED_CE(0) <= (XLXI_29/DEVCMD(0) AND NOT XLXI_29/DEVCMD(1) AND 
-	NOT XLXI_29/DEVCMD(2) AND NOT XLXI_29/DEVCMD(3) AND NOT XLXI_29/DEVCMD(4) AND 
-	NOT XLXI_29/DEVCMD(5) AND NOT XLXI_29/DEVCMD(6) AND NOT XLXI_29/DEVCMD(7) AND 
-	XLXI_29/CMDDATA);
+FDCPE_LED0: FDCPE port map (LED(0),XLXI_30/SPIDATA_IN(0),BYTE_IN,RESET,'0',LED_CE(0));
+LED_CE(0) <= (XLXI_30/DEVCMD(0) AND NOT XLXI_30/DEVCMD(1) AND 
+	NOT XLXI_30/DEVCMD(2) AND NOT XLXI_30/DEVCMD(3) AND NOT XLXI_30/DEVCMD(4) AND 
+	NOT XLXI_30/DEVCMD(5) AND NOT XLXI_30/DEVCMD(6) AND NOT XLXI_30/DEVCMD(7) AND 
+	XLXI_30/CMDDATA);
 
-FDCPE_LED1: FDCPE port map (LED(1),XLXI_29/SPIDATA_IN(1),BYTE_IN,'0','0',LED_CE(1));
-LED_CE(1) <= (XLXI_29/DEVCMD(0) AND NOT XLXI_29/DEVCMD(1) AND 
-	NOT XLXI_29/DEVCMD(2) AND NOT XLXI_29/DEVCMD(3) AND NOT XLXI_29/DEVCMD(4) AND 
-	NOT XLXI_29/DEVCMD(5) AND NOT XLXI_29/DEVCMD(6) AND NOT XLXI_29/DEVCMD(7) AND 
-	XLXI_29/CMDDATA);
+FDCPE_LED1: FDCPE port map (LED(1),XLXI_30/SPIDATA_IN(1),BYTE_IN,RESET,'0',LED_CE(1));
+LED_CE(1) <= (XLXI_30/DEVCMD(0) AND NOT XLXI_30/DEVCMD(1) AND 
+	NOT XLXI_30/DEVCMD(2) AND NOT XLXI_30/DEVCMD(3) AND NOT XLXI_30/DEVCMD(4) AND 
+	NOT XLXI_30/DEVCMD(5) AND NOT XLXI_30/DEVCMD(6) AND NOT XLXI_30/DEVCMD(7) AND 
+	XLXI_30/CMDDATA);
 
-FDCPE_LED2: FDCPE port map (LED(2),XLXI_29/SPIDATA_IN(2),BYTE_IN,'0','0',LED_CE(2));
-LED_CE(2) <= (XLXI_29/DEVCMD(0) AND NOT XLXI_29/DEVCMD(1) AND 
-	NOT XLXI_29/DEVCMD(2) AND NOT XLXI_29/DEVCMD(3) AND NOT XLXI_29/DEVCMD(4) AND 
-	NOT XLXI_29/DEVCMD(5) AND NOT XLXI_29/DEVCMD(6) AND NOT XLXI_29/DEVCMD(7) AND 
-	XLXI_29/CMDDATA);
-
-
-LED_0 <= (CLK_50 AND LED(0));
+FDCPE_LED2: FDCPE port map (LED(2),XLXI_30/SPIDATA_IN(2),BYTE_IN,RESET,'0',LED_CE(2));
+LED_CE(2) <= (XLXI_30/DEVCMD(0) AND NOT XLXI_30/DEVCMD(1) AND 
+	NOT XLXI_30/DEVCMD(2) AND NOT XLXI_30/DEVCMD(3) AND NOT XLXI_30/DEVCMD(4) AND 
+	NOT XLXI_30/DEVCMD(5) AND NOT XLXI_30/DEVCMD(6) AND NOT XLXI_30/DEVCMD(7) AND 
+	XLXI_30/CMDDATA);
 
 
-LED_1 <= (CLK_50 AND LED(1));
+LED_0 <= (LED(0) AND CLK_50);
 
 
-LED_2 <= (CLK_50 AND LED(2));
+LED_1 <= (LED(1) AND CLK_50);
+
+
+LED_2 <= (LED(2) AND CLK_50);
 
 FDCPE_MISO: FDCPE port map (MISO,MISO_D,SCLK,'0','0',NOT SS);
-MISO_D <= ((XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-	XLXI_29/BITCNT(1) AND XLXI_29/SPIDATA_OUT(7))
-	OR (XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-	NOT XLXI_29/BITCNT(1) AND XLXI_29/SPIDATA_OUT(5))
-	OR (NOT XLXI_29/BITCNT(0) AND NOT XLXI_29/BITCNT(2) AND 
-	NOT XLXI_29/BITCNT(1) AND XLXI_29/SPIDATA_OUT(0))
-	OR (XLXI_29/BITCNT(0) AND NOT XLXI_29/BITCNT(2) AND 
-	XLXI_29/SPIDATA_OUT(3))
-	OR (NOT XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-	XLXI_29/SPIDATA_OUT(6))
-	OR (NOT XLXI_29/BITCNT(2) AND XLXI_29/BITCNT(1) AND 
-	XLXI_29/SPIDATA_OUT(3)));
+MISO_D <= ((XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(3))
+	OR (XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(1))
+	OR (NOT XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(4))
+	OR (NOT XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(2))
+	OR (NOT XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(0))
+	OR (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(7))
+	OR (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(5))
+	OR (NOT XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(6)));
 
 FTCPE_XLXI_15/r_reg0: FTCPE port map (XLXI_15/r_reg(0),XLXI_15/r_reg_T(0),ECLK,'0','0');
 XLXI_15/r_reg_T(0) <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
@@ -466,90 +519,178 @@ XLXI_2/rotary_q2_T <= ((XLXI_2/rotary_in(1) AND NOT XLXI_2/rotary_q2 AND
 	OR (NOT XLXI_2/rotary_in(1) AND XLXI_2/rotary_q2 AND 
 	XLXI_2/rotary_in(0)));
 
-FTCPE_XLXI_29/BITCNT0: FTCPE port map (XLXI_29/BITCNT(0),'1',NOT SCLK,RESET,'0');
+FTCPE_XLXI_30/BITCNT0: FTCPE port map (XLXI_30/BITCNT(0),'1',NOT SCLK,RESET,'0');
 
-FTCPE_XLXI_29/BITCNT1: FTCPE port map (XLXI_29/BITCNT(1),XLXI_29/BITCNT(0),NOT SCLK,RESET,'0');
+FTCPE_XLXI_30/BITCNT1: FTCPE port map (XLXI_30/BITCNT(1),XLXI_30/BITCNT(0),NOT SCLK,RESET,'0');
 
-FTCPE_XLXI_29/BITCNT2: FTCPE port map (XLXI_29/BITCNT(2),XLXI_29/BITCNT_T(2),NOT SCLK,RESET,'0');
-XLXI_29/BITCNT_T(2) <= (XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(1));
+FTCPE_XLXI_30/BITCNT2: FTCPE port map (XLXI_30/BITCNT(2),XLXI_30/BITCNT_T(2),NOT SCLK,RESET,'0');
+XLXI_30/BITCNT_T(2) <= (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(1));
 
-FTCPE_XLXI_29/BITCNT3: FTCPE port map (XLXI_29/BITCNT(3),XLXI_29/BITCNT_T(3),NOT SCLK,RESET,'0');
-XLXI_29/BITCNT_T(3) <= (XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-	XLXI_29/BITCNT(1) AND XLXI_29/BITCNT(3));
+FTCPE_XLXI_30/BITCNT3: FTCPE port map (XLXI_30/BITCNT(3),XLXI_30/BITCNT_T(3),NOT SCLK,RESET,'0');
+XLXI_30/BITCNT_T(3) <= (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+	XLXI_30/BITCNT(1) AND XLXI_30/BITCNT(3));
 
-FTCPE_XLXI_29/CMDDATA: FTCPE port map (XLXI_29/CMDDATA,'1',BYTE_IN,'0','0');
+FTCPE_XLXI_30/CMDDATA: FTCPE port map (XLXI_30/CMDDATA,'1',BYTE_IN,'0','0',NOT RESET);
 
-FDCPE_XLXI_29/DEVCMD0: FDCPE port map (XLXI_29/DEVCMD(0),XLXI_29/SPIDATA_IN(0),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD0: FDCPE port map (XLXI_30/DEVCMD(0),XLXI_30/SPIDATA_IN(0),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 
-FDCPE_XLXI_29/DEVCMD1: FDCPE port map (XLXI_29/DEVCMD(1),XLXI_29/SPIDATA_IN(1),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD1: FDCPE port map (XLXI_30/DEVCMD(1),XLXI_30/SPIDATA_IN(1),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 
-FDCPE_XLXI_29/DEVCMD2: FDCPE port map (XLXI_29/DEVCMD(2),XLXI_29/SPIDATA_IN(2),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD2: FDCPE port map (XLXI_30/DEVCMD(2),XLXI_30/SPIDATA_IN(2),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 
-FDCPE_XLXI_29/DEVCMD3: FDCPE port map (XLXI_29/DEVCMD(3),XLXI_29/SPIDATA_IN(3),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD3: FDCPE port map (XLXI_30/DEVCMD(3),XLXI_30/SPIDATA_IN(3),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 
-FDCPE_XLXI_29/DEVCMD4: FDCPE port map (XLXI_29/DEVCMD(4),XLXI_29/SPIDATA_IN(4),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD4: FDCPE port map (XLXI_30/DEVCMD(4),XLXI_30/SPIDATA_IN(4),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 
-FDCPE_XLXI_29/DEVCMD5: FDCPE port map (XLXI_29/DEVCMD(5),XLXI_29/SPIDATA_IN(5),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD5: FDCPE port map (XLXI_30/DEVCMD(5),XLXI_30/SPIDATA_IN(5),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 
-FDCPE_XLXI_29/DEVCMD6: FDCPE port map (XLXI_29/DEVCMD(6),XLXI_29/SPIDATA_IN(6),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD6: FDCPE port map (XLXI_30/DEVCMD(6),XLXI_30/SPIDATA_IN(6),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 
-FDCPE_XLXI_29/DEVCMD7: FDCPE port map (XLXI_29/DEVCMD(7),XLXI_29/SPIDATA_IN(7),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD7: FDCPE port map (XLXI_30/DEVCMD(7),XLXI_30/SPIDATA_IN(7),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 
-FDCPE_XLXI_29/SPIDATA_IN0: FDCPE port map (XLXI_29/SPIDATA_IN(0),XLXI_29/SPIDATA_IN(1),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN0: FDCPE port map (XLXI_30/SPIDATA_IN(0),XLXI_30/SPIDATA_IN(1),SCLK,'0','0',NOT SS);
 
-FDCPE_XLXI_29/SPIDATA_IN1: FDCPE port map (XLXI_29/SPIDATA_IN(1),XLXI_29/SPIDATA_IN(2),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN1: FDCPE port map (XLXI_30/SPIDATA_IN(1),XLXI_30/SPIDATA_IN(2),SCLK,'0','0',NOT SS);
 
-FDCPE_XLXI_29/SPIDATA_IN2: FDCPE port map (XLXI_29/SPIDATA_IN(2),XLXI_29/SPIDATA_IN(3),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN2: FDCPE port map (XLXI_30/SPIDATA_IN(2),XLXI_30/SPIDATA_IN(3),SCLK,'0','0',NOT SS);
 
-FDCPE_XLXI_29/SPIDATA_IN3: FDCPE port map (XLXI_29/SPIDATA_IN(3),XLXI_29/SPIDATA_IN(4),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN3: FDCPE port map (XLXI_30/SPIDATA_IN(3),XLXI_30/SPIDATA_IN(4),SCLK,'0','0',NOT SS);
 
-FDCPE_XLXI_29/SPIDATA_IN4: FDCPE port map (XLXI_29/SPIDATA_IN(4),XLXI_29/SPIDATA_IN(5),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN4: FDCPE port map (XLXI_30/SPIDATA_IN(4),XLXI_30/SPIDATA_IN(5),SCLK,'0','0',NOT SS);
 
-FDCPE_XLXI_29/SPIDATA_IN5: FDCPE port map (XLXI_29/SPIDATA_IN(5),XLXI_29/SPIDATA_IN(6),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN5: FDCPE port map (XLXI_30/SPIDATA_IN(5),XLXI_30/SPIDATA_IN(6),SCLK,'0','0',NOT SS);
 
-FDCPE_XLXI_29/SPIDATA_IN6: FDCPE port map (XLXI_29/SPIDATA_IN(6),XLXI_29/SPIDATA_IN(7),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN6: FDCPE port map (XLXI_30/SPIDATA_IN(6),XLXI_30/SPIDATA_IN(7),SCLK,'0','0',NOT SS);
 
-FDCPE_XLXI_29/SPIDATA_IN7: FDCPE port map (XLXI_29/SPIDATA_IN(7),MOSI,SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN7: FDCPE port map (XLXI_30/SPIDATA_IN(7),MOSI,SCLK,'0','0',NOT SS);
 
-FDCPE_XLXI_29/SPIDATA_OUT0: FDCPE port map (XLXI_29/SPIDATA_OUT(0),XLXI_29/SPIDATA_OUT_D(0),BYTE_IN,'0','0');
-XLXI_29/SPIDATA_OUT_D(0) <= ((NOT XLXI_29/SPIDATA_IN(2) AND NOT XLXI_29/SPIDATA_IN(1) AND 
-	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(5) AND 
-	NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND NOT XLXI_29/CMDDATA)
-	OR (XLXI_29/SPIDATA_IN(2) AND XLXI_29/SPIDATA_IN(1) AND 
-	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(0) AND 
-	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-	NOT XLXI_29/CMDDATA));
+FDCPE_XLXI_30/SPIDATA_OUT0: FDCPE port map (XLXI_30/SPIDATA_OUT(0),XLXI_30/SPIDATA_OUT_D(0),BYTE_IN,RESET,'0');
+XLXI_30/SPIDATA_OUT_D(0) <= ((NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+	NOT XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+	NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7))
+	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+	NOT XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+	NOT XLXI_30/SPIDATA_IN(7))
+	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND XLXN_78(0) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
 
-FDCPE_XLXI_29/SPIDATA_OUT3: FDCPE port map (XLXI_29/SPIDATA_OUT(3),XLXI_29/SPIDATA_OUT_D(3),BYTE_IN,'0','0');
-XLXI_29/SPIDATA_OUT_D(3) <= (NOT XLXI_29/SPIDATA_IN(2) AND NOT XLXI_29/SPIDATA_IN(1) AND 
-	XLXI_29/SPIDATA_IN(3) AND XLXI_29/SPIDATA_IN(4) AND XLXI_29/SPIDATA_IN(0) AND 
-	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-	NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/SPIDATA_OUT1: FDCPE port map (XLXI_30/SPIDATA_OUT(1),XLXI_30/SPIDATA_OUT_D(1),BYTE_IN,RESET,'0');
+XLXI_30/SPIDATA_OUT_D(1) <= ((NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+	NOT XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+	NOT XLXI_30/SPIDATA_IN(7))
+	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND XLXN_78(1) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
 
-FDCPE_XLXI_29/SPIDATA_OUT5: FDCPE port map (XLXI_29/SPIDATA_OUT(5),XLXI_29/SPIDATA_OUT_D(5),BYTE_IN,'0','0');
-XLXI_29/SPIDATA_OUT_D(5) <= ((XLXI_29/SPIDATA_IN(2) AND XLXI_29/SPIDATA_IN(1) AND 
-	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(0) AND 
-	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-	NOT XLXI_29/CMDDATA)
-	OR (NOT XLXI_29/SPIDATA_IN(2) AND NOT XLXI_29/SPIDATA_IN(1) AND 
-	XLXI_29/SPIDATA_IN(3) AND XLXI_29/SPIDATA_IN(4) AND XLXI_29/SPIDATA_IN(0) AND 
-	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-	NOT XLXI_29/CMDDATA));
+FDCPE_XLXI_30/SPIDATA_OUT2: FDCPE port map (XLXI_30/SPIDATA_OUT(2),XLXI_30/SPIDATA_OUT_D(2),BYTE_IN,RESET,'0');
+XLXI_30/SPIDATA_OUT_D(2) <= ((NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+	NOT XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+	NOT XLXI_30/SPIDATA_IN(7))
+	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND XLXN_78(2) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
 
-FDCPE_XLXI_29/SPIDATA_OUT6: FDCPE port map (XLXI_29/SPIDATA_OUT(6),XLXI_29/SPIDATA_OUT_D(6),BYTE_IN,'0','0');
-XLXI_29/SPIDATA_OUT_D(6) <= (XLXI_29/SPIDATA_IN(2) AND XLXI_29/SPIDATA_IN(1) AND 
-	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(0) AND 
-	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-	NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/SPIDATA_OUT3: FDCPE port map (XLXI_30/SPIDATA_OUT(3),XLXI_30/SPIDATA_OUT_D(3),BYTE_IN,RESET,'0');
+XLXI_30/SPIDATA_OUT_D(3) <= ((NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+	NOT XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+	NOT XLXI_30/SPIDATA_IN(7))
+	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND XLXN_78(3) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
 
-FDCPE_XLXI_29/SPIDATA_OUT7: FDCPE port map (XLXI_29/SPIDATA_OUT(7),XLXI_29/SPIDATA_OUT_D(7),BYTE_IN,'0','0');
-XLXI_29/SPIDATA_OUT_D(7) <= ((XLXI_29/CMDDATA)
-	OR (NOT XLXI_29/SPIDATA_IN(2) AND NOT XLXI_29/SPIDATA_IN(1) AND 
-	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(5) AND 
-	NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7))
-	OR (XLXI_29/SPIDATA_IN(2) AND XLXI_29/SPIDATA_IN(1) AND 
-	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(0) AND 
-	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7)));
+FDCPE_XLXI_30/SPIDATA_OUT4: FDCPE port map (XLXI_30/SPIDATA_OUT(4),XLXI_30/SPIDATA_OUT_D(4),BYTE_IN,RESET,'0');
+XLXI_30/SPIDATA_OUT_D(4) <= ((NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+	NOT XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+	NOT XLXI_30/SPIDATA_IN(7))
+	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND XLXN_78(4) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
+
+FDCPE_XLXI_30/SPIDATA_OUT5: FDCPE port map (XLXI_30/SPIDATA_OUT(5),XLXI_30/SPIDATA_OUT_D(5),BYTE_IN,RESET,'0');
+XLXI_30/SPIDATA_OUT_D(5) <= ((NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+	NOT XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+	NOT XLXI_30/SPIDATA_IN(7))
+	OR (NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+	NOT XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+	NOT XLXI_30/SPIDATA_IN(7))
+	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND XLXN_78(5) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
+
+FDCPE_XLXI_30/SPIDATA_OUT6: FDCPE port map (XLXI_30/SPIDATA_OUT(6),XLXI_30/SPIDATA_OUT_D(6),BYTE_IN,RESET,'0');
+XLXI_30/SPIDATA_OUT_D(6) <= ((NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+	NOT XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+	NOT XLXI_30/SPIDATA_IN(7))
+	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+	XLXI_30/SPIDATA_IN(0) AND XLXN_78(6) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
+
+FDCPE_XLXI_30/SPIDATA_OUT7: FDCPE port map (XLXI_30/SPIDATA_OUT(7),XLXI_30/SPIDATA_OUT_D(7),BYTE_IN,RESET,'0');
+XLXI_30/SPIDATA_OUT_D(7) <= ((XLXI_30/CMDDATA)
+	OR (XLXI_30/SPIDATA_IN(1) AND XLXI_30/SPIDATA_IN(2) AND 
+	XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND XLXI_30/SPIDATA_IN(0) AND 
+	NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7) AND 
+	NOT XLXN_78(7))
+	OR (NOT XLXI_30/SPIDATA_IN(1) AND NOT XLXI_30/SPIDATA_IN(2) AND 
+	NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7))
+	OR (XLXI_30/SPIDATA_IN(1) AND XLXI_30/SPIDATA_IN(2) AND 
+	NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND NOT XLXI_30/SPIDATA_IN(0) AND 
+	NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
+
+FTCPE_XLXN_780: FTCPE port map (XLXN_78(0),'1',IRQ,'0','0',NOT RESET);
+
+FTCPE_XLXN_781: FTCPE port map (XLXN_78(1),XLXN_78_T(1),IRQ,'0','0',NOT RESET);
+XLXN_78_T(1) <= ((DIR AND NOT XLXN_78(0))
+	OR (NOT DIR AND XLXN_78(0)));
+
+FTCPE_XLXN_782: FTCPE port map (XLXN_78(2),XLXN_78_T(2),IRQ,'0','0',NOT RESET);
+XLXN_78_T(2) <= ((DIR AND XLXN_78(0) AND XLXN_78(1))
+	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1)));
+
+FTCPE_XLXN_783: FTCPE port map (XLXN_78(3),XLXN_78_T(3),IRQ,'0','0',NOT RESET);
+XLXN_78_T(3) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2))
+	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2)));
+
+FTCPE_XLXN_784: FTCPE port map (XLXN_78(4),XLXN_78_T(4),IRQ,'0','0',NOT RESET);
+XLXN_78_T(4) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2) AND 
+	XLXN_78(3))
+	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2) AND 
+	NOT XLXN_78(3)));
+
+FTCPE_XLXN_785: FTCPE port map (XLXN_78(5),XLXN_78_T(5),IRQ,'0','0',NOT RESET);
+XLXN_78_T(5) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2) AND 
+	XLXN_78(3) AND XLXN_78(4))
+	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2) AND 
+	NOT XLXN_78(3) AND NOT XLXN_78(4)));
+
+FTCPE_XLXN_786: FTCPE port map (XLXN_78(6),XLXN_78_T(6),IRQ,'0','0',NOT RESET);
+XLXN_78_T(6) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2) AND 
+	XLXN_78(3) AND XLXN_78(4) AND XLXN_78(5))
+	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2) AND 
+	NOT XLXN_78(3) AND NOT XLXN_78(4) AND NOT XLXN_78(5)));
+
+FTCPE_XLXN_787: FTCPE port map (XLXN_78(7),XLXN_78_T(7),IRQ,'0','0',NOT RESET);
+XLXN_78_T(7) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2) AND 
+	XLXN_78(3) AND XLXN_78(4) AND XLXN_78(5) AND XLXN_78(6))
+	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2) AND 
+	NOT XLXN_78(3) AND NOT XLXN_78(4) AND NOT XLXN_78(5) AND NOT XLXN_78(6)));
 
 Register Legend:
  FDCPE (Q,D,C,CLR,PRE,CE); 

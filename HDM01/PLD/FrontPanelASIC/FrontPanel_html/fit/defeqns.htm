@@ -6,8 +6,8 @@
 ********** Mapped Logic **********
 </td></tr><tr><td>
 FDCPE_BYTE_IN: FDCPE port map (BYTE_IN,BYTE_IN_D,NOT SCLK,RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BYTE_IN_D <= (XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/BITCNT(1) AND NOT XLXI_29/BITCNT(3));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BYTE_IN_D <= (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND NOT XLXI_30/BITCNT(3));
 </td></tr><tr><td>
 FTCPE_CLK_50: FTCPE port map (CLK_50,'1',ECLK,'0','0',CLK_50_CE);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLK_50_CE <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
@@ -15,48 +15,54 @@ FTCPE_CLK_50: FTCPE port map (CLK_50,'1',ECLK,'0','0',CLK_50_CE);
 </td></tr><tr><td>
 FDCPE_DIR: FDCPE port map (DIR,XLXI_2/rotary_left,ECLK,'0','0',XLXI_2/rotary_event);
 </td></tr><tr><td>
+</td></tr><tr><td>
+</td></tr><tr><td>
 FDCPE_IRQ: FDCPE port map (IRQ,XLXI_2/internal_detent,ECLK,'0','0');
 </td></tr><tr><td>
-FDCPE_LED0: FDCPE port map (LED(0),XLXI_29/SPIDATA_IN(0),BYTE_IN,'0','0',LED_CE(0));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LED_CE(0) <= (XLXI_29/DEVCMD(0) AND NOT XLXI_29/DEVCMD(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/DEVCMD(2) AND NOT XLXI_29/DEVCMD(3) AND NOT XLXI_29/DEVCMD(4) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/DEVCMD(5) AND NOT XLXI_29/DEVCMD(6) AND NOT XLXI_29/DEVCMD(7) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/CMDDATA);
+FDCPE_LED0: FDCPE port map (LED(0),XLXI_30/SPIDATA_IN(0),BYTE_IN,RESET,'0',LED_CE(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LED_CE(0) <= (XLXI_30/DEVCMD(0) AND NOT XLXI_30/DEVCMD(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/DEVCMD(2) AND NOT XLXI_30/DEVCMD(3) AND NOT XLXI_30/DEVCMD(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/DEVCMD(5) AND NOT XLXI_30/DEVCMD(6) AND NOT XLXI_30/DEVCMD(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_LED1: FDCPE port map (LED(1),XLXI_29/SPIDATA_IN(1),BYTE_IN,'0','0',LED_CE(1));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LED_CE(1) <= (XLXI_29/DEVCMD(0) AND NOT XLXI_29/DEVCMD(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/DEVCMD(2) AND NOT XLXI_29/DEVCMD(3) AND NOT XLXI_29/DEVCMD(4) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/DEVCMD(5) AND NOT XLXI_29/DEVCMD(6) AND NOT XLXI_29/DEVCMD(7) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/CMDDATA);
+FDCPE_LED1: FDCPE port map (LED(1),XLXI_30/SPIDATA_IN(1),BYTE_IN,RESET,'0',LED_CE(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LED_CE(1) <= (XLXI_30/DEVCMD(0) AND NOT XLXI_30/DEVCMD(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/DEVCMD(2) AND NOT XLXI_30/DEVCMD(3) AND NOT XLXI_30/DEVCMD(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/DEVCMD(5) AND NOT XLXI_30/DEVCMD(6) AND NOT XLXI_30/DEVCMD(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_LED2: FDCPE port map (LED(2),XLXI_29/SPIDATA_IN(2),BYTE_IN,'0','0',LED_CE(2));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LED_CE(2) <= (XLXI_29/DEVCMD(0) AND NOT XLXI_29/DEVCMD(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/DEVCMD(2) AND NOT XLXI_29/DEVCMD(3) AND NOT XLXI_29/DEVCMD(4) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/DEVCMD(5) AND NOT XLXI_29/DEVCMD(6) AND NOT XLXI_29/DEVCMD(7) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/CMDDATA);
-</td></tr><tr><td>
-</td></tr><tr><td>
-LED_0 <= (CLK_50 AND LED(0));
+FDCPE_LED2: FDCPE port map (LED(2),XLXI_30/SPIDATA_IN(2),BYTE_IN,RESET,'0',LED_CE(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LED_CE(2) <= (XLXI_30/DEVCMD(0) AND NOT XLXI_30/DEVCMD(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/DEVCMD(2) AND NOT XLXI_30/DEVCMD(3) AND NOT XLXI_30/DEVCMD(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/DEVCMD(5) AND NOT XLXI_30/DEVCMD(6) AND NOT XLXI_30/DEVCMD(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/CMDDATA);
 </td></tr><tr><td>
 </td></tr><tr><td>
-LED_1 <= (CLK_50 AND LED(1));
+LED_0 <= (LED(0) AND CLK_50);
 </td></tr><tr><td>
 </td></tr><tr><td>
-LED_2 <= (CLK_50 AND LED(2));
+LED_1 <= (LED(1) AND CLK_50);
+</td></tr><tr><td>
+</td></tr><tr><td>
+LED_2 <= (LED(2) AND CLK_50);
 </td></tr><tr><td>
 FDCPE_MISO: FDCPE port map (MISO,MISO_D,SCLK,'0','0',NOT SS);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISO_D <= ((XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/BITCNT(1) AND XLXI_29/SPIDATA_OUT(7))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/BITCNT(1) AND XLXI_29/SPIDATA_OUT(5))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_29/BITCNT(0) AND NOT XLXI_29/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/BITCNT(1) AND XLXI_29/SPIDATA_OUT(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_29/BITCNT(0) AND NOT XLXI_29/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/SPIDATA_OUT(3))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/SPIDATA_OUT(6))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_29/BITCNT(2) AND XLXI_29/BITCNT(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/SPIDATA_OUT(3)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISO_D <= ((XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(6)));
 </td></tr><tr><td>
 FTCPE_XLXI_15/r_reg0: FTCPE port map (XLXI_15/r_reg(0),XLXI_15/r_reg_T(0),ECLK,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_15/r_reg_T(0) <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
@@ -99,90 +105,178 @@ FTCPE_XLXI_2/rotary_q2: FTCPE port map (XLXI_2/rotary_q2,XLXI_2/rotary_q2_T,ECLK
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_2/rotary_in(1) AND XLXI_2/rotary_q2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/rotary_in(0)));
 </td></tr><tr><td>
-FTCPE_XLXI_29/BITCNT0: FTCPE port map (XLXI_29/BITCNT(0),'1',NOT SCLK,RESET,'0');
+FTCPE_XLXI_30/BITCNT0: FTCPE port map (XLXI_30/BITCNT(0),'1',NOT SCLK,RESET,'0');
 </td></tr><tr><td>
-FTCPE_XLXI_29/BITCNT1: FTCPE port map (XLXI_29/BITCNT(1),XLXI_29/BITCNT(0),NOT SCLK,RESET,'0');
+FTCPE_XLXI_30/BITCNT1: FTCPE port map (XLXI_30/BITCNT(1),XLXI_30/BITCNT(0),NOT SCLK,RESET,'0');
 </td></tr><tr><td>
-FTCPE_XLXI_29/BITCNT2: FTCPE port map (XLXI_29/BITCNT(2),XLXI_29/BITCNT_T(2),NOT SCLK,RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_29/BITCNT_T(2) <= (XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(1));
+FTCPE_XLXI_30/BITCNT2: FTCPE port map (XLXI_30/BITCNT(2),XLXI_30/BITCNT_T(2),NOT SCLK,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/BITCNT_T(2) <= (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(1));
 </td></tr><tr><td>
-FTCPE_XLXI_29/BITCNT3: FTCPE port map (XLXI_29/BITCNT(3),XLXI_29/BITCNT_T(3),NOT SCLK,RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_29/BITCNT_T(3) <= (XLXI_29/BITCNT(0) AND XLXI_29/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/BITCNT(1) AND XLXI_29/BITCNT(3));
+FTCPE_XLXI_30/BITCNT3: FTCPE port map (XLXI_30/BITCNT(3),XLXI_30/BITCNT_T(3),NOT SCLK,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/BITCNT_T(3) <= (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/BITCNT(3));
 </td></tr><tr><td>
-FTCPE_XLXI_29/CMDDATA: FTCPE port map (XLXI_29/CMDDATA,'1',BYTE_IN,'0','0');
+FTCPE_XLXI_30/CMDDATA: FTCPE port map (XLXI_30/CMDDATA,'1',BYTE_IN,'0','0',NOT RESET);
 </td></tr><tr><td>
-FDCPE_XLXI_29/DEVCMD0: FDCPE port map (XLXI_29/DEVCMD(0),XLXI_29/SPIDATA_IN(0),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD0: FDCPE port map (XLXI_30/DEVCMD(0),XLXI_30/SPIDATA_IN(0),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_XLXI_29/DEVCMD1: FDCPE port map (XLXI_29/DEVCMD(1),XLXI_29/SPIDATA_IN(1),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD1: FDCPE port map (XLXI_30/DEVCMD(1),XLXI_30/SPIDATA_IN(1),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_XLXI_29/DEVCMD2: FDCPE port map (XLXI_29/DEVCMD(2),XLXI_29/SPIDATA_IN(2),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD2: FDCPE port map (XLXI_30/DEVCMD(2),XLXI_30/SPIDATA_IN(2),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_XLXI_29/DEVCMD3: FDCPE port map (XLXI_29/DEVCMD(3),XLXI_29/SPIDATA_IN(3),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD3: FDCPE port map (XLXI_30/DEVCMD(3),XLXI_30/SPIDATA_IN(3),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_XLXI_29/DEVCMD4: FDCPE port map (XLXI_29/DEVCMD(4),XLXI_29/SPIDATA_IN(4),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD4: FDCPE port map (XLXI_30/DEVCMD(4),XLXI_30/SPIDATA_IN(4),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_XLXI_29/DEVCMD5: FDCPE port map (XLXI_29/DEVCMD(5),XLXI_29/SPIDATA_IN(5),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD5: FDCPE port map (XLXI_30/DEVCMD(5),XLXI_30/SPIDATA_IN(5),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_XLXI_29/DEVCMD6: FDCPE port map (XLXI_29/DEVCMD(6),XLXI_29/SPIDATA_IN(6),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD6: FDCPE port map (XLXI_30/DEVCMD(6),XLXI_30/SPIDATA_IN(6),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_XLXI_29/DEVCMD7: FDCPE port map (XLXI_29/DEVCMD(7),XLXI_29/SPIDATA_IN(7),BYTE_IN,'0','0',NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/DEVCMD7: FDCPE port map (XLXI_30/DEVCMD(7),XLXI_30/SPIDATA_IN(7),BYTE_IN,RESET,'0',NOT XLXI_30/CMDDATA);
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_IN0: FDCPE port map (XLXI_29/SPIDATA_IN(0),XLXI_29/SPIDATA_IN(1),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN0: FDCPE port map (XLXI_30/SPIDATA_IN(0),XLXI_30/SPIDATA_IN(1),SCLK,'0','0',NOT SS);
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_IN1: FDCPE port map (XLXI_29/SPIDATA_IN(1),XLXI_29/SPIDATA_IN(2),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN1: FDCPE port map (XLXI_30/SPIDATA_IN(1),XLXI_30/SPIDATA_IN(2),SCLK,'0','0',NOT SS);
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_IN2: FDCPE port map (XLXI_29/SPIDATA_IN(2),XLXI_29/SPIDATA_IN(3),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN2: FDCPE port map (XLXI_30/SPIDATA_IN(2),XLXI_30/SPIDATA_IN(3),SCLK,'0','0',NOT SS);
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_IN3: FDCPE port map (XLXI_29/SPIDATA_IN(3),XLXI_29/SPIDATA_IN(4),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN3: FDCPE port map (XLXI_30/SPIDATA_IN(3),XLXI_30/SPIDATA_IN(4),SCLK,'0','0',NOT SS);
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_IN4: FDCPE port map (XLXI_29/SPIDATA_IN(4),XLXI_29/SPIDATA_IN(5),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN4: FDCPE port map (XLXI_30/SPIDATA_IN(4),XLXI_30/SPIDATA_IN(5),SCLK,'0','0',NOT SS);
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_IN5: FDCPE port map (XLXI_29/SPIDATA_IN(5),XLXI_29/SPIDATA_IN(6),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN5: FDCPE port map (XLXI_30/SPIDATA_IN(5),XLXI_30/SPIDATA_IN(6),SCLK,'0','0',NOT SS);
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_IN6: FDCPE port map (XLXI_29/SPIDATA_IN(6),XLXI_29/SPIDATA_IN(7),SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN6: FDCPE port map (XLXI_30/SPIDATA_IN(6),XLXI_30/SPIDATA_IN(7),SCLK,'0','0',NOT SS);
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_IN7: FDCPE port map (XLXI_29/SPIDATA_IN(7),MOSI,SCLK,'0','0',NOT SS);
+FDCPE_XLXI_30/SPIDATA_IN7: FDCPE port map (XLXI_30/SPIDATA_IN(7),MOSI,SCLK,'0','0',NOT SS);
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_OUT0: FDCPE port map (XLXI_29/SPIDATA_OUT(0),XLXI_29/SPIDATA_OUT_D(0),BYTE_IN,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_29/SPIDATA_OUT_D(0) <= ((NOT XLXI_29/SPIDATA_IN(2) AND NOT XLXI_29/SPIDATA_IN(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND NOT XLXI_29/CMDDATA)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_29/SPIDATA_IN(2) AND XLXI_29/SPIDATA_IN(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(0) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/CMDDATA));
+FDCPE_XLXI_30/SPIDATA_OUT0: FDCPE port map (XLXI_30/SPIDATA_OUT(0),XLXI_30/SPIDATA_OUT_D(0),BYTE_IN,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/SPIDATA_OUT_D(0) <= ((NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND XLXN_78(0) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_OUT3: FDCPE port map (XLXI_29/SPIDATA_OUT(3),XLXI_29/SPIDATA_OUT_D(3),BYTE_IN,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_29/SPIDATA_OUT_D(3) <= (NOT XLXI_29/SPIDATA_IN(2) AND NOT XLXI_29/SPIDATA_IN(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/SPIDATA_IN(3) AND XLXI_29/SPIDATA_IN(4) AND XLXI_29/SPIDATA_IN(0) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/SPIDATA_OUT1: FDCPE port map (XLXI_30/SPIDATA_OUT(1),XLXI_30/SPIDATA_OUT_D(1),BYTE_IN,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/SPIDATA_OUT_D(1) <= ((NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND XLXN_78(1) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_OUT5: FDCPE port map (XLXI_29/SPIDATA_OUT(5),XLXI_29/SPIDATA_OUT_D(5),BYTE_IN,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_29/SPIDATA_OUT_D(5) <= ((XLXI_29/SPIDATA_IN(2) AND XLXI_29/SPIDATA_IN(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(0) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/CMDDATA)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_29/SPIDATA_IN(2) AND NOT XLXI_29/SPIDATA_IN(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_29/SPIDATA_IN(3) AND XLXI_29/SPIDATA_IN(4) AND XLXI_29/SPIDATA_IN(0) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/CMDDATA));
+FDCPE_XLXI_30/SPIDATA_OUT2: FDCPE port map (XLXI_30/SPIDATA_OUT(2),XLXI_30/SPIDATA_OUT_D(2),BYTE_IN,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/SPIDATA_OUT_D(2) <= ((NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND XLXN_78(2) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_OUT6: FDCPE port map (XLXI_29/SPIDATA_OUT(6),XLXI_29/SPIDATA_OUT_D(6),BYTE_IN,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_29/SPIDATA_OUT_D(6) <= (XLXI_29/SPIDATA_IN(2) AND XLXI_29/SPIDATA_IN(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(0) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/CMDDATA);
+FDCPE_XLXI_30/SPIDATA_OUT3: FDCPE port map (XLXI_30/SPIDATA_OUT(3),XLXI_30/SPIDATA_OUT_D(3),BYTE_IN,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/SPIDATA_OUT_D(3) <= ((NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND XLXN_78(3) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
 </td></tr><tr><td>
-FDCPE_XLXI_29/SPIDATA_OUT7: FDCPE port map (XLXI_29/SPIDATA_OUT(7),XLXI_29/SPIDATA_OUT_D(7),BYTE_IN,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_29/SPIDATA_OUT_D(7) <= ((XLXI_29/CMDDATA)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_29/SPIDATA_IN(2) AND NOT XLXI_29/SPIDATA_IN(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_29/SPIDATA_IN(2) AND XLXI_29/SPIDATA_IN(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(3) AND NOT XLXI_29/SPIDATA_IN(4) AND NOT XLXI_29/SPIDATA_IN(0) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_29/SPIDATA_IN(5) AND NOT XLXI_29/SPIDATA_IN(6) AND NOT XLXI_29/SPIDATA_IN(7)));
+FDCPE_XLXI_30/SPIDATA_OUT4: FDCPE port map (XLXI_30/SPIDATA_OUT(4),XLXI_30/SPIDATA_OUT_D(4),BYTE_IN,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/SPIDATA_OUT_D(4) <= ((NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND XLXN_78(4) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
+</td></tr><tr><td>
+FDCPE_XLXI_30/SPIDATA_OUT5: FDCPE port map (XLXI_30/SPIDATA_OUT(5),XLXI_30/SPIDATA_OUT_D(5),BYTE_IN,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/SPIDATA_OUT_D(5) <= ((NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/CMDDATA AND NOT XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND XLXN_78(5) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
+</td></tr><tr><td>
+FDCPE_XLXI_30/SPIDATA_OUT6: FDCPE port map (XLXI_30/SPIDATA_OUT(6),XLXI_30/SPIDATA_OUT_D(6),BYTE_IN,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/SPIDATA_OUT_D(6) <= ((NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(0) AND NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/CMDDATA AND XLXI_30/SPIDATA_IN(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(2) AND XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(0) AND XLXN_78(6) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
+</td></tr><tr><td>
+FDCPE_XLXI_30/SPIDATA_OUT7: FDCPE port map (XLXI_30/SPIDATA_OUT(7),XLXI_30/SPIDATA_OUT_D(7),BYTE_IN,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/SPIDATA_OUT_D(7) <= ((XLXI_30/CMDDATA)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_30/SPIDATA_IN(1) AND XLXI_30/SPIDATA_IN(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/SPIDATA_IN(3) AND XLXI_30/SPIDATA_IN(4) AND XLXI_30/SPIDATA_IN(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXN_78(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/SPIDATA_IN(1) AND NOT XLXI_30/SPIDATA_IN(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND NOT XLXI_30/SPIDATA_IN(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_30/SPIDATA_IN(1) AND XLXI_30/SPIDATA_IN(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(3) AND NOT XLXI_30/SPIDATA_IN(4) AND NOT XLXI_30/SPIDATA_IN(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/SPIDATA_IN(5) AND NOT XLXI_30/SPIDATA_IN(6) AND NOT XLXI_30/SPIDATA_IN(7)));
+</td></tr><tr><td>
+FTCPE_XLXN_780: FTCPE port map (XLXN_78(0),'1',IRQ,'0','0',NOT RESET);
+</td></tr><tr><td>
+FTCPE_XLXN_781: FTCPE port map (XLXN_78(1),XLXN_78_T(1),IRQ,'0','0',NOT RESET);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_78_T(1) <= ((DIR AND NOT XLXN_78(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DIR AND XLXN_78(0)));
+</td></tr><tr><td>
+FTCPE_XLXN_782: FTCPE port map (XLXN_78(2),XLXN_78_T(2),IRQ,'0','0',NOT RESET);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_78_T(2) <= ((DIR AND XLXN_78(0) AND XLXN_78(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1)));
+</td></tr><tr><td>
+FTCPE_XLXN_783: FTCPE port map (XLXN_78(3),XLXN_78_T(3),IRQ,'0','0',NOT RESET);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_78_T(3) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2)));
+</td></tr><tr><td>
+FTCPE_XLXN_784: FTCPE port map (XLXN_78(4),XLXN_78_T(4),IRQ,'0','0',NOT RESET);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_78_T(4) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXN_78(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXN_78(3)));
+</td></tr><tr><td>
+FTCPE_XLXN_785: FTCPE port map (XLXN_78(5),XLXN_78_T(5),IRQ,'0','0',NOT RESET);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_78_T(5) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXN_78(3) AND XLXN_78(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXN_78(3) AND NOT XLXN_78(4)));
+</td></tr><tr><td>
+FTCPE_XLXN_786: FTCPE port map (XLXN_78(6),XLXN_78_T(6),IRQ,'0','0',NOT RESET);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_78_T(6) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXN_78(3) AND XLXN_78(4) AND XLXN_78(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXN_78(3) AND NOT XLXN_78(4) AND NOT XLXN_78(5)));
+</td></tr><tr><td>
+FTCPE_XLXN_787: FTCPE port map (XLXN_78(7),XLXN_78_T(7),IRQ,'0','0',NOT RESET);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_78_T(7) <= ((DIR AND XLXN_78(0) AND XLXN_78(1) AND XLXN_78(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXN_78(3) AND XLXN_78(4) AND XLXN_78(5) AND XLXN_78(6))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT DIR AND NOT XLXN_78(0) AND NOT XLXN_78(1) AND NOT XLXN_78(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXN_78(3) AND NOT XLXN_78(4) AND NOT XLXN_78(5) AND NOT XLXN_78(6)));
 </td></tr><tr><td>
 Register Legend:
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 

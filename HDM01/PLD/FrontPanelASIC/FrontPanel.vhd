@@ -7,7 +7,7 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : sch2hdl
 --  /   /         Filename : FrontPanel.vhf
--- /___/   /\     Timestamp : 08/20/2017 17:28:10
+-- /___/   /\     Timestamp : 08/25/2017 18:59:34
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -46,6 +46,7 @@ end FrontPanel;
 architecture BEHAVIORAL of FrontPanel is
    attribute BOX_TYPE   : string ;
    attribute SLEW       : string ;
+   attribute PWR_MODE   : string ;
    signal LED     : std_logic_vector (7 downto 0);
    signal XLXN_1  : std_logic;
    signal XLXN_2  : std_logic;
@@ -54,8 +55,9 @@ architecture BEHAVIORAL of FrontPanel is
    signal XLXN_27 : std_logic;
    signal XLXN_28 : std_logic;
    signal XLXN_41 : std_logic;
-   signal XLXN_66 : std_logic;
-   signal XLXN_77 : std_logic;
+   signal XLXN_78 : std_logic_vector (7 downto 0);
+   signal XLXN_81 : std_logic;
+   signal XLXN_83 : std_logic;
    component rotary_decoder
       port ( rotary_a : in    std_logic; 
              rotary_b : in    std_logic; 
@@ -90,22 +92,33 @@ architecture BEHAVIORAL of FrontPanel is
    attribute BOX_TYPE of AND2 : component is "BLACK_BOX";
    
    component spi
-      port ( SCLK    : in    std_logic; 
-             MOSI    : in    std_logic; 
-             SS      : in    std_logic; 
-             NRST    : in    std_logic; 
-             MISO    : out   std_logic; 
-             LEDPORT : out   std_logic_vector (7 downto 0); 
-             BYTE_IN : out   std_logic);
+      port ( SCLK      : in    std_logic; 
+             MOSI      : in    std_logic; 
+             SS        : in    std_logic; 
+             NRST      : in    std_logic; 
+             MISO      : out   std_logic; 
+             BYTE_IN   : out   std_logic; 
+             LEDPORT   : out   std_logic_vector (7 downto 0); 
+             INPUTPORT : in    std_logic_vector (7 downto 0));
    end component;
    
+   component counter8
+      port ( CLK   : in    std_logic; 
+             RST   : in    std_logic; 
+             DIR   : in    std_logic; 
+             COUNT : out   std_logic_vector (7 downto 0));
+   end component;
+   
+   attribute PWR_MODE of XLXI_15 : label is "LOW";
+   attribute PWR_MODE of XLXI_30 : label is "LOW";
+   attribute PWR_MODE of XLXI_31 : label is "LOW";
 begin
    XLXI_2 : rotary_decoder
       port map (clk=>XLXN_15,
                 rotary_a=>XLXN_1,
                 rotary_b=>XLXN_2,
-                detent=>XLXN_66,
-                dir=>XLXN_77);
+                detent=>XLXN_81,
+                dir=>XLXN_83);
    
    XLXI_3 : IBUF
       port map (I=>PHA,
@@ -120,11 +133,11 @@ begin
                 O=>XLXN_15);
    
    XLXI_6 : OBUF
-      port map (I=>XLXN_66,
+      port map (I=>XLXN_81,
                 O=>IRQ);
    
    XLXI_7 : OBUF
-      port map (I=>XLXN_77,
+      port map (I=>XLXN_83,
                 O=>DIR);
    
    XLXI_15 : clock_divider
@@ -162,14 +175,21 @@ begin
       port map (I=>XLXN_28,
                 O=>LED_2);
    
-   XLXI_29 : spi
-      port map (MOSI=>MOSI,
+   XLXI_30 : spi
+      port map (INPUTPORT(7 downto 0)=>XLXN_78(7 downto 0),
+                MOSI=>MOSI,
                 NRST=>RESET,
                 SCLK=>SCLK,
                 SS=>SS,
                 BYTE_IN=>BYTE_IN,
                 LEDPORT(7 downto 0)=>LED(7 downto 0),
                 MISO=>MISO);
+   
+   XLXI_31 : counter8
+      port map (CLK=>XLXN_81,
+                DIR=>XLXN_83,
+                RST=>RESET,
+                COUNT(7 downto 0)=>XLXN_78(7 downto 0));
    
 end BEHAVIORAL;
 

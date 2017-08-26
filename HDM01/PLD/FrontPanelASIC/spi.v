@@ -25,6 +25,7 @@ parameter NO_OPERATION = 'h00,
 parameter WRITE_LED_PORT = 'h01,
 parameter READ_CHIP_ID = 'h06,
 parameter READ_VENDOR_ID = 'h19,
+parameter READ_PORT = 'h1F,
 
 // Constants for return
 parameter CHIP_ID = 'h71,			// Constant returned when CHIP ID of the device is requested
@@ -39,13 +40,15 @@ parameter NAK = 'h80					// Constant returned for NAK for errors or illegal comm
 			SS,
 			LEDPORT,
 			NRST,
-			BYTE_IN
+			BYTE_IN,
+			INPUTPORT
     );
 
 input SCLK;							// Serial clock
 input MOSI;							// Serial Input
 input SS;							// Slave Select
 input NRST;							// Master reset (active low)
+input [7:0] INPUTPORT;			// General-purpose Input Port 8 bits wide
 output reg MISO = 0;				// Serial output
 reg[7:0]SPIDATA_IN = 0;				// 8 bit data register for received SPI data
 reg[7:0]SPIDATA_OUT = 0;		// 8 bit data register for transmitted SPI data
@@ -58,32 +61,40 @@ reg CMDDATA = 0;					// Toggle between command and data phase
 //----------------------------------------------------------------------------------------------------------------------------------------------------------
 // Byte input processing
 //----------------------------------------------------------------------------------------------------------------------------------------------------------
-always @ (posedge BYTE_IN) begin
+always @ (posedge BYTE_IN or posedge NRST) begin
 
-		SPIDATA_OUT = 'h00;									// Assume we are to return 0x00
-		if(CMDDATA == 0)
+		if (NRST)
 			begin
-				
-				DEVCMD = SPIDATA_IN;							// Byte received is the command field
-				
-				// Command decoding here, asynchronously load registers if a response is needed in the next SPI transaction
-				case(DEVCMD)
-					WRITE_LED_PORT: SPIDATA_OUT = ACK;	
-					READ_CHIP_ID: SPIDATA_OUT = CHIP_ID;
-					NO_OPERATION: SPIDATA_OUT = ACK;
-					READ_VENDOR_ID: SPIDATA_OUT = VENDOR_ID;
-					default: SPIDATA_OUT = NAK;
-				endcase
-				CMDDATA = 1;						// Next byte shall be data
-
+			LEDPORT = 0;
+			DEVCMD = 0;
+			SPIDATA_OUT = 0;
 			end
 		else
 			begin
-				case(DEVCMD)
-					WRITE_LED_PORT: LEDPORT = SPIDATA_IN;					
-				endcase
-				CMDDATA = 0;
-			
+				SPIDATA_OUT = 'h00;									// Assume we are to return 0x00
+				if(CMDDATA == 0)
+					begin
+					DEVCMD = SPIDATA_IN;							// Byte received is the command field
+				
+					// Command decoding here, asynchronously load registers if a response is needed in the next SPI transaction
+					case(DEVCMD)
+						WRITE_LED_PORT: SPIDATA_OUT = ACK;	
+						READ_CHIP_ID: SPIDATA_OUT = CHIP_ID;
+						NO_OPERATION: SPIDATA_OUT = ACK;
+						READ_VENDOR_ID: SPIDATA_OUT = VENDOR_ID;
+						READ_PORT: SPIDATA_OUT = INPUTPORT;
+						default: SPIDATA_OUT = NAK;
+					endcase
+					CMDDATA = 1;						// Next byte shall be data
+
+					end
+				else
+					begin
+					case(DEVCMD)
+						WRITE_LED_PORT: LEDPORT = SPIDATA_IN;					
+					endcase
+					CMDDATA = 0;
+				end
 			end
 			
 		

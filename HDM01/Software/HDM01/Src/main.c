@@ -99,6 +99,8 @@ char arr[32];
 unsigned int cnt;
 unsigned char Delta;
 unsigned char cnst;
+unsigned char enc_cnt;
+unsigned char rxd;
 
 // Timer that derives from the system ticker...
 //-----------------------------------------------
@@ -177,6 +179,9 @@ void TestI2C(void){
 void SimpleSPI(unsigned char data){
 	unsigned char bcnt;
 
+
+	rxd = 0;
+
 	// shift out LSB first
 	//--------------------
 	for(bcnt = 0; bcnt < 8; bcnt++){
@@ -187,8 +192,16 @@ void SimpleSPI(unsigned char data){
 		}
 		data = data >> 1;
 
+		// Clock cycle
 		GPIO_SetBits(GPIOA, GPIO_Pin_5);		// Clock = H
-		GPIO_ResetBits(GPIOA,GPIO_Pin_5);
+		GPIO_ResetBits(GPIOA,GPIO_Pin_5);		// Clock = L
+
+		rxd >>= 1;
+		if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_7) == 1){
+			rxd |= 0x80;
+		} else {
+			rxd &= ~0x80;
+		}
 
 	}
 }
@@ -253,7 +266,7 @@ int main(void){
 
         // Configure PORT A
         //--------------------------------------------------
-        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_7;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
@@ -369,7 +382,15 @@ int main(void){
 
 
                 }
+                memset(arr, 0, 32);
                 sprintf(arr, "%2d:%02d:%02d", TimeOfDay.hour, TimeOfDay.minute, TimeOfDay.second);
+                OutString(arr, Font1);
+                SetXY(0, 1);
+                memset(arr, 0 , 32);
+
+                SimpleSPI(0x1F);				// Command = Read counter
+                SimpleSPI(0x00);				// Send 0x00 to read via MISO
+                sprintf(arr, "Encoder: %02X", rxd);
                 OutString(arr, Font1);
                 UpdateFromFB();
 

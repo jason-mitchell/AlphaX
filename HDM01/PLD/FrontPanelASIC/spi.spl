@@ -3,6 +3,7 @@ SCLK
 MOSI
 SS
 NRST
+=INPUTPORT[7:0]=
 [Outputs]
 MISO
 BYTE_IN
