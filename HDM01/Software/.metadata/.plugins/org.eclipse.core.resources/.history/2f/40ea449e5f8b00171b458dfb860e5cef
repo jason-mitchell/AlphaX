@@ -1,0 +1,59 @@
+//-----------------------------------------------------------------------------------------------------------------------------
+//
+//									Filename: fpanel.c
+//				Routines to manage ASIC in front panel (implemented in a Xilinx XC9572XL)
+//				Author: Sonic2k
+//				Date: 27.08.2017
+//
+//				This code assumes you already configured the GPIO and defined the names in bsp.h
+//-----------------------------------------------------------------------------------------------------------------------------
+
+// Includes
+//-----------------
+#include "fpanel.h"
+#include "spi.h"
+#include "bsp.h"
+#include "stm32f0xx_gpio.h"
+
+
+// Locals
+//-----------------
+
+
+// Functions
+//------------------
+
+// Name: InitFPIface
+// Function: Initialize front panel interface to known state
+// Parameters: void
+// Returns: void
+//--------------------------------------------------------------
+void InitFPIface(void){
+
+	GPIO_SetBits(GPIOA, SS_FP);				// Slave select pin is = 1
+	GPIO_SetBits(GPIOA, RESET_FP);			// Raise NRST pin
+	GPIO_ResetBits(GPIOA, RESET_FP);		// Lower NRST pin
+
+}
+
+// Name: FpReadWrite
+// Function: Read/Write function with the front panel ASIC
+// Parameters: Command, Operand
+// Returns: Data returned from ASIC
+//----------------------------------------------------------
+unsigned char FpReadWrite(unsigned char command, unsigned char op, unsigned char *data){
+	unsigned char result = 0;
+
+	GPIO_ResetBits(GPIOA, SS_FP);			// Lower Slave Select pin
+
+	result = SPITransceive(command);
+	if (result == 0x80){
+		GPIO_SetBits(GPIOA, SS_FP);				// Raise Slave Select pin
+		return 0x01;
+	}
+	data = SPITransceive(op);
+
+
+	GPIO_SetBits(GPIOA, SS_FP);				// Raise Slave Select pin
+	return 0x00;
+}

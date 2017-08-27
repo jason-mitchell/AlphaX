@@ -32,6 +32,7 @@
 //	               `*=--..--=*'
 //
 //					22/7/17 - Project moved to Atollic TrueStudio- Gain in performance apparent (code size down to 17k)
+//					23/8/17 - This code works on the STM32F072RBT8 without change but we need to be careful.
 //
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -98,6 +99,8 @@ char arr[32];
 unsigned int cnt;
 unsigned char Delta;
 unsigned char cnst;
+unsigned char enc_cnt;
+unsigned char rxd;
 
 // Timer that derives from the system ticker...
 //-----------------------------------------------
@@ -176,6 +179,9 @@ void TestI2C(void){
 void SimpleSPI(unsigned char data){
 	unsigned char bcnt;
 
+
+	rxd = 0;
+
 	// shift out LSB first
 	//--------------------
 	for(bcnt = 0; bcnt < 8; bcnt++){
@@ -186,8 +192,16 @@ void SimpleSPI(unsigned char data){
 		}
 		data = data >> 1;
 
+		// Clock cycle
 		GPIO_SetBits(GPIOA, GPIO_Pin_5);		// Clock = H
-		GPIO_ResetBits(GPIOA,GPIO_Pin_5);
+		GPIO_ResetBits(GPIOA,GPIO_Pin_5);		// Clock = L
+
+		rxd >>= 1;
+		if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_7) == 1){
+			rxd |= 0x80;
+		} else {
+			rxd &= ~0x80;
+		}
 
 	}
 }
@@ -252,7 +266,7 @@ int main(void){
 
         // Configure PORT A
         //--------------------------------------------------
-        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_7;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
@@ -356,19 +370,27 @@ int main(void){
                     } else {
                     	cnst = 0x55;
                     }
-                    //SimpleSPI(0x01);			// Command portion
-                    SimpleSPI(cnst & 0x01);		// Data portion- write toggling bit
+                    SimpleSPI(0x01);			// Command = Write LED port
+                    SimpleSPI(cnst & 0x01);		// Data portion- write toggling bit, MISO = 0x00
 
-                    //SimpleSPI(0x06);			// Command Portion
-                    //SimpleSPI(0x00);			// Data Portion, send zero, the other leg will clock in...
+                    SimpleSPI(0x06);			// Command = Read Chip ID
+                    SimpleSPI(0x00);			// Data Portion, send 0x00, MISO = data returned
 
-                    //SimpleSPI(0x04);
-                    //SimpleSPI(0xF1);
+                    SimpleSPI(0x19);			// Command = Read Chip Vendor
+                    SimpleSPI(0x00);
 
 
 
                 }
+                memset(arr, 0, 32);
                 sprintf(arr, "%2d:%02d:%02d", TimeOfDay.hour, TimeOfDay.minute, TimeOfDay.second);
+                OutString(arr, Font1);
+                SetXY(0, 1);
+                memset(arr, 0 , 32);
+
+                SimpleSPI(0x1F);				// Command = Read counter
+                SimpleSPI(0x00);				// Send 0x00 to read via MISO
+                sprintf(arr, "Encoder: %02X", rxd);
                 OutString(arr, Font1);
                 UpdateFromFB();
 
