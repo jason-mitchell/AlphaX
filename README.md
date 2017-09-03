@@ -1,6 +1,8 @@
 # AlphaX
-Alpha-X Headphone project
+Alpha-X Audio Products
 
-This is the source code for the microcontrollers used in the Alpha-X headphone project which is documented on occasion in my blog
+Source Codes, PCB designs and more for Alpha X products
 
-sonicthehog2000.weebly.com
+Coverage of design processes
+sonic2kworld.com
+carbonite.co.za
