@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=NetPL2_4 Pin=U1-14
+Removed Pin From Net: NetName=NetPL2_3 Pin=U1-15
+Added Pin To Net: NetName=NetPL2_3 Pin=U1-14
+Added Pin To Net: NetName=NetPL2_4 Pin=U1-15
+Added Member To Class: ClassName=AMP_MAIN_REV1.0 Member=Component C2 2200u 25V
+Added Member To Class: ClassName=AMP_MAIN_REV1.0 Member=Component U1 TDA7376B
+Added Room: Name=AMP_MAIN_REV1.0
