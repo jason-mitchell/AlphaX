@@ -53,6 +53,7 @@
 #include "serial.h"
 #include "spi.h"
 #include "fpanel.h"
+#include "ir.h"
 
 // Structs
 //----------------------
@@ -98,11 +99,13 @@ unsigned int rxchar;
 unsigned char TickFlagI2C;
 
 char arr[32];
+char dbgstr[32];
 unsigned int cnt;
 unsigned char Delta;
 unsigned char cnst;
 unsigned char enc_cnt;
 unsigned char rxd;
+unsigned char T1;
 
 // Timer that derives from the system ticker...
 //-----------------------------------------------
@@ -121,17 +124,17 @@ void GeneralDelay(void){
 void SysTick_Handler(void){
 
 	TimerSvc();
-  timer++;
-  if ((timer & 0x01) == 0x01){
-	  GPIO_SetBits(GPIOC, CLK_500Hz);
-  } else {
-	  GPIO_ResetBits(GPIOC, CLK_500Hz);
-  }
-  if  (timer>500)
-  {
-    timerFlag = 1;
-    TickFlagI2C = 1;
-    timer = 0;
+	IR_SYS_TICK_SVC();				// Call function in IR library to service
+	timer++;
+	if ((timer & 0x01) == 0x01){
+		GPIO_SetBits(GPIOC, CLK_500Hz);
+	} else {
+		GPIO_ResetBits(GPIOC, CLK_500Hz);
+	}
+	if  (timer>500){
+		timerFlag = 1;
+		TickFlagI2C = 1;
+		timer = 0;
   }
 }
 
@@ -146,7 +149,11 @@ void USART1_IRQHandler(void){
 
 }
 
-
+// TIM 1 CH 2 Interrupts
+//-----------------------
+void TIM1_CC_IRQHandler(void){
+	IR_IRQ_HNDL();
+}
 
 // Test Stuff
 //------------
@@ -178,35 +185,7 @@ void TestI2C(void){
   //I2C_ClearFlag(I2C1, I2C_ICR_STOPCF);
 }
 
-void SimpleSPI(unsigned char data){
-	unsigned char bcnt;
 
-
-	rxd = 0;
-
-	// shift out LSB first
-	//--------------------
-	for(bcnt = 0; bcnt < 8; bcnt++){
-		if((data & 0x01) == 0x01){
-			GPIO_SetBits(GPIOA, GPIO_Pin_6);	// MOSI = '1'
-		} else {
-			GPIO_ResetBits(GPIOA, GPIO_Pin_6);
-		}
-		data = data >> 1;
-
-		// Clock cycle
-		GPIO_SetBits(GPIOA, GPIO_Pin_5);		// Clock = H
-		GPIO_ResetBits(GPIOA,GPIO_Pin_5);		// Clock = L
-
-		rxd >>= 1;
-		if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_7) == 1){
-			rxd |= 0x80;
-		} else {
-			rxd &= ~0x80;
-		}
-
-	}
-}
 //-------------------------------------------------------------------------------------------------------------------------------------
 //                                          Main Function
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -292,7 +271,7 @@ int main(void){
         // Configure UART 1
         //-----------------------------------------------
 
-        USART_InitStructure.USART_BaudRate = 9600;
+        USART_InitStructure.USART_BaudRate = 115200;
         USART_InitStructure.USART_WordLength = USART_WordLength_8b;
         USART_InitStructure.USART_StopBits = USART_StopBits_1;
         USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -339,6 +318,8 @@ int main(void){
         InitFPIface();
         InitI2C();                                                  // Initialize and enable I2C module
         SysTick_Config(TickerRate);									// Initialize the System Tick
+        T1 = 0;
+        InitIR();
 
         // System Startup begins here...
         ResetDisplay();
@@ -365,11 +346,11 @@ int main(void){
         	TxData("\r\nError destroying timer object!");
         }
 
-        // Standby mode
+        // Main Monitor Loop
         for(;;){
 
             SetDispIntensity(1);
-            while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
+            while(1){
                 SetXY(0, 0);
                 ClearFB();
                 GetTimeNow(&TimeOfDay);
@@ -382,16 +363,6 @@ int main(void){
                     	cnst = 0x55;
                     }
                    FpReadWrite(0x01, cnst & 0x01, &rxd);
-                    //SimpleSPI(0x01);			// Command = Write LED port
-                    //SimpleSPI(cnst & 0x01);		// Data portion- write toggling bit, MISO = 0x00
-
-                    //SimpleSPI(0x06);			// Command = Read Chip ID
-                    //SimpleSPI(0x00);			// Data Portion, send 0x00, MISO = data returned
-
-                    //SimpleSPI(0x19);			// Command = Read Chip Vendor
-                    //SimpleSPI(0x00);
-
-
 
                 }
                 memset(arr, 0, 32);
@@ -406,6 +377,15 @@ int main(void){
                 sprintf(arr, "Encoder: %02X", rxd);
                 OutString(arr, Font1);
                 UpdateFromFB();
+                if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
+                	break;
+                }
+                if(IR_EVENT == 1){
+                	IR_EVENT = 0;
+                	if (COMMAND == 0x0738){
+                		break;
+                	}
+                }
 
             }
 
@@ -420,10 +400,27 @@ int main(void){
             UpdateFromFB();
             Delay(0x3FFFFF);
 
-             while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
-                // Idle loop
+            // Wait for OFF command
+            IR_EVENT = 0;
+
+            while(1){
+            	if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
+            		break;
+            	}
+            	if (IR_EVENT == 1){
+            		IR_EVENT == 0;
+            		if (COMMAND == 0x0738){
+            			break;
+            		}
+            	}
+
+
 
             }
+            // while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
+                // Idle loop
+//
+//           }
             GPIO_ResetBits(GPIOC, HEADPHONE_RELAY);
             SetXY(0, 0);
             ClearFB();
@@ -435,6 +432,7 @@ int main(void){
             while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
                 ;
             }
+            IR_EVENT = 0;
 
         }
 
