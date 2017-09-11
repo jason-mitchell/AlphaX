@@ -173,10 +173,13 @@ void IR_IRQ_HNDL(void){
 
     // Space pulse is measured
     case 2:
+    	//dbgstr[0] = 0;
+    	//sprintf(dbgstr, "\r\n CAPTURE VALUE ON QUIET TIME: %d", CAPTURE);
+    	//TxData(dbgstr);
     	if (CAPTURE > QUIET_MIN && CAPTURE < QUIET_MAX){
     		// Frame start is good, begin shifting bits
     		bitcount = 32;
-    		IR_TIMER = 80;
+    		IR_TIMER = 80; //80
     		T1 = 3;
     		ADDRESS = 0;
     		COMMAND = 0;

@@ -5,6 +5,17 @@
 'Building file: ../main.c'
 'Invoking: MSP430 Compiler'
 "C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=none --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all -g --define=__MSP430G2231__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"../main.c", line 37: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+"../main.c", line 38: remark #1527-D: (ULP 2.1) Detected SW delay loop using __delay_cycles. Recommend using a timer module instead
+"../main.c", line 111: remark #1530-D: (ULP 5.1) Detected divide operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+"../main.c", line 173: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+"../main.c", line 183: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+"../main.c", line 251: remark #1540-D: (ULP 11.2) Assignment of higher bits (constants) to "P1OUT" within a loop. Recommend using lower 4 bits to allow use of constant generators
+"../main.c", line 252: remark #1540-D: (ULP 11.2) Assignment of higher bits (constants) to "P1OUT" within a loop. Recommend using lower 4 bits to allow use of constant generators
+"../main.c", line 253: remark #1540-D: (ULP 11.2) Assignment of higher bits (constants) to "P1OUT" within a loop. Recommend using lower 4 bits to allow use of constant generators
+"../main.c", line 260: remark #1540-D: (ULP 11.2) Assignment of higher bits (constants) to "P1OUT" within a loop. Recommend using lower 4 bits to allow use of constant generators
+"../main.c", line 261: remark #1540-D: (ULP 11.2) Assignment of higher bits (constants) to "P1OUT" within a loop. Recommend using lower 4 bits to allow use of constant generators
+"../main.c", line 262: remark #1540-D: (ULP 11.2) Assignment of higher bits (constants) to "P1OUT" within a loop. Recommend using lower 4 bits to allow use of constant generators
 'Finished building: ../main.c'
 ' '
 'Building target: RMC01.out'
@@ -14,5 +25,12 @@
 remark #10372-D: (ULP 4.1) Detected uninitialized Port 2 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
 'Finished building target: RMC01.out'
 ' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project RMC01 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
 
 **** Build Finished ****

@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v4.4.3                      
 ******************************************************************************
->> Linked Mon Sep 04 20:24:09 2017
+>> Linked Mon Sep 11 21:10:46 2017
 
 OUTPUT FILE NAME:   <RMC01.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 0000f8f6
+ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 0000fb90
 
 
 MEMORY CONFIGURATION
@@ -14,12 +14,12 @@ MEMORY CONFIGURATION
   SFR                   00000000   00000010  00000000  00000010  RWIX
   PERIPHERALS_8BIT      00000010   000000f0  00000000  000000f0  RWIX
   PERIPHERALS_16BIT     00000100   00000100  00000000  00000100  RWIX
-  RAM                   00000200   00000080  00000034  0000004c  RWIX
+  RAM                   00000200   00000080  00000036  0000004a  RWIX
   INFOD                 00001000   00000040  00000000  00000040  RWIX
   INFOC                 00001040   00000040  00000000  00000040  RWIX
   INFOB                 00001080   00000040  00000000  00000040  RWIX
   INFOA                 000010c0   00000040  00000000  00000040  RWIX
-  FLASH                 0000f800   000007e0  00000180  00000660  RWIX
+  FLASH                 0000f800   000007e0  0000044c  00000394  RWIX
   INT00                 0000ffe0   00000002  00000000  00000002  RWIX
   INT01                 0000ffe2   00000002  00000000  00000002  RWIX
   INT02                 0000ffe4   00000002  00000002  00000000  RWIX
@@ -43,32 +43,45 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.data      0    00000200    00000002     UNINITIALIZED
-                  00000200    00000002     main.obj (.data)
+.data      0    00000200    00000003     UNINITIALIZED
+                  00000200    00000003     main.obj (.data)
+
+.bss       0    00000203    00000001     UNINITIALIZED
+                  00000203    00000001     (.common:keycode)
 
 .stack     0    0000024c    00000032     UNINITIALIZED
                   0000024c    00000002     rts430_eabi.lib : boot.obj (.stack)
                   0000024e    00000030     --HOLE--
 
-.text      0    0000f800    00000172     
-                  0000f800    00000064     rts430_eabi.lib : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
-                  0000f864    00000058                     : autoinit.obj (.text:_auto_init)
-                  0000f8bc    0000001e     main.obj (.text:Port_1)
-                  0000f8da    0000001c     main.obj (.text:watchdog_timer)
-                  0000f8f6    0000001a     rts430_eabi.lib : boot_special.obj (.text:_c_int00_noargs_noexit)
-                  0000f910    0000001a     main.obj (.text:main)
-                  0000f92a    00000012     rts430_eabi.lib : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
-                  0000f93c    00000012                     : memcpy.obj (.text:memcpy)
-                  0000f94e    00000010                     : epilog.obj (.text)
-                  0000f95e    00000006                     : isr_trap.obj (.text:_isr:__TI_ISR_TRAP)
-                  0000f964    00000006                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
-                  0000f96a    00000004                     : pre_init.obj (.text:_system_pre_init)
-                  0000f96e    00000004                     : exit.obj (.text:abort)
+.text      0    0000f800    00000432     
+                  0000f800    000000fe     main.obj (.text:main)
+                  0000f8fe    000000b2     main.obj (.text:ScanKeypad)
+                  0000f9b0    00000072     main.obj (.text:TransmitNEC)
+                  0000fa22    00000064     rts430_eabi.lib : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
+                  0000fa86    00000058                     : autoinit.obj (.text:_auto_init)
+                  0000fade    0000004c                     : lsr16.obj (.text)
+                  0000fb2a    0000002e     main.obj (.text:TransmitBit)
+                  0000fb58    0000001e     main.obj (.text:PulseTimer)
+                  0000fb76    0000001a     main.obj (.text:Wait)
+                  0000fb90    0000001a     rts430_eabi.lib : boot_special.obj (.text:_c_int00_noargs_noexit)
+                  0000fbaa    00000016     main.obj (.text:Port_1)
+                  0000fbc0    00000014     rts430_eabi.lib : copy_zero_init.obj (.text:decompress:ZI:__TI_zero_init)
+                  0000fbd4    00000012                     : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
+                  0000fbe6    00000012                     : memcpy.obj (.text:memcpy)
+                  0000fbf8    00000010     main.obj (.text:PWMPinControl)
+                  0000fc08    00000010     rts430_eabi.lib : epilog.obj (.text)
+                  0000fc18    00000006                     : isr_trap.obj (.text:_isr:__TI_ISR_TRAP)
+                  0000fc1e    00000006                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
+                  0000fc24    00000006     main.obj (.text:watchdog_timer)
+                  0000fc2a    00000004     rts430_eabi.lib : pre_init.obj (.text:_system_pre_init)
+                  0000fc2e    00000004                     : exit.obj (.text:abort)
 
-.cinit     0    0000f972    0000000e     
-                  0000f972    00000006     (.cinit..data.load) [load image]
-                  0000f978    00000004     (__TI_handler_table)
-                  0000f97c    00000004     (__TI_cinit_table)
+.cinit     0    0000fc32    0000001a     
+                  0000fc32    00000007     (.cinit..data.load) [load image]
+                  0000fc39    00000001     --HOLE-- [fill = 0]
+                  0000fc3a    00000006     (__TI_handler_table)
+                  0000fc40    00000004     (.cinit..bss.load) [load image, compression = zero_init]
+                  0000fc44    00000008     (__TI_cinit_table)
 
 .init_array 
 *          0    0000f800    00000000     UNINITIALIZED
@@ -106,15 +119,17 @@ NMI        0    0000fffc    00000002
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 0000f97c records: 1, size/record: 4, table size: 4
-	.data: load addr=0000f972, load size=00000006 bytes, run addr=00000200, run size=00000002 bytes, compression=copy
+__TI_cinit_table @ 0000fc44 records: 2, size/record: 4, table size: 8
+	.data: load addr=0000fc32, load size=00000007 bytes, run addr=00000200, run size=00000003 bytes, compression=copy
+	.bss: load addr=0000fc40, load size=00000004 bytes, run addr=00000203, run size=00000001 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 0000f978 records: 2, size/record: 2, table size: 4
-	index: 0, handler: __TI_decompress_rle24
-	index: 1, handler: __TI_decompress_none
+__TI_handler_table @ 0000fc3a records: 3, size/record: 2, table size: 6
+	index: 0, handler: __TI_zero_init
+	index: 1, handler: __TI_decompress_rle24
+	index: 2, handler: __TI_decompress_none
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
@@ -131,7 +146,7 @@ address   name
 00000057  BCSCTL1                 
 00000058  BCSCTL2                 
 00000053  BCSCTL3                 
-0000f96e  C$$EXIT                 
+0000fc2e  C$$EXIT                 
 000010ff  CALBC1_1MHZ             
 000010fe  CALDCO_1MHZ             
 00000056  DCOCTL                  
@@ -140,6 +155,7 @@ address   name
 0000012c  FCTL3                   
 00000000  IE1                     
 00000002  IFG1                    
+00000200  IR_TIME                 
 00000022  P1DIR                   
 00000025  P1IE                    
 00000024  P1IES                   
@@ -156,7 +172,10 @@ address   name
 00000029  P2OUT                   
 0000002f  P2REN                   
 0000002e  P2SEL                   
-0000f8bc  Port_1                  
+0000fbf8  PWMPinControl           
+0000fbaa  Port_1                  
+0000fb58  PulseTimer              
+0000f8fe  ScanKeypad              
 00000172  TACCR0                  
 00000174  TACCR1                  
 00000162  TACCTL0                 
@@ -164,6 +183,9 @@ address   name
 00000160  TACTL                   
 0000012e  TAIV                    
 00000170  TAR                     
+00000202  TRANSMIT_REQ            
+0000fb2a  TransmitBit             
+0000f9b0  TransmitNEC             
 0000007a  USICCTL                 
 0000007a  USICKCTL                
 0000007b  USICNT                  
@@ -174,17 +196,18 @@ address   name
 0000007d  USISRH                  
 0000007c  USISRL                  
 00000120  WDTCTL                  
+0000fb76  Wait                    
 0000027e  __STACK_END             
 00000032  __STACK_SIZE            
-0000f97c  __TI_CINIT_Base         
-0000f980  __TI_CINIT_Limit        
-0000f978  __TI_Handler_Table_Base 
-0000f97c  __TI_Handler_Table_Limit
+0000fc44  __TI_CINIT_Base         
+0000fc4c  __TI_CINIT_Limit        
+0000fc3a  __TI_Handler_Table_Base 
+0000fc40  __TI_Handler_Table_Limit
 UNDEFED   __TI_INITARRAY_Base     
 UNDEFED   __TI_INITARRAY_Limit    
-0000f95e  __TI_ISR_TRAP           
-0000f92a  __TI_decompress_none    
-0000f964  __TI_decompress_rle24   
+0000fc18  __TI_ISR_TRAP           
+0000fbd4  __TI_decompress_none    
+0000fc1e  __TI_decompress_rle24   
 0000ffe4  __TI_int02              
 0000ffe6  __TI_int03              
 0000ffe8  __TI_int04              
@@ -193,26 +216,43 @@ UNDEFED   __TI_INITARRAY_Limit
 0000fff2  __TI_int09              
 0000fff4  __TI_int10              
 0000fffc  __TI_int14              
+0000fbc0  __TI_zero_init          
 ffffffff  __binit__               
 ffffffff  __c_args__              
-0000f95a  __mspabi_func_epilog_1  
-0000f958  __mspabi_func_epilog_2  
-0000f956  __mspabi_func_epilog_3  
-0000f954  __mspabi_func_epilog_4  
-0000f952  __mspabi_func_epilog_5  
-0000f950  __mspabi_func_epilog_6  
-0000f94e  __mspabi_func_epilog_7  
-0000f864  _auto_init              
-0000f8f6  _c_int00_noargs_noexit  
+0000fc14  __mspabi_func_epilog_1  
+0000fc12  __mspabi_func_epilog_2  
+0000fc10  __mspabi_func_epilog_3  
+0000fc0e  __mspabi_func_epilog_4  
+0000fc0c  __mspabi_func_epilog_5  
+0000fc0a  __mspabi_func_epilog_6  
+0000fc08  __mspabi_func_epilog_7  
+0000fade  __mspabi_srli           
+0000fb24  __mspabi_srli_1         
+0000fb00  __mspabi_srli_10        
+0000fafc  __mspabi_srli_11        
+0000faf8  __mspabi_srli_12        
+0000faf4  __mspabi_srli_13        
+0000faf0  __mspabi_srli_14        
+0000faec  __mspabi_srli_15        
+0000fb20  __mspabi_srli_2         
+0000fb1c  __mspabi_srli_3         
+0000fb18  __mspabi_srli_4         
+0000fb14  __mspabi_srli_5         
+0000fb10  __mspabi_srli_6         
+0000fb0c  __mspabi_srli_7         
+0000fb08  __mspabi_srli_8         
+0000fb04  __mspabi_srli_9         
+0000fa86  _auto_init              
+0000fb90  _c_int00_noargs_noexit  
 0000fffe  _reset_vector           
 0000024c  _stack                  
-0000f96a  _system_pre_init        
-0000f96e  abort                   
+0000fc2a  _system_pre_init        
+0000fc2e  abort                   
 ffffffff  binit                   
-0000f910  main                    
-0000f93c  memcpy                  
-0000f8da  watchdog_timer          
-00000200  wdtCounter              
+00000203  keycode                 
+0000f800  main                    
+0000fbe6  memcpy                  
+0000fc24  watchdog_timer          
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -269,34 +309,59 @@ address   name
 000001b2  ADC10CTL1               
 000001b4  ADC10MEM                
 000001bc  ADC10SA                 
-00000200  wdtCounter              
+00000200  IR_TIME                 
+00000202  TRANSMIT_REQ            
+00000203  keycode                 
 0000024c  _stack                  
 0000027e  __STACK_END             
 000010fe  CALDCO_1MHZ             
 000010ff  CALBC1_1MHZ             
-0000f864  _auto_init              
-0000f8bc  Port_1                  
-0000f8da  watchdog_timer          
-0000f8f6  _c_int00_noargs_noexit  
-0000f910  main                    
-0000f92a  __TI_decompress_none    
-0000f93c  memcpy                  
-0000f94e  __mspabi_func_epilog_7  
-0000f950  __mspabi_func_epilog_6  
-0000f952  __mspabi_func_epilog_5  
-0000f954  __mspabi_func_epilog_4  
-0000f956  __mspabi_func_epilog_3  
-0000f958  __mspabi_func_epilog_2  
-0000f95a  __mspabi_func_epilog_1  
-0000f95e  __TI_ISR_TRAP           
-0000f964  __TI_decompress_rle24   
-0000f96a  _system_pre_init        
-0000f96e  C$$EXIT                 
-0000f96e  abort                   
-0000f978  __TI_Handler_Table_Base 
-0000f97c  __TI_CINIT_Base         
-0000f97c  __TI_Handler_Table_Limit
-0000f980  __TI_CINIT_Limit        
+0000f800  main                    
+0000f8fe  ScanKeypad              
+0000f9b0  TransmitNEC             
+0000fa86  _auto_init              
+0000fade  __mspabi_srli           
+0000faec  __mspabi_srli_15        
+0000faf0  __mspabi_srli_14        
+0000faf4  __mspabi_srli_13        
+0000faf8  __mspabi_srli_12        
+0000fafc  __mspabi_srli_11        
+0000fb00  __mspabi_srli_10        
+0000fb04  __mspabi_srli_9         
+0000fb08  __mspabi_srli_8         
+0000fb0c  __mspabi_srli_7         
+0000fb10  __mspabi_srli_6         
+0000fb14  __mspabi_srli_5         
+0000fb18  __mspabi_srli_4         
+0000fb1c  __mspabi_srli_3         
+0000fb20  __mspabi_srli_2         
+0000fb24  __mspabi_srli_1         
+0000fb2a  TransmitBit             
+0000fb58  PulseTimer              
+0000fb76  Wait                    
+0000fb90  _c_int00_noargs_noexit  
+0000fbaa  Port_1                  
+0000fbc0  __TI_zero_init          
+0000fbd4  __TI_decompress_none    
+0000fbe6  memcpy                  
+0000fbf8  PWMPinControl           
+0000fc08  __mspabi_func_epilog_7  
+0000fc0a  __mspabi_func_epilog_6  
+0000fc0c  __mspabi_func_epilog_5  
+0000fc0e  __mspabi_func_epilog_4  
+0000fc10  __mspabi_func_epilog_3  
+0000fc12  __mspabi_func_epilog_2  
+0000fc14  __mspabi_func_epilog_1  
+0000fc18  __TI_ISR_TRAP           
+0000fc1e  __TI_decompress_rle24   
+0000fc24  watchdog_timer          
+0000fc2a  _system_pre_init        
+0000fc2e  C$$EXIT                 
+0000fc2e  abort                   
+0000fc3a  __TI_Handler_Table_Base 
+0000fc40  __TI_Handler_Table_Limit
+0000fc44  __TI_CINIT_Base         
+0000fc4c  __TI_CINIT_Limit        
 0000ffe4  __TI_int02              
 0000ffe6  __TI_int03              
 0000ffe8  __TI_int04              
@@ -312,4 +377,4 @@ ffffffff  binit
 UNDEFED   __TI_INITARRAY_Base     
 UNDEFED   __TI_INITARRAY_Limit    
 
-[92 symbols]
+[117 symbols]

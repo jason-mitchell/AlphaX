@@ -1,0 +1,269 @@
+//
+//
+//
+//
+//
+//
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// Includes
+//--------------------------------------------------------
+#include <msp430g2231.h>
+
+
+// Definitions
+//-------------------------------------------------------
+#define KEY1	BIT3
+#define KEY2	BIT4
+#define	KEY3	BIT5
+#define KEY4	BIT6
+#define KEY5	BIT7
+
+unsigned int IR_TIME = 0;
+unsigned char TRANSMIT_REQ = 0;
+unsigned char keycode;
+unsigned char RAWKEY = 0;
+
+
+// Local Functions
+//------------------
+
+// Name: PulseTimer
+// Function: Generates accurate pulse times
+// Parameters: Time period desired in uSeconds
+// Returns: void
+//-----------------------------------------------------
+void PulseTimer(unsigned int time){
+	unsigned int TCOMP;
+
+
+	IR_TIME = 0;					// Reset timing register
+	WDTCTL = WDT_MDLY_0_064; 		// Enable WDT with a period of 64uS
+
+	TCOMP = (time / 64) - 2;
+	for(;;){
+		if(IR_TIME >= TCOMP){
+			WDTCTL = WDTPW + WDTHOLD;					// Disable WDT
+			break;
+		}
+	}
+}
+
+
+
+//=======================================
+void Wait(unsigned int delay){
+	unsigned int ttr = 0;
+	for (ttr = 0; ttr < delay; ttr++){
+		__delay_cycles(1000);
+	}
+
+}
+
+//----------------------------------------------------------------------------------------------------
+// Name: PWMPinControl
+// Function: Controls the drive of the PWM pin
+//           This means when the CPU is halted we don't end up with the pin sitting at logic 1
+//----------------------------------------------------------------------------------------------------
+void PWMPinControl(unsigned char CTL){
+	if(CTL == 0){
+		P1DIR &= ~BIT2;		// PWM pin
+		P1OUT &= ~BIT0;		// Debug pin
+	} else {
+		P1DIR |= BIT2;		// PWM pin
+		P1OUT |= BIT0;		// Debug pin
+	}
+
+}
+
+// Name: TransmitBit
+// Function: Generate the symbol pattern for a logic 0 or 1
+//----------------------------------------------------------------
+void TransmitBit(unsigned char bit){
+	PWMPinControl(1);				// enable 38kHz IR modulation
+	PulseTimer(562);				// 562uS pulse
+	PWMPinControl(0);
+	if(bit == 0){
+		PulseTimer(562);
+	} else {
+		PulseTimer(1675);
+	}
+}
+
+
+// Name: DecodeKey
+// Function: Decode which key was pressed
+//----------------------------------------------------------------
+unsigned char DecodeKey(void){
+	unsigned char intval;
+
+	intval = RAWKEY & 0xF8;
+
+	switch(intval){
+	case 0x80:
+		return 0x01;
+
+	case 0x40:
+		return 0x02;
+
+	case 0x20:
+		return 0x03;
+
+	case 0x10:
+		return 0x04;
+
+	case 0x08:
+		return 0x05;
+
+	default:
+		return 0x00;
+	}
+
+}
+
+//----------------------------------------------------------------
+// Name: TransmitNEC
+// Function: Generates a complete NEC IR protocol frame
+// Parameters: Address field, Command field
+// Returns: void
+//----------------------------------------------------------------
+void TransmitNEC(unsigned int address, unsigned int command){
+
+	unsigned char bitcount;
+
+	// First, generate the start-of-frame
+	PWMPinControl(1);								// Start 38kHz modulation
+	PulseTimer(8400);								// 9mS leading pulse
+	PWMPinControl(0);								// Stop 38kHz modulation
+	PulseTimer(4090);								// 4.5mS gap
+
+	// Transmit address LSB first
+	for(bitcount = 0; bitcount < 16; bitcount++){
+		if ((address & 0x0001) == 0x01){
+			TransmitBit(1);
+		} else {
+			TransmitBit(0);
+		}
+		address = address >> 1;
+	}
+
+	// Transmit command LSB first
+	for(bitcount = 0; bitcount < 16; bitcount++){
+		if ((command & 0x0001) == 0x01){
+			TransmitBit(1);
+		} else {
+			TransmitBit(0);
+		}
+		command = command >> 1;
+	}
+
+	TransmitBit(0);			// This is required... not sure why but it doesn't work if deleted
+}
+//--------------------------------------------------------------------------------------
+// 										Main Function
+//--------------------------------------------------------------------------------------
+void main(void) {
+
+	   WDTCTL = WDTPW + WDTHOLD;					// Disable WDT
+	   IE1 |= WDTIE; // Enable WDT interrupt
+	   TRANSMIT_REQ = 0;							// Clear flag
+	   DCOCTL = 0;                               	// Select lowest DCOx and MODx settings
+	   BCSCTL1 = CALBC1_1MHZ;                    	// Set range
+	   DCOCTL = CALDCO_1MHZ;                     	// Set DCO step + modulation */
+	   BCSCTL2 = 0x00;								// SMCLK /4 (done here to reduce the clock jitter problem)
+
+	   // Configure I/O pins
+	   P1DIR |= BIT0;								// P1.0 to output (DEBUG purposes)
+	   P1DIR |= BIT2;             					// P1.2 to output
+	   P1SEL |= BIT2;             					// P1.2 to TA0.1
+	   P1OUT &= ~BIT0;								// Set debug pin to low
+
+
+	   // Configure Timer 1 (TA0.0)
+	   //---------------------------------
+	   TACTL = TACLR;								// Clear Timer
+
+	   // Configure Capture/Compare to output a 38kHz clock
+	   // Closest we can get is 39.07kHz
+
+	   CCR0 = 25-1;             				// PWM Period       50 = 20kHz
+	   CCTL1 = OUTMOD_7;          				// CCR1 reset/set
+	   CCR1 = 12;                				// CCR1 PWM duty cycle 50% is given if this value = CCR0 / 2
+	   TACTL = TASSEL_2 + MC_1;   				// SMCLK, up mode, timer running
+
+	   // Port 1 Interrupts
+	   P1IE |= KEY1;
+	   P1IE |= KEY2;
+	   P1IE |= KEY3;
+	   P1IE |= KEY4;
+	   P1IE |= KEY5;
+
+		__enable_interrupt();					// Enable System interrupts
+		PWMPinControl(0);						// PWM pin disabled
+		_BIS_SR(LPM3_bits + GIE); 				// Enter LPM3 w/interrupt
+
+
+	//------------------------------------------------------
+	// Main Handling Loop
+	//-----------------------------------------------------
+	for(;;) {
+
+		keycode = DecodeKey();
+		switch(keycode){
+			case 0x01:
+				TransmitNEC(0xC7F8, 0x0738);
+				break;
+
+			case 0x02:
+				TransmitNEC(0xC7F8, 0x0739);
+				break;
+
+			case 0x03:
+				TransmitNEC(0xC7F8, 0x0749);
+				break;
+
+			case 0x04:
+				TransmitNEC(0xC7F8, 0x0741);
+				break;
+
+			case 0x05:
+				TransmitNEC(0xC7F8, 0x0742);
+				break;
+
+			case 0x06:
+				TransmitNEC(0xC7F8, 0x0770);
+				break;
+
+		}
+
+		// Transmit complete, wait for all keys release to go to sleep
+
+		Wait(50);
+		_BIS_SR(LPM3_bits + GIE); 				// Enter LPM3 w/interrupt
+
+
+
+	}
+}
+
+// Watchdog Timer interrupt service routine
+// Used here as a timer
+//-----------------------------------------
+#pragma vector=WDT_VECTOR
+__interrupt void watchdog_timer(void){
+	IR_TIME++;
+
+}
+
+// Port 1 interrupt service routine - executed when buttons are pressed
+//-----------------------------------------------------------------------
+#pragma vector=PORT1_VECTOR
+__interrupt void Port_1(void){
+	RAWKEY = P1IN;
+	P1IFG = 0x0;
+	_BIC_SR(LPM3_EXIT); // wake up from low power mode
+
+}
+
