@@ -27,7 +27,7 @@ unsigned char TRANSMIT_REQ = 0;
 unsigned char keycode;
 unsigned char cnt;
 
-
+unsigned char scancnt;
 
 // Local Functions
 //------------------
@@ -127,10 +127,8 @@ void PulseTimer(unsigned int time){
 void PWMPinControl(unsigned char CTL){
 	if(CTL == 0){
 		P1DIR &= ~BIT2;		// PWM pin
-		//P1OUT &= ~BIT0;		// Debug pin
 	} else {
 		P1DIR |= BIT2;		// PWM pin
-		//P1OUT |= BIT0;		// Debug pin
 	}
 
 }
@@ -151,7 +149,17 @@ void TransmitBit(unsigned char bit){
 }
 
 
+// Name: SetColumnDriversAll
+// Function: Set all Column drivers = 1
+// Parameters: void
+// Returns: void
+//----------------------------------------
+void SetColumnDriversAll(void){
+	   P1OUT |= COL1;
+	   P1OUT |= COL2;
+	   P1OUT |= COL3;
 
+}
 
 //----------------------------------------------------------------
 // Name: TransmitNEC
@@ -214,9 +222,7 @@ void main(void) {
 	   P1SEL |= BIT2;             					// P1.2 to TA0.1
 	   P1OUT &= ~BIT0;								// Set debug pin to low
 
-	   P1OUT |= COL1;
-	   P1OUT |= COL2;
-	   P1OUT |= COL3;
+	   SetColumnDriversAll();
 
 	   // Configure Timer 1 (TA0.0)
 	   //---------------------------------
@@ -231,6 +237,7 @@ void main(void) {
 	   TACTL = TASSEL_2 + MC_1;   				// SMCLK, up mode, timer running
 
 	   // Port 1 Interrupts Enabled
+	   P1IES = 0x00;							// This register MUST be set up
 	   P1IE |= ROW1;
 	   P1IE |= ROW2;
 
@@ -244,31 +251,40 @@ void main(void) {
 	// Main Handling Loop
 	//-----------------------------------------------------
 	for(;;) {
-		// Start of active session
-		P1OUT |= BIT0;							// LED on as we're active
-		Wait(100);								// Debounce delay
-		keycode = ScanKeypad();
-		P1OUT |= COL1;
-		P1OUT |= COL2;
-		P1OUT |= COL3;
-		if (keycode > 0){
-			TransmitNEC(0xC7F8, 0x0738);			// Transmit
-		}
-		Wait(30);
+
+		// Execution begins here when exiting LPM
+		Wait(3);						// Key Debounce
 		do{
-			keycode = ScanKeypad();
-			P1OUT |= COL1;
-			P1OUT |= COL2;
-			P1OUT |= COL3;
-			if(keycode == 0){
-				break;
+			keycode = ScanKeypad();			// Scan keypad
+			SetColumnDriversAll();
+			if (keycode > 0){
+				P1OUT |= BIT0;
+				switch(keycode){
+					case 0x01:
+					TransmitNEC(0xC7F8, 0x0738);
+					break;
+
+					case 0x02:
+					TransmitNEC(0xC7F8, 0x0728);
+					break;
+
+				}
+
+			} else {
+				break;			// Keypress ceases to be valid, we exit!
 			}
 
-		}while(1);
+			// Code was transmitted, we wait a delay and then scan the keypad again
+			// This means for keys held down, repeated packets are transmitted
+			Wait(50);
+
+		} while (1);
+
+		// We are now finished with transmission, we prepare to shut down the system.
 
 		Wait(50);								// Wait
-		P1IFG = 0x0;							// Clear pending IRQs
 		P1OUT &= ~BIT0;							// LED off as we're inactive
+		P1IFG = 0x0;							// Clear pending IRQs
 		_BIS_SR(LPM3_bits + GIE); 				// Enter LPM3 w/interrupt
 		// End of active session
 
@@ -288,7 +304,7 @@ __interrupt void watchdog_timer(void){
 //-----------------------------------------------------------------------
 #pragma vector=PORT1_VECTOR
 __interrupt void Port_1(void){
-		_BIC_SR(LPM3_EXIT); 			// Wake up
 		P1IFG = 0x0;					// Clear interrupt
+		_BIC_SR(LPM3_EXIT); 			// Wake up
 }
 
