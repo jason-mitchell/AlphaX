@@ -54,6 +54,8 @@
 #include "spi.h"
 #include "fpanel.h"
 #include "ir.h"
+#include "dir.h"
+#include "extflash.h"
 
 // Structs
 //----------------------
@@ -106,6 +108,10 @@ unsigned char cnst;
 unsigned char enc_cnt;
 unsigned char rxd;
 unsigned char T1;
+unsigned char tmp2;
+unsigned int ADR;
+unsigned char DAT;
+char dbgout[32];
 
 // Timer that derives from the system ticker...
 //-----------------------------------------------
@@ -206,7 +212,7 @@ int main(void){
 
 
         // Configure I/O pins on GPIO PORT C
-        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15 | GPIO_Pin_2 | GPIO_Pin_1 | GPIO_Pin_0 | GPIO_Pin_6 | GPIO_Pin_7 | GPIO_Pin_4;
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15 | GPIO_Pin_2 | GPIO_Pin_1 | GPIO_Pin_0 | GPIO_Pin_6 | GPIO_Pin_7 | GPIO_Pin_4 | GPIO_Pin_5 | FLASH_CS;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;                                   // Outputs
         GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                                  // Push pull
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;                               // 10MHz since we have a display on this port
@@ -219,9 +225,11 @@ int main(void){
 
 
         // Initialise specific pins to levels
+        GPIO_ResetBits(GPIOC, RESET_DIR);												// Hold DIR in reset
         GPIO_SetBits(GPIOC, RST);                                                       // Display's RST pin is high
-        GPIO_ResetBits(GPIOC, POWER_RELAY);
-        GPIO_ResetBits(GPIOC, HEADPHONE_RELAY);
+        GPIO_ResetBits(GPIOC, POWER_RELAY);												// Power relay
+        GPIO_ResetBits(GPIOC, HEADPHONE_RELAY);											// Headphone relay
+        GPIO_SetBits(GPIOC, FLASH_CS);													// Flash CS pin
 
 
         // Configure I/O pins on PORTB
@@ -262,7 +270,7 @@ int main(void){
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
         GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-        GPIO_InitStructure.GPIO_Pin = SS_FP | CS_DIR | RESET_FP;
+        GPIO_InitStructure.GPIO_Pin = SS_FP | SS_DIR | RESET_FP;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
@@ -320,8 +328,11 @@ int main(void){
         SysTick_Config(TickerRate);									// Initialize the System Tick
         T1 = 0;
         InitIR();
+        InitDIR();													// Initialize DIR
 
+        //-------------------------------------------------------------------------------------------
         // System Startup begins here...
+        //-------------------------------------------------------------------------------------------
         ResetDisplay();
         InitDisplay();
         PutGraphic(Graphic1);
@@ -346,6 +357,7 @@ int main(void){
         	TxData("\r\nError destroying timer object!");
         }
 
+        ADR = 0;
         // Main Monitor Loop
         for(;;){
 
@@ -356,14 +368,22 @@ int main(void){
                 GetTimeNow(&TimeOfDay);
                 if (Delta != TimeOfDay.second){
                 	Delta = TimeOfDay.second;
+                    //ReadDIRReg(0x42);
+
+                	//WriteFlash(ADR, 0x55);
+                	ReadFlash(ADR, &DAT);
+                	ADR++;
+                	dbgout[0] = 0;
+                	sprintf(dbgout, "\r\n**Flash Read: Address %04X   Data: %02X", ADR, DAT);
+                	TxData(dbgout);
 
                     if (cnst == 0x55){
                     	cnst = 0xAA;
+
                     } else {
                     	cnst = 0x55;
-                    }
-                   FpReadWrite(0x01, cnst & 0x01, &rxd);
 
+                    }
                 }
                 memset(arr, 0, 32);
                 sprintf(arr, "%2d:%02d:%02d", TimeOfDay.hour, TimeOfDay.minute, TimeOfDay.second);
@@ -371,12 +391,18 @@ int main(void){
                 SetXY(0, 1);
                 memset(arr, 0 , 32);
 
-                //SimpleSPI(0x1F);				// Command = Read counter
-                //SimpleSPI(0x00);				// Send 0x00 to read via MISO
-                FpReadWrite(0x1F, 0x00, &rxd);
+
+
+                // Service Front Panel
+              //**  FpReadWrite(0x01, cnst & 0x01, &rxd);	// Update the LED port
+              //**  FpReadWrite(0x1F, 0x00, &rxd);			// Read the Encoder
                 sprintf(arr, "Encoder: %02X", rxd);
                 OutString(arr, Font1);
                 UpdateFromFB();
+
+                // Service the DIR
+
+                // Monitor power button and IR
                 if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
                 	break;
                 }
@@ -408,7 +434,7 @@ int main(void){
             		break;
             	}
             	if (IR_EVENT == 1){
-            		IR_EVENT == 0;
+            		IR_EVENT = 0;
             		if (COMMAND == 0x0738){
             			break;
             		}

@@ -24,10 +24,10 @@
 #define MISO GPIO_Pin_1				// (PB1)
 #define MCLK GPIO_Pin_2				// (PB2)
 #define SS_FP GPIO_Pin_2			// (PA2)
-#define CS_DIR GPIO_Pin_3			// (PA3)
+//#define CS_DIR GPIO_Pin_3			// (PA3)
 
 // Digital Interface Receiver
-#define DIR_RST GPIO_Pin_5			// (PC5)
+//#define DIR_RST GPIO_Pin_5			// (PC5)
 
 // Front Panel ASIC (Xilinx XC9572 loaded with frontpanel.jed)
 #define RESET_FP GPIO_Pin_1			// (PA1)

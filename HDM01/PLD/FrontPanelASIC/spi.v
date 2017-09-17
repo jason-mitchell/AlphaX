@@ -135,7 +135,8 @@ always @ (negedge SCLK or posedge NRST) begin
 					else 
 					// Normal operation
 					begin
-					BITCNT = BITCNT + 1;			// increment counter
+					if(~SS)
+						BITCNT = BITCNT + 1;			// increment counter
 					if (BITCNT == 8) begin
 						BYTE_IN = 1;				// set event on this edge	
 						BITCNT = 0;					// counter is cleared

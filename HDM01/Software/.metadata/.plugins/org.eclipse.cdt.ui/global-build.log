@@ -1,29 +1,92 @@
-17:23:58 **** Incremental Build of configuration Debug for project HDM01 ****
+21:44:57 **** Incremental Build of configuration Debug for project HDM01 ****
 Info: Internal Builder is used for build
-arm-atollic-eabi-gcc -c ..\src\ir.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\ir.o 
-..\src\ir.c:11:1: warning: multi-line comment [-Wcomment]
+arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
+..\src\main.c:11:1: warning: multi-line comment [-Wcomment]
  //  |    .'                 .-'_.' \ .                 \
  ^
-..\src\ir.c:21:1: warning: multi-line comment [-Wcomment]
+..\src\main.c:21:1: warning: multi-line comment [-Wcomment]
  //  :   :bd;   '        :b_d; :                           \
  ^
-..\src\ir.c:25:1: warning: multi-line comment [-Wcomment]
+..\src\main.c:25:1: warning: multi-line comment [-Wcomment]
  // .sdP^T$bs.               /'       \
  ^
-..\src\ir.c: In function 'IR_IRQ_HNDL':
-..\src\ir.c:232:13: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
-      TxData(dbgstr);
-             ^~~~~~
-In file included from ..\src\ir.c:54:0:
+..\src\main.c: In function 'main':
+..\src\main.c:338:20: warning: passing argument 1 of 'PutGraphic' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+         PutGraphic(Graphic1);
+                    ^~~~~~~~
+In file included from ..\src\main.c:47:0:
+..\src\display.h:37:6: note: expected 'char *' but argument is of type 'const char *'
+ void PutGraphic(char *graphics);
+      ^~~~~~~~~~
+..\src\main.c:342:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+         TxData("\r\n Testing Timer code: ");
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\main.c:53:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-arm-atollic-eabi-gcc -o HDM01.elf Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_can.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_cec.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_comp.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crs.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dac.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_pwr.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rtc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o src\clock.o src\display.o src\fpanel.o src\graphlib.o src\i2c.o src\ir.o src\main.o src\serial.o src\spi.o src\startup_stm32f0xx_hd.o src\stm32f0xx_it.o src\system_stm32f0xx.o src\timers.o -mthumb -mcpu=cortex-m0 -T..\stm32_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=HDM01.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+..\src\main.c:343:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+         TxData("\r\n    Creating a timer object...");
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\main.c:53:0:
+..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
+ void TxData(unsigned char *Data);
+      ^~~~~~
+..\src\main.c:345:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+          TxData("SUCCESS!");
+                 ^~~~~~~~~~
+In file included from ..\src\main.c:53:0:
+..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
+ void TxData(unsigned char *Data);
+      ^~~~~~
+..\src\main.c:347:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+          TxData("FAILED!");
+                 ^~~~~~~~~
+In file included from ..\src\main.c:53:0:
+..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
+ void TxData(unsigned char *Data);
+      ^~~~~~
+..\src\main.c:353:16: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+         TxData("\r\nTimer has expired!");
+                ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\main.c:53:0:
+..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
+ void TxData(unsigned char *Data);
+      ^~~~~~
+..\src\main.c:355:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+          TxData("\r\nTimer object destroyed!");
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\main.c:53:0:
+..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
+ void TxData(unsigned char *Data);
+      ^~~~~~
+..\src\main.c:357:17: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+          TxData("\r\nError destroying timer object!");
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\main.c:53:0:
+..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
+ void TxData(unsigned char *Data);
+      ^~~~~~
+..\src\main.c:378:25: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+                  TxData(dbgout);
+                         ^~~~~~
+In file included from ..\src\main.c:53:0:
+..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
+ void TxData(unsigned char *Data);
+      ^~~~~~
+..\src\main.c:420:24: warning: passing argument 1 of 'PutGraphic' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+             PutGraphic(Graphic1);
+                        ^~~~~~~~
+In file included from ..\src\main.c:47:0:
+..\src\display.h:37:6: note: expected 'char *' but argument is of type 'const char *'
+ void PutGraphic(char *graphics);
+      ^~~~~~~~~~
+arm-atollic-eabi-gcc -o HDM01.elf Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_can.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_cec.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_comp.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crs.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dac.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_pwr.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rtc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o src\clock.o src\dir.o src\display.o src\extflash.o src\fpanel.o src\graphlib.o src\i2c.o src\ir.o src\main.o src\serial.o src\spi.o src\startup_stm32f0xx_hd.o src\stm32f0xx_it.o src\system_stm32f0xx.o src\timers.o -mthumb -mcpu=cortex-m0 -T..\stm32_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=HDM01.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
 C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\ide\jre\bin\java -jar C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\Tools\arm-atollic-reports.jar sizeinfo list C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf 
 Generate build reports...
 Print size information
    text	   data	    bss	    dec	    hex	filename
-  22960	    144	    900	  24004	   5dc4	C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf
+  23300	    144	    940	  24384	   5f40	C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf
 Print size information done
 Generate listing file
 Output sent to: C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.list

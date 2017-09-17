@@ -7,7 +7,7 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : sch2hdl
 --  /   /         Filename : FrontPanel.vhf
--- /___/   /\     Timestamp : 08/25/2017 18:59:34
+-- /___/   /\     Timestamp : 09/17/2017 17:22:59
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -58,6 +58,7 @@ architecture BEHAVIORAL of FrontPanel is
    signal XLXN_78 : std_logic_vector (7 downto 0);
    signal XLXN_81 : std_logic;
    signal XLXN_83 : std_logic;
+   signal XLXN_85 : std_logic;
    component rotary_decoder
       port ( rotary_a : in    std_logic; 
              rotary_b : in    std_logic; 
@@ -108,6 +109,13 @@ architecture BEHAVIORAL of FrontPanel is
              DIR   : in    std_logic; 
              COUNT : out   std_logic_vector (7 downto 0));
    end component;
+   
+   component OBUFT
+      port ( I : in    std_logic; 
+             T : in    std_logic; 
+             O : out   std_logic);
+   end component;
+   attribute BOX_TYPE of OBUFT : component is "BLACK_BOX";
    
    attribute PWR_MODE of XLXI_15 : label is "LOW";
    attribute PWR_MODE of XLXI_30 : label is "LOW";
@@ -183,13 +191,18 @@ begin
                 SS=>SS,
                 BYTE_IN=>BYTE_IN,
                 LEDPORT(7 downto 0)=>LED(7 downto 0),
-                MISO=>MISO);
+                MISO=>XLXN_85);
    
    XLXI_31 : counter8
       port map (CLK=>XLXN_81,
                 DIR=>XLXN_83,
                 RST=>RESET,
                 COUNT(7 downto 0)=>XLXN_78(7 downto 0));
+   
+   XLXI_32 : OBUFT
+      port map (I=>XLXN_85,
+                T=>SS,
+                O=>MISO);
    
 end BEHAVIORAL;
 

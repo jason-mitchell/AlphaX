@@ -6,8 +6,10 @@
 ********** Mapped Logic **********
 </td></tr><tr><td>
 FDCPE_BYTE_IN: FDCPE port map (BYTE_IN,BYTE_IN_D,NOT SCLK,RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BYTE_IN_D <= (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND NOT XLXI_30/BITCNT(3));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BYTE_IN_D <= ((SS AND NOT XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/BITCNT(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT SS AND XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND NOT XLXI_30/BITCNT(3)));
 </td></tr><tr><td>
 FTCPE_CLK_50: FTCPE port map (CLK_50,'1',ECLK,'0','0',CLK_50_CE);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLK_50_CE <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
@@ -46,8 +48,10 @@ LED_1 <= (LED(1) AND CLK_50);
 </td></tr><tr><td>
 LED_2 <= (LED(2) AND CLK_50);
 </td></tr><tr><td>
-FDCPE_MISO: FDCPE port map (MISO,MISO_D,SCLK,'0','0',NOT SS);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISO_D <= ((XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+FDCPE_MISO: FDCPE port map (MISO_I,MISO,SCLK,'0','0',NOT SS);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISO <= ((XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(3))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(1))
@@ -59,10 +63,10 @@ FDCPE_MISO: FDCPE port map (MISO,MISO_D,SCLK,'0','0',NOT SS);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(7))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/SPIDATA_OUT(6)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISO <= MISO_I when MISO_OE = '1' else 'Z';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISO_OE <= NOT SS;
 </td></tr><tr><td>
 FTCPE_XLXI_15/r_reg0: FTCPE port map (XLXI_15/r_reg(0),XLXI_15/r_reg_T(0),ECLK,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_15/r_reg_T(0) <= (NOT XLXI_15/r_reg(0) AND NOT XLXI_15/r_reg(1) AND 
@@ -105,16 +109,19 @@ FTCPE_XLXI_2/rotary_q2: FTCPE port map (XLXI_2/rotary_q2,XLXI_2/rotary_q2_T,ECLK
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_2/rotary_in(1) AND XLXI_2/rotary_q2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/rotary_in(0)));
 </td></tr><tr><td>
-FTCPE_XLXI_30/BITCNT0: FTCPE port map (XLXI_30/BITCNT(0),'1',NOT SCLK,RESET,'0');
+FTCPE_XLXI_30/BITCNT0: FTCPE port map (XLXI_30/BITCNT(0),SS,NOT SCLK,RESET,'0');
 </td></tr><tr><td>
-FTCPE_XLXI_30/BITCNT1: FTCPE port map (XLXI_30/BITCNT(1),XLXI_30/BITCNT(0),NOT SCLK,RESET,'0');
+FTCPE_XLXI_30/BITCNT1: FTCPE port map (XLXI_30/BITCNT(1),XLXI_30/BITCNT_T(1),NOT SCLK,RESET,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/BITCNT_T(1) <= (NOT SS AND XLXI_30/BITCNT(0));
 </td></tr><tr><td>
 FTCPE_XLXI_30/BITCNT2: FTCPE port map (XLXI_30/BITCNT(2),XLXI_30/BITCNT_T(2),NOT SCLK,RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/BITCNT_T(2) <= (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/BITCNT_T(2) <= (NOT SS AND XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(1));
 </td></tr><tr><td>
 FTCPE_XLXI_30/BITCNT3: FTCPE port map (XLXI_30/BITCNT(3),XLXI_30/BITCNT_T(3),NOT SCLK,RESET,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/BITCNT_T(3) <= (XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/BITCNT(3));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_30/BITCNT_T(3) <= ((SS AND NOT XLXI_30/BITCNT(0) AND NOT XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_30/BITCNT(1) AND XLXI_30/BITCNT(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT SS AND XLXI_30/BITCNT(0) AND XLXI_30/BITCNT(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_30/BITCNT(1) AND XLXI_30/BITCNT(3)));
 </td></tr><tr><td>
 FTCPE_XLXI_30/CMDDATA: FTCPE port map (XLXI_30/CMDDATA,'1',BYTE_IN,'0','0',NOT RESET);
 </td></tr><tr><td>

@@ -47,12 +47,12 @@ unsigned char FpReadWrite(unsigned char command, unsigned char op, unsigned char
 
 	GPIO_ResetBits(GPIOA, SS_FP);			// Lower Slave Select pin
 
-	result = SPITransceive(command);
+	result = SPITransceive(command, LSB_FIRST);
 	if (result == 0x80){
 		GPIO_SetBits(GPIOA, SS_FP);				// Raise Slave Select pin
 		return 0x01;
 	}
-	*data = SPITransceive(op);
+	*data = SPITransceive(op, LSB_FIRST);
 
 
 	GPIO_SetBits(GPIOA, SS_FP);				// Raise Slave Select pin

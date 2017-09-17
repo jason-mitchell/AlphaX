@@ -32,36 +32,66 @@ void InitSPI(void){
 
 
 
-//------------------------------------------------------------
+//----------------------------------------------------------------------------------------
 // Name: SPITransceive
 // Function: Perform a bit-banged SPI transaction on the bus
-// Parameters: Byte to transmit
+// Parameters: Byte to transmit, bit order (0 = LSB first, 1 = MSB first)
 // Returns: Byte received from the receive channel
-//-----------------------------------------------------------
-unsigned char SPITransceive(unsigned char data){
+//----------------------------------------------------------------------------------------
+unsigned char SPITransceive(unsigned char data, unsigned char bitorder){
 	unsigned char bcnt;
 	unsigned char rxd = 0;
 
-	// shift out LSB first
-	//--------------------
-	for(bcnt = 0; bcnt < 8; bcnt++){
-		if((data & 0x01) == 0x01){
-			GPIO_SetBits(GPIOB, MOSI);		// MOSI = '1'
-		} else {
-			GPIO_ResetBits(GPIOB, MOSI);
-		}
-		data = data >> 1;
 
-		// Clock cycle
-		GPIO_SetBits(GPIOB, MCLK);			// Clock = H
-		GPIO_ResetBits(GPIOB, MCLK);		// Clock = L
+	if (bitorder == 0){
 
-		rxd >>= 1;
-		if(GPIO_ReadInputDataBit(GPIOB, MISO) == 1){
-			rxd |= 0x80;
-		} else {
-			rxd &= ~0x80;
+		// shift out LSB first
+		//--------------------
+		for(bcnt = 0; bcnt < 8; bcnt++){
+			if((data & 0x01) == 0x01){
+				GPIO_SetBits(GPIOB, MOSI);		// MOSI = '1'
+			} else {
+				GPIO_ResetBits(GPIOB, MOSI);
+			}
+			data = data >> 1;
+
+			// Clock cycle
+			GPIO_SetBits(GPIOB, MCLK);			// Clock = H
+			GPIO_ResetBits(GPIOB, MCLK);		// Clock = L
+
+			rxd >>= 1;
+			if(GPIO_ReadInputDataBit(GPIOB, MISO) == 1){
+				rxd |= 0x80;
+			} else {
+				rxd &= ~0x80;
+			}
+
 		}
+	}
+
+	if (bitorder == 1){
+		for(bcnt = 0; bcnt < 8; bcnt++){
+			if((data & 0x80) == 0x80){
+				GPIO_SetBits(GPIOB, MOSI);		// MOSI = '1'
+			} else {
+				GPIO_ResetBits(GPIOB, MOSI);
+			}
+
+			data = data << 1;
+
+			// Clock cycle
+			GPIO_SetBits(GPIOB, MCLK);			// Clock = H
+			GPIO_ResetBits(GPIOB, MCLK);		// Clock = L
+
+			rxd <<= 1;
+			if(GPIO_ReadInputDataBit(GPIOB, MISO) == 1){
+				rxd |= 0x01;
+			} else {
+				rxd &= ~0x01;
+			}
+
+		}
+
 
 	}
 

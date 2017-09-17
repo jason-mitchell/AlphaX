@@ -196,14 +196,13 @@ Synthesizing Unit <spi>.
     Found 1-bit register for signal <BYTE_IN>.
     Found 1-bit register for signal <MISO>.
     Found 8-bit register for signal <LEDPORT>.
-    Found 4-bit up counter for signal <BITCNT>.
+    Found 4-bit register for signal <BITCNT>.
     Found 1-bit register for signal <CMDDATA>.
     Found 8-bit register for signal <DEVCMD>.
-    Found 4-bit adder for signal <old_BITCNT_2$add0000> created at line 138.
+    Found 4-bit adder for signal <old_BITCNT_2$addsub0000> created at line 139.
     Found 8-bit register for signal <SPIDATA_IN>.
     Found 8-bit register for signal <SPIDATA_OUT>.
     Summary:
-	inferred   1 Counter(s).
 	inferred   3 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 Unit <spi> synthesized.
@@ -230,13 +229,13 @@ Macro Statistics
 # Adders/Subtractors                                   : 2
  3-bit adder                                           : 1
  4-bit adder                                           : 1
-# Counters                                             : 3
+# Counters                                             : 2
  3-bit up counter                                      : 1
- 4-bit up counter                                      : 1
  8-bit updown counter                                  : 1
-# Registers                                            : 19
+# Registers                                            : 20
  1-bit register                                        : 14
  2-bit register                                        : 1
+ 4-bit register                                        : 1
  8-bit register                                        : 4
 # Multiplexers                                         : 1
  1-bit 8-to-1 multiplexer                              : 1
@@ -255,9 +254,8 @@ Macro Statistics
 # Adders/Subtractors                                   : 2
  3-bit adder                                           : 1
  4-bit adder                                           : 1
-# Counters                                             : 3
+# Counters                                             : 2
  3-bit up counter                                      : 1
- 4-bit up counter                                      : 1
  8-bit updown counter                                  : 1
 # Registers                                            : 12
  Flip-Flops                                            : 12
@@ -274,24 +272,23 @@ Optimizing unit <FrontPanel> ...
 
 Optimizing unit <rotary_decoder> ...
 
-Optimizing unit <clock_divider> ...
-
 Optimizing unit <spi> ...
   implementation constraint: INIT=r	 : LEDPORT_7
-  implementation constraint: INIT=r	 : CMDDATA
-  implementation constraint: INIT=r	 : SPIDATA_OUT_7
-  implementation constraint: INIT=r	 : SPIDATA_IN_2
   implementation constraint: INIT=r	 : MISO
-  implementation constraint: INIT=r	 : SPIDATA_IN_6
-  implementation constraint: INIT=r	 : BYTE_IN
+  implementation constraint: INIT=r	 : SPIDATA_OUT_7
+  implementation constraint: INIT=r	 : SPIDATA_IN_5
   implementation constraint: INIT=r	 : DEVCMD_0
+  implementation constraint: INIT=r	 : DEVCMD_1
+  implementation constraint: INIT=r	 : BYTE_IN
+  implementation constraint: INIT=r	 : SPIDATA_IN_6
   implementation constraint: INIT=r	 : SPIDATA_IN_7
-  implementation constraint: INIT=r	 : BITCNT_0
-  implementation constraint: INIT=r	 : BITCNT_1
   implementation constraint: INIT=r	 : BITCNT_2
   implementation constraint: INIT=r	 : BITCNT_3
   implementation constraint: INIT=r	 : SPIDATA_IN_0
   implementation constraint: INIT=r	 : SPIDATA_IN_1
+  implementation constraint: INIT=r	 : SPIDATA_IN_2
+  implementation constraint: INIT=r	 : SPIDATA_IN_3
+  implementation constraint: INIT=r	 : SPIDATA_IN_4
   implementation constraint: INIT=r	 : SPIDATA_OUT_0
   implementation constraint: INIT=r	 : SPIDATA_OUT_1
   implementation constraint: INIT=r	 : SPIDATA_OUT_2
@@ -299,13 +296,13 @@ Optimizing unit <spi> ...
   implementation constraint: INIT=r	 : SPIDATA_OUT_4
   implementation constraint: INIT=r	 : SPIDATA_OUT_5
   implementation constraint: INIT=r	 : SPIDATA_OUT_6
-  implementation constraint: INIT=r	 : DEVCMD_1
   implementation constraint: INIT=r	 : DEVCMD_2
   implementation constraint: INIT=r	 : DEVCMD_3
   implementation constraint: INIT=r	 : DEVCMD_4
   implementation constraint: INIT=r	 : DEVCMD_5
   implementation constraint: INIT=r	 : DEVCMD_6
   implementation constraint: INIT=r	 : DEVCMD_7
+  implementation constraint: INIT=r	 : CMDDATA
   implementation constraint: INIT=r	 : LEDPORT_0
   implementation constraint: INIT=r	 : LEDPORT_1
   implementation constraint: INIT=r	 : LEDPORT_2
@@ -313,9 +310,10 @@ Optimizing unit <spi> ...
   implementation constraint: INIT=r	 : LEDPORT_4
   implementation constraint: INIT=r	 : LEDPORT_5
   implementation constraint: INIT=r	 : LEDPORT_6
-  implementation constraint: INIT=r	 : SPIDATA_IN_5
-  implementation constraint: INIT=r	 : SPIDATA_IN_4
-  implementation constraint: INIT=r	 : SPIDATA_IN_3
+  implementation constraint: INIT=r	 : BITCNT_0
+  implementation constraint: INIT=r	 : BITCNT_1
+
+Optimizing unit <clock_divider> ...
 
 Optimizing unit <counter8> ...
   implementation constraint: INIT=r	 : COUNT_7
@@ -362,12 +360,12 @@ Design Statistics
 # IOs                              : 15
 
 Cell Usage :
-# BELS                             : 224
-#      AND2                        : 82
-#      AND3                        : 11
+# BELS                             : 243
+#      AND2                        : 89
+#      AND3                        : 13
 #      GND                         : 4
-#      INV                         : 74
-#      OR2                         : 27
+#      INV                         : 79
+#      OR2                         : 32
 #      OR3                         : 7
 #      XOR2                        : 19
 # FlipFlops/Latches                : 58
@@ -376,16 +374,17 @@ Cell Usage :
 #      FDCE                        : 32
 # IO Buffers                       : 15
 #      IBUF                        : 7
-#      OBUF                        : 8
+#      OBUF                        : 7
+#      OBUFT                       : 1
 =========================================================================
 
 
 Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 4.06 secs
+Total CPU time to Xst completion: 4.13 secs
  
 --> 
 
-Total memory usage is 268220 kilobytes
+Total memory usage is 268668 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    6 (   0 filtered)

@@ -23,9 +23,7 @@
         <signal name="LED_2" />
         <signal name="XLXN_41" />
         <signal name="MOSI" />
-        <signal name="SS" />
         <signal name="SCLK" />
-        <signal name="MISO" />
         <signal name="LED(7:0)" />
         <signal name="LED(0)" />
         <signal name="LED(1)" />
@@ -35,6 +33,10 @@
         <signal name="XLXN_78(7:0)" />
         <signal name="XLXN_81" />
         <signal name="XLXN_83" />
+        <signal name="MISO" />
+        <signal name="XLXN_85" />
+        <signal name="SS" />
+        <signal name="XLXN_89" />
         <port polarity="Input" name="PHA" />
         <port polarity="Input" name="PHB" />
         <port polarity="Input" name="ECLK" />
@@ -45,11 +47,11 @@
         <port polarity="Output" name="LED_1" />
         <port polarity="Output" name="LED_2" />
         <port polarity="Input" name="MOSI" />
-        <port polarity="Input" name="SS" />
         <port polarity="Input" name="SCLK" />
-        <port polarity="Output" name="MISO" />
         <port polarity="Input" name="RESET" />
         <port polarity="Output" name="BYTE_IN" />
+        <port polarity="Output" name="MISO" />
+        <port polarity="Input" name="SS" />
         <blockdef name="rotary_decoder">
             <timestamp>2017-8-1T20:24:40</timestamp>
             <rect width="256" x="64" y="-192" height="192" />
@@ -113,6 +115,17 @@
             <line x2="0" y1="-96" y2="-96" x1="64" />
             <line x2="0" y1="-32" y2="-32" x1="64" />
             <rect width="256" x="64" y="-192" height="256" />
+        </blockdef>
+        <blockdef name="obuft">
+            <timestamp>2000-1-1T10:10:10</timestamp>
+            <line x2="64" y1="-96" y2="-96" x1="0" />
+            <line x2="64" y1="-96" y2="-96" x1="96" />
+            <line x2="96" y1="-48" y2="-96" x1="96" />
+            <line x2="128" y1="-32" y2="-32" x1="224" />
+            <line x2="64" y1="-32" y2="-32" x1="0" />
+            <line x2="64" y1="-64" y2="0" x1="64" />
+            <line x2="64" y1="-32" y2="-64" x1="128" />
+            <line x2="128" y1="0" y2="-32" x1="64" />
         </blockdef>
         <block symbolname="rotary_decoder" name="XLXI_2">
             <blockpin signalname="XLXN_1" name="rotary_a" />
@@ -189,7 +202,7 @@
             <blockpin signalname="MOSI" name="MOSI" />
             <blockpin signalname="SS" name="SS" />
             <blockpin signalname="RESET" name="NRST" />
-            <blockpin signalname="MISO" name="MISO" />
+            <blockpin signalname="XLXN_85" name="MISO" />
             <blockpin signalname="BYTE_IN" name="BYTE_IN" />
             <blockpin signalname="LED(7:0)" name="LEDPORT(7:0)" />
             <blockpin signalname="XLXN_78(7:0)" name="INPUTPORT(7:0)" />
@@ -203,6 +216,11 @@
             <blockpin signalname="RESET" name="RST" />
             <blockpin signalname="XLXN_83" name="DIR" />
             <blockpin signalname="XLXN_78(7:0)" name="COUNT(7:0)" />
+        </block>
+        <block symbolname="obuft" name="XLXI_32">
+            <blockpin signalname="XLXN_85" name="I" />
+            <blockpin signalname="SS" name="T" />
+            <blockpin signalname="MISO" name="O" />
         </block>
     </netlist>
     <sheet sheetnum="1" width="3520" height="2720">
@@ -272,19 +290,11 @@
         <branch name="MOSI">
             <wire x2="448" y1="1248" y2="1248" x1="416" />
         </branch>
-        <branch name="SS">
-            <wire x2="448" y1="1312" y2="1312" x1="416" />
-        </branch>
         <branch name="SCLK">
             <wire x2="448" y1="1184" y2="1184" x1="416" />
         </branch>
         <iomarker fontsize="28" x="416" y="1184" name="SCLK" orien="R180" />
         <iomarker fontsize="28" x="416" y="1248" name="MOSI" orien="R180" />
-        <iomarker fontsize="28" x="416" y="1312" name="SS" orien="R180" />
-        <branch name="MISO">
-            <wire x2="864" y1="1504" y2="1504" x1="832" />
-        </branch>
-        <iomarker fontsize="28" x="864" y="1504" name="MISO" orien="R0" />
         <instance x="1040" y="352" name="XLXI_6" orien="R0" />
         <instance x="1040" y="480" name="XLXI_7" orien="R0" />
         <branch name="LED(7:0)">
@@ -381,5 +391,26 @@
         <instance x="720" y="848" name="XLXI_15" orien="R0">
             <attrtext style="fontsize:28;fontname:Arial;displayformat:NAMEEQUALSVALUE" attrname="PWR_MODE" x="192" y="-92" type="instance" />
         </instance>
+        <instance x="928" y="1360" name="XLXI_32" orien="R0" />
+        <branch name="MISO">
+            <wire x2="1184" y1="1328" y2="1328" x1="1152" />
+        </branch>
+        <iomarker fontsize="28" x="1184" y="1328" name="MISO" orien="R0" />
+        <branch name="XLXN_85">
+            <wire x2="880" y1="1504" y2="1504" x1="832" />
+            <wire x2="880" y1="1328" y2="1504" x1="880" />
+            <wire x2="928" y1="1328" y2="1328" x1="880" />
+        </branch>
+        <branch name="SS">
+            <wire x2="256" y1="1024" y2="1312" x1="256" />
+            <wire x2="448" y1="1312" y2="1312" x1="256" />
+            <wire x2="448" y1="1024" y2="1024" x1="256" />
+            <wire x2="832" y1="1024" y2="1024" x1="448" />
+            <wire x2="928" y1="1024" y2="1024" x1="832" />
+            <wire x2="928" y1="1024" y2="1264" x1="928" />
+            <wire x2="448" y1="944" y2="944" x1="352" />
+            <wire x2="448" y1="944" y2="1024" x1="448" />
+        </branch>
+        <iomarker fontsize="28" x="352" y="944" name="SS" orien="R180" />
     </sheet>
 </drawing>

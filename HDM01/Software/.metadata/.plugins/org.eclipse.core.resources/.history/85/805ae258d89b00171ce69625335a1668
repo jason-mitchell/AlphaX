@@ -1,0 +1,17 @@
+//
+//							Filename: extflash.h
+//						Header file for External Flash memory driver extflash.c
+//
+//
+//-------------------------------------------------------------------------------------------------------------------
+
+#ifndef __EXTFLASH_H_
+#define __EXTFLASH_H_
+
+
+
+// Definitions
+
+#define FLASH_CS 	GPIO_Pin_8
+
+#endif /* EXTFLASH_H_ */
