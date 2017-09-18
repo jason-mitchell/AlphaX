@@ -83,8 +83,6 @@ unsigned char SPITransceive(unsigned char data, unsigned char bitorder){
 			GPIO_SetBits(GPIOB, MCLK);			// Clock = H
 		//	GPIO_ResetBits(GPIOB, MCLK);		// Clock = L
 
-			// Sample pin in the middle of the clock pulse as some SPI devices
-			// change the MISO pin when the edge falls and we miss the data bit
 			rxd <<= 1;
 			if(GPIO_ReadInputDataBit(GPIOB, MISO) == 1){
 				rxd |= 0x01;

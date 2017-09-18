@@ -395,7 +395,7 @@ int main(void){
 
                 // Service Front Panel
                 FpReadWrite(0x01, cnst & 0x01, &rxd);	// Update the LED port
-                FpReadWrite(0x1F, 0x00, &rxd);			// Read the Encoder
+              //**  FpReadWrite(0x1F, 0x00, &rxd);			// Read the Encoder
                 sprintf(arr, "Encoder: %02X", rxd);
                 OutString(arr, Font1);
                 UpdateFromFB();

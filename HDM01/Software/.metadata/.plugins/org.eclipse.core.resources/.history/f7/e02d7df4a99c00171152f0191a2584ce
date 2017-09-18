@@ -370,7 +370,7 @@ int main(void){
                 	Delta = TimeOfDay.second;
                     //ReadDIRReg(0x42);
 
-                	//WriteFlash(ADR, 0xBC);
+                	WriteFlash(ADR, 0x11);
                 	ReadFlash(ADR, &DAT);
                 	dbgout[0] = 0;
                 	sprintf(dbgout, "\r\n**Flash Read: Address %04X   Data: %02X", ADR, DAT);
@@ -394,8 +394,8 @@ int main(void){
 
 
                 // Service Front Panel
-                FpReadWrite(0x01, cnst & 0x01, &rxd);	// Update the LED port
-                FpReadWrite(0x1F, 0x00, &rxd);			// Read the Encoder
+              //**  FpReadWrite(0x01, cnst & 0x01, &rxd);	// Update the LED port
+              //**  FpReadWrite(0x1F, 0x00, &rxd);			// Read the Encoder
                 sprintf(arr, "Encoder: %02X", rxd);
                 OutString(arr, Font1);
                 UpdateFromFB();

@@ -56,14 +56,6 @@
 // Functions
 //-----------------
 
-
-void CycDelay(void){
-	unsigned int x;
-	for(x = 0; x < 100; x++){
-		;
-	}
-}
-
 //---------------------------------------------------
 // Name: ReadStatus
 // Function: Read status register of memory device
@@ -77,7 +69,6 @@ unsigned char ReadFlashStatus(void){
 	SPITransceive(RDSR, MSB_FIRST);
 	status = SPITransceive(0x00, MSB_FIRST);
 	GPIO_SetBits(GPIOC, FLASH_CS);
-	CycDelay();
 	return status;
 }
 
@@ -85,40 +76,21 @@ void EnableWrite(void){
 	GPIO_ResetBits(GPIOC, FLASH_CS);
 	SPITransceive(WREN, MSB_FIRST);
 	GPIO_SetBits(GPIOC, FLASH_CS);
-	CycDelay();
 
 }
 
 void DisableWrite(void){
 	GPIO_ResetBits(GPIOC, FLASH_CS);
-	SPITransceive(WRDI, MSB_FIRST);
-	GPIO_SetBits(GPIOC, FLASH_CS);
-	CycDelay();
-
-}
-
-void SetProtectBits(unsigned char protflags){
-	unsigned char protbits;
-
-	protbits = protflags & 0x03;
-	EnableWrite();
-	GPIO_ResetBits(GPIOC, FLASH_CS);
-	SPITransceive(WRSR, MSB_FIRST);
-	protbits = protbits >> 2;
-	SPITransceive(protbits, MSB_FIRST);
+	SPITransceive(WRDIS, MSB_FIRST);
 	GPIO_SetBits(GPIOC, FLASH_CS);
 
-	DisableWrite();
-	CycDelay();
-
 }
-
 
 //---------------------------------------------------
 // Name: WriteFlash
-// Function: Write single data byte to FLASH memory
-// Parameters: address, data
-// Returns: 0 if successful
+// Function: Write data to FLASH memory
+// Parameters:
+// Returns:
 //---------------------------------------------------
 int WriteFlash(unsigned int address, unsigned char data){
 	unsigned int addr;
@@ -136,18 +108,15 @@ int WriteFlash(unsigned int address, unsigned char data){
 	SPITransceive(data, MSB_FIRST);								// Write data to FLASH
 	GPIO_SetBits(GPIOC, FLASH_CS);								// raise CS
 
-	// Third stage, ensure write is complete by polling bit
-	do{
-		status = ReadFlashStatus();
-	}while((status & 0x01) == 0x01);
+	status = ReadFlashStatus();
 
-	DisableWrite();
-	return 0;
+
+
 }
 
 //--------------------------------------------------
 // Name: ReadFlash
-// Function: Read single data byte from FLASH memory
+// Function: Read data from FLASH memory
 // Parameters:
 // Returns:
 //--------------------------------------------------

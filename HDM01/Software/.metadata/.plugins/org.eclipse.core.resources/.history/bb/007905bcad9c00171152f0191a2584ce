@@ -97,18 +97,12 @@ void DisableWrite(void){
 
 }
 
-void SetProtectBits(unsigned char protflags){
-	unsigned char protbits;
-
-	protbits = protflags & 0x03;
+void ClearProtectBits(void){
 	EnableWrite();
 	GPIO_ResetBits(GPIOC, FLASH_CS);
 	SPITransceive(WRSR, MSB_FIRST);
-	protbits = protbits >> 2;
-	SPITransceive(protbits, MSB_FIRST);
+	SPITransceive(0x00, MSB_FIRST);
 	GPIO_SetBits(GPIOC, FLASH_CS);
-
-	DisableWrite();
 	CycDelay();
 
 }
@@ -116,9 +110,9 @@ void SetProtectBits(unsigned char protflags){
 
 //---------------------------------------------------
 // Name: WriteFlash
-// Function: Write single data byte to FLASH memory
-// Parameters: address, data
-// Returns: 0 if successful
+// Function: Write data to FLASH memory
+// Parameters:
+// Returns:
 //---------------------------------------------------
 int WriteFlash(unsigned int address, unsigned char data){
 	unsigned int addr;
@@ -147,7 +141,7 @@ int WriteFlash(unsigned int address, unsigned char data){
 
 //--------------------------------------------------
 // Name: ReadFlash
-// Function: Read single data byte from FLASH memory
+// Function: Read data from FLASH memory
 // Parameters:
 // Returns:
 //--------------------------------------------------

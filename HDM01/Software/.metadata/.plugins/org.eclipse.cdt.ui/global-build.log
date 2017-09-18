@@ -1,4 +1,4 @@
-21:44:57 **** Incremental Build of configuration Debug for project HDM01 ****
+22:15:17 **** Incremental Build of configuration Debug for project HDM01 ****
 Info: Internal Builder is used for build
 arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
 ..\src\main.c:11:1: warning: multi-line comment [-Wcomment]
@@ -67,7 +67,7 @@ In file included from ..\src\main.c:53:0:
 ..\src\serial.h:23:6: note: expected 'unsigned char *' but argument is of type 'char *'
  void TxData(unsigned char *Data);
       ^~~~~~
-..\src\main.c:378:25: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
+..\src\main.c:377:25: warning: pointer targets in passing argument 1 of 'TxData' differ in signedness [-Wpointer-sign]
                   TxData(dbgout);
                          ^~~~~~
 In file included from ..\src\main.c:53:0:
@@ -86,7 +86,7 @@ C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\ide\jre\bin\java -jar C:
 Generate build reports...
 Print size information
    text	   data	    bss	    dec	    hex	filename
-  23300	    144	    940	  24384	   5f40	C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf
+  23460	    144	    940	  24544	   5fe0	C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf
 Print size information done
 Generate listing file
 Output sent to: C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.list

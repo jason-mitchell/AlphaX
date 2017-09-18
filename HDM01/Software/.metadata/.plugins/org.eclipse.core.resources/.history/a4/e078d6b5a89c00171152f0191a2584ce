@@ -21,7 +21,6 @@
 #define WREN	0x06
 #define WRITE	0x02
 #define WRDI	0x04
-#define WRSR	0x01
 
 // Function Prototypes
 
