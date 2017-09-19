@@ -113,7 +113,6 @@ unsigned char tmp2;
 unsigned int ADR;
 unsigned char DAT;
 char dbgout[32];
-unsigned char VR;
 
 // Timer that derives from the system ticker...
 //-----------------------------------------------
@@ -267,7 +266,7 @@ int main(void){
 
         // Configure PORT A
         //--------------------------------------------------
-        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | EMUTE;
+        GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | ;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
@@ -278,9 +277,6 @@ int main(void){
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
         GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
         GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-        // Initialize specific pins
-        GPIO_SetBits(GPIOA, EMUTE);
 
         // Configure UART 1
         //-----------------------------------------------
@@ -375,12 +371,13 @@ int main(void){
                 if (Delta != TimeOfDay.second){
                 	Delta = TimeOfDay.second;
                     //ReadDIRReg(0x42);
-                	//WriteFlash(ADR, 0x00);
-                	//ReadFlash(ADR, &DAT);
-                	//dbgout[0] = 0;
-                	//sprintf(dbgout, "\r\n**Flash Read: Address %04X   Data: %02X", ADR, DAT);
-                	//TxData(dbgout);
-                	//ADR++;
+
+                	//WriteFlash(ADR, 0xBC);
+                	ReadFlash(ADR, &DAT);
+                	dbgout[0] = 0;
+                	sprintf(dbgout, "\r\n**Flash Read: Address %04X   Data: %02X", ADR, DAT);
+                	TxData(dbgout);
+                	ADR++;
 
                     if (cnst == 0x55){
                     	cnst = 0xAA;
@@ -433,28 +430,13 @@ int main(void){
 
             // Wait for OFF command
             IR_EVENT = 0;
-    		ReadFlash(0x00, &VR);
-    		SetVolume(VR, VR);			// Initialize volume control
+
             while(1){
             	if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
             		break;
             	}
             	if (IR_EVENT == 1){
             		IR_EVENT = 0;
-            		if(COMMAND == 0x0DD2){
-            			VR += 2;
-            			WriteFlash(0x00, VR);
-            		}
-
-            		if(COMMAND == 0x05DA){
-            			VR -= 2;
-            			if (VR > 250){
-            				VR = 0;
-            			}
-            			WriteFlash(0x00, VR);
-            		}
-            		ReadFlash(0x00, &VR);
-            		SetVolume(VR, VR);			// send packet every time remote sends signal
             		if (COMMAND == 0x0738){
             			break;
             		}

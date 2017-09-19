@@ -433,8 +433,7 @@ int main(void){
 
             // Wait for OFF command
             IR_EVENT = 0;
-    		ReadFlash(0x00, &VR);
-    		SetVolume(VR, VR);			// Initialize volume control
+            VR = 0;
             while(1){
             	if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
             		break;
