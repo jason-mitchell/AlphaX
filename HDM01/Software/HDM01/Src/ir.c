@@ -269,5 +269,11 @@ void IR_SYS_TICK_SVC(void){
 
 	}
 
+}
 
+
+// TIM 1 CH 2 Interrupt Handler
+//--------------------------------
+void TIM1_CC_IRQHandler(void){
+	IR_IRQ_HNDL();
 }

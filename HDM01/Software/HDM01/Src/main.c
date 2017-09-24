@@ -102,18 +102,18 @@ unsigned int rxchar;
 unsigned char TickFlagI2C;
 
 char arr[32];
-char dbgstr[32];
+unsigned char dbgstr[32];
 unsigned int cnt;
 unsigned char Delta;
 unsigned char cnst;
 unsigned char enc_cnt;
 unsigned char rxd;
-unsigned char T1;
 unsigned char tmp2;
 unsigned int ADR;
 unsigned char DAT;
 char dbgout[32];
 unsigned char VR;
+unsigned char TMP;
 
 // Timer that derives from the system ticker...
 //-----------------------------------------------
@@ -150,18 +150,8 @@ void SysTick_Handler(void){
 //---------------------
 void USART1_IRQHandler(void){
 	RxIRQHandler();
- /*   if (USART_GetITStatus(USART1, USART_IT_RXNE)){
-
-            rxchar = USART1->RDR;       // Always use the provided typedefs to get the correct read type (no need then for casting)
-    } */
-
 }
 
-// TIM 1 CH 2 Interrupts
-//-----------------------
-void TIM1_CC_IRQHandler(void){
-	IR_IRQ_HNDL();
-}
 
 // Test Stuff
 //------------
@@ -248,6 +238,13 @@ int main(void){
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
         GPIO_Init(GPIOB, &GPIO_InitStructure);
 
+        // Specific init of PB10 with a pull-up
+        GPIO_InitStructure.GPIO_Pin = MENU;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+        GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+        GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+
         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;						// USART Tx and Rx
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -302,8 +299,8 @@ int main(void){
 
 
 
-        // Configure TIM2 for PWM out to clock CPLD
-        //------------------------------------------
+        // TIM2 Module Configured for PWM on PB11 (Power LED inside the Marquardt Push Button)
+        //--------------------------------------------------------------------------------------
 
         Timer_InitStructure.TIM_Prescaler = 1200;
         Timer_InitStructure.TIM_CounterMode = TIM_CounterMode_Up;
@@ -313,57 +310,44 @@ int main(void){
         TIM_TimeBaseInit(TIM2, &Timer_InitStructure);
         TIM_Cmd(TIM2, ENABLE);
 
+        // Output Compare configuration
+        //--------------------------------
         TIM_OCInitTypeDef outputChannelInit = {0,};
         outputChannelInit.TIM_OCMode = TIM_OCMode_PWM1;
         outputChannelInit.TIM_Pulse = 2;	// PWM duty cycle  @ 25 LED quite bright  4 = nice and dim (needle pulse width)
         outputChannelInit.TIM_OutputState = TIM_OutputState_Enable;
         outputChannelInit.TIM_OCPolarity = TIM_OCPolarity_High;
-
         TIM_OC4Init(TIM2, &outputChannelInit);
         TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
 
-
-
-        InitClockHW();
-        InitTimers();
-
-
-        InitSPI();
-        InitFPIface();
+        // Software Module Initializations
+        //--------------------------------------
+        InitClockHW();												// Init/check real-time clock
+        InitTimers();												// Init Timer Library
+        InitSPI();													// Bit-banged SPI interface
+        InitFPIface();												// Initialize FPANEL (Xilinx XC9572)
         InitI2C();                                                  // Initialize and enable I2C module
         SysTick_Config(TickerRate);									// Initialize the System Tick
-        T1 = 0;
-        InitIR();
-        InitDIR();													// Initialize DIR
+        InitIR();													// Initialize Infra-red module
+        InitDIR();													// Initialize Digital audio rcvr
 
-        //-------------------------------------------------------------------------------------------
+
         // System Startup begins here...
-        //-------------------------------------------------------------------------------------------
+        //------------------------------
         ResetDisplay();
         InitDisplay();
         PutGraphic(Graphic1);
         Delay(0x3FFFFF);
         ClearDisplay();
         cnt = 0;
-        TxData("\r\n Testing Timer code: ");
-        TxData("\r\n    Creating a timer object...");
-        if(CreateTimer(3000, "Timer1") == 0){
-        	TxData("SUCCESS!");
-        } else {
-        	TxData("FAILED!");
-        }
-        ControlTimer("Timer1", 1);
-        while(IsTimerExpired("Timer1") != 1){
-
-        }
-        TxData("\r\nTimer has expired!");
-        if(ReleaseTimer("Timer1") == 0){
-        	TxData("\r\nTimer object destroyed!");
-        } else {
-        	TxData("\r\nError destroying timer object!");
-        }
-
         ADR = 0;
+
+
+        // Set up DIR to accept digital audio on TOSLINK #1
+        // In the absence of lock, it will still default to the analog input (in-built A/D converter)
+        WriteDIRReg(0x34, 0xC4);
+
+
         // Main Monitor Loop
         for(;;){
 
@@ -374,13 +358,14 @@ int main(void){
                 GetTimeNow(&TimeOfDay);
                 if (Delta != TimeOfDay.second){
                 	Delta = TimeOfDay.second;
-                    //ReadDIRReg(0x42);
-                	//WriteFlash(ADR, 0x00);
-                	//ReadFlash(ADR, &DAT);
-                	//dbgout[0] = 0;
-                	//sprintf(dbgout, "\r\n**Flash Read: Address %04X   Data: %02X", ADR, DAT);
-                	//TxData(dbgout);
-                	//ADR++;
+
+                    memset(dbgstr, 0 , 32);
+                    TxData("PCM9210 Registers Read:\r\n");
+                    ReadDIRReg(0x34, &TMP);
+                    sprintf(dbgstr, "DIR Input Select Reg: %02X ", TMP);
+                    TxData(dbgstr);
+
+
 
                     if (cnst == 0x55){
                     	cnst = 0xAA;
@@ -421,15 +406,21 @@ int main(void){
             }
 
             // Button was pressed, power the system on
-            SetDispIntensity(4);
-            PutGraphic(Graphic1);
-            GPIO_SetBits(GPIOC, POWER_RELAY);
+            SetDispIntensity(4);								// Raise brightness
+            PutGraphic(Graphic1);								// Load graphics
+            GPIO_SetBits(GPIOC, POWER_RELAY);					// Power amp on
+            Delay(0x3FFFFF);									// time dealy NB** REFACTOR
+            GPIO_SetBits(GPIOC, HEADPHONE_RELAY);				// Switch output relay on
+            SetXY(0, 0);										// Set X-Y co-ords
+            OutString("Welcome", Font2);						// Load a string
+            UpdateFromFB();										// Update the display from the frame buffer
             Delay(0x3FFFFF);
-            GPIO_SetBits(GPIOC, HEADPHONE_RELAY);
+            ClearFB();											// Clear frame buffer
             SetXY(0, 0);
-            OutString("Welcome", Font2);
+            OutString("\x0F", Font1);
+            SetXY(0, 1);										// Reset co-ords
+            OutString("\x0E", Font1);							// Display bitrate indicator
             UpdateFromFB();
-            Delay(0x3FFFFF);
 
             // Wait for OFF command
             IR_EVENT = 0;
@@ -482,29 +473,4 @@ int main(void){
 
         }
 
-
- /*       printf("HDM01 Debug Console Starting... \r\n");
-        fflush(stdout);
-        ResetDisplay();
-        InitDisplay();
-        Delay(0x3FFFFF);
-        PutGraphic(Graphic1);
-        Delay(0x3FFFFF);
-        SetXY(0, 0);
-        if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
-            OutString("\x21\x22\x23\x24\x25\x26\x27\x28\x29", Font5);
-        } else {
-            OutString("ek is koos", Font1);
-        }
-        UpdateFromFB();  // pretty much a fflush(stdout) to a piece of hardware
-
- for(;;){
-        TestI2C();
-        GPIO_SetBits(GPIOC, GPIO_Pin_13);
-        Delay(0x3FFFFF);
-        GPIO_ResetBits(GPIOC, GPIO_Pin_13);
-        Delay(0x3FFFFF);
-
-
- } */
 }

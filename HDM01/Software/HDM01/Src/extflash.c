@@ -156,12 +156,12 @@ int ReadFlash(unsigned int address, unsigned char *data){
 	unsigned char drd;
 
 	addr = address;
-	GPIO_ResetBits(GPIOC, FLASH_CS);		// lower CS
-	SPITransceive(READ, MSB_FIRST);			// Send cmd
+	GPIO_ResetBits(GPIOC, FLASH_CS);							// lower CS
+	SPITransceive(READ, MSB_FIRST);								// Send cmd
 	SPITransceive(*(((char *)&addr) + 1), MSB_FIRST);			// High address
 	SPITransceive(*(((char *)&addr) + 0), MSB_FIRST);			// Low address
-	drd = SPITransceive(0x00, MSB_FIRST);			// Retrieve the data
-	GPIO_SetBits(GPIOC, FLASH_CS);			// raise CS
+	drd = SPITransceive(0x00, MSB_FIRST);						// Retrieve the data
+	GPIO_SetBits(GPIOC, FLASH_CS);								// raise CS
 	*data = drd;
 	return 0;
 }

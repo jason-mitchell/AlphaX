@@ -14,11 +14,14 @@
 #define RESET_DIR	GPIO_Pin_5			// PC5
 #define SS_DIR		GPIO_Pin_3			// PA3
 
+// Registers
+#define NPCMDEF	0x28
 
 // Function Prototypes
 //-----------------------------------
 
 void InitDIR(void);
-void ReadDIRReg(unsigned char regaddr);
+void ReadDIRReg(unsigned char regaddr, unsigned char *regdata);
+void WriteDIRReg(unsigned char regaddr, unsigned char regdata);
 
 #endif /* DIR_H_ */

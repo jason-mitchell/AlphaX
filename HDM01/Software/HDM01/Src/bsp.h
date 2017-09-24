@@ -7,9 +7,10 @@
 #define __BSP_H_
 
 
+// Menu Button (Push Knob)
+#define MENU GPIO_Pin_10			// (PB10)
 
 // VFD Display Port Pins
-
 #define SDATA GPIO_Pin_0			// (PC0)
 #define SCLK GPIO_Pin_1				// (PC1)
 #define RST GPIO_Pin_2				// (PC2)
