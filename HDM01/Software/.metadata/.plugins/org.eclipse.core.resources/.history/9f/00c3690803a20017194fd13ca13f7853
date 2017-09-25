@@ -1,0 +1,80 @@
+//----------------------------------------------------------------------------------------------------------------------------------
+//
+//							Author: Sonikku
+//
+//                              ______
+//	                      _.-*'"      "`*-._
+//	                _.-*'                  `*-._
+//	             .-'                            `-.
+//	  /`-.    .-'                  _.              `-.
+//	 :    `..'                  .-'_ .                `.
+//	 |    .'                 .-'_.' \ .                 \
+//	 |   /                 .' .*     ;               .-'"
+//	 :   L                    `.     | ;          .-'
+//	  \.' `*.          .-*"*-.  `.   ; |        .'
+//	  /      \        '       `.  `-'  ;      .'
+//	 : .'"`.  .       .-*'`*-.  \     .      (_
+//	 |              .'        \  .             `*-.
+//	 |.     .      /           ;                   `-.
+//	 :    db      '       d$b  |                      `-.
+//	 .   :PT;.   '       :P"T; :                         `.
+//	 :   :bd;   '        :b_d; :                           \
+//	 |   :$$; `'         :$$$; |                            \
+//	 |    TP              T$P  '                             ;
+//	 :                        /.-*'"`.                       |
+//	.sdP^T$bs.               /'       \
+//	$$$._.$$$$b.--._      _.'   .--.   ;
+//	`*$$$$$$P*'     `*--*'     '  / \  :
+//	   \                        .'   ; ;
+//	    `.                  _.-'    ' /
+//	      `*-.                      .'
+//	          `*-._            _.-*'
+//	               `*=--..--=*'
+//
+//
+//					FILENAME: audio.c
+//					Purpose: Digital audio processing on the STM32F0
+//					Dependencies:
+//						1. Both SPI modules free to be used as I2S interfaces
+//						2. Digital Interface Receiver (PCM9210/9211)
+//						3. External sigma-delta D/A converter (CS4334)
+//						4. DMA features on the STM32F0
+//
+//					Supported word size: 	16 bit, 24 bit
+//					Supported Sampling rates: 44.1, 48, 96, 192 kHz
+//
+//					NOTE: This implementation does not know about the sampling rate ahead of time, therefore
+//                        the code is designed to operate with the PCM9210/9211 library to use hardware
+//                        features of the PCM9210/9211 to obtain the sampling rate, validity (i.e. ignore Dolby Digital/DTS) and word size
+//
+//
+//					This design detects the presence of compressed (Dolby/DTS/MPEG) streams and mutes the output accordingly to prevent
+//                  damage to headphones and ears!
+//
+//		* Dolby is a registered trademark of Dolby Labs - mentioned for reference only!
+//
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+// Includes
+#include "audio.h"
+#include "stm32f0xx_rcc.h"					// For STM32F0xx micros
+
+SPI_InitTypeDef	SPI_InitStructure;			// Initialisation struct
+
+//------------------------------------------------------------------------------------------
+// Name: InitAudioIF
+// Function: Initialize the digital audio interface subsystem
+// Parameters: void
+// Returns: void
+//------------------------------------------------------------------------------------------
+void InitAudioIF(void){
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);
+
+	// Set up SPI1 - DIR facing (slave - clocked from CD/DAT/DVD/Blu-ray)
+
+	// PA4 ~ PA7 -> AF0 (I2S)
+
+}
+

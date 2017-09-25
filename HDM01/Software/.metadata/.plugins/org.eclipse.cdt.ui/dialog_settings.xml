@@ -12,6 +12,11 @@
 		<item value="false" key="caseSensitive"/>
 		<item value="227191" key="searchFlags"/>
 		<list key="previousPatterns">
+			<item value="TimerFlag"/>
+			<item value="IRQHandler"/>
+			<item value="I2S_Standard"/>
+			<item value="_SPI1"/>
+			<item value="SPI_InitTypeDef"/>
 			<item value="TIM_GetCapture2"/>
 			<item value="TIM_GetCapture"/>
 			<item value="0xE000"/>

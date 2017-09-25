@@ -26,5 +26,6 @@
 // Function Prototypes
 
 int ReadFlash(unsigned int address, unsigned char *data);
+int WriteFlash(unsigned int address, unsigned char data);
 
 #endif /* EXTFLASH_H_ */

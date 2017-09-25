@@ -57,7 +57,6 @@
 #include "dir.h"
 #include "extflash.h"
 #include "evol.h"
-#include "audio.h"
 
 // Structs
 //----------------------
@@ -331,7 +330,7 @@ int main(void){
         SysTick_Config(TickerRate);									// Initialize the System Tick
         InitIR();													// Initialize Infra-red module
         InitDIR();													// Initialize Digital audio rcvr
-        InitAudioIF();												// Initialize digital audio interface
+
 
         // System Startup begins here...
         //------------------------------
