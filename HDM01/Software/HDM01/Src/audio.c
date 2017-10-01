@@ -47,6 +47,8 @@
 //                        features of the PCM9210/9211 to obtain the sampling rate, validity (i.e. ignore Dolby Digital/DTS) and word size
 //
 //
+//					This application uses DMA to fill the circular buffer
+//
 //					This design detects the presence of compressed (Dolby/DTS/MPEG) streams and mutes the output accordingly to prevent
 //                  damage to headphones and ears!
 //
@@ -58,20 +60,34 @@
 #include "audio.h"
 #include "stm32f0xx_rcc.h"					// For STM32F0xx micros
 
-//uint32_t AUDIO_BUFFER[64];					// Audio buffer (64 32-bit words) 32 left samples, 32 right samples
+#define SPI1_DR_Address SPI1_BASE + 0x0C	// Uses def in stm32f0xx.h
 
-unsigned char left_toggle;
-unsigned char right_toggle;
-uint16_t R1;
-uint16_t R2;
-uint16_t L1;
-uint16_t L2;
+
+//uint16_t AUDIO_CIRC_BUFFER[64];				// Circular buffer for audio- 16 ~ 24 bits
+
+uint16_t AUDIO_CIRC_BUFFER[16];					// 16 32-bit words
+
+uint32_t AUDIO_SAMPLE;						// Audio sample buffer for calculation purposes
 
 // Structs access
-SPI_InitTypeDef	SPI_InitStructure;			// Initialisation struct
+
 GPIO_InitTypeDef GPIO_InitStructure;		// GPIO init struct
 I2S_InitTypeDef I2S_InitStructure;			// Initialisation struct (SPI in I2S mode)
 NVIC_InitTypeDef NVIC_InitStructure;
+DMA_InitTypeDef DMA_InitStructure;			// Init struct for DMA controller
+
+// Name: ClearAudioBuffer
+// Function: Fill the audio buffer with zeroes
+//---------------------------------------------
+void ClearAudioBuffer(void){
+	unsigned int c;
+
+	for (c = 0; c < 16; c++){
+		AUDIO_CIRC_BUFFER[c] = 0;
+	}
+
+}
+
 
 //------------------------------------------------------------------------------------------
 // Name: InitAudioIF
@@ -81,10 +97,12 @@ NVIC_InitTypeDef NVIC_InitStructure;
 //------------------------------------------------------------------------------------------
 void InitAudioIF(void){
 
+	ClearAudioBuffer();
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);				// Enable Clock to SPI1
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);					// Enable clock to DMA1
 
 	// PA4 thru PA7 assigned as alternate functions (SPI1)
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_7;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
@@ -94,66 +112,71 @@ void InitAudioIF(void){
 	// PA4 thru PA7 connected to the peripheral (SPI1)
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource4, GPIO_AF_0);
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource5, GPIO_AF_0);
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_0);
+	//GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_0);
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_0);
 
 
 	// Set up SPI1 - DIR facing (slave - clocked from digital audio source)
 	I2S_InitStructure.I2S_Standard = I2S_Standard_Phillips;
-	I2S_InitStructure.I2S_DataFormat = I2S_DataFormat_24b;			// << this here will change according to what we get from the source
-	I2S_InitStructure.I2S_MCLKOutput = I2S_MCLKOutput_Disable;		// Slave requires MCLK to be off
-	I2S_InitStructure.I2S_AudioFreq = I2S_AudioFreq_48k;			// << this here again will depend on the source
-	I2S_InitStructure.I2S_CPOL = I2S_CPOL_Low;						// Clock polarity
-	I2S_InitStructure.I2S_Mode = I2S_Mode_SlaveRx;					// Slave Mode
-	I2S_Init(SPI1, &I2S_InitStructure);								// Configure the module
+	I2S_InitStructure.I2S_DataFormat = I2S_DataFormat_24b;								// << this here will change according to what we get from the source
+	I2S_InitStructure.I2S_MCLKOutput = I2S_MCLKOutput_Disable;							// Slave requires MCLK to be off
+	I2S_InitStructure.I2S_AudioFreq = I2S_AudioFreq_48k;								// << this here again will depend on the source
+	I2S_InitStructure.I2S_CPOL = I2S_CPOL_Low;											// Clock polarity
+	I2S_InitStructure.I2S_Mode = I2S_Mode_SlaveRx;										// Slave Mode
+	I2S_Init(SPI1, &I2S_InitStructure);													// Configure the module
 
 
+	// Configure the DMA controller for this peripheral - Channel 2
+	DMA_InitStructure.DMA_BufferSize = 16;												// 16 word buffer size
+	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;			// Set to match the peripheral (16 bits)
+	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;					// Set to match destination memory (16 bits)
+	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;					// Address at src remains static
+	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;								// Address at dest is auto-increment
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;										// Circular buffer
+	DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;										// Non memory-to-memory transfer
+	DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)SPI1_DR_Address;				// Source address
+	DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)AUDIO_CIRC_BUFFER;					// Destination address (BEWARE of cast)!
+	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;									// Peripheral -> Memory transfer direction
+	DMA_InitStructure.DMA_Priority = DMA_Priority_High;									// High priority transfer
+	DMA_Init(DMA1_Channel2, &DMA_InitStructure);										// Load the configuration
 
-	// Configure interrupts on SPI1
-	NVIC_InitStructure.NVIC_IRQChannel = SPI1_IRQn;
+	DMA_ITConfig(DMA1_Channel2, DMA_IT_TC, ENABLE);										// Enable DMA Terminal Count interrupt!
+	DMA_Cmd(DMA1_Channel2, ENABLE);														// Enable the DMA channel
+	SPI_I2S_DMACmd(SPI1, SPI_I2S_DMAReq_Rx, ENABLE);									// DMA is enabled!
+
+	I2S_Cmd(SPI1, ENABLE);
+
+	// Enable DMA interupt
+	NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel2_3_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
-	// Enable interrupts on SPI1, typically receive interrupt
-//	SPI_I2S_ITConfig(SPI1, SPI_I2S_IT_RXNE, ENABLE);      << disabled for now as it loads the CPU badly, causing display tearing
-
-
-	// Enable it
-	I2S_Cmd(SPI1, ENABLE);
 }
 
 
-// Receive interrupt vector
-//-------------------------
-void SPI1_IRQHandler(void){
+//--------------------------------------------------------------------------------------------------------
+// DMA interrupt -
+// This interrupt is raised every time the buffer reaches the start point i.e. just before the old
+// samples are over-written with new ones
+//--------------------------------------------------------------------------------------------------------
+void DMA1_Channel2_3_IRQHandler(void){
+  if (DMA_GetITStatus(DMA1_IT_TC2)== SET){
+    DMA_ClearITPendingBit(DMA1_IT_TC2);				// Clear Interrupt flag
 
-	// Check for errors
-	if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_FRE)){
+    // Extract a sample, use the left channel
+    // This code correctly packs the 24-bit audio sample into a uint32_t
+    *(((uint16_t *)&AUDIO_SAMPLE) + 1) = AUDIO_CIRC_BUFFER[0];
+    *(((uint16_t *)&AUDIO_SAMPLE) + 0) = AUDIO_CIRC_BUFFER[1];
+    AUDIO_SAMPLE >>= 8;						// right-justify the PCM value
+    if(AUDIO_SAMPLE > 0x007FFFFF){
+    	// Negative half-cycle
+    	AUDIO_SAMPLE = !AUDIO_SAMPLE;
+    	AUDIO_SAMPLE = AUDIO_SAMPLE & 0x7FFFFF;
+    }
 
-		// Frame error, sample is invalid
-		R1 = 0;
-		R2 = 0;
-		L1 = 0;
-		L2 = 0;
-
-	}
-
-
-	if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE)){
-		// We have an audio sample (16 - 24 bits), for now we assume 24 bits (will fix later)
-		if(SPI_I2S_GetFlagStatus(SPI1, I2S_FLAG_CHSIDE)){
-			// Right channel received
-			R1 = SPI1->DR;			// bits 23 - 16
-			R2 = SPI1->DR;			// bits 15 - 0
-
-		} else {
-			// Left channel received
-			L1 = SPI1->DR;
-			L2 = SPI1->DR;
-
-		}
-	}
+  }
 
 }
+
 

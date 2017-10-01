@@ -343,7 +343,6 @@ int main(void){
         cnt = 0;
         ADR = 0;
 
-
         // Set up DIR to accept digital audio on TOSLINK #1
         // In the absence of lock, it will still default to the analog input (in-built A/D converter)
         WriteDIRReg(0x34, 0xC4);
