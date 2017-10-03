@@ -59,13 +59,13 @@
 // Includes
 #include "audio.h"
 #include "stm32f0xx_rcc.h"					// For STM32F0xx micros
+#include "level.h"
 
 #define SPI1_DR_Address SPI1_BASE + 0x0C	// Uses def in stm32f0xx.h
 
 
-//uint16_t AUDIO_CIRC_BUFFER[64];				// Circular buffer for audio- 16 ~ 24 bits
 
-uint16_t AUDIO_CIRC_BUFFER[16];					// 16 32-bit words
+uint16_t AUDIO_CIRC_BUFFER[16];				// 16 16-bit samples i.e. 8 samples / channel
 
 uint32_t AUDIO_SAMPLE;						// Audio sample buffer for calculation purposes
 
@@ -155,6 +155,8 @@ void InitAudioIF(void){
 }
 
 
+
+
 //--------------------------------------------------------------------------------------------------------
 // DMA interrupt -
 // This interrupt is raised every time the buffer reaches the start point i.e. just before the old
@@ -173,7 +175,11 @@ void DMA1_Channel2_3_IRQHandler(void){
     	// Negative half-cycle
     	AUDIO_SAMPLE = !AUDIO_SAMPLE;
     	AUDIO_SAMPLE = AUDIO_SAMPLE & 0x7FFFFF;
+
     }
+    // Send the sample to the metering
+    UpdateMeter(AUDIO_SAMPLE);
+
 
   }
 

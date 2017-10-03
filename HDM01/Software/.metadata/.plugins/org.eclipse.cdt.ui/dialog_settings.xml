@@ -12,6 +12,7 @@
 		<item value="false" key="caseSensitive"/>
 		<item value="227191" key="searchFlags"/>
 		<list key="previousPatterns">
+			<item value="uint32_t"/>
 			<item value="DMA_Mode_Normal"/>
 			<item value="SPI_I2S_GetFlagStatus"/>
 			<item value="SPI1DR"/>
