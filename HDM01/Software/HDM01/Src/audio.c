@@ -49,8 +49,9 @@
 //
 //					This application uses DMA to fill the circular buffer
 //
-//					This design detects the presence of compressed (Dolby/DTS/MPEG) streams and mutes the output accordingly to prevent
-//                  damage to headphones and ears!
+//					Circular Buffer Capacity:
+//						16-bit audio:	8 samples L, R
+//						24-bit audio:   4 samples L, R (padding is introduced)
 //
 //		* Dolby is a registered trademark of Dolby Labs - mentioned for reference only!
 //
@@ -61,13 +62,13 @@
 #include "stm32f0xx_rcc.h"					// For STM32F0xx micros
 #include "level.h"
 
-#define SPI1_DR_Address SPI1_BASE + 0x0C	// Uses def in stm32f0xx.h
+#define SPI1_DR_Address SPI1_BASE + 0x0C	// Uses definition in stm32f0xx.h
 
 
-
-uint16_t AUDIO_CIRC_BUFFER[16];				// 16 16-bit samples i.e. 8 samples / channel
-
-uint32_t AUDIO_SAMPLE;						// Audio sample buffer for calculation purposes
+unsigned char WORD_SIZE;					// System variable indicating word size
+uint16_t AUDIO_CIRC_BUFFER[16];				// Circular buffer for audio samples
+uint32_t LEFT_METER_PCM;					// 16 ~ 24 bit sample for metering - LEFT CHANNEL
+uint32_t RIGHT_METER_PCM;					// 16 ~ 24 bit sample for metering - RIGHT CHANNEL
 
 // Structs access
 
@@ -88,6 +89,34 @@ void ClearAudioBuffer(void){
 
 }
 
+// Name: SetWordSize
+// Function: Set the word size to match the incoming digital stream
+//           This function is called from the code managing the DIR
+//           and then sets the word size as soon as the DIR is able to detect the incoming S/PDIF stream
+// Parameters: Word Size, caller MUST set to zero if the DIR cannot lock onto the S/PDIF
+// Returns: void
+//-------------------------------------------------------------------------------------------------------
+void SetWordSize(unsigned char WS){
+
+	WORD_SIZE = WS;
+
+}
+
+unsigned char GetWordSize(void){
+	return WORD_SIZE;
+}
+
+// Name: GetSamples
+// Function: Retrieve metering samples
+// Parameters: variables for storage of left and right samples
+// Returns: void
+//-------------------------------------------------------------------------------------------
+void GetSamples(uint32_t *LEFT, uint32_t *RIGHT){
+
+	*LEFT = LEFT_METER_PCM;
+	*RIGHT = RIGHT_METER_PCM;
+
+}
 
 //------------------------------------------------------------------------------------------
 // Name: InitAudioIF
@@ -97,6 +126,7 @@ void ClearAudioBuffer(void){
 //------------------------------------------------------------------------------------------
 void InitAudioIF(void){
 
+	WORD_SIZE = 0;
 	ClearAudioBuffer();
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);				// Enable Clock to SPI1
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);					// Enable clock to DMA1
@@ -158,30 +188,40 @@ void InitAudioIF(void){
 
 
 //--------------------------------------------------------------------------------------------------------
-// DMA interrupt -
+// DMA interrupt-
 // This interrupt is raised every time the buffer reaches the start point i.e. just before the old
 // samples are over-written with new ones
 //--------------------------------------------------------------------------------------------------------
 void DMA1_Channel2_3_IRQHandler(void){
-  if (DMA_GetITStatus(DMA1_IT_TC2)== SET){
-    DMA_ClearITPendingBit(DMA1_IT_TC2);				// Clear Interrupt flag
+	uint32_t TMP = 0;
 
-    // Extract a sample, use the left channel
-    // This code correctly packs the 24-bit audio sample into a uint32_t
-    *(((uint16_t *)&AUDIO_SAMPLE) + 1) = AUDIO_CIRC_BUFFER[0];
-    *(((uint16_t *)&AUDIO_SAMPLE) + 0) = AUDIO_CIRC_BUFFER[1];
-    AUDIO_SAMPLE >>= 8;						// right-justify the PCM value
-    if(AUDIO_SAMPLE > 0x007FFFFF){
-    	// Negative half-cycle
-    	AUDIO_SAMPLE = !AUDIO_SAMPLE;
-    	AUDIO_SAMPLE = AUDIO_SAMPLE & 0x7FFFFF;
+	if (DMA_GetITStatus(DMA1_IT_TC2)== SET){
+		DMA_ClearITPendingBit(DMA1_IT_TC2);				// Clear Interrupt flag
 
-    }
-    // Send the sample to the metering
-    UpdateMeter(AUDIO_SAMPLE);
+		// Process sampling from the buffer according to setup
 
+		if(WORD_SIZE == AUDIO_16_BITS){
+			LEFT_METER_PCM = AUDIO_CIRC_BUFFER[0];
+			RIGHT_METER_PCM = AUDIO_CIRC_BUFFER[1];
+		}
 
-  }
+		if(WORD_SIZE == AUDIO_24_BITS){
+			*(((uint16_t *)&TMP) + 1) = AUDIO_CIRC_BUFFER[0];
+			*(((uint16_t *)&TMP) + 0) = AUDIO_CIRC_BUFFER[1];
+			TMP >>= 8;												// right-justify the PCM value
+			LEFT_METER_PCM = TMP;									// left channel meter stored
+
+			*(((uint16_t *)&TMP) + 1) = AUDIO_CIRC_BUFFER[2];
+			*(((uint16_t *)&TMP) + 0) = AUDIO_CIRC_BUFFER[3];
+			TMP >>= 8;												// right-justify the PCM value
+			RIGHT_METER_PCM = TMP;									// right channel meter stored
+
+		}
+
+		// Do call to metering code so that it is aware there's a sample
+		UpdateCall();
+
+	}
 
 }
 

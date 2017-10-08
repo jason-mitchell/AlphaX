@@ -46,12 +46,16 @@
 //---------------
 #include "level.h"
 #include "stm32f0xx_rcc.h"					// For STM32F0xx micros
+#include "audio.h"
 #include <math.h>
 
 // Variables
-uint32_t	DIG_AUDIO_SAMPLE;
-uint32_t	ENVELOPE;
-uint32_t 	PREV_ENVELOPE;
+uint32_t	LEFT_PCM;
+uint32_t	RIGHT_PCM;
+float		LEFT_CHANNEL;
+float		RIGHT_CHANNEL;
+
+unsigned char UPDATE_PENDING;
 
 GPIO_InitTypeDef GPIO_InitStructure;		// GPIO init struct
 
@@ -65,6 +69,7 @@ GPIO_InitTypeDef GPIO_InitStructure;		// GPIO init struct
 //---------------------------------------------------------------------------------
 void InitMeter(void){
 
+	UPDATE_PENDING = 0;
 	// Temporary assignments - LED VU meter for debugging..
 	GPIO_InitStructure.GPIO_Pin = LD1 | LD2;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
@@ -79,20 +84,9 @@ void InitMeter(void){
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	DIG_AUDIO_SAMPLE = 0;
-	ENVELOPE = 0;
-	PREV_ENVELOPE = 0;
 
 }
 
-// Name: UpdateMeter
-// Function: Call from outside to get the meter updated
-// Parameters: 32 bit word
-// Returns: void
-//--------------------------------------------------------
-void UpdateMeter(uint32_t SAMPLE){
-	DIG_AUDIO_SAMPLE = SAMPLE;
-}
 
 // Name: ServiceMeter
 // Function: Services the LED meter, called every 1ms
@@ -101,16 +95,26 @@ void UpdateMeter(uint32_t SAMPLE){
 //----------------------------------------------
 void ServiceMeter(void){
 
-	if(DIG_AUDIO_SAMPLE > PREV_ENVELOPE){
+	if(UPDATE_PENDING == 1){
+		UPDATE_PENDING = 0;
+		if(GetWordSize() == AUDIO_16_BITS){
+
+
+		}
+		if(GetWordSize() == AUDIO_24_BITS){
+
+			LEFT_CHANNEL = LEFT_PCM / 8388608;		// Conversion to +1 .. -1 floating point format
+			RIGHT_CHANNEL = RIGHT_PCM / 8388608;		// Conversion to +1 .. -1 floating point format    -- DSP 101
+
+
+		}
+	}
+/*	if(DIG_AUDIO_SAMPLE > PREV_ENVELOPE){
 		ENVELOPE = DIG_AUDIO_SAMPLE;				// Incoming sample larger than history... update
 	} else {
-		if(ENVELOPE > 50000){
-			ENVELOPE -= 50000;						// Not larger, slowly let the meter decay (we really need the logarithm here)
-			if(ENVELOPE < 0xB3FF){
-				ENVELOPE = 0xB3FF;
-			}
-		} else {
-			ENVELOPE = 0xB3FF;
+		// incoming level is less, we begin to taper down the display
+		if (ENVELOPE > 0xB3FF){
+			ENVELOPE = ENVELOPE - 0x3000;
 		}
 	}
 	DIG_AUDIO_SAMPLE = 0;
@@ -162,9 +166,21 @@ void ServiceMeter(void){
 
 	if(ENVELOPE > 0x640000){
 		GPIO_SetBits(GPIOB, LD5);
-	}
+	} */
 }
 
+//-----------------------------------------------------------------------
+// Name: UpdateCall
+// Function: Signaling from the digital audio processor
+//           This is called to let us know there's PCM to process
+// Parameters: void
+// Returns: void
+//-----------------------------------------------------------------------
+void UpdateCall(void){
+
+	GetSamples(&LEFT_PCM, &RIGHT_PCM);
+	UPDATE_PENDING = 1;
+}
 
 
 

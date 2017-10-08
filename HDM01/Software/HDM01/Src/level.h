@@ -23,6 +23,6 @@
 //---------------------
 void InitMeter(void);
 void ServiceMeter(void);
-void UpdateMeter(uint32_t SAMPLE);
+void UpdateCall(void);
 
 #endif /* LEVEL_H_ */

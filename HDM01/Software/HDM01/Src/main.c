@@ -350,10 +350,10 @@ int main(void){
         // In the absence of lock, it will still default to the analog input (in-built A/D converter)
         WriteDIRReg(0x34, 0xC4);
 
-
-        // Main Monitor Loop
+        //-----------------------------------------------------------------------------------------------------
+        // System Superloop
+        //-----------------------------------------------------------------------------------------------------
         for(;;){
-
             SetDispIntensity(1);
             while(1){
                 SetXY(0, 0);

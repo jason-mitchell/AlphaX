@@ -23,5 +23,7 @@
 void InitDIR(void);
 void ReadDIRReg(unsigned char regaddr, unsigned char *regdata);
 void WriteDIRReg(unsigned char regaddr, unsigned char regdata);
+int GetSPDIFInfo(void);
+int GetCalcFs(void);
 
 #endif /* DIR_H_ */
