@@ -40,14 +40,15 @@
 //-----------
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include "stm32f0xx_rcc.h"
 #include "stm32f0xx_gpio.h"
 #include "bsp.h"
 #include "i2c.h"
 #include "display.h"
-#include "graphic.h"
+//#include "graphic.h"
 #include "graphlib.h"
-#include "stdfonts.h"
+//#include "stdfonts.h"
 #include "clock.h"
 #include "timers.h"
 #include "serial.h"
@@ -59,6 +60,7 @@
 #include "evol.h"
 #include "audio.h"
 #include "level.h"
+#include "ui.h"
 
 // Structs
 //----------------------
@@ -67,7 +69,7 @@ GPIO_InitTypeDef        GPIO_InitStructure;
 USART_InitTypeDef       USART_InitStructure;
 USART_ClockInitTypeDef  USART_ClockInitStructure;
 NVIC_InitTypeDef        NVIC_InitStructure;
-TIM_TimeBaseInitTypeDef Timer_InitStructure;
+//TIM_TimeBaseInitTypeDef Timer_InitStructure;
 
 CurrentTime				TimeOfDay;
 
@@ -75,6 +77,12 @@ CurrentTime				TimeOfDay;
 //--------------------------------
 #define SysTickInterval 1000				// Interval in uS 1000uS = 1mS
 #define TickerRate SysTickInterval * 48
+
+unsigned char LabelBgnd   [] = {"        "};
+unsigned char Input1Label [] = {"INPUT 1"};
+unsigned char Input2Label [] = {"INPUT 2"};
+unsigned char Input3Label [] = {"INPUT 3"};
+unsigned char Input4Label [] = {"INPUT 4"};
 
 // Private variables
 //--------------------
@@ -116,6 +124,9 @@ unsigned char DAT;
 char dbgout[32];
 unsigned char VR;
 unsigned char TMP;
+unsigned int UI_TIMER;
+unsigned char UI_UPDATE_FLAG;
+unsigned char UI_FLASH_TOGGLE;
 
 // Timer that derives from the system ticker...
 //-----------------------------------------------
@@ -125,17 +136,34 @@ void GeneralDelay(void){
     timerFlag = 0;
 
 }
+
+//---------------------------------------------------
+// Name: UI Timer
+// Service Routine
+//---------------------------------------------------
+void ServiceUITimer(void){
+	if(UI_TIMER > 0){
+		UI_TIMER--;
+		UI_UPDATE_FLAG = 0;
+	}
+	if (UI_TIMER == 0){
+		UI_UPDATE_FLAG = 1;
+	}
+
+}
 //-------------------------------------------------------------------------------------------------------------------------------------
 //              Interrupt Handlers
 //-------------------------------------------------------------------------------------------------------------------------------------
 
-// System Ticker Interrupt
-//---------------------------
+// System Ticker Interrupt 1mS
+//-----------------------------
 void SysTick_Handler(void){
 
 	TimerSvc();
 	IR_SYS_TICK_SVC();				// Call function in IR library to service
 	ServiceMeter();					// Service metering code
+	ServiceUITimer();				// Here for now
+	ServiceUI();
 	timer++;
 	if ((timer & 0x01) == 0x01){
 		GPIO_SetBits(GPIOC, CLK_500Hz);
@@ -300,7 +328,7 @@ int main(void){
         NVIC_Init(&NVIC_InitStructure);
         USART_Cmd(USART1, ENABLE);
 
-
+/*
 
         // TIM2 Module Configured for PWM on PB11 (Power LED inside the Marquardt Push Button)
         //--------------------------------------------------------------------------------------
@@ -321,10 +349,14 @@ int main(void){
         outputChannelInit.TIM_OutputState = TIM_OutputState_Enable;
         outputChannelInit.TIM_OCPolarity = TIM_OCPolarity_High;
         TIM_OC4Init(TIM2, &outputChannelInit);
-        TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
+        TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable); */
 
         // Software Module Initializations
         //--------------------------------------
+        UI_TIMER = 0;
+        UI_UPDATE_FLAG = 0;
+        UI_FLASH_TOGGLE = 0;
+
         InitClockHW();												// Init/check real-time clock
         InitTimers();												// Init Timer Library
         InitSPI();													// Bit-banged SPI interface
@@ -338,11 +370,8 @@ int main(void){
 
         // System Startup begins here...
         //------------------------------
-        ResetDisplay();
-        InitDisplay();
-        PutGraphic(Graphic1);
-        Delay(0x3FFFFF);
-        ClearDisplay();
+
+        InitUI();
         cnt = 0;
         ADR = 0;
 
@@ -353,49 +382,13 @@ int main(void){
         //-----------------------------------------------------------------------------------------------------
         // System Superloop
         //-----------------------------------------------------------------------------------------------------
+
         for(;;){
-            SetDispIntensity(1);
+
+        	ChangeUIState(STANDBY);
+
             while(1){
-                SetXY(0, 0);
-                ClearFB();
-                GetTimeNow(&TimeOfDay);
-                if (Delta != TimeOfDay.second){
-                	Delta = TimeOfDay.second;
-
-                    memset(dbgstr, 0 , 32);
-                    TxData("PCM9210 Registers Read:\r\n");
-                    ReadDIRReg(0x34, &TMP);
-                    sprintf(dbgstr, "DIR Input Select Reg: %02X ", TMP);
-                    TxData(dbgstr);
-
-
-
-                    if (cnst == 0x55){
-                    	cnst = 0xAA;
-
-                    } else {
-                    	cnst = 0x55;
-
-                    }
-                }
-                memset(arr, 0, 32);
-                sprintf(arr, "%2d:%02d:%02d", TimeOfDay.hour, TimeOfDay.minute, TimeOfDay.second);
-                OutString(arr, Font1);
-                SetXY(0, 1);
-                memset(arr, 0 , 32);
-
-
-
-                // Service Front Panel
-                FpReadWrite(0x01, cnst & 0x01, &rxd);	// Update the LED port
-                FpReadWrite(0x1F, 0x00, &rxd);			// Read the Encoder
-                sprintf(arr, "Encoder: %02X", rxd);
-                OutString(arr, Font1);
-                UpdateFromFB();
-
-                // Service the DIR
-
-                // Monitor power button and IR
+                // Monitor power button and IR and change state when they are activated....
                 if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
                 	break;
                 }
@@ -409,27 +402,20 @@ int main(void){
             }
 
             // Button was pressed, power the system on
-            SetDispIntensity(4);								// Raise brightness
-            PutGraphic(Graphic1);								// Load graphics
+            //----------------------------------------------------
+            ChangeUIState(SWITCH_ON);
             GPIO_SetBits(GPIOC, POWER_RELAY);					// Power amp on
             Delay(0x3FFFFF);									// time dealy NB** REFACTOR
             GPIO_SetBits(GPIOC, HEADPHONE_RELAY);				// Switch output relay on
-            SetXY(0, 0);										// Set X-Y co-ords
-            OutString("Welcome", Font2);						// Load a string
-            UpdateFromFB();										// Update the display from the frame buffer
             Delay(0x3FFFFF);
-            ClearFB();											// Clear frame buffer
-            SetXY(0, 0);
-            OutString("\x0F", Font1);
-            SetXY(0, 1);										// Reset co-ords
-            OutString("\x0E", Font1);							// Display bitrate indicator
-            UpdateFromFB();
-
-            // Wait for OFF command
             IR_EVENT = 0;
     		ReadFlash(0x00, &VR);
     		SetVolume(VR, VR);			// Initialize volume control
+
+    		ChangeUIState(ACTIVE);
             while(1){
+
+            	// Check input signals
             	if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
             		break;
             	}
@@ -437,6 +423,8 @@ int main(void){
             		IR_EVENT = 0;
             		if(COMMAND == 0x0DD2){
             			VR += 2;
+            			SendParam(VR);
+            			ChangeUIState(VOLUME);
             			WriteFlash(0x00, VR);
             		}
 
@@ -445,8 +433,11 @@ int main(void){
             			if (VR > 250){
             				VR = 0;
             			}
+            			SendParam(VR);
+            			ChangeUIState(VOLUME);
             			WriteFlash(0x00, VR);
             		}
+
             		ReadFlash(0x00, &VR);
             		SetVolume(VR, VR);			// send packet every time remote sends signal
             		if (COMMAND == 0x0738){
@@ -454,21 +445,12 @@ int main(void){
             		}
             	}
 
-
-
             }
-            // while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 1){
-                // Idle loop
-//
-//           }
+
+            //-------------------------------------------------------------------------------
             GPIO_ResetBits(GPIOC, HEADPHONE_RELAY);
-            SetXY(0, 0);
-            ClearFB();
-            OutString("Bye", Font2);
-            UpdateFromFB();
             Delay(0x3FFFFF);
             GPIO_ResetBits(GPIOC, POWER_RELAY);
-            ClearDisplay();
             while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
                 ;
             }

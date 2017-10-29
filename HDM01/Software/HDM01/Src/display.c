@@ -41,7 +41,7 @@ void ResetTimer(void){
 // Parameters: Pointer to graphics data
 // Returns: void
 //---------------------------------------------------------------------------
-void PutGraphic(char *graphics){
+void PutGraphic(unsigned char *graphics){
     unsigned char a;
     unsigned char bmp;
     unsigned int ptr = 0;

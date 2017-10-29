@@ -1,0 +1,18 @@
+//
+//							Filename: ui.h
+//						  Header file for ui.c
+//
+//
+//
+//-------------------------------------------------------------------------------------------------------------
+
+#ifndef __UI_H_
+#define __UI_H_
+
+
+// Function prototypes
+void ServiceUI(void);
+
+
+
+#endif /* UI_H_ */

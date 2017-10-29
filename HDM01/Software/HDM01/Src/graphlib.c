@@ -6,8 +6,27 @@
 //              Date: July 2017
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include "display.h"
+#include <stdbool.h>
+
+unsigned char inverse_mode;
+unsigned char masking;
 
 
+//-----------------------------------------------------------------------------------------------------
+// Name: SetInverse
+// Function: Set the inverse text mode
+// Parameter: Option (TRUE = Set inverse, FALSE = Clear inverse), Masking
+// Returns: void
+//----------------------------------------------------------------------------------------------------
+void SetInverse(unsigned char set, unsigned char mask){
+
+	masking = mask;
+	if(set == true){
+		inverse_mode = true;
+	} else {
+		inverse_mode = false;
+	}
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 // Name: OutChar (renamed from PutChar to prevent conflicts with similar named functions in other libs esp. Linux code)
@@ -24,6 +43,7 @@ void OutChar(unsigned char ascii_char, const int *fonttype){
                     unsigned char run_length;
                     unsigned char char_height;
                     unsigned char ref_height;
+                    unsigned char glyph;
                     px = 0;                                 /* Reset pointer at runtime */
                     font_ptr = fonttype[ascii_char];
                     px = (px + (font_ptr));                 /* Set pointer to point to font data */
@@ -39,10 +59,20 @@ void OutChar(unsigned char ascii_char, const int *fonttype){
 /* Start drawing the character on the LCD */
                     while(char_height != 0){
                               for (rcnt = 0; rcnt < run_length; rcnt++){
-                                        eWriteDispData(*px);           /* Put glyph data on LCD */
-                                        px++;                         /* Increment pointer */
+
+                            	      glyph = *px;
+
+                            	      if(inverse_mode == true){
+                            	    	  glyph = ~glyph & masking;
+                            	      }
+                            	  	  eWriteDispData(glyph);           /* Put glyph data on LCD */
+                            	  	  px++;                         /* Increment pointer */
                               }
-                              eWriteDispData(0x00);           /* Inter-character whitespace */
+                              if(inverse_mode == true){
+                            	  eWriteDispData(0xFF & masking);
+                              } else {
+                            	  eWriteDispData(0x00);           /* Inter-character whitespace */
+                              }
                               char_height--;
                               if (char_height != 0){
                                         DISPLAY_ROW++;      /* If more than 1 row high, switch to next line */
@@ -68,7 +98,7 @@ void OutString(const char *string, const int *fontname){
                     OutChar(string[textptr], fontname);
                     textptr++;
                     } else {
-                    break;
+                    	break;
                     }
           }
 }

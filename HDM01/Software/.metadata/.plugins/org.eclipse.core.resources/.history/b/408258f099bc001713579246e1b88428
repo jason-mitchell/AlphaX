@@ -1,0 +1,195 @@
+//----------------------------------------------------------------------------------------------------------------------------------
+//
+//							Author: Sonikku
+//
+//                              ______
+//	                      _.-*'"      "`*-._
+//	                _.-*'                  `*-._
+//	             .-'                            `-.
+//	  /`-.    .-'                  _.              `-.
+//	 :    `..'                  .-'_ .                `.
+//	 |    .'                 .-'_.' \ .                 \
+//	 |   /                 .' .*     ;               .-'"
+//	 :   L                    `.     | ;          .-'
+//	  \.' `*.          .-*"*-.  `.   ; |        .'
+//	  /      \        '       `.  `-'  ;      .'
+//	 : .'"`.  .       .-*'`*-.  \     .      (_
+//	 |              .'        \  .             `*-.
+//	 |.     .      /           ;                   `-.
+//	 :    db      '       d$b  |                      `-.
+//	 .   :PT;.   '       :P"T; :                         `.
+//	 :   :bd;   '        :b_d; :                           \
+//	 |   :$$; `'         :$$$; |                            \
+//	 |    TP              T$P  '                             ;
+//	 :                        /.-*'"`.                       |
+//	.sdP^T$bs.               /'       \
+//	$$$._.$$$$b.--._      _.'   .--.   ;
+//	`*$$$$$$P*'     `*--*'     '  / \  :
+//	   \                        .'   ; ;
+//	    `.                  _.-'    ' /
+//	      `*-.                      .'
+//	          `*-._            _.-*'
+//	               `*=--..--=*'
+//
+//
+//					FILENAME: ui.c
+//					Purpose: Alpha-X User Interface Implementation
+//					Dependencies:
+//
+//					Abstract: This code handles all user-interface tasks such as the display, remote control, and front panel tasks
+//
+//
+//----------------------------------------------------------------------------------------------------------------------------------
+
+// Included headers
+//-----------------
+
+#include "ui.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include "display.h"
+#include "graphic.h"
+#include "graphlib.h"
+#include "fpanel.h"
+#include "stdfonts.h"
+#include "clock.h"
+
+// Local vars
+//------------
+unsigned char UI_STATE;
+uint16_t UI_TIMING;
+uint16_t UI_TIMER1;
+unsigned char DATA;
+unsigned char TimeDelta;
+unsigned char StringBuffer[32];
+
+CurrentTime				TimeOfDay;
+
+// Name: UITimer
+// Function: Internal timer for UI operations
+//--------------------------------------------
+void UITimer(void){
+
+	if(UI_TIMER1 > 0){
+		UI_TIMER1--;
+	}
+
+
+}
+
+
+// Name: UIDelay
+// Function: Generate a delay in the UI
+// Parameters: Required time delay (in mS)
+//------------------------------------------
+void UIDelay(uint16_t Delay){
+
+	UI_TIMER1 = Delay;
+	while(UI_TIMER1 > 0){
+		;
+	}
+
+}
+
+
+
+//--------------------------------------
+// Name: InitUI
+// Function: Initialize the UI
+//--------------------------------------
+void InitUI(void){
+
+	// Initialize all the variables in this module
+	UI_STATE = STANDBY;
+	UI_TIMING = 0;
+	UI_TIMER1 = 0;
+
+
+	// Initialize the display
+    ResetDisplay();
+    SetInverse(false, 0);
+    InitDisplay();
+
+    // Load boot graphic
+    PutGraphic(Graphic1);
+    UIDelay(1000);					// Logo remains for 1 second
+    ClearDisplay();
+
+    // Initialize the ASIC on the front panel
+	FpReadWrite(READ_VENDOR_ID, 0, &DATA);			// Read specific info
+	if(DATA != 0xAE){
+		// Vendor ID mismatch, display error code and halt
+		SetXY(0, 0);
+        OutString("E001", Font1);
+        UpdateFromFB();
+        while(1);
+
+	}
+	FpReadWrite(READ_CHIP_ID, 0, &DATA);			// Read specific info
+	if(DATA != 0x71){
+		// Product ID mismatch, display error code and halt
+		SetXY(0, 0);
+        OutString("E002", Font1);
+        UpdateFromFB();
+        while(1);
+
+	}
+	ChangeUIState(STANDBY);
+
+
+}
+
+// Name: ChangeUIState
+// Function: Change UI between three primary modes
+//-------------------------------------------------
+void ChangeUIState(unsigned char new_state){
+
+	UI_STATE = new_state;
+
+	// Handle changes specific to the states
+	if(UI_STATE == STANDBY){
+		SetDispIntensity(1);								// Lower brightness
+	}
+
+	if (UI_STATE == ACTIVE){
+        SetDispIntensity(4);								// Raise brightness
+
+	}
+
+}
+
+//-------------------------------------------------------------------------
+// Name: UILoop
+// Function: User Interface service function
+// This is called at a rate of 1mS from the timer tick
+//-------------------------------------------------------------------------
+void ServiceUI(void){
+
+	UITimer();
+
+	switch(UI_STATE){
+	// User interface functions in standby mode... display the clock
+	case STANDBY:
+		SetXY(0, 0);
+		ClearFB();
+		GetTimeNow(&TimeOfDay);
+		if (TimeDelta != TimeOfDay.second){
+			TimeDelta = TimeOfDay.second;
+            memset(StringBuffer, 0, 32);
+            sprintf(StringBuffer, "%2d:%02d:%02d", TimeOfDay.hour, TimeOfDay.minute, TimeOfDay.second);
+            OutString(StringBuffer, Font1);
+
+		}
+
+
+		break;
+
+
+
+
+	}
+}
+
+
+
+

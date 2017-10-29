@@ -34,6 +34,6 @@ void eWriteDispData(unsigned char data);
 void UpdateFromFB(void);
 void ClearFB(void);
 void SetDispIntensity(unsigned char brightness);
-void PutGraphic(char *graphics);
+void PutGraphic(unsigned char *graphics);
 
 #endif

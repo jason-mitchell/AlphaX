@@ -3,15 +3,12 @@
 //              Font definitions as used in the GraphLCD project
 //              Copyright (C) 1999 - 2017 Jason Mitchell
 //
-//              8/7/17 - Merged fonts done in previous years into the master font file
-//                       Font 3 is the Nokia 5110 font, which is a subset (not the whole font)- working on stripping the rest from NSE-1 f/w
-//                       At this point it stops after ASCII 'Z' (0x5A)
+//              21/10/17 - Merged fonts done in previous years into the master font file
+//
 //
 //      Font1 = Standard Hitachi HD44780 matrix font for 5x7 character cells
 //      Font2 = Akzidenz Grotesk (widely copied by the Chinese from my repo and seen on outdoor displays and bus front consoles)
-//      Font3 = NSE-1 (The Nokia 5110's primary rendering font)
-//      Font4 = My rendition of Trebuchet MS from Windows XP - This was originally used in a commercial product and since they have long since tossed
-//              my code into file #13 I can use it here- Bite my ass Ian Rozowsky- think next time before you fucking accuse me of stealing your IP!!
+//      Font3 = Small condensed font done in 2001
 //
 //----------------------------------------------------------------------------------------------------------------------------------------------
 #ifndef __STDFONTS_H_
@@ -84,44 +81,66 @@ const char f01_13 [] = {
 const char f01_14 [] = {
                          0x1D,
                          0xFE, 0xB6, 0x9A, 0xAA, 0xB6, 0xFE, 0xDE, 0xCE,
-                         0xD6, 0x82, 0xDE, 0xFE, 0x9E, 0xEE, 0xF2, 0xFE, 0xF6, 0x82,
+                         0xD6, 0x82, 0xDE, 0xFE, 0x9E, 0xEE, 0xF2, 0xFE, 0xF6, 0x82,			// 24/192 indicator
 						 0xFE, 0xF6, 0xAA, 0xAA, 0xC6, 0xFE, 0xB6, 0x9A, 0xAA, 0xB6, 0xFE
 
 };
 const char f01_15 [] = {
                          0x1D,
-                         0x7F, 0x41, 0x7F, 0x41, 0x7B, 0x77, 0x41, 0x7F,
-                         0x41, 0x75, 0x75, 0x7B, 0x7F, 0x61, 0x5F, 0x5F, 0x61, 0x7F,
-						 0x7D, 0x41, 0x7D, 0x7F, 0x7F, 0x7F, 0x5B, 0x4D, 0x55, 0x5B, 0x7F
+                         0x7F, 0x41, 0x7F, 0x41, 0x7B, 0x77, 0x41, 0x7F,						// INPUT 2 indicator
+                         0x41, 0x75, 0x75, 0x7B, 0x7F, 0x61, 0x5F, 0x5F,
+						 0x61, 0x7F, 0x7D, 0x41, 0x7D, 0x7F, 0x7F, 0x7F,
+						 0x5B, 0x4D, 0x55, 0x5B, 0x7F
 
 };
 const char f01_16 [] = {
-                         0x05,
-                         0x00, 0x7F, 0x3E, 0x1C, 0x08
+                         0x1D,
+                         0x7F, 0x41, 0x7F, 0x41, 0x7B, 0x77, 0x41, 0x7F,						// INPUT 1 indicator
+						 0x41, 0x75, 0x75, 0x7B, 0x7F, 0x61, 0x5F, 0x5F,
+						 0x61, 0x7F, 0x7D, 0x41, 0x7D, 0x7F, 0x7F, 0x7F,
+						 0x7B, 0x41, 0x7F, 0x7F, 0x7F
 };
 const char f01_17 [] = {
-                         0x05,
-                         0x08, 0x1C, 0x3E, 0x7F, 0x00
+                         0x1D,
+                         0x7F, 0x41, 0x7F, 0x41, 0x7B, 0x77, 0x41, 0x7F,						// INPUT 3 indicator
+						 0x41, 0x75, 0x75, 0x7B, 0x7F, 0x61, 0x5F, 0x5F,
+						 0x61, 0x7F, 0x7D, 0x41, 0x7D, 0x7F, 0x7F, 0x7F,
+						 0x5D, 0x55, 0x69, 0x7F, 0x7F
+
+
 };
 const char f01_18 [] = {
-                         0x05,
-                         0x06, 0x05, 0x00, 0x06, 0x05
+                         0x08,
+                         0xFE, 0x82, 0xFE, 0x82, 0xEA, 0xCA, 0xB6, 0xFE							// IR ON indicator
 };
+
+
 const char f01_19 [] = {
-                         0x05,
-                         0x05, 0x06, 0x00, 0x05, 0x06
+                         0x08,
+                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00							// Clear IR indicator
 };
+
+
 const char f01_20 [] = {
-                         0x05,
-                         0x44, 0x66, 0x77, 0x66, 0x44
+                         0x1D,
+                         0xFE, 0xB6, 0x9A, 0xAA, 0xB6, 0xFE, 0xDE, 0xCE,
+						 0xD6, 0x82, 0xDE, 0xFE, 0x9E, 0xEE, 0xF2, 0xFE,						// 24/48 icon
+						 0xDE, 0xCE, 0xD6, 0x82, 0xDE, 0xFE, 0xD6, 0xAA,
+						 0xAA, 0xD6, 0xFE, 0xFE, 0xFE
 };
 const char f01_21 [] = {
-                         0x05,
-                         0x11, 0x33, 0x77, 0x33, 0x11
+                         0x1D,																	// 24/44 icon
+						 0xFE, 0xB6, 0x9A, 0xAA, 0xB6, 0xFE, 0xDE, 0xCE,
+						 0xD6, 0x82, 0xDE, 0xFE, 0x9E, 0xEE, 0xF2, 0xDE,
+						 0xCE, 0xD6, 0x82, 0xDE, 0xFE, 0xDE, 0xCE, 0xD6,
+						 0x82, 0xDE, 0xFE, 0xFE, 0xFE
 };
 const char f01_22 [] = {
-                         0x05,
-                         0x1C, 0x3E, 0x3E, 0x3E, 0x1C
+                         0x1D,
+                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                         0x00, 0x00, 0x00, 0x00, 0x00
 };
 const char f01_23 [] = {
                          0x05,
@@ -159,6 +178,7 @@ const char f01_31 [] = {
                          0x05,
                          0x02, 0x0E, 0x3E, 0x0E, 0x02
 };
+//=====================================================================================
 const char f01_32 [] = {
                          0x05,
                          0x00, 0x00, 0x00, 0x00, 0x00
@@ -2091,954 +2111,312 @@ const int Font2 [] = {
 };
 
 //----------------------------------------------------------------------
-// Font 3 - NSE-1 from Nokia NSE-1
+// Font 3 - Condensed font from 2001
 //----------------------------------------------------------------------
 
 const char f03_00 [] = {
-                        0x05,
-                        0x55, 0xAA, 0x55, 0xAA, 0x55
+                        0x04,
+                        0x55, 0xAA, 0x55, 0xAA
 };
-const char f03_01 [] = {
-                         0x05,
-                         0x7F, 0x7F, 0x7F, 0x7F, 0x7F
+
+const char f03_97 [] = {
+						0x01,
+						0x00										// 0x61 THIN SPACE
 };
-const char f03_02 [] = {
-                         0x05,
-                         0x7F, 0x41, 0x41, 0x41, 0x7F
-};
-const char f03_32 [] = {
-                         0x05,
-                         0x00, 0x00, 0x00, 0x00, 0x00
-};
-const char f03_33 [] = {
-                         0x02,
-                         0x5F, 0x5F
-};
-const char f03_34 [] = {
+
+const char f03_32 [] = {											// 0x20 ASCII
                          0x03,
-                         0x03, 0x00, 0x03
+                         0x00, 0x00, 0x00
 };
-const char f03_35 [] = {
+const char f03_33 [] = {											// 0x21
+                         0x02,
+                         0x00, 0x5C
+};
+const char f03_34 [] = {											// 0x22
+                         0x03,
+                         0x1C, 0x00, 0x1C
+};
+const char f03_35 [] = {											// 0x23
                          0x05,
-                         0x36, 0x7F, 0x36, 0x7F, 0x36
+                         0x28, 0x7C, 0x28, 0x7C, 0x28
 };
-const char f03_36 [] = {
+const char f03_36 [] = {											// 0x24
                          0x05,
-                         0x4C, 0xFF, 0x5A, 0xFF, 0x32
+                         0x48, 0x54, 0x7F, 0x54, 0x20
 };
-const char f03_37 [] = {
+const char f03_37 [] = {											// 0x25
+                         0x05,
+                         0x4C, 0x2C, 0x10, 0x68, 0x64
+};
+const char f03_38 [] = {											// 0x26
+						0x04,
+						0x28, 0x54, 0x38, 0x50
+};
+const char f03_39 [] = {											// 0x27
+                         0x02,
+                         0x10, 0x0C
+};
+const char f03_40 [] = {											// 0x28
+                         0x02,
+                         0x38, 0x44
+};
+const char f03_41 [] = {											// 0x29
+                         0x02,
+                         0x44, 0x38
+};
+const char f03_42 [] = {											// 0x2A
                          0x06,
-                         0x03, 0x63, 0x38, 0x0E, 0x63, 0x60
+                         0x00, 0x28, 0x10, 0x7C, 0x10, 0x28
 };
-const char f03_38 [] = {
-						0x06,
-						0x3A, 0x7F, 0x4D, 0x7F, 0x32, 0x78
+const char f03_43 [] = {											// 0x2B
+                         0x05,
+                         0x10, 0x10, 0x7C, 0x10, 0x10
 };
-const char f03_39 [] = {
+const char f03_44 [] = {											// 0x2C
+                         0x03,
+                         0x00, 0x03, 0x0C
+};
+const char f03_45 [] = {											// 0x2D
+                         0x04,
+                         0x10, 0x10, 0x10, 0x10
+};
+const char f03_46 [] = {											// 0x2E
                          0x01,
-                         0x03
+                         0x40
 };
-const char f03_40 [] = {
-                         0x03,
-                         0x3C, 0x7E, 0x81
-};
-const char f03_41 [] = {
-                         0x03,
-                         0x81, 0x7E, 0x3C
-};
-const char f03_42 [] = {
+const char f03_47 [] = {											// 0x2F
                          0x05,
-                         0x36, 0x1C, 0x7F, 0x1C, 0x36
+                         0x40, 0x20, 0x10, 0x08, 0x04
 };
-const char f03_43 [] = {
-                         0x05,
-                         0x08, 0x08, 0x3E, 0x08, 0x08
-};
-const char f03_44 [] = {
-                         0x02,
-                         0xC0, 0x60
-};
-const char f03_45 [] = {
+const char f03_48 [] = {											// 0x30
                          0x04,
-                         0x08, 0x08, 0x08, 0x08, 0x08
+                         0x38, 0x54, 0x4C, 0x38
 };
-const char f03_46 [] = {
+const char f03_49 [] = {											// 0x31
                          0x02,
-                         0x60, 0x60
+                         0x08, 0x7C
 };
-const char f03_47 [] = {
+const char f03_50 [] = {											// 0x32
                          0x03,
-                         0x70, 0x1C, 0x07
+                         0x64, 0x54, 0x48
 };
-const char f03_48 [] = {
-                         0x05,
-                         0x3E, 0x7F, 0x41, 0x7F, 0x3E
-};
-const char f03_49 [] = {
+const char f03_51 [] = {											// 0x33
                          0x03,
-                         0x02, 0x7F, 0x7F
+                         0x44, 0x54, 0x2C
 };
-const char f03_50 [] = {
-                         0x05,
-                         0x71, 0x79, 0x49, 0x4F, 0x46
-};
-const char f03_51 [] = {
-                         0x05,
-                         0x41, 0x49, 0x49, 0x7F, 0x36
-};
-const char f03_52 [] = {
-                         0x05,
-                         0x18, 0x14, 0x12, 0x7F, 0x7F
-};
-const char f03_53 [] = {
-                         0x05,
-                         0x47, 0x45, 0x45, 0x7D, 0x38
-};
-const char f03_54 [] = {
-                         0x05,
-                         0x3E, 0x7F, 0x45, 0x7D, 0x38
-};
-const char f03_55 [] = {
-                         0x05,
-                         0x01, 0x79, 0x7D, 0x0F, 0x03
-};
-const char f03_56 [] = {
-                         0x05,
-                         0x36, 0x7F, 0x49, 0x7F, 0x36
-};
-const char f03_57 [] = {
-                         0x05,
-                         0x0E, 0x5F, 0x51, 0x7F, 0x3E
-};
-const char f03_58 [] = {
-                         0x02,
-                         0x6C, 0x6C
-};
-const char f03_59 [] = {
-                         0x02,
-                         0xCC, 0x6C
-};
-const char f03_60 [] = {
+const char f03_52 [] = {											// 0x34
                          0x04,
-                         0x08, 0x1C, 0x36, 0x63
+                         0x20, 0x30, 0x28, 0x7C
 };
-const char f03_61 [] = {
+const char f03_53 [] = {											// 0x35
+                         0x04,
+                         0x4C, 0x54, 0x54, 0x24
+};
+const char f03_54 [] = {											// 0x36
+                         0x04,
+                         0x38, 0x54, 0x54, 0x20
+};
+const char f03_55 [] = {											// 0x37
+                         0x04,
+                         0x04, 0x44, 0x34, 0x0C
+};
+const char f03_56 [] = {											// 0x38
+                         0x04,
+                         0x28, 0x54, 0x54, 0x28
+};
+const char f03_57 [] = {											// 0x39
+                         0x04,
+                         0x08, 0x54, 0x54, 0x38
+};
+const char f03_58 [] = {											// 0x3A
+                         0x02,
+                         0x00, 0x24
+};
+const char f03_59 [] = {											// 0x3B
+                         0x02,
+                         0x40, 0x24
+};
+const char f03_60 [] = {											// 0x3C
+                         0x03,
+                         0x10, 0x28, 0x44
+};
+const char f03_61 [] = {											// 0x3D
                          0x04,
                          0x28, 0x28, 0x28, 0x28
 };
-const char f03_62 [] = {
+const char f03_62 [] = {											// 0x3E
+                         0x03,
+                         0x44, 0x28, 0x10
+};
+const char f03_63 [] = {											// 0x3F
                          0x04,
-                         0x63, 0x36, 0x1C, 0x08
+                         0x08, 0x04, 0x54, 0x08
 };
-const char f03_63 [] = {
-                         0x05,
-                         0x01, 0x59, 0x5D, 0x07, 0x02
+const char f03_64 [] = {											// 0x40
+                         0x04,
+                         0x38, 0x44, 0x5C, 0x18
 };
-const char f03_64 [] = {
-                         0x06,
-                         0x7C, 0xFE, 0xAA, 0xBA, 0xBE, 0x3C
+const char f03_65 [] = {											// 0x41
+                         0x04,
+                         0x78, 0x14, 0x14, 0x78
 };
-const char f03_65 [] = {
-                         0x05,
-                         0x7E, 0x7F, 0x11, 0x7F, 0x7E
+const char f03_66 [] = {											// 0x42
+                         0x04,
+                         0x7C, 0x54, 0x54, 0x28
 };
-const char f03_66 [] = {
-                         0x05,
-                         0x7F, 0x7F, 0x45, 0x7F, 0x3A
-};
-const char f03_67 [] = {
-                         0x05,
-                         0x3E, 0x7F, 0x41, 0x41, 0x41
+const char f03_67 [] = {											// 0x43
+                         0x04,
+                         0x38, 0x44, 0x44, 0x20
 };
 const char f03_68 [] = {
-                         0x05,
-                         0x7F, 0x7F, 0x41, 0x7F, 0x3E
+                         0x04,										// 0x44
+                         0x7C, 0x44, 0x44, 0x38
 };
-const char f03_69 [] = {
-                         0x05,
-                         0x7F, 0x7F, 0x45, 0x45, 0x41
-};
-const char f03_70 [] = {
-                         0x05,
-                         0x7F, 0x7F, 0x05, 0x05, 0x01
-};
-const char f03_71 [] = {
-                         0x05,
-                         0x3E, 0x7F, 0x41, 0x79, 0x78
-};
-const char f03_72 [] = {
-                         0x05,
-                         0x7F, 0x7F, 0x04, 0x7F, 0x7F
-};
-const char f03_73 [] = {
-                         0x02,
-                         0x7F, 0x7F
-};
-const char f03_74 [] = {
+const char f03_69 [] = {											// 0x45
                          0x04,
-                         0x40, 0x40, 0x7F, 0x3F
+                         0x7C, 0x54, 0x54, 0x44
 };
-const char f03_75 [] = {
-                         0x06,
-                         0x7F, 0x7F, 0x1C, 0x36, 0x63, 0x41
-};
-const char f03_76 [] = {
+const char f03_70 [] = {											// 0x46
                          0x04,
-                         0x7F, 0x7F, 0x40, 0x40
+                         0x7C, 0x14, 0x14, 0x04
 };
-const char f03_77 [] = {
-                         0x07,
-                         0x7F, 0x7E, 0x0C, 0x18, 0x0C, 0x7E, 0x7F
-};
-const char f03_78 [] = {
-                         0x06,
-                         0x7F, 0x7E, 0x0C, 0x18, 0x3F, 0x7F
-};
-const char f03_79 [] = {
-                         0x06,
-                         0x3E, 0x7F, 0x41, 0x41, 0x7F, 0x3E
-};
-const char f03_80 [] = {
-                         0x05,
-                         0x7F, 0x7F, 0x11, 0x1F, 0x0E
-};
-const char f03_81 [] = {
-                         0x06,
-                         0x3E, 0x7F, 0x41, 0x61, 0xFF, 0xBE
-};
-const char f03_82 [] = {
-                         0x05,
-                         0x7F, 0x7F, 0x11, 0x7F, 0x4E
-};
-const char f03_83 [] = {
+const char f03_71 [] = {											// 0x47
                          0x04,
-                         0x46, 0x4F, 0x79, 0x31
+                         0x38, 0x44, 0x54, 0x30
 };
-const char f03_84 [] = {
-                         0x06,
-                         0x01, 0x01, 0x7F, 0x7F, 0x01, 0x01
+const char f03_72 [] = {											// 0x48
+                         0x04,
+                         0x7C, 0x10, 0x10, 0x7C
 };
-const char f03_85 [] = {
+const char f03_73 [] = {											// 0x49
+                         0x03,
+                         0x00, 0x7C, 0x00
+};
+const char f03_74 [] = {											// 0x4A
+                         0x03,
+                         0x00, 0x40, 0x3C
+};
+const char f03_75 [] = {											// 0x4B
+                         0x04,
+                         0x7C, 0x10, 0x28, 0x44
+};
+const char f03_76 [] = {											// 0x4C
+                         0x03,
+                         0x7C, 0x40, 0x40
+};
+const char f03_77 [] = {											// 0x4D
                          0x05,
-                         0x3F, 0x7F, 0x40, 0x7F, 0x3F
+                         0x7C, 0x08, 0x10, 0x08, 0x7C
 };
-const char f03_86 [] = {
-                         0x06,
-                         0x07, 0x1F, 0x78, 0x78, 0x1F, 0x07
+const char f03_78 [] = {											// 0x4E
+                         0x04,
+                         0x7C, 0x08, 0x10, 0x7C
 };
-const char f03_87 [] = {
-                         0x07,
-                         0x0F, 0x7F, 0x78, 0x3C, 0x78, 0x7F, 0x1F
+const char f03_79 [] = {											// 0x4F
+                         0x04,
+                         0x38, 0x44, 0x44, 0x38
 };
-const char f03_88 [] = {
-                         0x06,
-                         0x63, 0x77, 0x1C, 0x1C, 0x77, 0x63
+const char f03_80 [] = {											// 0x50
+                         0x04,
+                         0x7C, 0x14, 0x14, 0x08
 };
-const char f03_89 [] = {
-                         0x06,
-                         0x03, 0x07, 0x7C, 0x7C, 0x07, 0x03
+const char f03_81 [] = {											// 0x51
+                         0x04,
+                         0x38, 0x44, 0x64, 0x78
 };
-const char f03_90 [] = {
+const char f03_82 [] = {											// 0x52
+                         0x04,
+                         0x7C, 0x14, 0x34, 0x48
+};
+const char f03_83 [] = {											// 0x53
+                         0x04,
+                         0x48, 0x54, 0x54, 0x24
+};
+const char f03_84 [] = {											// 0x54
+                         0x03,
+                         0x04, 0x7C, 0x04
+};
+const char f03_85 [] = {											// 0x55
+                         0x04,
+                         0x3C, 0x40, 0x40, 0x3C
+};
+const char f03_86 [] = {											// 0x56
                          0x05,
-                         0x71, 0x79, 0x5D, 0x4F, 0x47
+                         0x0C, 0x30, 0x40, 0x30, 0x0C
 };
-const char f03_91 [] = {
+const char f03_87 [] = {											// 0x57
                          0x05,
-                         0x00, 0x7F, 0x41, 0x41, 0x00
+                         0x3C, 0x40, 0x20, 0x40, 0x3C
 };
-const char f03_92 [] = {
-                         0x05,
-                         0x02, 0x04, 0x08, 0x10, 0x20
-};
-const char f03_93 [] = {
-                         0x05,
-                         0x00, 0x41, 0x41, 0x7F, 0x00
-};
-const char f03_94 [] = {
-                         0x05,
-                         0x04, 0x02, 0x01, 0x02, 0x04
-};
-const char f03_95 [] = {
-                         0x05,
-                         0x40, 0x40, 0x40, 0x40, 0x40
-};
-const char f03_96 [] = {
-                         0x05,
-                         0x00, 0x01, 0x02, 0x04, 0x00
-};
-const char f03_97 [] = {
-                         0x05,
-                         0x20, 0x54, 0x54, 0x54, 0x78
-};
-const char f03_98 [] = {
-                         0x05,
-                         0x7F, 0x48, 0x44, 0x44, 0x38
-};
-const char f03_99 [] = {
-                         0x05,
-                         0x38, 0x44, 0x44, 0x44, 0x20
-};
-const char f03_100 [] = {
-                         0x05,
-                         0x38, 0x44, 0x44, 0x48, 0x7F
-};
-const char f03_101 [] = {
-                         0x05,
-                         0x38, 0x54, 0x54, 0x54, 0x18
-};
-const char f03_102 [] = {
-                         0x05,
-                         0x08, 0x7E, 0x09, 0x09, 0x02
-};
-const char f03_103 [] = {
-                         0x05,
-                         0x08, 0x54, 0x54, 0x54, 0x3C
-};
-const char f03_104 [] = {
-                         0x05,
-                         0x7F, 0x08, 0x04, 0x04, 0x78
-};
-const char f03_105 [] = {
-                         0x05,
-                         0x00, 0x48, 0x7D, 0x40, 0x00
-};
-const char f03_106 [] = {
-                         0x05,
-                         0x20, 0x40, 0x44, 0x3D, 0x00
-};
-const char f03_107 [] = {
-                         0x05,
-                         0x7F, 0x10, 0x28, 0x44, 0x00
-};
-const char f03_108 [] = {
-                         0x05,
-                         0x00, 0x41, 0x7F, 0x40, 0x00
-};
-const char f03_109 [] = {
-                         0x05,
-                         0x7C, 0x04, 0x78, 0x04, 0x78
-};
-const char f03_110 [] = {
-                         0x05,
-                         0x7C, 0x08, 0x04, 0x04, 0x78
-};
-const char f03_111 [] = {
-                         0x05,
-                         0x38, 0x44, 0x44, 0x44, 0x38
-};
-const char f03_112 [] = {
-                         0x05,
-                         0x7C, 0x14, 0x14, 0x14, 0x08
-};
-const char f03_113 [] = {
-                         0x05,
-                         0x08, 0x14, 0x14, 0x18, 0x7C
-};
-const char f03_114 [] = {
-                         0x05,
-                         0x7C, 0x08, 0x04, 0x04, 0x08
-};
-const char f03_115 [] = {
-                         0x05,
-                         0x48, 0x54, 0x54, 0x54, 0x20,
-};
-const char f03_116 [] = {
-                         0x05,
-                         0x04, 0x3F, 0x44, 0x40, 0x20
-};
-const char f03_117 [] = {
-                         0x05,
-                         0x3C, 0x40, 0x40, 0x20, 0x7C
-};
-const char f03_118 [] = {
-                         0x05,
-                         0x1C, 0x20, 0x40, 0x20, 0x1C
-};
-const char f03_119 [] = {
-                         0x05,
-                         0x3C, 0x40, 0x30, 0x40, 0x3C
-};
-
-const char f03_120 [] = {
+const char f03_88 [] = {											// 0x58
                          0x05,
                          0x44, 0x28, 0x10, 0x28, 0x44
 };
-const char f03_121 [] = {
+const char f03_89 [] = {											// 0x59
                          0x05,
-                         0x0C, 0x50, 0x50, 0x50, 0x3C
+                         0x0C, 0x10, 0x70, 0x10, 0x0C
 };
-const char f03_122 [] = {
-                         0x05,
-                         0x44, 0x64, 0x54, 0x4C, 0x44
-};
-const char f03_123 [] = {
-                         0x05,
-                         0x00, 0x08, 0x36, 0x41, 0x00
-};
-const char f03_124 [] = {
-                         0x05,
-                         0x00, 0x00, 0x7F, 0x00, 0x00
-};
-const char f03_125 [] = {
-                         0x05,
-                         0x00, 0x41, 0x36, 0x08, 0x00
-};
-const char f03_126 [] = {
-                         0x05,
-                         0x10, 0x08, 0x08, 0x10, 0x08
-};
-const char f03_127 [] = {
-                         0x05,
-                         0x3C, 0x22, 0x21, 0x22, 0x3C
-};
-const char f03_128 [] = {
-                         0x05,
-                         0x7F, 0x49, 0x49, 0x49, 0x33
-};
-const char f03_129 [] = {
-                         0x05,
-                         0x70, 0x29, 0x27, 0x21, 0x7F
-};
-const char f03_130 [] = {
-                         0x05,
-                         0x77, 0x08, 0x7F, 0x08, 0x77
-};
-const char f03_131 [] = {
-                         0x05,
-                         0x41, 0x41, 0x49, 0x49, 0x36
-};
-const char f03_132 [] = {
-                         0x05,
-                         0x7F, 0x10, 0x08, 0x04, 0x7F
-};
-const char f03_133 [] = {
-                         0x05,
-                         0x7C, 0x21, 0x12, 0x09, 0x7C
-};
-const char f03_134 [] = {
-                         0x05,
-                         0x20, 0x41, 0x3F, 0x01, 0x7F
-};
-const char f03_135 [] = {
-                         0x05,
-                         0x7F, 0x01, 0x01, 0x01, 0x7F
-};
-const char f03_136 [] = {
-                         0x05,
-                         0x47, 0x28, 0x10, 0x08, 0x07
-};
-const char f03_137 [] = {
-                         0x05,
-                         0x3F, 0x20, 0x20, 0x20, 0x7F
-};
-const char f03_138 [] = {
-                         0x05,
-                         0x07, 0x08, 0x08, 0x08, 0x7F
-};
-const char f03_139 [] = {
-                         0x05,
-                         0x7E, 0x40, 0x7E, 0x40, 0x7E
-};
-const char f03_140 [] = {
-                         0x05,
-                         0x3F, 0x20, 0x3F, 0x20, 0x7F
-};
-const char f03_141 [] = {
-                         0x05,
-                         0x01, 0x7F, 0x48, 0x48, 0x30
-};
-const char f03_142 [] = {
-                         0x05,
-                         0x7F, 0x48, 0x30, 0x00, 0x7F
-};
-const char f03_143 [] = {
-                         0x05,
-                         0x22, 0x49, 0x45, 0x49, 0x3E
-};
-const char f03_144 [] = {
-                         0x05,
-                         0x38, 0x44, 0x48, 0x30, 0x4C
-};
-const char f03_145 [] = {
-                         0x05,
-                         0x60, 0x60, 0x7F, 0x02, 0x0C
-};
-const char f03_146 [] = {
-                         0x05,
-                         0x7F, 0x01, 0x01, 0x01, 0x03
-};
-const char f03_147 [] = {
-                         0x05,
-                         0x44, 0x3C, 0x04, 0x7C, 0x44
-};
-const char f03_148 [] = {
-                         0x05,
-                         0x63, 0x55, 0x49, 0x41, 0x41
-};
-const char f03_149 [] = {
-                         0x05,
-                         0x38, 0x44, 0x44, 0x3C, 0x04
-};
-const char f03_150 [] = {
-                         0x05,
-                         0x30, 0x30, 0x1F, 0x65, 0x7F
-};
-const char f03_151 [] = {
-                         0x05,
-                         0x08, 0x04, 0x3C, 0x44, 0x02
-};
-const char f03_152 [] = {
-                         0x05,
-                         0x10, 0x1E, 0x3F, 0x1E, 0x10
-};
-const char f03_153 [] = {
-                         0x05,
-                         0x3E, 0x49, 0x49, 0x49, 0x3E
-};
-const char f03_154 [] = {
-                         0x05,
-                         0x5C, 0x62, 0x02, 0x62, 0x5C
-};
-const char f03_155 [] = {
-                         0x05,
-                         0x30, 0x4A, 0x45, 0x49, 0x32
-};
-const char f03_156 [] = {
-                         0x05,
-                         0x18, 0x14, 0x08, 0x14, 0x0C
-};
-const char f03_157 [] = {
-                         0x05,
-                         0x1C, 0x3E, 0x7C, 0x3E, 0x1C
-};
-const char f03_158 [] = {
-                         0x05,
-                         0x28, 0x54, 0x54, 0x44, 0x20
-};
-const char f03_159 [] = {
-                         0x05,
-                         0x7E, 0x01, 0x01, 0x01, 0x7E
-};
-const char f03_160 [] = {
-                         0x05,
-                         0x7F, 0x7F, 0x00, 0x7F, 0x7F
-};
-const char f03_161 [] = {
-                         0x05,
-                         0x00, 0x00, 0x79, 0x00, 0x00
-};
-const char f03_162 [] = {
-                         0x05,
-                         0x1C, 0x22, 0x7F, 0x22, 0x10
-};
-const char f03_163 [] = {
-                         0x05,
-                         0x48, 0x3E, 0x49, 0x41, 0x20
-};
-const char f03_164 [] = {
-                         0x05,
-                         0x22, 0x1C, 0x14, 0x1C, 0x22
-};
-const char f03_165 [] = {
-                         0x05,
-                         0x15, 0x16, 0x7C, 0x16, 0x15
-};
-const char f03_166 [] = {
-                         0x05,
-                         0x00, 0x00, 0x77, 0x00, 0x00
-};
-const char f03_167 [] = {
-                         0x05,
-                         0x20, 0x4A, 0x55, 0x29, 0x02
-};
-const char f03_168 [] = {
-                         0x05,
-                         0x28, 0x48, 0x3E, 0x09, 0x0A
-};
-const char f03_169 [] = {
-                         0x05,
-                         0x7F, 0x41, 0x5D, 0x49, 0x7F
-};
-const char f03_170 [] = {
-                         0x05,
-                         0x48, 0x55, 0x55, 0x55, 0x5E
-};
-const char f03_171 [] = {
-                         0x05,
-                         0x08, 0x14, 0x2A, 0x14, 0x22
-};
-const char f03_172 [] = {
-                         0x05,
-                         0x7F, 0x08, 0x3E, 0x41, 0x3E
-};
-const char f03_173 [] = {
-                         0x05,
-                         0x46, 0x29, 0x19, 0x09, 0x7F
-};
-const char f03_174 [] = {
-                         0x05,
-                         0x7F, 0x41, 0x65, 0x51, 0x7F
-};
-const char f03_175 [] = {
-                         0x05,
-                         0x00, 0x06, 0x05, 0x00, 0x00
-};
-const char f03_176 [] = {
-                         0x05,
-                         0x0E, 0x11, 0x11, 0x0E, 0x00
-};
-const char f03_177 [] = {
-                         0x05,
-                         0x44, 0x44, 0x5F, 0x44, 0x44
-};
-const char f03_178 [] = {
-                         0x05,
-                         0x12, 0x19, 0x15, 0x12, 0x00
-};
-const char f03_179 [] = {
-                         0x05,
-                         0x11, 0x15, 0x15, 0x0A, 0x00
-};
-const char f03_180 [] = {
-                         0x05,
-                         0x7F, 0x05, 0x15, 0x7A, 0x50
-};
-const char f03_181 [] = {
-                         0x05,
-                         0x7F, 0x10, 0x10, 0x08, 0x1F
-};
-const char f03_182 [] = {
-                         0x05,
-                         0x06, 0x09, 0x09, 0x7F, 0x7F
-};
-const char f03_183 [] = {
-                         0x05,
-                         0x00, 0x18, 0x18, 0x00, 0x00
-};
-const char f03_184 [] = {
-                         0x05,
-                         0x38, 0x44, 0x30, 0x44, 0x38
-};
-const char f03_185 [] = {
-                         0x05,
-                         0x12, 0x1F, 0x10, 0x00, 0x00
-};
-const char f03_186 [] = {
-                         0x05,
-                         0x4E, 0x51, 0x51, 0x51, 0x4E
+const char f03_90 [] = {											// 0x5A
+                         0x04,
+                         0x44, 0x64, 0x54, 0x4C
 };
-const char f03_187 [] = {
-                         0x05,
-                         0x22, 0x14, 0x2A, 0x14, 0x08
-};
-const char f03_188 [] = {
-                         0x05,
-                         0x17, 0x68, 0x54, 0xFA, 0x41
-};
-const char f03_189 [] = {
-                         0x05,
-                         0x17, 0x08, 0x94, 0xCA, 0xB1
-};
-const char f03_190 [] = {
-                         0x05,
-                         0x15, 0x1F, 0x60, 0x50, 0xF8
-};
-const char f03_191 [] = {
-                         0x05,
-                         0x30, 0x48, 0x45, 0x40, 0x20
-};
-const char f03_192 [] = {
-                         0x05,
-                         0x70, 0x29, 0x26, 0x28, 0x70
-};
-const char f03_193 [] = {
-                         0x05,
-                         0x70, 0x28, 0x26, 0x29, 0x70
-};
-const char f03_194 [] = {
-                         0x05,
-                         0x70, 0x2A, 0x29, 0x2A, 0x70
-};
-const char f03_195 [] = {
-                         0x05,
-                         0x72, 0x29, 0x29, 0x2A, 0x71
-};
-const char f03_196 [] = {
-                         0x05,
-                         0x70, 0x29, 0x24, 0x29, 0x70
-};
-const char f03_197 [] = {
-                         0x05,
-                         0x70, 0x2A, 0x2D, 0x2A, 0x70
-};
-const char f03_198 [] = {
-                         0x05,
-                         0x7C, 0x12, 0x7F, 0x49, 0x49
-};
-const char f03_199 [] = {
-                         0x05,
-                         0x0E, 0x51, 0x51, 0x71, 0x0A
-};
-const char f03_200 [] = {
-                         0x05,
-                         0x7C, 0x55, 0x56, 0x54, 0x44
-};
-const char f03_201 [] = {
-                         0x05,
-                         0x7C, 0x54, 0x56, 0x55, 0x44
-};
-const char f03_202 [] = {
-                         0x05,
-                         0x7C, 0x56, 0x55, 0x56, 0x44
-};
-const char f03_203 [] = {
-                         0x05,
-                         0x7C, 0x55, 0x54, 0x55, 0x44
-};
-const char f03_204 [] = {
-                         0x05,
-                         0x00, 0x49, 0x7A, 0x48, 0x00
-};
-const char f03_205 [] = {
-                         0x05,
-                         0x00, 0x48, 0x7A, 0x49, 0x00
-};
-const char f03_206 [] = {
-                         0x05,
-                         0x00, 0x4A, 0x79, 0x4A, 0x00
-};
-const char f03_207 [] = {
-                         0x05,
-                         0x00, 0x45, 0x7C, 0x45, 0x00
-};
-const char f03_208 [] = {
-                         0x05,
-                         0x08, 0x7F, 0x49, 0x41, 0x3E
-};
-const char f03_209 [] = {
-                         0x05,
-                         0x7A, 0x09, 0x11, 0x22, 0x79
-};
-const char f03_210 [] = {
-                         0x05,
-                         0x38, 0x45, 0x46, 0x44, 0x38
-};
-const char f03_211 [] = {
-                         0x05,
-                         0x38, 0x44, 0x46, 0x45, 0x38
-};
-const char f03_212 [] = {
-                         0x05,
-                         0x38, 0x46, 0x45, 0x46, 0x38
-};
-const char f03_213 [] = {
-                         0x05,
-                         0x72, 0x89, 0x89, 0x8A, 0x71
-};
-const char f03_214 [] = {
-                         0x05,
-                         0x38, 0x45, 0x44, 0x45, 0x38
-};
-const char f03_215 [] = {
-                         0x05,
-                         0x22, 0x14, 0x08, 0x14, 0x22
-};
-const char f03_216 [] = {
-                         0x05,
-                         0x08, 0x55, 0x7F, 0x55, 0x08
-};
-const char f03_217 [] = {
-                         0x05,
-                         0x3C, 0x41, 0x42, 0x40, 0x3C
-};
-const char f03_218 [] = {
-                         0x05,
-                         0x3C, 0x40, 0x42, 0x41, 0x3C
-};
-const char f03_219 [] = {
-                         0x05,
-                         0x38, 0x42, 0x41, 0x42, 0x38
-};
-const char f03_220 [] = {
-                         0x05,
-                         0x3C, 0x41, 0x40, 0x41, 0x3C
-};
-const char f03_221 [] = {
-                         0x05,
-                         0x04, 0x08, 0x72, 0x09, 0x04
-};
-const char f03_222 [] = {
-                         0x05,
-                         0x41, 0x7F, 0x52, 0x12, 0x0C
-};
-const char f03_223 [] = {
-                         0x05,
-                         0x40, 0x3E, 0x49, 0x49, 0x36
-};
-const char f03_224 [] = {
-                         0x05,
-                         0x40, 0xA9, 0xAA, 0xA8, 0xF0
-};
-const char f03_225 [] = {
-                         0x05,
-                         0x20, 0x54, 0x56, 0x55, 0x78
-};
-const char f03_226 [] = {
-                         0x05,
-                         0x20, 0x56, 0x55, 0x56, 0x78
-};
-const char f03_227 [] = {
-                         0x05,
-                         0x42, 0xA9, 0xA9, 0xAA, 0xF1
-};
-const char f03_228 [] = {
-                         0x05,
-                         0x20, 0x55, 0x54, 0x55, 0x78
-};
-const char f03_229 [] = {
-                         0x05,
-                         0x40, 0xAA, 0xAD, 0xAA, 0xF0
-};
-const char f03_230 [] = {
-                         0x05,
-                         0x32, 0x4A, 0x3C, 0x4A, 0x2C
-};
-const char f03_231 [] = {
-                         0x05,
-                         0x0C, 0x52, 0x72, 0x12, 0x08
-};
-const char f03_232 [] = {
-                         0x05,
-                         0x38, 0x55, 0x56, 0x54, 0x18
-};
-const char f03_233 [] = {
-                         0x05,
-                         0x38, 0x54, 0x56, 0x55, 0x18
-};
-const char f03_234 [] = {
-                         0x05,
-                         0x38, 0x56, 0x55, 0x56, 0x18
-};
-const char f03_235 [] = {
-                         0x05,
-                         0x38, 0x55, 0x54, 0x55, 0x18
-};
-const char f03_236 [] = {
-                         0x05,
-                         0x00, 0x51, 0x7A, 0x40, 0x00
-};
-const char f03_237 [] = {
-                         0x05,
-                         0x00, 0x50, 0x7A, 0x41, 0x00
-};
-const char f03_238 [] = {
-                         0x05,
-                         0x00, 0x92, 0xF9, 0x82, 0x00
-};
-const char f03_239 [] = {
-                         0x05,
-                         0x00, 0x49, 0x7C, 0x41, 0x00
-};
-const char f03_240 [] = {
-                         0x05,
-                         0x25, 0x52, 0x55, 0x58, 0x30
-};
-const char f03_241 [] = {
-                         0x05,
-                         0x7A, 0x11, 0x09, 0x0A, 0x71
-};
-const char f03_242 [] = {
-                         0x05,
-                         0x38, 0x45, 0x46, 0x44, 0x38
-};
-const char f03_243 [] = {
-                         0x05,
-                         0x38, 0x44, 0x46, 0x45, 0x38
-};
-const char f03_244 [] = {
-                         0x05,
-                         0x30, 0x4A, 0x49, 0x4A, 0x30
-};
-const char f03_245 [] = {
-                         0x05,
-                         0x32, 0x49, 0x49, 0x4A, 0x31
-};
-const char f03_246 [] = {
-                         0x05,
-                         0x38, 0x45, 0x44, 0x45, 0x38
-};
-const char f03_247 [] = {
-                         0x05,
-                         0x08, 0x08, 0x2A, 0x08, 0x08
-};
-const char f03_248 [] = {
-                         0x05,
-                         0x08, 0x54, 0x3E, 0x15, 0x08
-};
-const char f03_249 [] = {
-                         0x05,
-                         0x3C, 0x41, 0x42, 0x20, 0x7C
+const char f03_91 [] = {											// 0x5B
+                         0x02,
+                         0x7C, 0x44
 };
-const char f03_250 [] = {
+const char f03_92 [] = {											// 0x5C
                          0x05,
-                         0x38, 0x40, 0x42, 0x21, 0x78
+                         0x04, 0x08, 0x10, 0x20, 0x40
 };
-const char f03_251 [] = {
-                         0x05,
-                         0x38, 0x42, 0x41, 0x22, 0x78
+const char f03_93 [] = {											// 0x5D
+                         0x02,
+                         0x44, 0x7C
 };
-const char f03_252 [] = {
+const char f03_94 [] = {											// 0x5E
                          0x05,
-                         0x3C, 0x41, 0x40, 0x21, 0x7C
+                         0x20, 0x10, 0x08, 0x10, 0x20
 };
-const char f03_253 [] = {
-                         0x06,
-                         0x1E, 0x3F, 0x3F, 0x3F, 0x3F, 0x1E
-};
-const char f03_254 [] = {
-                         0x06,
-                         0x1E, 0x21, 0x21, 0x21, 0x21, 0x1E
-};
-const char f03_255 [] = {
-                         0x05,
-                         0x0C, 0x51, 0x50, 0x51, 0x3C
+const char f03_95 [] = {											// 0x5F
+                         0x04,
+                         0x80, 0x80, 0x80, 0x80
 };
+
 
 /* Font indexing table */
 const int Font3 [] = {
           (int) &f03_00,
-          (int) &f03_01,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_02,
-          (int) &f03_32,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,				// 0x1F
+          (int) &f03_32,				// 0x20
           (int) &f03_33,
           (int) &f03_34,
           (int) &f03_35,
@@ -3102,1238 +2480,168 @@ const int Font3 [] = {
           (int) &f03_93,
           (int) &f03_94,
           (int) &f03_95,
-          (int) &f03_96,
-          (int) &f03_97,
-          (int) &f03_98,
-          (int) &f03_99,
-          (int) &f03_100,
-          (int) &f03_101,
-          (int) &f03_102,
-          (int) &f03_103,
-          (int) &f03_104,
-          (int) &f03_105,
-          (int) &f03_106,
-          (int) &f03_107,
-          (int) &f03_108,
-          (int) &f03_109,
-          (int) &f03_110,
-          (int) &f03_111,
-          (int) &f03_112,
-          (int) &f03_113,
-          (int) &f03_114,
-          (int) &f03_115,
-          (int) &f03_116,
-          (int) &f03_117,
-          (int) &f03_118,
-          (int) &f03_119,
-          (int) &f03_120,
-          (int) &f03_121,
-          (int) &f03_122,
-          (int) &f03_123,
-          (int) &f03_124,
-          (int) &f03_125,
-          (int) &f03_126,
-          (int) &f03_127,
-          (int) &f03_128,
-          (int) &f03_129,
-          (int) &f03_130,
-          (int) &f03_131,
-          (int) &f03_132,
-          (int) &f03_133,
-          (int) &f03_134,
-          (int) &f03_135,
-          (int) &f03_136,
-          (int) &f03_137,
-          (int) &f03_138,
-          (int) &f03_139,
-          (int) &f03_140,
-          (int) &f03_141,
-          (int) &f03_142,
-          (int) &f03_143,
-          (int) &f03_144,
-          (int) &f03_145,
-          (int) &f03_146,
-          (int) &f03_147,
-          (int) &f03_148,
-          (int) &f03_149,
-          (int) &f03_150,
-          (int) &f03_151,
-          (int) &f03_152,
-          (int) &f03_153,
-          (int) &f03_154,
-          (int) &f03_155,
-          (int) &f03_156,
-          (int) &f03_157,
-          (int) &f03_158,
-          (int) &f03_159,
-          (int) &f03_160,
-          (int) &f03_161,
-          (int) &f03_162,
-          (int) &f03_163,
-          (int) &f03_164,
-          (int) &f03_165,
-          (int) &f03_166,
-          (int) &f03_167,
-          (int) &f03_168,
-          (int) &f03_169,
-          (int) &f03_170,
-          (int) &f03_171,
-          (int) &f03_172,
-          (int) &f03_173,
-          (int) &f03_174,
-          (int) &f03_175,
-          (int) &f03_176,
-          (int) &f03_177,
-          (int) &f03_178,
-          (int) &f03_179,
-          (int) &f03_180,
-          (int) &f03_181,
-          (int) &f03_182,
-          (int) &f03_183,
-          (int) &f03_184,
-          (int) &f03_185,
-          (int) &f03_186,
-          (int) &f03_187,
-          (int) &f03_188,
-          (int) &f03_189,
-          (int) &f03_190,
-          (int) &f03_191,
-          (int) &f03_192,
-          (int) &f03_193,
-          (int) &f03_194,
-          (int) &f03_195,
-          (int) &f03_196,
-          (int) &f03_197,
-          (int) &f03_198,
-          (int) &f03_199,
-          (int) &f03_200,
-          (int) &f03_201,
-          (int) &f03_202,
-          (int) &f03_203,
-          (int) &f03_204,
-          (int) &f03_205,
-          (int) &f03_206,
-          (int) &f03_207,
-          (int) &f03_208,
-          (int) &f03_209,
-          (int) &f03_210,
-          (int) &f03_211,
-          (int) &f03_212,
-          (int) &f03_213,
-          (int) &f03_214,
-          (int) &f03_215,
-          (int) &f03_216,
-          (int) &f03_217,
-          (int) &f03_218,
-          (int) &f03_219,
-          (int) &f03_220,
-          (int) &f03_221,
-          (int) &f03_222,
-          (int) &f03_223,
-          (int) &f03_224,
-          (int) &f03_225,
-          (int) &f03_226,
-          (int) &f03_227,
-          (int) &f03_228,
-          (int) &f03_229,
-          (int) &f03_230,
-          (int) &f03_231,
-          (int) &f03_232,
-          (int) &f03_233,
-          (int) &f03_234,
-          (int) &f03_235,
-          (int) &f03_236,
-          (int) &f03_237,
-          (int) &f03_238,
-          (int) &f03_239,
-          (int) &f03_240,
-          (int) &f03_241,
-          (int) &f03_242,
-          (int) &f03_243,
-          (int) &f03_244,
-          (int) &f03_245,
-          (int) &f03_246,
-          (int) &f03_247,
-          (int) &f03_248,
-          (int) &f03_249,
-          (int) &f03_250,
-          (int) &f03_251,
-          (int) &f03_252,
-          (int) &f03_253,
-          (int) &f03_254,
-          (int) &f03_255
+          (int) &f03_00,
+          (int) &f03_97,	// a = THIN SPACE
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00,
+          (int) &f03_00
 
 };
 
-//--------------------------------------------------------------------------
-// Font 4: Original Trebuchet MS rendition done in March/April 2004
-//--------------------------------------------------------------------------
 
-const char f04_32 [] = {
-                               0x44, 0x00, 0x00, 0x00, 0x00,
-                               000, 0x00, 0x00, 0x00
-};
-
-
-const char f04_33 [] =  {
-                               0x42, 0x7F, 0x7F,
-                               0x03, 0x03
-};
-
-const char f04_34 [] = {       0x45, 0x07, 0x07, 0x00, 0x07, 0x07,
-                               0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-
-const char f04_35 [] = {
-                               0x47, 0x40, 0xE4, 0x5C, 0x4B, 0xE8, 0x5C, 0x0B,
-                               0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-};
-
-const char f04_36 [] =  {
-                               0x46, 0x1C, 0x3E, 0x73, 0xE2, 0xC2, 0x84,
-                               0x02, 0x04, 0x0C, 0x04, 0x07, 0x03
-};
-
-const char f04_37 [] =  {
-                               0x49, 0x0E, 0x11, 0x81, 0xCE, 0x30, 0xCC, 0x26, 0x21, 0xC0,
-                               0x00, 0x02, 0x01, 0x00, 0x00, 0x01, 0x02, 0x02, 0x01
-};
-
-const char f04_38 [] =  {
-                               0x48, 0xEE, 0xFF, 0x11, 0x11, 0xF9, 0xFE, 0x10, 0x10,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x03, 0x02, 0x02
-};
-
-const char f04_39 [] = {
-                               0x42, 0x07, 0x07,
-                               0x00, 0x00
-};
-
-const char f04_40 [] = {
-                               0x43, 0xF8, 0xFE, 0x03,
-                               0x03, 0x0F, 0x18
-};
-
-const char f04_41 [] = {
-                               0x43, 0x03, 0xFE, 0xFC,
-                               0x18, 0x0F, 0x03
-};
-
-const char f04_42 [] =  {
-                               0x46, 0x02, 0x1E, 0x0F, 0x0F, 0x1E, 0x02,
-                               0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-const char f04_43 [] = {
-                               0x45, 0x20, 0x20, 0xF8, 0x20, 0x20,
-                               0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-const char f04_44 [] = {       0x42, 0x00, 0x00,
-                               0x0B, 0x07
-};
-
-const char f04_45 [] =  {
-                               0x43, 0x40, 0x40, 0x40,
-                               0x00, 0x00, 0x00
-};
-
-const char f04_46 [] =  {
-                               0x42, 0x00, 0x00,
-                               0x03, 0x03
-};
-
-const char f04_47 [] = {       0x45, 0x00, 0xE0, 0xFC, 0x1F, 0x01,
-                               0x03, 0x03, 0x00, 0x00, 0x00
-};
-
-const char f04_48 [] = {
-                               0x47, 0xFC, 0xFE, 0x03, 0x01, 0x03, 0xFE, 0xFC,
-                               0x00, 0x01, 0x03, 0x02, 0x03, 0x01, 0x00
-};
-
-const char f04_49 [] = {
-                               0x44, 0x0C, 0x06, 0xFF, 0xFF,
-                               0x00, 0x00, 0x03, 0x03
-};
-
-const char f04_50 [] = {
-                               0x46, 0x02, 0x83, 0xC1, 0xF1, 0x3F, 0x1E,
-                               0x02, 0x03, 0x03, 0x02, 0x02, 0x02
-};
-
-const char f04_51 [] = {
-                               0x46, 0x02, 0x03, 0x11, 0x31, 0xFF, 0xEE,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_52 [] = {
-                               0x47, 0x60, 0x70, 0x58, 0x4C, 0xFE, 0xFF, 0x40,
-                               0x00, 0x00, 0x00, 0x00, 0x03, 0x03, 0x00
-};
-
-const char f04_53 [] = {
-                               0x46, 0x1F, 0x0F, 0x09, 0x09, 0xF9, 0xF1,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_54 [] = {
-                               0x46, 0xF0, 0xFC, 0x1E, 0x13, 0xF1, 0xE0,
-                               0x00, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_55 [] = {
-                               0x46, 0x01, 0x01, 0xE1, 0xFD, 0x1F, 0x03,
-                               0x00, 0x03, 0x03, 0x00, 0x00, 0x00
-};
-
-const char f04_56 [] = {
-                               0x46, 0xEE, 0xFF, 0x11, 0x11, 0xFF, 0xEE,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_57 [] = {
-                               0x46, 0x1E, 0x3F, 0x21, 0xE1, 0xFF, 0x3C,
-                               0x00, 0x02, 0x03, 0x01, 0x00, 0x00
-};
-
-const char f04_58 [] = {       0x42, 0x18, 0x18,
-                               0x03, 0x03
-};
-
-const char f04_59 [] = {        0x4B, 0xF8, 0x04, 0x42, 0xE2, 0xF2, 0x42, 0x42, 0x7A, 0x04, 0xF8, 0x00,
-                                0x01, 0x02, 0x04, 0x04, 0x05, 0x04, 0x04, 0x04, 0x02, 0x01, 0x00
-};
-
-const char f04_60 [] =  {
-                               0x45, 0x20, 0x70, 0x50, 0xD8, 0x88,
-                               0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-const char f04_61 [] =  {
-                               0x46, 0xA0, 0xA0, 0xA0, 0xA0, 0xA0, 0xA0,
-                               0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-const char f04_62 [] =  {
-                               0x45, 0x88, 0xD8, 0x50, 0x70, 0x20,
-                               0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-const char f04_63 [] =  {
-                               0x45, 0x03, 0x71, 0x79, 0x1F, 0x0E,
-                               0x00, 0x03, 0x03, 0x00, 0x00
-};
-
-const char f04_64 [] = {       0x48, 0xF0, 0x08, 0x84, 0x54, 0xE4, 0x04, 0x08, 0xF0,
-                               0x01, 0x02, 0x04, 0x05, 0x05, 0x05, 0x01, 0x00
-};
-
-const char f04_65 [] = {
-                               0x47, 0x00, 0xF0, 0xFE, 0x87, 0xFE, 0xF0, 0x00,
-                               0x03, 0x03, 0x00, 0x00, 0x00, 0x03, 0x03
-};
-
-const char f04_66 [] = {
-                               0x47, 0xFF, 0xFF, 0x11, 0x11, 0x11, 0xFF, 0xEE,
-                               0x03, 0x03, 0x02, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_67 [] = {
-                               0x47, 0xFC, 0xFE, 0x03, 0x01, 0x01, 0x03, 0x02,
-                               0x00, 0x01, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_68 [] = {
-                               0x47, 0xFF, 0xFF, 0x01, 0x01, 0x03, 0xFE, 0xFC,
-                               0x03, 0x03, 0x02, 0x02, 0x03, 0x01, 0x00
-};
-
-const char f04_69 [] = {
-                               0x45, 0xFF, 0xFF, 0x11, 0x11, 0x01,
-                               0x03, 0x03, 0x02, 0x02, 0x02
-};
-
-const char f04_70 [] = {
-                               0x46, 0xFF, 0xFF, 0x11, 0x11, 0x11, 0x01,
-                               0x03, 0x03, 0x00, 0x00, 0x00, 0x00
-};
-
-const char f04_71 [] = {
-                               0x48, 0xFC, 0xFE, 0x03, 0x01, 0x01, 0x21, 0xE3, 0xE2,
-                               0x00, 0x01, 0x03, 0x02, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_72 [] = {
-                               0x48, 0xFF, 0xFF, 0x10, 0x10, 0x10, 0x10, 0xFF, 0xFF,
-                               0x03, 0x03, 0x00, 0x00, 0x00, 0x00, 0x03, 0x03
-};
-
-const char f04_73 [] = {
-                               0x42, 0xFF, 0xFF,
-                               0x03, 0x03
-};
-
-const char f04_74 [] = {
-                               0x46, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_75 [] = {
-                               0x48, 0xFF, 0xFF, 0x70, 0x3C, 0xEE, 0xC3, 0x01, 0x00,
-                               0x03, 0x03, 0x00, 0x00, 0x00, 0x01, 0x03, 0x02
-};
-
-const char f04_76 [] = {
-                               0x46, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00,
-                               0x03, 0x03, 0x02, 0x02, 0x02, 0x02
-};
-
-const char f04_77 [] = {
-                               0x49, 0xC0, 0xFF, 0x3E, 0xF0, 0x80, 0xF0, 0x3E, 0xFF, 0xC0,
-                               0x03, 0x03, 0x00, 0x01, 0x03, 0x01, 0x00, 0x03, 0x03
-};
-
-const char f04_78 [] = {
-                               0x48, 0xFF, 0xFF, 0x0C, 0x18, 0x30, 0x60, 0xFF, 0xFF,
-                               0x03, 0x03, 0x00, 0x00, 0x00, 0x00, 0x01, 0x03
-};
-
-const char f04_79 [] = {
-                               0x48, 0xFC, 0xFE, 0x03, 0x01, 0x01, 0x03, 0xFE, 0xFC,
-                               0x00, 0x01, 0x03, 0x02, 0x02, 0x03, 0x01, 0x00
-};
-
-const char f04_80 [] = {
-                               0x47, 0xFF, 0xFF, 0x41, 0x41, 0x63, 0x3E, 0x1C,
-                               0x03, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-const char f04_81 [] = {
-                               0x49, 0xFC, 0xFE, 0x03, 0x01, 0x01, 0x03, 0xFE, 0xFC, 0x00,
-                               0x00, 0x01, 0x03, 0x02, 0x02, 0x07, 0x09, 0x08, 0x08
-};
-
-const char f04_82 [] = {
-                               0x48, 0xFF, 0xFF, 0x21, 0x21, 0xE1, 0xDF, 0x1E, 0x00,
-                               0x03, 0x03, 0x00, 0x00, 0x00, 0x01, 0x03, 0x02
-};
-
-const char f04_83 [] = {
-                               0x46, 0x0E, 0x1F, 0x39, 0x71, 0xE3, 0xC2,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_84 [] = {
-                               0x48, 0x01, 0x01, 0x01, 0xFF, 0xFF, 0x01, 0x01, 0x01,
-                               0x00, 0x00, 0x00, 0x03, 0x03, 0x00, 0x00, 0x00
-};
-
-const char f04_85 [] = {
-                               0x48, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF,
-                               0x00, 0x01, 0x03, 0x02, 0x02, 0x03, 0x01, 0x00
-};
-
-const char f04_86 [] = {
-                               0x47, 0x03, 0x3F, 0xFC, 0x80, 0xFC, 0x3F, 0x03,
-                               0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00
-};
-
-const char f04_87 [] = {
-                               0x4B, 0x03, 0x3F, 0xFC, 0x80, 0xFC, 0x0F, 0xFC, 0x80, 0xFC, 0x3F, 0x03,
-                               0x00, 0x00, 0x03, 0x03, 0x00, 0x00, 0x00, 0x03, 0x03, 0x00, 0x00
-};
-
-const char f04_88 [] = {
-                               0x48, 0x01, 0x87, 0xCE, 0x78, 0x78, 0xCE, 0x87, 0x01,
-                               0x02, 0x03, 0x01, 0x00, 0x00, 0x01, 0x03, 0x02
-};
-
-const char f04_89 [] = {
-                               0x48, 0x01, 0x07, 0x1E, 0xF8, 0xF8, 0x1E, 0x07, 0x01,
-                               0x00, 0x00, 0x00, 0x03, 0x03, 0x00, 0x00, 0x00
-};
-
-const char f04_90 [] = {
-                               0x46, 0x01, 0xC1, 0xF1, 0x3D, 0x0F, 0x03,
-                               0x03, 0x03, 0x02, 0x02, 0x02, 0x02
-};
-
-const char f04_91 [] =  {
-                               0x44, 0xFF, 0xFF, 0x01, 0x01,
-                               0x1F, 0x1F, 0x10, 0x10
-};
-
-const char f04_92 [] = {       0x45, 0x01, 0x1F, 0xFC, 0xE0, 0x00,
-                               0x00, 0x00, 0x00, 0x03, 0x03
-};
-
-const char f04_93 [] =  {
-                               0x44, 0x01, 0x01, 0xFF, 0xFF,
-                               0x10, 0x10, 0x1F, 0x1F
-};
-
-const char f04_94 [] =  {
-                               0x45, 0x08, 0x06, 0x01, 0x06, 0x08,
-                               0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-const char f04_95 [] =  {
-                               0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                               0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08
-};
-
-const char f04_96 [] =  {
-                               0x43, 0x01, 0x03, 0x02,
-                               0x00, 0x00, 0x00
-};
-
-const char f04_97 [] = {
-                               0x46, 0xC0, 0xE8, 0x28, 0x28, 0xF8, 0xF0,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x03
-};
-
-const char f04_98 [] = {
-                               0x46, 0xFF, 0xFF, 0x08, 0x08, 0xF8, 0xF0,
-                               0x03, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_99 [] = {
-                               0x46, 0xF0, 0xF8, 0x08, 0x08, 0x18, 0x10,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_100 [] = {
-                               0x46, 0xF0, 0xF8, 0x08, 0x08, 0xFF, 0xFF,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x03
-};
-
-const char f04_101 [] = {
-                               0x46, 0xF0, 0xF8, 0x48, 0x48, 0x78, 0x70,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_102 [] = {
-                               0x45, 0x08, 0xFE, 0xFF, 0x09, 0x01,
-                               0x00, 0x03, 0x03, 0x00, 0x00
-};
-
-const char f04_103 [] = {
-                               0x47, 0x70, 0xF8, 0x88, 0x88, 0xF8, 0x78, 0x00,
-                               0x0F, 0x1B, 0x12, 0x12, 0x12, 0x1E, 0x0C
-};
-
-const char f04_104 [] = {
-                               0x46, 0xFF, 0xFF, 0x08, 0x08, 0xF8, 0xF0,
-                               0x03, 0x03, 0x00, 0x00, 0x03, 0x03
-};
-
-const char f04_105 [] = {
-                               0x43, 0x08, 0xFB, 0xFB,
-                               0x00, 0x03, 0x03
-};
-
-const char f04_106 [] = {
-                               0x44, 0x00, 0x08, 0xFB, 0xFB,
-                               0x10, 0x10, 0x1F, 0x0F
-};
-
-const char f04_107 [] = {
-                               0x47, 0xFF, 0xFF, 0x60, 0xF0, 0xD8, 0x08, 0x00,
-                               0x03, 0x03, 0x00, 0x00, 0x01, 0x03, 0x02
-};
-
-const char f04_108 [] = {
-                               0x43, 0xFF, 0xFF, 0x00,
-                               0x01, 0x03, 0x02
-};
-
-const char f04_109 [] = {
-                               0x4A, 0xF8, 0xF0, 0x08, 0x08, 0xF8, 0xF0, 0x08, 0x08, 0xF8, 0xF0,
-                               0x03, 0x03, 0x00, 0x00, 0x03, 0x03, 0x00, 0x00, 0x03, 0x03
-};
-
-const char f04_110 [] = {
-                               0x46, 0xF8, 0xF0, 0x08, 0x08, 0xF8, 0xF0,
-                               0x03, 0x03, 0x00, 0x00, 0x03, 0x03
-};
-
-const char f04_111 [] = {
-                               0x46, 0xF0, 0xF8, 0x08, 0x08, 0xF8, 0xF0,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_112 [] = {
-                               0x46, 0xF8, 0xF8, 0x08, 0x08, 0xF8, 0xF0,
-                               0x1F, 0x1F, 0x02, 0x02, 0x03, 0x01
-};
-
-const char f04_113 [] = {
-                               0x46, 0xF0, 0xF8, 0x08, 0x08, 0xF8, 0xF8,
-                               0x01, 0x03, 0x02, 0x02, 0x1F, 0x1F
-};
-
-const char f04_114 [] = {
-                               0x44, 0xF8, 0xF8, 0x08, 0x18,
-                               0x03, 0x03, 0x00, 0x00
-};
-
-const char f04_115 [] = {
-                               0x45, 0x30, 0x78, 0x48, 0xD8, 0x90,
-                               0x01, 0x03, 0x02, 0x03, 0x01
-};
-
-const char f04_116 [] = {
-                               0x44, 0x04, 0xFF, 0xFF, 0x04,
-                               0x00, 0x01, 0x03, 0x02
-};
-
-const char f04_117 [] = {
-                               0x46, 0xF8, 0xF8, 0x00, 0x00, 0xF8, 0xF8,
-                               0x01, 0x03, 0x02, 0x02, 0x03, 0x03
-};
-
-const char f04_118 [] = {
-                               0x47, 0x08, 0x78, 0xF0, 0x80, 0xF0, 0x78, 0x08,
-                               0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00
-};
-
-const char f04_119 [] = {
-                               0x4B, 0x08, 0x78, 0xF0, 0x80, 0xF0, 0x38, 0xF0, 0x80, 0xF0, 0x78, 0x08,
-                               0x00, 0x00, 0x01, 0x03, 0x01, 0x00, 0x01, 0x03, 0x01, 0x00, 0x00
-};
-
-const char f04_120 [] = {
-                               0x47, 0x08, 0x18, 0xF0, 0xE0, 0xF0, 0x18, 0x08,
-                               0x02, 0x03, 0x01, 0x00, 0x01, 0x03, 0x02
-};
-
-const char f04_121 [] = {
-                               0x47, 0x08, 0x38, 0xF0, 0x80, 0xF0, 0x78, 0x08,
-                               0x00, 0x18, 0x18, 0x0F, 0x03, 0x00, 0x00
-};
-
-const char f04_122 [] = {
-                               0x46, 0x08, 0x88, 0xC8, 0x68, 0x38, 0x18,
-                               0x03, 0x03, 0x02, 0x02, 0x02, 0x02
-};
-
-const char f04_123 [] = {      0x4B, 0x80, 0xC0, 0xE0, 0xF0, 0xF8, 0xFC, 0xF8, 0xF0, 0xE0, 0xC0, 0x80,
-                               0x00, 0x00, 0x00, 0x03, 0x03, 0x03, 0x03, 0x03, 0x00, 0x00, 0x00
-
-};
-
-const char f04_124 [] =  {
-                               0x4B, 0x20, 0x30, 0x38, 0xFC, 0xFE, 0xFF, 0xFE, 0xFC, 0x38, 0x30, 0x20,
-                               0x04, 0x0C, 0x1C, 0x3F, 0x7F, 0xFF, 0x7F, 0x3F, 0x1C, 0x0C, 0x04
-
-};
-
-const char f04_125 [] = {
-                                0x4B, 0x00, 0x00, 0x00, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0x00, 0x00, 0x00,
-                                0x01, 0x03, 0x07, 0x0F, 0x1F, 0x3F, 0x1F, 0x0F, 0x07, 0x03, 0x01
-
-};
-
-const char f04_126 [] =  {
-                               0x4A, 0x07, 0x3F, 0x65, 0xC5, 0xA5, 0x15, 0xC5, 0x65, 0x3F, 0x07,
-                               0xE0, 0xFE, 0xB3, 0xA9, 0xB4, 0xA8, 0xB1, 0xA3, 0xFE, 0xE0
-
-};
-
-const char f04_DEFAULT [] = {       0x47, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55,
-                                    0x15, 0x0A, 0x15, 0x0A, 0x15, 0x0A, 0x15
-};
-
-// Font Indexing Table
-const int Font4 [] = {
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_32,
-          (int) &f04_33,
-          (int) &f04_34,
-          (int) &f04_35,
-          (int) &f04_36,
-          (int) &f04_37,
-          (int) &f04_38,
-          (int) &f04_39,
-          (int) &f04_40,
-          (int) &f04_41,
-          (int) &f04_42,
-          (int) &f04_43,
-          (int) &f04_44,
-          (int) &f04_45,
-          (int) &f04_46,
-          (int) &f04_47,
-          (int) &f04_48,
-          (int) &f04_49,
-          (int) &f04_50,
-          (int) &f04_51,
-          (int) &f04_52,
-          (int) &f04_53,
-          (int) &f04_54,
-          (int) &f04_55,
-          (int) &f04_56,
-          (int) &f04_57,
-          (int) &f04_58,
-          (int) &f04_59,
-          (int) &f04_60,
-          (int) &f04_61,
-          (int) &f04_62,
-          (int) &f04_63,
-          (int) &f04_64,
-          (int) &f04_65,
-          (int) &f04_66,
-          (int) &f04_67,
-          (int) &f04_68,
-          (int) &f04_69,
-          (int) &f04_70,
-          (int) &f04_71,
-          (int) &f04_72,
-          (int) &f04_73,
-          (int) &f04_74,
-          (int) &f04_75,
-          (int) &f04_76,
-          (int) &f04_77,
-          (int) &f04_78,
-          (int) &f04_79,
-          (int) &f04_80,
-          (int) &f04_81,
-          (int) &f04_82,
-          (int) &f04_83,
-          (int) &f04_84,
-          (int) &f04_85,
-          (int) &f04_86,
-          (int) &f04_87,
-          (int) &f04_88,
-          (int) &f04_89,
-          (int) &f04_90,
-          (int) &f04_91,
-          (int) &f04_92,
-          (int) &f04_93,
-          (int) &f04_94,
-          (int) &f04_95,
-          (int) &f04_96,
-          (int) &f04_97,
-          (int) &f04_98,
-          (int) &f04_99,
-          (int) &f04_100,
-          (int) &f04_101,
-          (int) &f04_102,
-          (int) &f04_103,
-          (int) &f04_104,
-          (int) &f04_105,
-          (int) &f04_106,
-          (int) &f04_107,
-          (int) &f04_108,
-          (int) &f04_109,
-          (int) &f04_110,
-          (int) &f04_111,
-          (int) &f04_112,
-          (int) &f04_113,
-          (int) &f04_114,
-          (int) &f04_115,
-          (int) &f04_116,
-          (int) &f04_117,
-          (int) &f04_118,
-          (int) &f04_119,
-          (int) &f04_120,
-          (int) &f04_121,
-          (int) &f04_122,
-          (int) &f04_123,
-          (int) &f04_124,
-          (int) &f04_125,
-          (int) &f04_126,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT,
-          (int) &f04_DEFAULT
-
-};
-
-/*
-// Font 5 - Micro 5 var
-//-------------------------------------------------
-const char f05_DEFAULT [] = {
-                              0x03,
-                              0x1F, 0x11, 0x1F
-};
-const char f05_sym1 [] = {
-                              0x03,
-                              0x1F, 0x11, 0x1F
-};
-
-const char f05_32 [] = {
-                              0x02,
-                              0x00, 0x00
-};
-
-const char f05_33 [] = {
-                              0x02,
-                              0x00, 0x17
-};
-
-const char f05_34 [] = {
-                              0x04,
-                              0x00, 0x03, 0x00, 0x03
-};
-
-const char f05_35 [] = {
-                              0x05,
-                              0x0A, 0x1F, 0x0A, 0x1F, 0x0A
-};
-
-const char f05_36 [] = {
-                              0x05,
-                              0x24, 0x2A, 0x3F, 0x2A, 0x12
-};
-
-const char f05_37 [] = {
-                              0x04,
-                              0x09, 0x04, 0x02, 0x09
-};
-
-const char f05_38 [] = {
-                              0x05,
-                              0x0A, 0x15, 0x1D, 0x14, 0x10
-};
-
-const char f05_39 [] = {
-                              0x01,
-                              0x03
-};
-
-const char f05_40 [] = {
-                              0x03,
-                              0x0C, 0x12, 0x21
-};
-
-const char f05_41 [] = {
-                              0x03,
-                              0x21, 0x12, 0x0C
-};
-
-const char f05_42 [] = {
-                              0x04,
-                              0x00, 0x0A, 0x04, 0x0A
-};
-
-// Font Indexing Table
-const int Font5 [] = {
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_sym1,
-          (int) &f05_DEFAULT,
-          (int) &f05_32,
-          (int) &f05_33,
-          (int) &f05_34,
-          (int) &f05_35,
-          (int) &f05_36,
-          (int) &f05_37,
-          (int) &f05_38,
-          (int) &f05_39,
-          (int) &f05_40,
-          (int) &f05_41,
-          (int) &f05_42,
-          (int) &f05_43,
-          (int) &f05_44,
-          (int) &f05_45,
-          (int) &f05_46,
-          (int) &f05_47,
-          (int) &f05_48,
-          (int) &f05_49,
-          (int) &f05_50,
-          (int) &f05_51,
-          (int) &f05_52,
-          (int) &f05_53,
-          (int) &f05_54,
-          (int) &f05_55,
-          (int) &f05_56,
-          (int) &f05_57,
-          (int) &f05_58,
-          (int) &f05_59,
-          (int) &f05_60,
-          (int) &f05_61,
-          (int) &f05_62,
-          (int) &f05_63,
-          (int) &f05_64,
-          (int) &f05_65,
-          (int) &f05_66,
-          (int) &f05_67,
-          (int) &f05_68,
-          (int) &f05_69,
-          (int) &f05_70,
-          (int) &f05_71,
-          (int) &f05_72,
-          (int) &f05_73,
-          (int) &f05_74,
-          (int) &f05_75,
-          (int) &f05_76,
-          (int) &f05_77,
-          (int) &f05_78,
-          (int) &f05_79,
-          (int) &f05_80,
-          (int) &f05_81,
-          (int) &f05_82,
-          (int) &f05_83,
-          (int) &f05_84,
-          (int) &f05_85,
-          (int) &f05_86,
-          (int) &f05_87,
-          (int) &f05_88,
-          (int) &f05_89,
-          (int) &f05_90,
-          (int) &f05_91,
-          (int) &f05_92,
-          (int) &f05_93,
-          (int) &f05_94,
-          (int) &f05_95,
-          (int) &f05_96,
-          (int) &f05_97,
-          (int) &f05_98,
-          (int) &f05_99,
-          (int) &f05_100,
-          (int) &f05_101,
-          (int) &f05_102,
-          (int) &f05_103,
-          (int) &f05_104,
-          (int) &f05_105,
-          (int) &f05_106,
-          (int) &f05_107,
-          (int) &f05_108,
-          (int) &f05_109,
-          (int) &f05_110,
-          (int) &f05_111,
-          (int) &f05_112,
-          (int) &f05_113,
-          (int) &f05_114,
-          (int) &f05_115,
-          (int) &f05_116,
-          (int) &f05_117,
-          (int) &f05_118,
-          (int) &f05_119,
-          (int) &f05_120,
-          (int) &f05_121,
-          (int) &f05_122,
-          (int) &f05_123,
-          (int) &f05_124,
-          (int) &f05_125,
-          (int) &f05_126,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT,
-          (int) &f05_DEFAULT
-
-};
-
-*/
 #endif // __STDFONTS_H_
