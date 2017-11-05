@@ -139,10 +139,9 @@ void InitAudioIF(void){
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-	// PA4 thru PA7 connected to the peripheral (SPI1)
+	// PA4 thru PA7 connected to the peripheral (SPI1), PA6 is unassigned as we don't use the MCLK (we're not an oversampling DAC)
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource4, GPIO_AF_0);
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource5, GPIO_AF_0);
-	//GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_0);
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_0);
 
 

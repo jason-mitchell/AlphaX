@@ -7,8 +7,15 @@
 #define __BSP_H_
 
 
+// Headphone Jack (insertion contact)
+#define PHONE_JACK GPIO_Pin_4		// (PB4)
+
 // Menu Button (Push Knob)
 #define MENU GPIO_Pin_10			// (PB10)
+
+// Pulses from rotary encoder
+#define TICK  GPIO_Pin_12			// (PB12)
+#define LR	 GPIO_Pin_13			// (PB13)
 
 // VFD Display Port Pins
 #define SDATA GPIO_Pin_0			// (PC0)

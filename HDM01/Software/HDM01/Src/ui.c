@@ -45,6 +45,7 @@
 //-----------------
 
 #include "ui.h"
+#include "bsp.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -76,6 +77,9 @@ uint16_t RAMP_SCALE;
 
 CurrentTime				TimeOfDay;
 TIM_TimeBaseInitTypeDef Timer_InitStructure;
+GPIO_InitTypeDef        GPIO_InitStructure;
+EXTI_InitTypeDef   		EXTI_InitStructure;
+NVIC_InitTypeDef        NVIC_InitStructure;
 
 
 // Name: WritePWM
@@ -157,8 +161,8 @@ void InitUI(void){
     TIM_TimeBaseInit(TIM2, &Timer_InitStructure);
     TIM_Cmd(TIM2, ENABLE);
 
-    // Output Compare configuration
-    //--------------------------------
+    // Output Compare configuration to drive PWM into the LED
+    //--------------------------------------------------------
     TIM_OCInitTypeDef outputChannelInit = {0,};
     outputChannelInit.TIM_OCMode = TIM_OCMode_PWM1;
     outputChannelInit.TIM_Pulse = 2;	// PWM duty cycle  @ 25 LED quite bright  4 = nice and dim (needle pulse width)
@@ -166,6 +170,31 @@ void InitUI(void){
     outputChannelInit.TIM_OCPolarity = TIM_OCPolarity_High;
     TIM_OC4Init(TIM2, &outputChannelInit);
     TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
+
+    // Initialize interrupt for headphone jack and push button in encoder
+    //--------------------------------------------------------------------
+
+    // PB10 (MENU) and PB4 (JACK)
+    GPIO_InitStructure.GPIO_Pin = MENU | PHONE_JACK;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+    SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource10);		// EXTI PB10
+    SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource4);		// EXTI PB4
+
+    EXTI_InitStructure.EXTI_Line = EXTI_Line10;
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;				// Falling edge only
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;							// Is enabled!
+    EXTI_Init(&EXTI_InitStructure);
+
+    EXTI_InitStructure.EXTI_Line = EXTI_Line4;
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;		// Both edges i.e. plug in / plug out
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;							// Is enabled!
+    EXTI_Init(&EXTI_InitStructure);
+
 
 	// Initialize all the variables in this module
 	UI_STATE = 0xFF;

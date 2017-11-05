@@ -69,7 +69,8 @@ GPIO_InitTypeDef        GPIO_InitStructure;
 USART_InitTypeDef       USART_InitStructure;
 USART_ClockInitTypeDef  USART_ClockInitStructure;
 NVIC_InitTypeDef        NVIC_InitStructure;
-//TIM_TimeBaseInitTypeDef Timer_InitStructure;
+EXTI_InitTypeDef   		EXTI_InitStructure;
+
 
 CurrentTime				TimeOfDay;
 
@@ -128,6 +129,9 @@ unsigned int UI_TIMER;
 unsigned char UI_UPDATE_FLAG;
 unsigned char UI_FLASH_TOGGLE;
 
+unsigned char ROT_EVENT;
+unsigned char ROT_DIR;
+
 // Timer that derives from the system ticker...
 //-----------------------------------------------
 void GeneralDelay(void){
@@ -184,6 +188,41 @@ void USART1_IRQHandler(void){
 }
 
 
+// PB12 IRQ, PB10 IRQ
+// Todo: To be moved into the ui.c module
+//------------------------------------------
+void EXTI4_15_IRQHandler(void) {
+
+	// PB4 - Headphone Jack
+	//-----------------------
+	if (EXTI_GetITStatus(EXTI_Line4)){
+		EXTI_ClearITPendingBit(EXTI_Line4);
+	}
+
+
+	// PB10 External IRQ - ENCODER PUSH BUTTON
+	//-----------------------------------------
+	if (EXTI_GetITStatus(EXTI_Line10)){
+		EXTI_ClearITPendingBit(EXTI_Line10);
+	}
+
+
+	// PB12 External IRQ - ENCODER PULSES
+	//------------------------------------------
+    if (EXTI_GetITStatus(EXTI_Line12)){
+
+    	// Capture the direction and raise an event
+    	ROT_EVENT = 1;
+    	if(GPIO_ReadInputDataBit(GPIOB, LR) == 0){
+    		ROT_DIR = 0;
+    	} else {
+    		ROT_DIR = 1;
+    	}
+
+        EXTI_ClearITPendingBit(EXTI_Line12);
+    }
+}
+
 // Test Stuff
 //------------
 
@@ -231,6 +270,7 @@ int main(void){
         RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);                             // Port A
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);                          // Enable clock to USART 1
         RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);							// Clock to TIM2
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);							// Clock to SYSCFG
 
 
 
@@ -269,13 +309,30 @@ int main(void){
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
         GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-        // Specific init of PB10 with a pull-up
-        GPIO_InitStructure.GPIO_Pin = MENU;
+
+        // Specific init of PB12 as an input for external IRQ and PB13 as normal input
+        GPIO_InitStructure.GPIO_Pin = TICK | LR;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-        GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+        GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
         GPIO_Init(GPIOB, &GPIO_InitStructure);
 
 
+        SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource12);		// EXTI Line 0 -> PB12
+        EXTI_InitStructure.EXTI_Line = EXTI_Line12;
+        EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+        EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;				// Rising edges only...
+        EXTI_InitStructure.EXTI_LineCmd = ENABLE;							// Is enabled!
+        EXTI_Init(&EXTI_InitStructure);
+
+        // Enable GPIO IRQ channel covering 4 thru 15
+        //-------------------------------------------------
+        NVIC_InitStructure.NVIC_IRQChannel = EXTI4_15_IRQn;
+        NVIC_InitStructure.NVIC_IRQChannelPriority = 0x00;
+        NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+        NVIC_Init(&NVIC_InitStructure);
+
+
+        // Init of PB6 and PB7 for UART
         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;						// USART Tx and Rx
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -326,30 +383,11 @@ int main(void){
         NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;		    // we want to configure the USART1 interrupts
         NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			    // the USART1 interrupts are globally enabled
         NVIC_Init(&NVIC_InitStructure);
+
+
         USART_Cmd(USART1, ENABLE);
 
-/*
 
-        // TIM2 Module Configured for PWM on PB11 (Power LED inside the Marquardt Push Button)
-        //--------------------------------------------------------------------------------------
-
-        Timer_InitStructure.TIM_Prescaler = 1200;
-        Timer_InitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-        Timer_InitStructure.TIM_Period = 500;		// PWM period value
-        Timer_InitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
-        Timer_InitStructure.TIM_RepetitionCounter = 0;
-        TIM_TimeBaseInit(TIM2, &Timer_InitStructure);
-        TIM_Cmd(TIM2, ENABLE);
-
-        // Output Compare configuration
-        //--------------------------------
-        TIM_OCInitTypeDef outputChannelInit = {0,};
-        outputChannelInit.TIM_OCMode = TIM_OCMode_PWM1;
-        outputChannelInit.TIM_Pulse = 2;	// PWM duty cycle  @ 25 LED quite bright  4 = nice and dim (needle pulse width)
-        outputChannelInit.TIM_OutputState = TIM_OutputState_Enable;
-        outputChannelInit.TIM_OCPolarity = TIM_OCPolarity_High;
-        TIM_OC4Init(TIM2, &outputChannelInit);
-        TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable); */
 
         // Software Module Initializations
         //--------------------------------------
@@ -374,6 +412,8 @@ int main(void){
         InitUI();
         cnt = 0;
         ADR = 0;
+
+        ROT_EVENT = 0;
 
         // Set up DIR to accept digital audio on TOSLINK #1
         // In the absence of lock, it will still default to the analog input (in-built A/D converter)
@@ -419,6 +459,31 @@ int main(void){
             	if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
             		break;
             	}
+
+            	// Rotary Encoder Events
+            	if(ROT_EVENT == 1){
+            		ROT_EVENT = 0;
+            		if (ROT_DIR == 1){
+            			VR += 2;
+            			SendParam(VR);
+            			ChangeUIState(VOLUME);
+            			WriteFlash(0x00, VR);
+            		} else {
+            			VR -= 2;
+            			if (VR > 250){
+            				VR = 0;
+            			}
+            			SendParam(VR);
+            			ChangeUIState(VOLUME);
+            			WriteFlash(0x00, VR);
+            		}
+
+            		ReadFlash(0x00, &VR);
+            		SetVolume(VR, VR);
+            	}
+
+
+            	// Remote Control Events
             	if (IR_EVENT == 1){
             		IR_EVENT = 0;
             		if(COMMAND == 0x0DD2){
@@ -439,7 +504,7 @@ int main(void){
             		}
 
             		ReadFlash(0x00, &VR);
-            		SetVolume(VR, VR);			// send packet every time remote sends signal
+            		SetVolume(VR, VR);
             		if (COMMAND == 0x0738){
             			break;
             		}

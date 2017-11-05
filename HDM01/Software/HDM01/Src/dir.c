@@ -49,6 +49,27 @@
 unsigned char Fs;				// Sampling frequency variable
 unsigned char WS;				// Word size variable
 
+GPIO_InitTypeDef        GPIO_InitStructure;
+EXTI_InitTypeDef   		EXTI_InitStructure;
+NVIC_InitTypeDef        NVIC_InitStructure;
+
+
+//-----------------------------------------------
+// Common interrupt handler for 2-3
+// Assigned to the DIR IRQ pin
+//----------------------------------------------
+void EXTI2_3_IRQHandler(void) {
+	unsigned char DIR_IRQ_FLAGS;
+
+    if (EXTI_GetITStatus(EXTI_Line3)){
+    	ReadDIRReg(0x2C, &DIR_IRQ_FLAGS);
+        EXTI_ClearITPendingBit(EXTI_Line3);
+    }
+}
+
+
+
+
 // Name: ReadDIRReg
 // Function: Read a register within the PCM9210/9211
 // Parameters: Register address, address where read shall be stored
@@ -90,8 +111,46 @@ void WriteDIRReg(unsigned char regaddr, unsigned char regdata){
 //---------------------------------------------------------------
 void InitDIR(void){
 
+	unsigned char temp;
 	GPIO_SetBits(GPIOA, SS_DIR);				// Ensure ~SS pin is pulled high
 	GPIO_SetBits(GPIOC, RESET_DIR);				// Release reset from DIR
+
+
+	// Configure PB3 as an input
+    GPIO_InitStructure.GPIO_Pin = nIRQ;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+
+	// Configure PB3 as an interrupt input (connected to the DIR's IRQ pin)
+    SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource3);		// IRQ/ERROR pin -> PB3
+    EXTI_InitStructure.EXTI_Line = EXTI_Line3;							// IRQ line 3
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;				// Falling Edge
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;							// Enable it
+    EXTI_Init(&EXTI_InitStructure);
+
+    // Configure DIR's interrupt pin and operational mode
+    //----------------------------------------------------
+    WriteDIRReg(0x20, 0x04);					// Pin configured as INT0
+    WriteDIRReg(0x25, 0x21);					// Error cause Reg = Samp Freq Change and PLL Lock errors
+    WriteDIRReg(0x2A, 0x7F);					// ERROR interrupt is unmasked
+    ReadDIRReg(0x2C, &temp);					// Clear all interrupt bits by reading
+    WriteDIRReg(0x2E, 0x00);					// INT0 is configured for negative logic.
+
+
+
+
+    // Enable IRQ capability on GPIO pin
+    // Enable GPIO IRQ channel covering 2 to 3
+    //-------------------------------------------------
+    NVIC_InitStructure.NVIC_IRQChannel = EXTI2_3_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPriority = 0x00;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+
+	// Clear variables
 	Fs = 0;
 	WS = 0;
 

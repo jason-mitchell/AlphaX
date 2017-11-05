@@ -14,6 +14,8 @@
 #define RESET_DIR	GPIO_Pin_5			// PC5
 #define SS_DIR		GPIO_Pin_3			// PA3
 
+#define nIRQ		GPIO_Pin_3			// PB3
+
 // Registers
 #define NPCMDEF	0x28
 
