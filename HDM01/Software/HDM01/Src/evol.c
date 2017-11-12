@@ -47,6 +47,7 @@
 #include "evol.h"
 #include "spi.h"
 #include "stm32f0xx_gpio.h"
+#include <stdbool.h>
 
 //------------------------------------------------------------------
 // Name: SetVolume
@@ -56,10 +57,12 @@
 //-----------------------------------------------------------------
 void SetVolume(unsigned char left, unsigned char right){
 
+	SetSPIStatus(true);
     GPIO_ResetBits(GPIOC, EVOL_CS);			// lower CS
 	SPITransceive(left, MSB_FIRST);			// Send left-channel volume
 	SPITransceive(right, MSB_FIRST);		// Send right-channel volume
 	GPIO_SetBits(GPIOC, EVOL_CS);
+	SetSPIStatus(false);
 
 }
 

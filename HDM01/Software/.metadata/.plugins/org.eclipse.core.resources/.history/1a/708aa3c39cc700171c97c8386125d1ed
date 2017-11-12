@@ -1,0 +1,137 @@
+//----------------------------------------------------------------------------------------------------------------------------------
+//
+//							Author: Sonikku
+//
+//                              ______
+//	                      _.-*'"      "`*-._
+//	                _.-*'                  `*-._
+//	             .-'                            `-.
+//	  /`-.    .-'                  _.              `-.
+//	 :    `..'                  .-'_ .                `.
+//	 |    .'                 .-'_.' \ .                 \
+//	 |   /                 .' .*     ;               .-'"
+//	 :   L                    `.     | ;          .-'
+//	  \.' `*.          .-*"*-.  `.   ; |        .'
+//	  /      \        '       `.  `-'  ;      .'
+//	 : .'"`.  .       .-*'`*-.  \     .      (_
+//	 |              .'        \  .             `*-.
+//	 |.     .      /           ;                   `-.
+//	 :    db      '       d$b  |                      `-.
+//	 .   :PT;.   '       :P"T; :                         `.
+//	 :   :bd;   '        :b_d; :                           \
+//	 |   :$$; `'         :$$$; |                            \
+//	 |    TP              T$P  '                             ;
+//	 :                        /.-*'"`.                       |
+//	.sdP^T$bs.               /'       \
+//	$$$._.$$$$b.--._      _.'   .--.   ;
+//	`*$$$$$$P*'     `*--*'     '  / \  :
+//	   \                        .'   ; ;
+//	    `.                  _.-'    ' /
+//	      `*-.                      .'
+//	          `*-._            _.-*'
+//	               `*=--..--=*'
+//
+//
+//					FILENAME: level.c
+//					Purpose: PPM / VU level metering from 16-24 bit PCM digita audio
+//					Dependencies:
+//						1. Math libraries
+//						2. Timer Tick
+//
+//
+//
+//----------------------------------------------------------------------------------------------------------------------------------
+
+// Includes
+//---------------
+#include "level.h"
+#include "stm32f0xx_rcc.h"					// For STM32F0xx micros
+#include "audio.h"
+#include <math.h>
+
+// Variables
+uint32_t	LEFT_PCM;
+uint32_t	RIGHT_PCM;
+float		LEFT_CHANNEL;
+float		RIGHT_CHANNEL;
+float		volume;
+
+unsigned char UPDATE_PENDING;
+
+unsigned char LEVEL;
+
+
+
+// Name: GetLevel
+// Function: Retrieve level and return it
+// Parameter: void
+// Returns: level
+//-----------------------------------------
+unsigned char GetLevel(void){
+
+
+	return LEVEL;
+}
+
+// Name: InitLevel
+// Function: Initialize the level meter
+// Parameters: void
+// Returns: void
+//---------------------------------------------------------------------------------
+void InitMeter(void){
+
+	UPDATE_PENDING = 0;
+
+}
+
+
+// Name: ServiceMeter
+// Function: Calculates levels every 1mS
+// Parameters: void
+// Returns: void
+//----------------------------------------------
+void ServiceMeter(void){
+
+	float db = 0;
+	float sum = 0;
+	const static double REFERENCE = 16777215;
+	double MIN_DB = (20 * log10( 1.0 / REFERENCE));
+	const static double MAX_DB = 3;
+
+	if(UPDATE_PENDING == 1){
+		UPDATE_PENDING = 0;
+		if(GetWordSize() == AUDIO_16_BITS){
+			LEFT_CHANNEL = LEFT_PCM / 32768;
+			RIGHT_CHANNEL = RIGHT_PCM / 32768;
+
+
+		}
+		if(GetWordSize() == AUDIO_24_BITS){
+
+			LEFT_CHANNEL = LEFT_PCM;
+			//LEFT_CHANNEL = LEFT_CHANNEL / 16777215;				// Convert to floating point +1 / -1
+
+			sum = LEFT_CHANNEL;
+			sum = fabs(sum);
+			db = (sum > 0) ? 20 * log10(sum / REFERENCE) : -100000;
+			LEVEL = (unsigned char)((db - MIN_DB) * 50 / (MAX_DB-MIN_DB));
+
+		}
+	}
+}
+
+//-----------------------------------------------------------------------
+// Name: UpdateCall
+// Function: Signaling from the digital audio processor
+//           This is called to let us know there's PCM to process
+// Parameters: void
+// Returns: void
+//-----------------------------------------------------------------------
+void UpdateCall(void){
+
+	GetSamples(&LEFT_PCM, &RIGHT_PCM);
+	UPDATE_PENDING = 1;
+}
+
+
+

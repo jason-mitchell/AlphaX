@@ -57,6 +57,8 @@
 #include "clock.h"
 #include "string.h"
 #include "stm32f0xx_rcc.h"
+#include "level.h"
+#include "dir.h"
 
 // Local vars
 //------------
@@ -75,6 +77,10 @@ unsigned char RAMP_DIRECTION;
 uint16_t HOLD_TIME;
 uint16_t RAMP_SCALE;
 
+unsigned char INPUT_SELECTOR;
+unsigned char SIGNAL_VALIDITY;
+unsigned char FLASH_TIMER;
+
 CurrentTime				TimeOfDay;
 TIM_TimeBaseInitTypeDef Timer_InitStructure;
 GPIO_InitTypeDef        GPIO_InitStructure;
@@ -82,6 +88,8 @@ EXTI_InitTypeDef   		EXTI_InitStructure;
 NVIC_InitTypeDef        NVIC_InitStructure;
 
 
+
+//------------------------------------------------
 // Name: WritePWM
 // Function: Write PWM value for LED
 // Parameter: PWM value
@@ -103,6 +111,7 @@ void WritePWM(uint32_t PWM){
 }
 
 
+//--------------------------------------------
 // Name: UITimer
 // Function: Internal timer for UI operations
 //--------------------------------------------
@@ -120,6 +129,7 @@ void UITimer(void){
 }
 
 
+//------------------------------------------
 // Name: UIDelay
 // Function: Generate a delay in the UI
 // Parameters: Required time delay (in mS)
@@ -133,7 +143,7 @@ void UIDelay(uint16_t Delay){
 
 }
 
-
+//-------------------------------------------------------------------
 // Name: SendParam
 // Function: Send (receive in UI) a parameter for display purposes
 // Parameters: value to be passed (unsigned char)
@@ -144,6 +154,9 @@ void SendParam(unsigned char param){
 	Param1 = param;
 
 }
+
+
+
 //--------------------------------------
 // Name: InitUI
 // Function: Initialize the UI
@@ -206,20 +219,24 @@ void InitUI(void){
 	RAMP_DIRECTION = 0;
 	HOLD_TIME = 0;
 	RAMP_SCALE = 0;
+	INPUT_SELECTOR = INPUT_1;
+	SIGNAL_VALIDITY = 0;			// Default = 0, i.e. unlocked PLL in DIR
+	FLASH_TIMER = 0;
 
 
 	// Initialize the display
+	ShiftBsline(0);					// Very important, as graphlib doesn't have an init or class constructor
     ResetDisplay();
     SetInverse(false, 0);
     InitDisplay();
 
     // Load boot graphic
     PutGraphic(Graphic1);
-    UIDelay(1000);					// Logo remains for 1 second
+    UIDelay(1000);									// Logo remains for 1 second
     ClearDisplay();
 
     // Initialize the ASIC on the front panel
-	FpReadWrite(READ_VENDOR_ID, 0, &DATA);			// Read specific info
+	FpReadWrite(READ_VENDOR_ID, 0, &DATA);			// Read specific info from the chip
 	if(DATA != 0xAE){
 		// Vendor ID mismatch, display error code and halt
 		SetXY(0, 0);
@@ -228,7 +245,7 @@ void InitUI(void){
         while(1);
 
 	}
-	FpReadWrite(READ_CHIP_ID, 0, &DATA);			// Read specific info
+	FpReadWrite(READ_CHIP_ID, 0, &DATA);			// Read specific info from the chip
 	if(DATA != 0x71){
 		// Product ID mismatch, display error code and halt
 		SetXY(0, 0);
@@ -340,11 +357,74 @@ void ServiceUI(void){
 			}
 			break;
 
-		// User interface functions in ACTIVE mode...
+		// User interface functions in ACTIVE mode... display info
 		case ACTIVE:
-			SetXY(0, 0);
 			ClearFB();
-			OutString("A", Font2);
+
+			// Display the currently selected input (programme source)
+			SetXY(0, 0);
+			SetInverse(true, 0x7F);
+			switch(INPUT_SELECTOR){
+
+			case INPUT_1:
+				ShiftBsline(1);
+				OutString("INPUT 1", Font3);
+				ShiftBsline(0);
+				break;
+
+			case INPUT_2:
+				ShiftBsline(1);
+				OutString("INPUT 2", Font3);
+				ShiftBsline(0);
+				break;
+
+			case INPUT_3:
+				ShiftBsline(1);
+				OutString("INPUT 3", Font3);
+				ShiftBsline(0);
+				break;
+
+			}
+
+			// Display information about the signal
+			if(GetLockState() == true){
+				SetXY(0, 1);
+				SetInverse(true, 0xFE);
+				OutString("a24/192", Font3);
+
+			} else {
+
+				// Under conditions with invalid signals, we flash the status
+				FLASH_TIMER++;
+				if(FLASH_TIMER < 10){
+					SetXY(0, 1);
+					SetInverse(true, 0xFE);
+					OutString("a--/--", Font3);
+				}
+
+				if(FLASH_TIMER > 19){
+					FLASH_TIMER = 0;
+				}
+
+
+			}
+
+			SetInverse(false, 0);
+
+			// Display Levels
+			SetXY(33, 0);
+			ShiftBsline(1);
+			OutString("L", Font3);
+			ShiftBsline(0);
+			SetXY(33, 1);
+			OutString("R", Font3);
+
+			SetXY(38, 0);
+			DrawBar(35, 0x18);				// Left channel bar (50 discrete steps max)
+
+			SetXY(38, 1);
+			DrawBar(20, 0x18);				// Right channel bar  (50 discrete steps max)
+
 			UpdateFromFB();
 			break;
 

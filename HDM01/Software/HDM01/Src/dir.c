@@ -44,10 +44,14 @@
 #include "dir.h"
 #include "stm32f0xx_gpio.h"
 #include "spi.h"
+#include <stdbool.h>
 
 
 unsigned char Fs;				// Sampling frequency variable
 unsigned char WS;				// Word size variable
+unsigned char LOCK;				// Signal Lock flag
+unsigned char DIR_INIT;
+unsigned char DIRCYC;
 
 GPIO_InitTypeDef        GPIO_InitStructure;
 EXTI_InitTypeDef   		EXTI_InitStructure;
@@ -57,15 +61,26 @@ NVIC_InitTypeDef        NVIC_InitStructure;
 //-----------------------------------------------
 // Common interrupt handler for 2-3
 // Assigned to the DIR IRQ pin
+// IRQ happens at onset of conditions
 //----------------------------------------------
-void EXTI2_3_IRQHandler(void) {
+/*void EXTI2_3_IRQHandler(void) {
 	unsigned char DIR_IRQ_FLAGS;
+	//unsigned char DIR_IRQ_FLAGS_2;
 
     if (EXTI_GetITStatus(EXTI_Line3)){
-    	ReadDIRReg(0x2C, &DIR_IRQ_FLAGS);
-        EXTI_ClearITPendingBit(EXTI_Line3);
+    	// Read the register to see what is causing the interrupt
+    	ReadDIRReg(0x2C, &DIR_IRQ_FLAGS);			// Retrieve the interrupt flags in the DIR
+        EXTI_ClearITPendingBit(EXTI_Line3);			// Clear interrupt flag
+
+        // Set flags according to cause
+        if((DIR_IRQ_FLAGS & 0x80) == 0x80){
+        	// Bit 7 (ERROR) flag is set.... (pg 69 datasheet)
+        	LOCK = 0;								// Clear lock condition
+
+        }
+
     }
-}
+} */
 
 
 
@@ -78,7 +93,7 @@ void EXTI2_3_IRQHandler(void) {
 void ReadDIRReg(unsigned char regaddr, unsigned char *regdata){
 	unsigned char RADR;
 	unsigned char REGDR;
-
+	SetSPIStatus(true);
 	RADR = regaddr & 0x7F;
 	RADR |= 0x80;								// MSB = 1 for READ
 	GPIO_ResetBits(GPIOA, SS_DIR);				// Lower ~SS
@@ -86,6 +101,7 @@ void ReadDIRReg(unsigned char regaddr, unsigned char *regdata){
 	REGDR = SPITransceive(0x00, MSB_FIRST);		// Send data as 0x00 to read SPI
 	GPIO_SetBits(GPIOA, SS_DIR);				// Raise ~SS
 	*regdata = REGDR;
+	SetSPIStatus(false);
 }
 
 // Name: WriteDIRReg
@@ -95,12 +111,14 @@ void ReadDIRReg(unsigned char regaddr, unsigned char *regdata){
 //-----------------------------------------------------------------------
 void WriteDIRReg(unsigned char regaddr, unsigned char regdata){
 	unsigned char RADR;
+	SetSPIStatus(true);
 	RADR = regaddr & 0x7F;
 	RADR &= ~0x80;								// MSB = 0 for WRITE
 	GPIO_ResetBits(GPIOA, SS_DIR);				// Lower ~SS
 	SPITransceive(RADR, MSB_FIRST);				// Send address word
 	SPITransceive(regdata, MSB_FIRST);			// Send data word
 	GPIO_SetBits(GPIOA, SS_DIR);				// Raise ~SS
+	SetSPIStatus(false);
 }
 
 
@@ -112,10 +130,22 @@ void WriteDIRReg(unsigned char regaddr, unsigned char regdata){
 void InitDIR(void){
 
 	unsigned char temp;
+	DIR_INIT = 0;
 	GPIO_SetBits(GPIOA, SS_DIR);				// Ensure ~SS pin is pulled high
 	GPIO_SetBits(GPIOC, RESET_DIR);				// Release reset from DIR
 
 
+    // Configure DIR's interrupt pin and operational mode
+    //----------------------------------------------------
+    WriteDIRReg(0x20, 0x04);					// Pin configured as INT0
+    WriteDIRReg(0x25, 0x21);					// Error cause Reg = Samp Freq Change and PLL Lock errors 0x21
+    WriteDIRReg(0x2A, 0x7F);					// ERROR interrupt is unmasked
+    ReadDIRReg(0x2C, &temp);					// Clear all interrupt bits by reading
+    WriteDIRReg(0x2E, 0x00);					// INT0 is configured for negative logic.
+    ReadDIRReg(0x2C, &temp); 					// Clear the interrupt bits
+
+
+/*
 	// Configure PB3 as an input
     GPIO_InitStructure.GPIO_Pin = nIRQ;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
@@ -131,16 +161,6 @@ void InitDIR(void){
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;							// Enable it
     EXTI_Init(&EXTI_InitStructure);
 
-    // Configure DIR's interrupt pin and operational mode
-    //----------------------------------------------------
-    WriteDIRReg(0x20, 0x04);					// Pin configured as INT0
-    WriteDIRReg(0x25, 0x21);					// Error cause Reg = Samp Freq Change and PLL Lock errors
-    WriteDIRReg(0x2A, 0x7F);					// ERROR interrupt is unmasked
-    ReadDIRReg(0x2C, &temp);					// Clear all interrupt bits by reading
-    WriteDIRReg(0x2E, 0x00);					// INT0 is configured for negative logic.
-
-
-
 
     // Enable IRQ capability on GPIO pin
     // Enable GPIO IRQ channel covering 2 to 3
@@ -148,11 +168,52 @@ void InitDIR(void){
     NVIC_InitStructure.NVIC_IRQChannel = EXTI2_3_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPriority = 0x00;
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-    NVIC_Init(&NVIC_InitStructure);
+    NVIC_Init(&NVIC_InitStructure); */
 
 	// Clear variables
 	Fs = 0;
 	WS = 0;
+	LOCK = 0;
+	DIR_INIT = 1;
+	DIRCYC = 0;
+
+}
+
+// Name: GetLockState
+// Function: Returns the DIR PLL lock state
+// Parameter: void
+// Returns: LOCK variable
+//--------------------------------------------
+unsigned char GetLockState(void){
+	return LOCK;
+}
+
+//---------------------------------------------------------------
+// Name: ServiceDIR
+// Function: Service the DIR (periodic monitoring)
+//---------------------------------------------------------------
+void ServiceDIR(void){
+	unsigned char status;
+
+	DIRCYC++;
+	if(DIRCYC > 9){
+		DIRCYC = 0;
+		if(GetSPIStatus() == false){
+			if(DIR_INIT == 1){
+				ReadDIRReg(0x2C, &status);		// Get status of DIR
+
+				// DIR unlocked i.e. no signal
+				if ((status & 0x80) == 0x80){
+					LOCK = false;
+				} else {
+					LOCK = true;
+				}
+
+			}
+
+
+		}
+	}
 
 }
 

@@ -21,6 +21,7 @@
 
 // Function Prototypes
 //---------------------
+unsigned char GetLevel(void);
 void InitMeter(void);
 void ServiceMeter(void);
 void UpdateCall(void);

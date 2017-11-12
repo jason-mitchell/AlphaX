@@ -168,6 +168,7 @@ void SysTick_Handler(void){
 	ServiceMeter();					// Service metering code
 	ServiceUITimer();				// Here for now
 	ServiceUI();
+	ServiceDIR();
 	timer++;
 	if ((timer & 0x01) == 0x01){
 		GPIO_SetBits(GPIOC, CLK_500Hz);

@@ -1,23 +1,63 @@
-16:22:31 **** Incremental Build of configuration Debug for project HDM01 ****
+18:51:00 **** Incremental Build of configuration Debug for project HDM01 ****
 Info: Internal Builder is used for build
-arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
-..\src\main.c:11:1: warning: multi-line comment [-Wcomment]
+arm-atollic-eabi-gcc -c ..\src\ui.c -mthumb -mcpu=cortex-m0 -std=gnu11 -DSTM32F0XX_HD -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/CMSIS/Device/ST/STM32F0xx/Include -I../Libraries/STM32F0xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\ui.o 
+..\src\ui.c:11:1: warning: multi-line comment [-Wcomment]
  //  |    .'                 .-'_.' \ .                 \
  ^
-..\src\main.c:21:1: warning: multi-line comment [-Wcomment]
+..\src\ui.c:21:1: warning: multi-line comment [-Wcomment]
  //  :   :bd;   '        :b_d; :                           \
  ^
-..\src\main.c:25:1: warning: multi-line comment [-Wcomment]
+..\src\ui.c:25:1: warning: multi-line comment [-Wcomment]
  // .sdP^T$bs.               /'       \
  ^
+..\src\ui.c: In function 'InitUI':
+..\src\ui.c:234:16: warning: passing argument 1 of 'PutGraphic' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+     PutGraphic(Graphic1);
+                ^~~~~~~~
+In file included from ..\src\ui.c:52:0:
+..\src\display.h:37:6: note: expected 'unsigned char *' but argument is of type 'const char *'
+ void PutGraphic(unsigned char *graphics);
+      ^~~~~~~~~~
+..\src\ui.c: In function 'ServiceUI':
+..\src\ui.c:354:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+     sprintf(StringBuffer, "%2d:%02d:%02d", TimeOfDay.hour, TimeOfDay.minute, TimeOfDay.second);
+             ^~~~~~~~~~~~
+In file included from c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\stdio.h:29:0,
+                 from ..\src\ui.c:49:
+c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\stdio.h:244:5: note: expected 'char * restrict' but argument is of type 'unsigned char *'
+ int _EXFUN(sprintf, (char *__restrict, const char *__restrict, ...)
+     ^
+..\src\ui.c:355:15: warning: pointer targets in passing argument 1 of 'OutString' differ in signedness [-Wpointer-sign]
+     OutString(StringBuffer, Font1);
+               ^~~~~~~~~~~~
+In file included from ..\src\ui.c:54:0:
+..\src\graphlib.h:14:6: note: expected 'const char *' but argument is of type 'unsigned char *'
+ void OutString(const char *string, const int *fontname);
+      ^~~~~~~~~
+..\src\ui.c:450:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+    sprintf(StringBuffer, "Vol: %0.1f   ", Decibel);
+            ^~~~~~~~~~~~
+In file included from c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\stdio.h:29:0,
+                 from ..\src\ui.c:49:
+c:\program files (x86)\atollic\truestudio for arm 8.0.0\armtools\arm-atollic-eabi\include\stdio.h:244:5: note: expected 'char * restrict' but argument is of type 'unsigned char *'
+ int _EXFUN(sprintf, (char *__restrict, const char *__restrict, ...)
+     ^
+..\src\ui.c:451:14: warning: pointer targets in passing argument 1 of 'OutString' differ in signedness [-Wpointer-sign]
+    OutString(StringBuffer, Font2);
+              ^~~~~~~~~~~~
+In file included from ..\src\ui.c:54:0:
+..\src\graphlib.h:14:6: note: expected 'const char *' but argument is of type 'unsigned char *'
+ void OutString(const char *string, const int *fontname);
+      ^~~~~~~~~
 arm-atollic-eabi-gcc -o HDM01.elf Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_can.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_cec.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_comp.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crs.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dac.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_pwr.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rtc.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.o Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.o src\audio.o src\clock.o src\dir.o src\display.o src\evol.o src\extflash.o src\fpanel.o src\graphlib.o src\i2c.o src\ir.o src\level.o src\main.o src\serial.o src\spi.o src\startup_stm32f0xx_hd.o src\stm32f0xx_it.o src\system_stm32f0xx.o src\timers.o src\ui.o -mthumb -mcpu=cortex-m0 -T..\stm32_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler,-u,_printf_float -Wl,-Map=HDM01.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
 C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\ide\jre\bin\java -jar C:\Program Files (x86)\Atollic\TrueSTUDIO for ARM 8.0.0\Tools\arm-atollic-reports.jar sizeinfo list C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf 
 Generate build reports...
 Print size information
    text	   data	    bss	    dec	    hex	filename
-  42960	    508	   1156	  44624	   ae50	C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf
+  45020	    508	   1168	  46696	   b668	C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.elf
 Print size information done
 Generate listing file
 Output sent to: C:\Temp\Work\AlphaX\HDM01\Software\HDM01\Debug\HDM01.list
 Generate listing file done
 Generate build reports done
+Info: Nothing to build for HDM01

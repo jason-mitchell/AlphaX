@@ -18,6 +18,10 @@
 #define SWITCH_ON 		3
 #define VOLUME			4
 
+#define INPUT_1			0		// S/PDIF TOSLINK #1
+#define INPUT_2			1		// S/PDIF TOSLINK #2
+#define INPUT_3			2		// ANALOG LINE IN
+
 // Function prototypes
 //--------------------------------------------
 void SendParam(unsigned char param);

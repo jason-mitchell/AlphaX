@@ -15,6 +15,10 @@
 
 // Function Prototypes
 //------------------------------------------
+
+
+unsigned char GetSPIStatus(void);
+void SetSPIStatus(unsigned char state);
 void InitSPI(void);
 unsigned char SPITransceive(unsigned char data,  unsigned char bitorder);
 

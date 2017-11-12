@@ -12,6 +12,7 @@
 		<item value="false" key="caseSensitive"/>
 		<item value="227191" key="searchFlags"/>
 		<list key="previousPatterns">
+			<item value="EXTI_Trigger_Falling"/>
 			<item value="DMA1_Channel2_3"/>
 			<item value="EXTI4_15_"/>
 			<item value="USART1_IRQHandler"/>

@@ -21,7 +21,8 @@
 
 // Function Prototypes
 //-----------------------------------
-
+unsigned char GetLockState(void);
+void ServiceDIR(void);
 void InitDIR(void);
 void ReadDIRReg(unsigned char regaddr, unsigned char *regdata);
 void WriteDIRReg(unsigned char regaddr, unsigned char regdata);

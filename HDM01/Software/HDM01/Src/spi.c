@@ -14,11 +14,29 @@
 
 // Local Vars, constants, etc
 //----------------------------
-
+unsigned char SPI_STAT;
 
 
 // Functions
 //----------------------------
+
+//------------------------------------
+// Name: GetSPIStatus
+// Function: Return SPI status flag
+//------------------------------------
+unsigned char GetSPIStatus(void){
+
+	return SPI_STAT;
+
+}
+
+//------------------------------------
+// Name: SetSPIStatus
+// Function: Set the SPI status flag
+//------------------------------------
+void SetSPIStatus(unsigned char state){
+	SPI_STAT = state;
+}
 
 //---------------------------------------------------------------------
 // Name: InitSPI
@@ -27,6 +45,7 @@
 void InitSPI(void){
 	GPIO_ResetBits(GPIOB, MCLK);		// CLK = 0;
 	GPIO_ResetBits(GPIOB, MOSI);		// MOSI = 0;
+	SPI_STAT = 0;
 
 }
 

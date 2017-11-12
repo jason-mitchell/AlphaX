@@ -1,0 +1,142 @@
+//----------------------------------------------------------------------------------------------------------------------------------
+//
+//							Author: Sonikku
+//
+//                              ______
+//	                      _.-*'"      "`*-._
+//	                _.-*'                  `*-._
+//	             .-'                            `-.
+//	  /`-.    .-'                  _.              `-.
+//	 :    `..'                  .-'_ .                `.
+//	 |    .'                 .-'_.' \ .                 \
+//	 |   /                 .' .*     ;               .-'"
+//	 :   L                    `.     | ;          .-'
+//	  \.' `*.          .-*"*-.  `.   ; |        .'
+//	  /      \        '       `.  `-'  ;      .'
+//	 : .'"`.  .       .-*'`*-.  \     .      (_
+//	 |              .'        \  .             `*-.
+//	 |.     .      /           ;                   `-.
+//	 :    db      '       d$b  |                      `-.
+//	 .   :PT;.   '       :P"T; :                         `.
+//	 :   :bd;   '        :b_d; :                           \
+//	 |   :$$; `'         :$$$; |                            \
+//	 |    TP              T$P  '                             ;
+//	 :                        /.-*'"`.                       |
+//	.sdP^T$bs.               /'       \
+//	$$$._.$$$$b.--._      _.'   .--.   ;
+//	`*$$$$$$P*'     `*--*'     '  / \  :
+//	   \                        .'   ; ;
+//	    `.                  _.-'    ' /
+//	      `*-.                      .'
+//	          `*-._            _.-*'
+//	               `*=--..--=*'
+//
+//
+//					FILENAME: level.c
+//					Purpose: PPM / VU level metering from 16-24 bit PCM digita audio
+//					Dependencies:
+//						1. Math libraries
+//						2. Timer Tick
+//
+//
+//
+//----------------------------------------------------------------------------------------------------------------------------------
+
+// Includes
+//---------------
+#include "level.h"
+#include "stm32f0xx_rcc.h"					// For STM32F0xx micros
+#include "audio.h"
+#include <math.h>
+
+// Variables
+uint32_t	LEFT_PCM;
+uint32_t	RIGHT_PCM;
+float		LEFT_CHANNEL;
+float		RIGHT_CHANNEL;
+float		envelope;
+float		tmp;
+
+unsigned char UPDATE_PENDING;
+
+unsigned char LEVEL;
+
+#define ATTACK exp(log(0.01)/ 20 * 96000 * 0.001)
+#define DECAY exp(log(0.01)/ 1000 * 96000 * 0.001)
+
+
+// Name: GetLevel
+// Function: Retrieve level and return it
+// Parameter: void
+// Returns: level
+//-----------------------------------------
+unsigned char GetLevel(void){
+
+
+	return LEVEL;
+}
+
+// Name: InitLevel
+// Function: Initialize the level meter
+// Parameters: void
+// Returns: void
+//---------------------------------------------------------------------------------
+void InitMeter(void){
+
+	UPDATE_PENDING = 0;
+
+}
+
+
+// Name: ServiceMeter
+// Function: Calculates levels every 1mS
+// Parameters: void
+// Returns: void
+//----------------------------------------------
+void ServiceMeter(void){
+
+	if(UPDATE_PENDING == 1){
+		UPDATE_PENDING = 0;
+		if(GetWordSize() == AUDIO_16_BITS){
+			LEFT_CHANNEL = LEFT_PCM / 32768;
+			RIGHT_CHANNEL = RIGHT_PCM / 32768;
+
+
+		}
+		if(GetWordSize() == AUDIO_24_BITS){
+
+			//LEFT_CHANNEL = LEFT_PCM / 8388608;		// Conversion to +1 .. -1 floating point format
+			LEFT_CHANNEL = LEFT_PCM;
+			LEFT_CHANNEL = LEFT_CHANNEL / 8388608;
+			//RIGHT_CHANNEL = RIGHT_PCM / 8388608;		// Conversion to +1 .. -1 floating point format    -- DSP 101
+
+			// Compute the level to display on a bar that has 50 steps
+			envelope = 0.0;
+
+			tmp	 = fabs(LEFT_CHANNEL);
+			if(tmp > envelope){
+				envelope = ATTACK * (envelope - tmp) + tmp;
+			} else {
+				envelope = DECAY * (envelope - tmp) + tmp;
+			}
+
+			LEVEL = (unsigned char)envelope;
+		}
+	}
+}
+
+//-----------------------------------------------------------------------
+// Name: UpdateCall
+// Function: Signaling from the digital audio processor
+//           This is called to let us know there's PCM to process
+// Parameters: void
+// Returns: void
+//-----------------------------------------------------------------------
+void UpdateCall(void){
+
+	GetSamples(&LEFT_PCM, &RIGHT_PCM);
+	UPDATE_PENDING = 1;
+}
+
+
+

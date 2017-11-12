@@ -14,6 +14,7 @@
 #include "spi.h"
 #include "bsp.h"
 #include "stm32f0xx_gpio.h"
+#include <stdbool.h>
 
 
 // Locals
@@ -45,6 +46,7 @@ void InitFPIface(void){
 unsigned char FpReadWrite(unsigned char command, unsigned char op, unsigned char *data){
 	unsigned char result = 0;
 
+	SetSPIStatus(true);
 	GPIO_ResetBits(GPIOA, SS_FP);			// Lower Slave Select pin
 
 	result = SPITransceive(command, LSB_FIRST);
@@ -56,5 +58,6 @@ unsigned char FpReadWrite(unsigned char command, unsigned char op, unsigned char
 
 
 	GPIO_SetBits(GPIOA, SS_FP);				// Raise Slave Select pin
+	SetSPIStatus(false);
 	return 0x00;
 }

@@ -48,6 +48,7 @@
 #include "extflash.h"
 #include "spi.h"
 #include "stm32f0xx_gpio.h"
+#include <stdbool.h>
 
 // Locals
 //-------
@@ -124,7 +125,7 @@ int WriteFlash(unsigned int address, unsigned char data){
 	unsigned int addr;
 	unsigned int status;
 	addr = address;
-
+	SetSPIStatus(true);
 	// First stage- enable writes
 	EnableWrite();
 
@@ -142,6 +143,7 @@ int WriteFlash(unsigned int address, unsigned char data){
 	}while((status & 0x01) == 0x01);
 
 	DisableWrite();
+	SetSPIStatus(false);
 	return 0;
 }
 
@@ -155,6 +157,7 @@ int ReadFlash(unsigned int address, unsigned char *data){
 	unsigned int addr;
 	unsigned char drd;
 
+	SetSPIStatus(true);
 	addr = address;
 	GPIO_ResetBits(GPIOC, FLASH_CS);							// lower CS
 	SPITransceive(READ, MSB_FIRST);								// Send cmd
@@ -163,5 +166,6 @@ int ReadFlash(unsigned int address, unsigned char *data){
 	drd = SPITransceive(0x00, MSB_FIRST);						// Retrieve the data
 	GPIO_SetBits(GPIOC, FLASH_CS);								// raise CS
 	*data = drd;
+	SetSPIStatus(false);
 	return 0;
 }

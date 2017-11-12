@@ -194,6 +194,8 @@ void InitAudioIF(void){
 void DMA1_Channel2_3_IRQHandler(void){
 	uint32_t TMP = 0;
 
+	WORD_SIZE = AUDIO_24_BITS;			// << FOR DEBUGGING
+
 	if (DMA_GetITStatus(DMA1_IT_TC2)== SET){
 		DMA_ClearITPendingBit(DMA1_IT_TC2);				// Clear Interrupt flag
 

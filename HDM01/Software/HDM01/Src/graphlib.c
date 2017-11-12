@@ -10,7 +10,35 @@
 
 unsigned char inverse_mode;
 unsigned char masking;
+unsigned char BsShift;
 
+
+//----------------------------------------------------------------
+// Name: DrawBar
+// Function: Draw a horizontal bar at the specified XY location
+// Parameters: Bar Width (pixels), Bar Pattern Mask
+// Returns: void
+//----------------------------------------------------------------
+void DrawBar(unsigned char width, unsigned char bitmask){
+	unsigned char r;
+
+	for (r = 0; r < width; r++){
+		eWriteDispData(bitmask);
+	}
+}
+
+
+//---------------------------------------------------------
+// Name: ShiftBsline
+// Function: Raise baseline of text by passed parameter
+// Parameter: Shift value
+// Returns: void
+//--------------------------------------------------------
+void ShiftBsline(unsigned char shift){
+
+	BsShift = shift;
+
+}
 
 //-----------------------------------------------------------------------------------------------------
 // Name: SetInverse
@@ -62,6 +90,12 @@ void OutChar(unsigned char ascii_char, const int *fonttype){
 
                             	      glyph = *px;
 
+                            	      // Process baseline shift, if any
+                            	      if(BsShift > 0){
+                            	    	  glyph = glyph >> BsShift;
+                            	      }
+
+                            	      // Process masking, if any
                             	      if(inverse_mode == true){
                             	    	  glyph = ~glyph & masking;
                             	      }
